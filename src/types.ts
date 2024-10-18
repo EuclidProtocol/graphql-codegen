@@ -468,6 +468,7 @@ export type IPoolQueries = {
   my_pools: Array<IMyPools>;
   token_liquidities: Array<ITokenLiquidity>;
   token_liquidity: Maybe<ITokenLiquidity>;
+  token_pair_with_liquidity: Array<Maybe<ITokenPairWithLiquidityResponse>>;
   volume: Maybe<IVolumeResponse>;
 };
 
@@ -694,13 +695,20 @@ export type ITokenLiquidity = {
   __typename?: 'TokenLiquidity';
   token: Scalars['String']['output'];
   total_liquidity: Scalars['String']['output'];
-  total_volume: Scalars['String']['output'];
 };
 
 export type ITokenOut = {
   __typename?: 'TokenOut';
   amount_out: Maybe<Scalars['String']['output']>;
   asset_out: Maybe<Scalars['String']['output']>;
+};
+
+export type ITokenPairWithLiquidityResponse = {
+  __typename?: 'TokenPairWithLiquidityResponse';
+  apr: Scalars['String']['output'];
+  pair: IPair;
+  total_liquidity: Scalars['String']['output'];
+  vlp: Scalars['String']['output'];
 };
 
 export type ITokenQueries = {

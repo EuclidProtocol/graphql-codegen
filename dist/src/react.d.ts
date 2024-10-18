@@ -935,7 +935,6 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
-            total_volume: string;
         }>;
     };
 };
@@ -950,8 +949,44 @@ export type ICodegenGeneratedPoolTokenLiquidityQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
-            total_volume: string;
         };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity: Array<{
+            __typename?: 'TokenPairWithLiquidityResponse';
+            pair: {
+                __typename?: 'Pair';
+                token_1: string;
+                token_2: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity: Array<{
+            __typename?: 'TokenPairWithLiquidityResponse';
+            apr: string;
+            total_liquidity: string;
+            vlp: string;
+            pair: {
+                __typename?: 'Pair';
+                token_1: string;
+                token_2: string;
+            };
+        }>;
     };
 };
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{
@@ -1008,6 +1043,17 @@ export type ICodegenGeneratedPoolQuery = {
                 total_fee: number;
             }>;
         };
+        token_pair_with_liquidity: Array<{
+            __typename?: 'TokenPairWithLiquidityResponse';
+            apr: string;
+            total_liquidity: string;
+            vlp: string;
+            pair: {
+                __typename?: 'Pair';
+                token_1: string;
+                token_2: string;
+            };
+        }>;
         volume: {
             __typename?: 'VolumeResponse';
             total_liquidity: string;
@@ -3492,6 +3538,68 @@ export declare function refetchCodegenGeneratedPoolTokenLiquidityQuery(variables
     variables: Exact<{
         pool_token_liquidity_token: Scalars["String"]["input"];
     }>;
+};
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityPairQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityPairQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityPairLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityPairQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityPairQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
 };
 export declare const CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument: Apollo.DocumentNode;
 /**

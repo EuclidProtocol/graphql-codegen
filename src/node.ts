@@ -369,14 +369,24 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string }> } };
+export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string }> } };
 
 export type ICodegenGeneratedPoolTokenLiquidityQueryVariables = Exact<{
   pool_token_liquidity_token: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
+export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string } } };
+
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } };
+
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } };
 
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -391,7 +401,7 @@ export type ICodegenGeneratedPoolVolumeQuery = { __typename?: 'Query', pool: { _
 export type ICodegenGeneratedPoolQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ICodegenGeneratedPoolQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', fees_collected: { __typename?: 'FeesResponse', total_overall: number, breakdown: Array<{ __typename?: 'FeeBreakdown', token1: string, token2: string, total_fee: number }> }, volume: { __typename?: 'VolumeResponse', total_liquidity: string, total_volume: string, volume_24hours: string, volume_breakdown_24hours: Array<{ __typename?: 'VolumeBreakdown', pair: string, volume: string }> } } };
+export type ICodegenGeneratedPoolQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', fees_collected: { __typename?: 'FeesResponse', total_overall: number, breakdown: Array<{ __typename?: 'FeeBreakdown', token1: string, token2: string, total_fee: number }> }, token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }>, volume: { __typename?: 'VolumeResponse', total_liquidity: string, total_volume: string, volume_24hours: string, volume_breakdown_24hours: Array<{ __typename?: 'VolumeBreakdown', pair: string, volume: string }> } } };
 
 export type ICodegenGeneratedRouterAllChainsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1393,7 +1403,6 @@ export const CodegenGeneratedPoolTokenLiquiditiesDocument = /*#__PURE__*/ gql`
     ) {
       token
       total_liquidity
-      total_volume
     }
   }
 }
@@ -1404,7 +1413,33 @@ export const CodegenGeneratedPoolTokenLiquidityDocument = /*#__PURE__*/ gql`
     token_liquidity(token: $pool_token_liquidity_token) {
       token
       total_liquidity
-      total_volume
+    }
+  }
+}
+    `;
+export const CodegenGeneratedPoolTokenPairWithLiquidityPairDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR {
+  pool {
+    token_pair_with_liquidity {
+      pair {
+        token_1
+        token_2
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedPoolTokenPairWithLiquidityDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY {
+  pool {
+    token_pair_with_liquidity {
+      apr
+      pair {
+        token_1
+        token_2
+      }
+      total_liquidity
+      vlp
     }
   }
 }
@@ -1446,6 +1481,15 @@ export const CodegenGeneratedPoolDocument = /*#__PURE__*/ gql`
         total_fee
       }
       total_overall
+    }
+    token_pair_with_liquidity {
+      apr
+      pair {
+        token_1
+        token_2
+      }
+      total_liquidity
+      vlp
     }
     volume {
       total_liquidity
@@ -2196,7 +2240,7 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
 }
     `;
 
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?: Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
+export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 
 
 const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType) => action();
@@ -2204,277 +2248,283 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
     CODEGEN_GENERATED_CHAINS_ALL_CHAINS(variables?: ICodegenGeneratedChainsAllChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllChainsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllChainsQuery>(CodegenGeneratedChainsAllChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_CHAINS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllChainsQuery>(CodegenGeneratedChainsAllChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_CHAINS', 'query');
     },
     CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG(variables?: ICodegenGeneratedChainsChainConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsChainConfigQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsChainConfigQuery>(CodegenGeneratedChainsChainConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsChainConfigQuery>(CodegenGeneratedChainsChainConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG', 'query');
     },
     CODEGEN_GENERATED_CHAINS_CONTRACTS(variables?: ICodegenGeneratedChainsContractsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsContractsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsContractsQuery>(CodegenGeneratedChainsContractsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_CONTRACTS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsContractsQuery>(CodegenGeneratedChainsContractsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_CONTRACTS', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG(variables?: ICodegenGeneratedChainsKeplrConfigBech32ConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery>(CodegenGeneratedChainsKeplrConfigBech32ConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery>(CodegenGeneratedChainsKeplrConfigBech32ConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BIP44(variables?: ICodegenGeneratedChainsKeplrConfigBip44QueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigBip44Query> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigBip44Query>(CodegenGeneratedChainsKeplrConfigBip44Document, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BIP44', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigBip44Query>(CodegenGeneratedChainsKeplrConfigBip44Document, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BIP44', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_CURRENCIES(variables?: ICodegenGeneratedChainsKeplrConfigCurrenciesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigCurrenciesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigCurrenciesQuery>(CodegenGeneratedChainsKeplrConfigCurrenciesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_CURRENCIES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigCurrenciesQuery>(CodegenGeneratedChainsKeplrConfigCurrenciesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_CURRENCIES', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES_GASPRICESTEP(variables?: ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQuery>(CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES_GASPRICESTEP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQuery>(CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES_GASPRICESTEP', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES(variables?: ICodegenGeneratedChainsKeplrConfigFeecurrenciesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigFeecurrenciesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigFeecurrenciesQuery>(CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigFeecurrenciesQuery>(CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_FEECURRENCIES', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_GASPRICESTEP(variables?: ICodegenGeneratedChainsKeplrConfigGaspricestepQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigGaspricestepQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigGaspricestepQuery>(CodegenGeneratedChainsKeplrConfigGaspricestepDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_GASPRICESTEP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigGaspricestepQuery>(CodegenGeneratedChainsKeplrConfigGaspricestepDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_GASPRICESTEP', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_STAKECURRENCY(variables?: ICodegenGeneratedChainsKeplrConfigStakecurrencyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigStakecurrencyQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigStakecurrencyQuery>(CodegenGeneratedChainsKeplrConfigStakecurrencyDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_STAKECURRENCY', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigStakecurrencyQuery>(CodegenGeneratedChainsKeplrConfigStakecurrencyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_STAKECURRENCY', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG(variables?: ICodegenGeneratedChainsKeplrConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigQuery>(CodegenGeneratedChainsKeplrConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigQuery>(CodegenGeneratedChainsKeplrConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG', 'query');
     },
     CODEGEN_GENERATED_CHAINS_ROUTER_CONFIG(variables?: ICodegenGeneratedChainsRouterConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsRouterConfigQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsRouterConfigQuery>(CodegenGeneratedChainsRouterConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ROUTER_CONFIG', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsRouterConfigQuery>(CodegenGeneratedChainsRouterConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ROUTER_CONFIG', 'query');
     },
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsQuery>(CodegenGeneratedChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsQuery>(CodegenGeneratedChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS', 'query');
     },
     CODEGEN_GENERATED_CW_BALANCE(variables: ICodegenGeneratedCwBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwBalanceQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwBalanceQuery>(CodegenGeneratedCwBalanceDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_BALANCE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwBalanceQuery>(CodegenGeneratedCwBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_BALANCE', 'query');
     },
     CODEGEN_GENERATED_CW_TOKEN_INFO(variables: ICodegenGeneratedCwTokenInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwTokenInfoQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwTokenInfoQuery>(CodegenGeneratedCwTokenInfoDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_TOKEN_INFO', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwTokenInfoQuery>(CodegenGeneratedCwTokenInfoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_TOKEN_INFO', 'query');
     },
     CODEGEN_GENERATED_CW(variables: ICodegenGeneratedCwQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwQuery>(CodegenGeneratedCwDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwQuery>(CodegenGeneratedCwDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW', 'query');
     },
     CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES_RESULTS(variables: ICodegenGeneratedCwMulticallRawQueriesResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwMulticallRawQueriesResultsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallRawQueriesResultsQuery>(CodegenGeneratedCwMulticallRawQueriesResultsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES_RESULTS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallRawQueriesResultsQuery>(CodegenGeneratedCwMulticallRawQueriesResultsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES_RESULTS', 'query');
     },
     CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES(variables: ICodegenGeneratedCwMulticallRawQueriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwMulticallRawQueriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallRawQueriesQuery>(CodegenGeneratedCwMulticallRawQueriesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallRawQueriesQuery>(CodegenGeneratedCwMulticallRawQueriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_MULTICALL_RAW_QUERIES', 'query');
     },
     CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES_RESULTS(variables: ICodegenGeneratedCwMulticallSmartQueriesResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwMulticallSmartQueriesResultsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallSmartQueriesResultsQuery>(CodegenGeneratedCwMulticallSmartQueriesResultsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES_RESULTS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallSmartQueriesResultsQuery>(CodegenGeneratedCwMulticallSmartQueriesResultsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES_RESULTS', 'query');
     },
     CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES(variables: ICodegenGeneratedCwMulticallSmartQueriesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwMulticallSmartQueriesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallSmartQueriesQuery>(CodegenGeneratedCwMulticallSmartQueriesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwMulticallSmartQueriesQuery>(CodegenGeneratedCwMulticallSmartQueriesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_MULTICALL_SMART_QUERIES', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_POOLS_PAGINATION(variables: ICodegenGeneratedFactoryAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllPoolsPaginationQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPaginationQuery>(CodegenGeneratedFactoryAllPoolsPaginationDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_PAGINATION', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPaginationQuery>(CodegenGeneratedFactoryAllPoolsPaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_PAGINATION', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS_PAIR(variables: ICodegenGeneratedFactoryAllPoolsPoolsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllPoolsPoolsPairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPoolsPairQuery>(CodegenGeneratedFactoryAllPoolsPoolsPairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS_PAIR', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPoolsPairQuery>(CodegenGeneratedFactoryAllPoolsPoolsPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS_PAIR', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS(variables: ICodegenGeneratedFactoryAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllPoolsPoolsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPoolsQuery>(CodegenGeneratedFactoryAllPoolsPoolsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsPoolsQuery>(CodegenGeneratedFactoryAllPoolsPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS_POOLS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_POOLS(variables: ICodegenGeneratedFactoryAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllPoolsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsQuery>(CodegenGeneratedFactoryAllPoolsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllPoolsQuery>(CodegenGeneratedFactoryAllPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_POOLS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_TOKENS_PAGINATION(variables: ICodegenGeneratedFactoryAllTokensPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllTokensPaginationQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllTokensPaginationQuery>(CodegenGeneratedFactoryAllTokensPaginationDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_TOKENS_PAGINATION', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllTokensPaginationQuery>(CodegenGeneratedFactoryAllTokensPaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_TOKENS_PAGINATION', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALL_TOKENS(variables: ICodegenGeneratedFactoryAllTokensQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllTokensQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllTokensQuery>(CodegenGeneratedFactoryAllTokensDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALL_TOKENS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllTokensQuery>(CodegenGeneratedFactoryAllTokensDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALL_TOKENS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ALLOWED_DENOMS(variables: ICodegenGeneratedFactoryAllowedDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryAllowedDenomsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllowedDenomsQuery>(CodegenGeneratedFactoryAllowedDenomsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ALLOWED_DENOMS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryAllowedDenomsQuery>(CodegenGeneratedFactoryAllowedDenomsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ALLOWED_DENOMS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_ESCROW(variables: ICodegenGeneratedFactoryEscrowQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryEscrowQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryEscrowQuery>(CodegenGeneratedFactoryEscrowDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_ESCROW', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryEscrowQuery>(CodegenGeneratedFactoryEscrowDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_ESCROW', 'query');
     },
     CODEGEN_GENERATED_FACTORY_GET_LPTOKEN_ADDRESS(variables: ICodegenGeneratedFactoryGetLptokenAddressQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryGetLptokenAddressQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryGetLptokenAddressQuery>(CodegenGeneratedFactoryGetLptokenAddressDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_GET_LPTOKEN_ADDRESS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryGetLptokenAddressQuery>(CodegenGeneratedFactoryGetLptokenAddressDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_GET_LPTOKEN_ADDRESS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL_TOTALS(variables: ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery>(CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL_TOTALS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery>(CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL_TOTALS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL(variables: ICodegenGeneratedFactoryPartnerFeesCollectedTotalQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery>(CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery>(CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL', 'query');
     },
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED(variables: ICodegenGeneratedFactoryPartnerFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedQuery>(CodegenGeneratedFactoryPartnerFeesCollectedDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedQuery>(CodegenGeneratedFactoryPartnerFeesCollectedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED', 'query');
     },
     CODEGEN_GENERATED_FACTORY_STATE(variables: ICodegenGeneratedFactoryStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryStateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryStateQuery>(CodegenGeneratedFactoryStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_STATE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryStateQuery>(CodegenGeneratedFactoryStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_STATE', 'query');
     },
     CODEGEN_GENERATED_FACTORY_VLP(variables: ICodegenGeneratedFactoryVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryVlpQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryVlpQuery>(CodegenGeneratedFactoryVlpDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY_VLP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryVlpQuery>(CodegenGeneratedFactoryVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_VLP', 'query');
     },
     CODEGEN_GENERATED_FACTORY(variables: ICodegenGeneratedFactoryQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryQuery>(CodegenGeneratedFactoryDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_FACTORY', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryQuery>(CodegenGeneratedFactoryDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY', 'query');
     },
     CODEGEN_GENERATED_POOL_FEES_COLLECTED_BREAKDOWN(variables?: ICodegenGeneratedPoolFeesCollectedBreakdownQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolFeesCollectedBreakdownQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolFeesCollectedBreakdownQuery>(CodegenGeneratedPoolFeesCollectedBreakdownDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_FEES_COLLECTED_BREAKDOWN', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolFeesCollectedBreakdownQuery>(CodegenGeneratedPoolFeesCollectedBreakdownDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_FEES_COLLECTED_BREAKDOWN', 'query');
     },
     CODEGEN_GENERATED_POOL_FEES_COLLECTED(variables?: ICodegenGeneratedPoolFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolFeesCollectedQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolFeesCollectedQuery>(CodegenGeneratedPoolFeesCollectedDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_FEES_COLLECTED', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolFeesCollectedQuery>(CodegenGeneratedPoolFeesCollectedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_FEES_COLLECTED', 'query');
     },
     CODEGEN_GENERATED_POOL_MY_POOLS_PAIR(variables: ICodegenGeneratedPoolMyPoolsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsPairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsPairQuery>(CodegenGeneratedPoolMyPoolsPairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_MY_POOLS_PAIR', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsPairQuery>(CodegenGeneratedPoolMyPoolsPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_MY_POOLS_PAIR', 'query');
     },
     CODEGEN_GENERATED_POOL_MY_POOLS_USER(variables: ICodegenGeneratedPoolMyPoolsUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsUserQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsUserQuery>(CodegenGeneratedPoolMyPoolsUserDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_MY_POOLS_USER', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsUserQuery>(CodegenGeneratedPoolMyPoolsUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_MY_POOLS_USER', 'query');
     },
     CODEGEN_GENERATED_POOL_MY_POOLS(variables: ICodegenGeneratedPoolMyPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsQuery>(CodegenGeneratedPoolMyPoolsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_MY_POOLS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsQuery>(CodegenGeneratedPoolMyPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_MY_POOLS', 'query');
     },
     CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedPoolTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquiditiesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquiditiesQuery>(CodegenGeneratedPoolTokenLiquiditiesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquiditiesQuery>(CodegenGeneratedPoolTokenLiquiditiesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES', 'query');
     },
     CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY(variables: ICodegenGeneratedPoolTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquidityQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquidityQuery>(CodegenGeneratedPoolTokenLiquidityDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquidityQuery>(CodegenGeneratedPoolTokenLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY', 'query');
+    },
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery>(CodegenGeneratedPoolTokenPairWithLiquidityPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR', 'query');
+    },
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityQuery>(CodegenGeneratedPoolTokenPairWithLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY', 'query');
     },
     CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS(variables?: ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery>(CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery>(CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS', 'query');
     },
     CODEGEN_GENERATED_POOL_VOLUME(variables?: ICodegenGeneratedPoolVolumeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolVolumeQuery>(CodegenGeneratedPoolVolumeDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolVolumeQuery>(CodegenGeneratedPoolVolumeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_VOLUME', 'query');
     },
     CODEGEN_GENERATED_POOL(variables?: ICodegenGeneratedPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolQuery>(CodegenGeneratedPoolDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolQuery>(CodegenGeneratedPoolDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ALL_CHAINS(variables?: ICodegenGeneratedRouterAllChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllChainsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllChainsQuery>(CodegenGeneratedRouterAllChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ALL_CHAINS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllChainsQuery>(CodegenGeneratedRouterAllChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ALL_CHAINS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ALL_ESCROWS(variables?: ICodegenGeneratedRouterAllEscrowsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllEscrowsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllEscrowsQuery>(CodegenGeneratedRouterAllEscrowsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ALL_ESCROWS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllEscrowsQuery>(CodegenGeneratedRouterAllEscrowsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ALL_ESCROWS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ALL_TOKENS(variables?: ICodegenGeneratedRouterAllTokensQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllTokensQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllTokensQuery>(CodegenGeneratedRouterAllTokensDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ALL_TOKENS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllTokensQuery>(CodegenGeneratedRouterAllTokensDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ALL_TOKENS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ALL_VLPS_VLPS(variables?: ICodegenGeneratedRouterAllVlpsVlpsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllVlpsVlpsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllVlpsVlpsQuery>(CodegenGeneratedRouterAllVlpsVlpsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ALL_VLPS_VLPS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllVlpsVlpsQuery>(CodegenGeneratedRouterAllVlpsVlpsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ALL_VLPS_VLPS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ALL_VLPS(variables?: ICodegenGeneratedRouterAllVlpsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllVlpsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllVlpsQuery>(CodegenGeneratedRouterAllVlpsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ALL_VLPS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterAllVlpsQuery>(CodegenGeneratedRouterAllVlpsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ALL_VLPS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE_IBC(variables: ICodegenGeneratedRouterChainChainChainTypeIbcQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainChainChainTypeIbcQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainChainTypeIbcQuery>(CodegenGeneratedRouterChainChainChainTypeIbcDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE_IBC', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainChainTypeIbcQuery>(CodegenGeneratedRouterChainChainChainTypeIbcDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE_IBC', 'query');
     },
     CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE(variables: ICodegenGeneratedRouterChainChainChainTypeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainChainChainTypeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainChainTypeQuery>(CodegenGeneratedRouterChainChainChainTypeDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainChainTypeQuery>(CodegenGeneratedRouterChainChainChainTypeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE', 'query');
     },
     CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN(variables: ICodegenGeneratedRouterChainChainQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainChainQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainQuery>(CodegenGeneratedRouterChainChainDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainChainQuery>(CodegenGeneratedRouterChainChainDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN', 'query');
     },
     CODEGEN_GENERATED_ROUTER_CHAIN(variables: ICodegenGeneratedRouterChainQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainQuery>(CodegenGeneratedRouterChainDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_CHAIN', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainQuery>(CodegenGeneratedRouterChainDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CHAIN', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ESCROWS(variables: ICodegenGeneratedRouterEscrowsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterEscrowsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterEscrowsQuery>(CodegenGeneratedRouterEscrowsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_ESCROWS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterEscrowsQuery>(CodegenGeneratedRouterEscrowsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ESCROWS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER_USER(variables: ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER_USER', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER_USER', 'query');
     },
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER(variables: ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER', 'query');
     },
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS(variables: ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery>(CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW(variables: ICodegenGeneratedRouterSimulateReleaseEscrowQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowQuery>(CodegenGeneratedRouterSimulateReleaseEscrowDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateReleaseEscrowQuery>(CodegenGeneratedRouterSimulateReleaseEscrowDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW', 'query');
     },
     CODEGEN_GENERATED_ROUTER_SIMULATE_SWAP(variables: ICodegenGeneratedRouterSimulateSwapQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateSwapQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateSwapQuery>(CodegenGeneratedRouterSimulateSwapDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_SIMULATE_SWAP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterSimulateSwapQuery>(CodegenGeneratedRouterSimulateSwapDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_SIMULATE_SWAP', 'query');
     },
     CODEGEN_GENERATED_ROUTER_STATE(variables?: ICodegenGeneratedRouterStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterStateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterStateQuery>(CodegenGeneratedRouterStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_STATE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterStateQuery>(CodegenGeneratedRouterStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_STATE', 'query');
     },
     CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP(variables: ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterTokenPairsFromVlpQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterTokenPairsFromVlpQuery>(CodegenGeneratedRouterTokenPairsFromVlpDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterTokenPairsFromVlpQuery>(CodegenGeneratedRouterTokenPairsFromVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP', 'query');
     },
     CODEGEN_GENERATED_ROUTER_VLP(variables?: ICodegenGeneratedRouterVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterVlpQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterVlpQuery>(CodegenGeneratedRouterVlpDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER_VLP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterVlpQuery>(CodegenGeneratedRouterVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_VLP', 'query');
     },
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterQuery>(CodegenGeneratedRouterDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterQuery>(CodegenGeneratedRouterDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER', 'query');
     },
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadataByIdQuery>(CodegenGeneratedTokenTokenMetadataByIdDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadataByIdQuery>(CodegenGeneratedTokenTokenMetadataByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID', 'query');
     },
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadatasQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadatasQuery>(CodegenGeneratedTokenTokenMetadatasDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadatasQuery>(CodegenGeneratedTokenTokenMetadatasDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS', 'query');
     },
     CODEGEN_GENERATED_VCOIN_BALANCE(variables?: ICodegenGeneratedVcoinBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinBalanceQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinBalanceQuery>(CodegenGeneratedVcoinBalanceDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_BALANCE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinBalanceQuery>(CodegenGeneratedVcoinBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_BALANCE', 'query');
     },
     CODEGEN_GENERATED_VCOIN_STATE(variables?: ICodegenGeneratedVcoinStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinStateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinStateQuery>(CodegenGeneratedVcoinStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_STATE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinStateQuery>(CodegenGeneratedVcoinStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_STATE', 'query');
     },
     CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES(variables?: ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceBalancesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUserBalanceBalancesQuery>(CodegenGeneratedVcoinUserBalanceBalancesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUserBalanceBalancesQuery>(CodegenGeneratedVcoinUserBalanceBalancesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES', 'query');
     },
     CODEGEN_GENERATED_VCOIN_USER_BALANCE(variables?: ICodegenGeneratedVcoinUserBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUserBalanceQuery>(CodegenGeneratedVcoinUserBalanceDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUserBalanceQuery>(CodegenGeneratedVcoinUserBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE', 'query');
     },
     CODEGEN_GENERATED_VCOIN(variables?: ICodegenGeneratedVcoinQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinQuery>(CodegenGeneratedVcoinDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinQuery>(CodegenGeneratedVcoinDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN', 'query');
     },
     CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION(variables: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPaginationQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPaginationQuery>(CodegenGeneratedVlpAllPoolsPaginationDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPaginationQuery>(CodegenGeneratedVlpAllPoolsPaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION', 'query');
     },
     CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL(variables: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery>(CodegenGeneratedVlpAllPoolsPoolsPoolDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery>(CodegenGeneratedVlpAllPoolsPoolsPoolDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL', 'query');
     },
     CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS(variables: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsQuery>(CodegenGeneratedVlpAllPoolsPoolsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsQuery>(CodegenGeneratedVlpAllPoolsPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS', 'query');
     },
     CODEGEN_GENERATED_VLP_ALL_POOLS(variables: ICodegenGeneratedVlpAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsQuery>(CodegenGeneratedVlpAllPoolsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_ALL_POOLS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsQuery>(CodegenGeneratedVlpAllPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS', 'query');
     },
     CODEGEN_GENERATED_VLP_FEE_RECIPIENT(variables: ICodegenGeneratedVlpFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeRecipientQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeRecipientQuery>(CodegenGeneratedVlpFeeRecipientDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_FEE_RECIPIENT', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeRecipientQuery>(CodegenGeneratedVlpFeeRecipientDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_FEE_RECIPIENT', 'query');
     },
     CODEGEN_GENERATED_VLP_FEE(variables: ICodegenGeneratedVlpFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeQuery>(CodegenGeneratedVlpFeeDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_FEE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeQuery>(CodegenGeneratedVlpFeeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_FEE', 'query');
     },
     CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR(variables: ICodegenGeneratedVlpLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityPairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityPairQuery>(CodegenGeneratedVlpLiquidityPairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityPairQuery>(CodegenGeneratedVlpLiquidityPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR', 'query');
     },
     CODEGEN_GENERATED_VLP_LIQUIDITY(variables: ICodegenGeneratedVlpLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityQuery>(CodegenGeneratedVlpLiquidityDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_LIQUIDITY', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityQuery>(CodegenGeneratedVlpLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_LIQUIDITY', 'query');
     },
     CODEGEN_GENERATED_VLP_POOL(variables: ICodegenGeneratedVlpPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpPoolQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpPoolQuery>(CodegenGeneratedVlpPoolDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_POOL', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpPoolQuery>(CodegenGeneratedVlpPoolDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_POOL', 'query');
     },
     CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeRecipientQuery>(CodegenGeneratedVlpStateFeeRecipientDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeRecipientQuery>(CodegenGeneratedVlpStateFeeRecipientDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT', 'query');
     },
     CODEGEN_GENERATED_VLP_STATE_FEE(variables: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeQuery>(CodegenGeneratedVlpStateFeeDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_FEE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeQuery>(CodegenGeneratedVlpStateFeeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_FEE', 'query');
     },
     CODEGEN_GENERATED_VLP_STATE_PAIR(variables: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStatePairQuery>(CodegenGeneratedVlpStatePairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_PAIR', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStatePairQuery>(CodegenGeneratedVlpStatePairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_PAIR', 'query');
     },
     CODEGEN_GENERATED_VLP_STATE(variables: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateQuery>(CodegenGeneratedVlpStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateQuery>(CodegenGeneratedVlpStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED(variables: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedQuery>(CodegenGeneratedVlpTotalFeesCollectedDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedQuery>(CodegenGeneratedVlpTotalFeesCollectedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM(variables: ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery>(CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery>(CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM', 'query');
     },
     CODEGEN_GENERATED_VLP(variables: ICodegenGeneratedVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpQuery>(CodegenGeneratedVlpDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP', 'query');
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpQuery>(CodegenGeneratedVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP', 'query');
     }
   };
 }
