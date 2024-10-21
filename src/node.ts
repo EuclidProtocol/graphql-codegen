@@ -369,14 +369,14 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string }> } };
+export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string }> } };
 
 export type ICodegenGeneratedPoolTokenLiquidityQueryVariables = Exact<{
   pool_token_liquidity_token: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string } } };
+export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -558,6 +558,11 @@ export type ICodegenGeneratedRouterQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedRouterQuery = { __typename?: 'Query', router: { __typename?: 'Router', all_chains: Array<{ __typename?: 'Chain', chain_id: string, chain_uid: string, factory_address: string }>, state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
+
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
   token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
@@ -572,6 +577,11 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
 
 
 export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, displayName: string, image: string, price: string, tokenId: string }> } };
+
+export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedTokenQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
 
 export type ICodegenGeneratedVcoinBalanceQueryVariables = Exact<{
   vcoin_balance_balance_key?: InputMaybe<IBalanceKeyInput>;
@@ -1403,6 +1413,7 @@ export const CodegenGeneratedPoolTokenLiquiditiesDocument = /*#__PURE__*/ gql`
     ) {
       token
       total_liquidity
+      total_volume
     }
   }
 }
@@ -1413,6 +1424,7 @@ export const CodegenGeneratedPoolTokenLiquidityDocument = /*#__PURE__*/ gql`
     token_liquidity(token: $pool_token_liquidity_token) {
       token
       total_liquidity
+      total_volume
     }
   }
 }
@@ -1817,6 +1829,16 @@ export const CodegenGeneratedRouterDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS {
+  token {
+    get_all_faucets {
+      faucet_link
+      token
+    }
+  }
+}
+    `;
 export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
   token {
@@ -1844,6 +1866,16 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
       image
       price
       tokenId
+    }
+  }
+}
+    `;
+export const CodegenGeneratedTokenDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN {
+  token {
+    get_all_faucets {
+      faucet_link
+      token
     }
   }
 }
@@ -2445,11 +2477,17 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterQuery>(CodegenGeneratedRouterDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER', 'query');
     },
+    CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenGetAllFaucetsQuery>(CodegenGeneratedTokenGetAllFaucetsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS', 'query');
+    },
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadataByIdQuery>(CodegenGeneratedTokenTokenMetadataByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID', 'query');
     },
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadatasQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadatasQuery>(CodegenGeneratedTokenTokenMetadatasDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS', 'query');
+    },
+    CODEGEN_GENERATED_TOKEN(variables?: ICodegenGeneratedTokenQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenQuery>(CodegenGeneratedTokenDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN', 'query');
     },
     CODEGEN_GENERATED_VCOIN_BALANCE(variables?: ICodegenGeneratedVcoinBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinBalanceQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinBalanceQuery>(CodegenGeneratedVcoinBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_BALANCE', 'query');

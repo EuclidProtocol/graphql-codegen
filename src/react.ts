@@ -369,14 +369,14 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string }> } };
+export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string }> } };
 
 export type ICodegenGeneratedPoolTokenLiquidityQueryVariables = Exact<{
   pool_token_liquidity_token: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string } } };
+export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -558,6 +558,11 @@ export type ICodegenGeneratedRouterQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedRouterQuery = { __typename?: 'Query', router: { __typename?: 'Router', all_chains: Array<{ __typename?: 'Chain', chain_id: string, chain_uid: string, factory_address: string }>, state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
+
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
   token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
@@ -572,6 +577,11 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
 
 
 export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, displayName: string, image: string, price: string, tokenId: string }> } };
+
+export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedTokenQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
 
 export type ICodegenGeneratedVcoinBalanceQueryVariables = Exact<{
   vcoin_balance_balance_key?: InputMaybe<IBalanceKeyInput>;
@@ -2675,6 +2685,7 @@ export const CodegenGeneratedPoolTokenLiquiditiesDocument = /*#__PURE__*/ gql`
     ) {
       token
       total_liquidity
+      total_volume
     }
   }
 }
@@ -2717,6 +2728,7 @@ export const CodegenGeneratedPoolTokenLiquidityDocument = /*#__PURE__*/ gql`
     token_liquidity(token: $pool_token_liquidity_token) {
       token
       total_liquidity
+      total_volume
     }
   }
 }
@@ -3916,6 +3928,46 @@ export type CodegenGeneratedRouterQueryResult = Apollo.QueryResult<ICodegenGener
 export function refetchCodegenGeneratedRouterQuery(variables?: ICodegenGeneratedRouterQueryVariables) {
       return { query: CodegenGeneratedRouterDocument, variables: variables }
     }
+export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS {
+  token {
+    get_all_faucets {
+      faucet_link
+      token
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedTokenGetAllFaucetsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenGetAllFaucetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenGetAllFaucetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenGetAllFaucetsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCodegenGeneratedTokenGetAllFaucetsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>(CodegenGeneratedTokenGetAllFaucetsDocument, options);
+      }
+export function useCodegenGeneratedTokenGetAllFaucetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>(CodegenGeneratedTokenGetAllFaucetsDocument, options);
+        }
+export type CodegenGeneratedTokenGetAllFaucetsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenGetAllFaucetsQuery>;
+export type CodegenGeneratedTokenGetAllFaucetsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenGetAllFaucetsLazyQuery>;
+export type CodegenGeneratedTokenGetAllFaucetsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>;
+export function refetchCodegenGeneratedTokenGetAllFaucetsQuery(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables) {
+      return { query: CodegenGeneratedTokenGetAllFaucetsDocument, variables: variables }
+    }
 export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
   token {
@@ -4009,6 +4061,46 @@ export type CodegenGeneratedTokenTokenMetadatasLazyQueryHookResult = ReturnType<
 export type CodegenGeneratedTokenTokenMetadatasQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>;
 export function refetchCodegenGeneratedTokenTokenMetadatasQuery(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables) {
       return { query: CodegenGeneratedTokenTokenMetadatasDocument, variables: variables }
+    }
+export const CodegenGeneratedTokenDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN {
+  token {
+    get_all_faucets {
+      faucet_link
+      token
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedTokenQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCodegenGeneratedTokenQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>(CodegenGeneratedTokenDocument, options);
+      }
+export function useCodegenGeneratedTokenLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>(CodegenGeneratedTokenDocument, options);
+        }
+export type CodegenGeneratedTokenQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenQuery>;
+export type CodegenGeneratedTokenLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenLazyQuery>;
+export type CodegenGeneratedTokenQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>;
+export function refetchCodegenGeneratedTokenQuery(variables?: ICodegenGeneratedTokenQueryVariables) {
+      return { query: CodegenGeneratedTokenDocument, variables: variables }
     }
 export const CodegenGeneratedVcoinBalanceDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_VCOIN_BALANCE($vcoin_balance_balance_key: BalanceKeyInput) {

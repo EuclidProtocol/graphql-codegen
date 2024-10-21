@@ -294,6 +294,12 @@ export type IFactoryVlpArgs = {
   pair?: InputMaybe<IPairInput>;
 };
 
+export type IFaucet = {
+  __typename?: 'Faucet';
+  faucet_link: Maybe<Scalars['String']['output']>;
+  token: Maybe<Scalars['String']['output']>;
+};
+
 export type IFeeBreakdown = {
   __typename?: 'FeeBreakdown';
   token1: Scalars['String']['output'];
@@ -695,6 +701,7 @@ export type ITokenLiquidity = {
   __typename?: 'TokenLiquidity';
   token: Scalars['String']['output'];
   total_liquidity: Scalars['String']['output'];
+  total_volume: Scalars['String']['output'];
 };
 
 export type ITokenOut = {
@@ -713,6 +720,7 @@ export type ITokenPairWithLiquidityResponse = {
 
 export type ITokenQueries = {
   __typename?: 'TokenQueries';
+  get_all_faucets: Array<IFaucet>;
   token_metadata_by_id: Maybe<IMetadata>;
   token_metadatas: Array<Maybe<IMetadata>>;
 };
