@@ -935,6 +935,7 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
+            total_volume: string;
         }>;
     };
 };
@@ -949,6 +950,7 @@ export type ICodegenGeneratedPoolTokenLiquidityQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
+            total_volume: string;
         };
     };
 };
@@ -1464,6 +1466,20 @@ export type ICodegenGeneratedRouterQuery = {
         };
     };
 };
+export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        get_all_faucets: Array<{
+            __typename?: 'Faucet';
+            faucet_link: string;
+            token: string;
+        }>;
+    };
+};
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
     token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
@@ -1498,6 +1514,20 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             image: string;
             price: string;
             tokenId: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        get_all_faucets: Array<{
+            __typename?: 'Faucet';
+            faucet_link: string;
+            token: string;
         }>;
     };
 };
@@ -4411,6 +4441,37 @@ export declare function refetchCodegenGeneratedRouterQuery(variables?: ICodegenG
         [key: string]: never;
     }> | undefined;
 };
+export declare const CodegenGeneratedTokenGetAllFaucetsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenGetAllFaucetsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenGetAllFaucetsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenGetAllFaucetsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenGetAllFaucetsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenGetAllFaucetsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenGetAllFaucetsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedTokenGetAllFaucetsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenGetAllFaucetsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedTokenGetAllFaucetsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenGetAllFaucetsQuery>;
+export type CodegenGeneratedTokenGetAllFaucetsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenGetAllFaucetsLazyQuery>;
+export type CodegenGeneratedTokenGetAllFaucetsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenGetAllFaucetsQuery, ICodegenGeneratedTokenGetAllFaucetsQueryVariables>;
+export declare function refetchCodegenGeneratedTokenGetAllFaucetsQuery(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
 export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedTokenTokenMetadataByIdQuery__
@@ -4477,6 +4538,37 @@ export declare function refetchCodegenGeneratedTokenTokenMetadatasQuery(variable
     variables: Exact<{
         token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedTokenLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedTokenQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenQuery>;
+export type CodegenGeneratedTokenLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenLazyQuery>;
+export type CodegenGeneratedTokenQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenQuery, ICodegenGeneratedTokenQueryVariables>;
+export declare function refetchCodegenGeneratedTokenQuery(variables?: ICodegenGeneratedTokenQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
     }> | undefined;
 };
 export declare const CodegenGeneratedVcoinBalanceDocument: Apollo.DocumentNode;

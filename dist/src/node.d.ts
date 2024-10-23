@@ -936,6 +936,7 @@ export type ICodegenGeneratedPoolTokenLiquiditiesQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
+            total_volume: string;
         }>;
     };
 };
@@ -950,6 +951,7 @@ export type ICodegenGeneratedPoolTokenLiquidityQuery = {
             __typename?: 'TokenLiquidity';
             token: string;
             total_liquidity: string;
+            total_volume: string;
         };
     };
 };
@@ -1465,6 +1467,20 @@ export type ICodegenGeneratedRouterQuery = {
         };
     };
 };
+export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        get_all_faucets: Array<{
+            __typename?: 'Faucet';
+            faucet_link: string;
+            token: string;
+        }>;
+    };
+};
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
     token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
@@ -1499,6 +1515,20 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             image: string;
             price: string;
             tokenId: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        get_all_faucets: Array<{
+            __typename?: 'Faucet';
+            faucet_link: string;
+            token: string;
         }>;
     };
 };
@@ -2115,8 +2145,10 @@ export declare const CodegenGeneratedRouterStateDocument: import("graphql").Docu
 export declare const CodegenGeneratedRouterTokenPairsFromVlpDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterVlpDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenGetAllFaucetsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadatasDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVcoinBalanceDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVcoinStateDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVcoinUserBalanceBalancesDocument: import("graphql").DocumentNode;
@@ -2210,8 +2242,10 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP(variables: ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterTokenPairsFromVlpQuery>;
     CODEGEN_GENERATED_ROUTER_VLP(variables?: ICodegenGeneratedRouterVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterVlpQuery>;
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery>;
+    CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadatasQuery>;
+    CODEGEN_GENERATED_TOKEN(variables?: ICodegenGeneratedTokenQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenQuery>;
     CODEGEN_GENERATED_VCOIN_BALANCE(variables?: ICodegenGeneratedVcoinBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinBalanceQuery>;
     CODEGEN_GENERATED_VCOIN_STATE(variables?: ICodegenGeneratedVcoinStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinStateQuery>;
     CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES(variables?: ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceBalancesQuery>;
