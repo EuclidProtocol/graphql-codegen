@@ -178,6 +178,11 @@ export type FactoryFieldPolicy = {
     state?: FieldPolicy<any> | FieldReadFunction<any>;
     vlp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type FaucetKeySpecifier = ('faucet_link' | 'token' | FaucetKeySpecifier)[];
+export type FaucetFieldPolicy = {
+    faucet_link?: FieldPolicy<any> | FieldReadFunction<any>;
+    token?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type FeeBreakdownKeySpecifier = ('token1' | 'token2' | 'total_fee' | FeeBreakdownKeySpecifier)[];
 export type FeeBreakdownFieldPolicy = {
     token1?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -305,12 +310,13 @@ export type PoolFieldPolicy = {
     reserve_1?: FieldPolicy<any> | FieldReadFunction<any>;
     reserve_2?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_liquidities' | 'token_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
+export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_liquidities' | 'token_liquidity' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
     fees_collected?: FieldPolicy<any> | FieldReadFunction<any>;
     my_pools?: FieldPolicy<any> | FieldReadFunction<any>;
     token_liquidities?: FieldPolicy<any> | FieldReadFunction<any>;
     token_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_pair_with_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     volume?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type PoolsKeySpecifier = ('chain_uid' | 'pool' | PoolsKeySpecifier)[];
@@ -417,8 +423,16 @@ export type TokenOutFieldPolicy = {
     amount_out?: FieldPolicy<any> | FieldReadFunction<any>;
     asset_out?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type TokenQueriesKeySpecifier = ('token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
+export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'pair' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
+export type TokenPairWithLiquidityResponseFieldPolicy = {
+    apr?: FieldPolicy<any> | FieldReadFunction<any>;
+    pair?: FieldPolicy<any> | FieldReadFunction<any>;
+    total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
+    vlp?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TokenQueriesKeySpecifier = ('get_all_faucets' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
 export type TokenQueriesFieldPolicy = {
+    get_all_faucets?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadata_by_id?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadatas?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -604,6 +618,10 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | FactoryKeySpecifier | (() => undefined | FactoryKeySpecifier);
         fields?: FactoryFieldPolicy;
     };
+    Faucet?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | FaucetKeySpecifier | (() => undefined | FaucetKeySpecifier);
+        fields?: FaucetFieldPolicy;
+    };
     FeeBreakdown?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | FeeBreakdownKeySpecifier | (() => undefined | FeeBreakdownKeySpecifier);
         fields?: FeeBreakdownFieldPolicy;
@@ -759,6 +777,10 @@ export type StrictTypedTypePolicies = {
     TokenOut?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenOutKeySpecifier | (() => undefined | TokenOutKeySpecifier);
         fields?: TokenOutFieldPolicy;
+    };
+    TokenPairWithLiquidityResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | TokenPairWithLiquidityResponseKeySpecifier | (() => undefined | TokenPairWithLiquidityResponseKeySpecifier);
+        fields?: TokenPairWithLiquidityResponseFieldPolicy;
     };
     TokenQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenQueriesKeySpecifier | (() => undefined | TokenQueriesKeySpecifier);

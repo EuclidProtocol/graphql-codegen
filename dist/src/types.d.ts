@@ -272,6 +272,11 @@ export type IFactoryGetLpTokenAddressArgs = {
 export type IFactoryVlpArgs = {
     pair?: InputMaybe<IPairInput>;
 };
+export type IFaucet = {
+    __typename?: 'Faucet';
+    faucet_link: Maybe<Scalars['String']['output']>;
+    token: Maybe<Scalars['String']['output']>;
+};
 export type IFeeBreakdown = {
     __typename?: 'FeeBreakdown';
     token1: Scalars['String']['output'];
@@ -419,6 +424,7 @@ export type IPoolQueries = {
     my_pools: Array<IMyPools>;
     token_liquidities: Array<ITokenLiquidity>;
     token_liquidity: Maybe<ITokenLiquidity>;
+    token_pair_with_liquidity: Array<Maybe<ITokenPairWithLiquidityResponse>>;
     volume: Maybe<IVolumeResponse>;
 };
 export type IPoolQueriesMyPoolsArgs = {
@@ -602,8 +608,16 @@ export type ITokenOut = {
     amount_out: Maybe<Scalars['String']['output']>;
     asset_out: Maybe<Scalars['String']['output']>;
 };
+export type ITokenPairWithLiquidityResponse = {
+    __typename?: 'TokenPairWithLiquidityResponse';
+    apr: Scalars['String']['output'];
+    pair: IPair;
+    total_liquidity: Scalars['String']['output'];
+    vlp: Scalars['String']['output'];
+};
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
+    get_all_faucets: Array<IFaucet>;
     token_metadata_by_id: Maybe<IMetadata>;
     token_metadatas: Array<Maybe<IMetadata>>;
 };
