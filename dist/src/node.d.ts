@@ -924,72 +924,102 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
         }>;
     };
 };
-export type ICodegenGeneratedPoolTokenLiquiditiesQueryVariables = Exact<{
-    pool_token_liquidities_limit: Scalars['Int']['input'];
-    pool_token_liquidities_page: Scalars['Int']['input'];
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
-export type ICodegenGeneratedPoolTokenLiquiditiesQuery = {
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
     __typename?: 'Query';
     pool: {
         __typename?: 'PoolQueries';
-        token_liquidities: Array<{
-            __typename?: 'TokenLiquidity';
-            token: string;
-            total_liquidity: string;
-            total_volume: string;
-        }>;
-    };
-};
-export type ICodegenGeneratedPoolTokenLiquidityQueryVariables = Exact<{
-    pool_token_liquidity_token: Scalars['String']['input'];
-}>;
-export type ICodegenGeneratedPoolTokenLiquidityQuery = {
-    __typename?: 'Query';
-    pool: {
-        __typename?: 'PoolQueries';
-        token_liquidity: {
-            __typename?: 'TokenLiquidity';
-            token: string;
-            total_liquidity: string;
-            total_volume: string;
+        token_pair_with_liquidity: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
+            };
         };
     };
 };
-export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{
-    [key: string]: never;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
-export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery = {
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
     __typename?: 'Query';
     pool: {
         __typename?: 'PoolQueries';
-        token_pair_with_liquidity: Array<{
-            __typename?: 'TokenPairWithLiquidityResponse';
-            pair: {
-                __typename?: 'Pair';
-                token_1: string;
-                token_2: string;
-            };
-        }>;
+        token_pair_with_liquidity: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
     };
 };
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
-    [key: string]: never;
+    pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
     __typename?: 'Query';
     pool: {
         __typename?: 'PoolQueries';
-        token_pair_with_liquidity: Array<{
-            __typename?: 'TokenPairWithLiquidityResponse';
-            apr: string;
-            total_liquidity: string;
-            vlp: string;
-            pair: {
-                __typename?: 'Pair';
-                token_1: string;
-                token_2: string;
+        token_pair_with_liquidity: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
             };
-        }>;
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
     };
 };
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{
@@ -1046,17 +1076,6 @@ export type ICodegenGeneratedPoolQuery = {
                 total_fee: number;
             }>;
         };
-        token_pair_with_liquidity: Array<{
-            __typename?: 'TokenPairWithLiquidityResponse';
-            apr: string;
-            total_liquidity: string;
-            vlp: string;
-            pair: {
-                __typename?: 'Pair';
-                token_1: string;
-                token_2: string;
-            };
-        }>;
         volume: {
             __typename?: 'VolumeResponse';
             total_liquidity: string;
@@ -1479,6 +1498,37 @@ export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
             faucet_link: string;
             token: string;
         }>;
+    };
+};
+export type ICodegenGeneratedTokenTokenLiquiditiesQueryVariables = Exact<{
+    token_token_liquidities_limit: Scalars['Int']['input'];
+    token_token_liquidities_page: Scalars['Int']['input'];
+}>;
+export type ICodegenGeneratedTokenTokenLiquiditiesQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        token_liquidities: Array<{
+            __typename?: 'TokenLiquidity';
+            token: string;
+            total_liquidity: string;
+            total_volume: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenTokenLiquidityQueryVariables = Exact<{
+    token_token_liquidity_token: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedTokenTokenLiquidityQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        token_liquidity: {
+            __typename?: 'TokenLiquidity';
+            token: string;
+            total_liquidity: string;
+            total_volume: string;
+        };
     };
 };
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
@@ -2119,9 +2169,9 @@ export declare const CodegenGeneratedPoolFeesCollectedDocument: import("graphql"
 export declare const CodegenGeneratedPoolMyPoolsPairDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolMyPoolsUserDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolMyPoolsDocument: import("graphql").DocumentNode;
-export declare const CodegenGeneratedPoolTokenLiquiditiesDocument: import("graphql").DocumentNode;
-export declare const CodegenGeneratedPoolTokenLiquidityDocument: import("graphql").DocumentNode;
-export declare const CodegenGeneratedPoolTokenPairWithLiquidityPairDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolVolumeDocument: import("graphql").DocumentNode;
@@ -2146,6 +2196,8 @@ export declare const CodegenGeneratedRouterTokenPairsFromVlpDocument: import("gr
 export declare const CodegenGeneratedRouterVlpDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenGetAllFaucetsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenTokenLiquiditiesDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenTokenLiquidityDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadatasDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenDocument: import("graphql").DocumentNode;
@@ -2216,9 +2268,9 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_POOL_MY_POOLS_PAIR(variables: ICodegenGeneratedPoolMyPoolsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsPairQuery>;
     CODEGEN_GENERATED_POOL_MY_POOLS_USER(variables: ICodegenGeneratedPoolMyPoolsUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsUserQuery>;
     CODEGEN_GENERATED_POOL_MY_POOLS(variables: ICodegenGeneratedPoolMyPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsQuery>;
-    CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedPoolTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquiditiesQuery>;
-    CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY(variables: ICodegenGeneratedPoolTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquidityQuery>;
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery>;
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityQuery>;
     CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS(variables?: ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery>;
     CODEGEN_GENERATED_POOL_VOLUME(variables?: ICodegenGeneratedPoolVolumeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeQuery>;
@@ -2243,6 +2295,8 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_ROUTER_VLP(variables?: ICodegenGeneratedRouterVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterVlpQuery>;
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery>;
     CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery>;
+    CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedTokenTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquiditiesQuery>;
+    CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY(variables: ICodegenGeneratedTokenTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquidityQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadatasQuery>;
     CODEGEN_GENERATED_TOKEN(variables?: ICodegenGeneratedTokenQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenQuery>;

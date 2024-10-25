@@ -310,12 +310,10 @@ export type PoolFieldPolicy = {
     reserve_1?: FieldPolicy<any> | FieldReadFunction<any>;
     reserve_2?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_liquidities' | 'token_liquidity' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
+export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
     fees_collected?: FieldPolicy<any> | FieldReadFunction<any>;
     my_pools?: FieldPolicy<any> | FieldReadFunction<any>;
-    token_liquidities?: FieldPolicy<any> | FieldReadFunction<any>;
-    token_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     token_pair_with_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     volume?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -423,6 +421,11 @@ export type TokenOutFieldPolicy = {
     amount_out?: FieldPolicy<any> | FieldReadFunction<any>;
     asset_out?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type TokenPairWithLiquidityPaginatedKeySpecifier = ('pagination' | 'results' | TokenPairWithLiquidityPaginatedKeySpecifier)[];
+export type TokenPairWithLiquidityPaginatedFieldPolicy = {
+    pagination?: FieldPolicy<any> | FieldReadFunction<any>;
+    results?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'pair' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
 export type TokenPairWithLiquidityResponseFieldPolicy = {
     apr?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -430,9 +433,11 @@ export type TokenPairWithLiquidityResponseFieldPolicy = {
     total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     vlp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type TokenQueriesKeySpecifier = ('get_all_faucets' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
+export type TokenQueriesKeySpecifier = ('get_all_faucets' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
 export type TokenQueriesFieldPolicy = {
     get_all_faucets?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_liquidities?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadata_by_id?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadatas?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -777,6 +782,10 @@ export type StrictTypedTypePolicies = {
     TokenOut?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenOutKeySpecifier | (() => undefined | TokenOutKeySpecifier);
         fields?: TokenOutFieldPolicy;
+    };
+    TokenPairWithLiquidityPaginated?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | TokenPairWithLiquidityPaginatedKeySpecifier | (() => undefined | TokenPairWithLiquidityPaginatedKeySpecifier);
+        fields?: TokenPairWithLiquidityPaginatedFieldPolicy;
     };
     TokenPairWithLiquidityResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenPairWithLiquidityResponseKeySpecifier | (() => undefined | TokenPairWithLiquidityResponseKeySpecifier);
