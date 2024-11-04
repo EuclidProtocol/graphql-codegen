@@ -138,6 +138,9 @@ export type IChains = {
     keplr_config: Maybe<IKeplr>;
     router_config: Maybe<IRouterConfig>;
 };
+export type IChainsAllChainsArgs = {
+    show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+};
 export type IChainsChainConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
     chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -422,21 +425,17 @@ export type IPoolQueries = {
     __typename?: 'PoolQueries';
     fees_collected: Maybe<IFeesResponse>;
     my_pools: Array<IMyPools>;
-    token_liquidities: Array<ITokenLiquidity>;
-    token_liquidity: Maybe<ITokenLiquidity>;
-    token_pair_with_liquidity: Array<Maybe<ITokenPairWithLiquidityResponse>>;
+    token_pair_with_liquidity: ITokenPairWithLiquidityPaginated;
     volume: Maybe<IVolumeResponse>;
 };
 export type IPoolQueriesMyPoolsArgs = {
     chain_uid?: InputMaybe<Scalars['String']['input']>;
     user_address: Scalars['String']['input'];
 };
-export type IPoolQueriesTokenLiquiditiesArgs = {
-    limit: Scalars['Int']['input'];
-    page: Scalars['Int']['input'];
-};
-export type IPoolQueriesTokenLiquidityArgs = {
-    token: Scalars['String']['input'];
+export type IPoolQueriesTokenPairWithLiquidityArgs = {
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    token?: InputMaybe<Scalars['String']['input']>;
 };
 export type IPools = {
     __typename?: 'Pools';
@@ -608,6 +607,11 @@ export type ITokenOut = {
     amount_out: Maybe<Scalars['String']['output']>;
     asset_out: Maybe<Scalars['String']['output']>;
 };
+export type ITokenPairWithLiquidityPaginated = {
+    __typename?: 'TokenPairWithLiquidityPaginated';
+    pagination: Maybe<IPaginationInfo>;
+    results: Maybe<Array<Maybe<ITokenPairWithLiquidityResponse>>>;
+};
 export type ITokenPairWithLiquidityResponse = {
     __typename?: 'TokenPairWithLiquidityResponse';
     apr: Scalars['String']['output'];
@@ -618,8 +622,17 @@ export type ITokenPairWithLiquidityResponse = {
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
     get_all_faucets: Array<IFaucet>;
+    token_liquidities: Array<ITokenLiquidity>;
+    token_liquidity: Maybe<ITokenLiquidity>;
     token_metadata_by_id: Maybe<IMetadata>;
     token_metadatas: Array<Maybe<IMetadata>>;
+};
+export type ITokenQueriesTokenLiquiditiesArgs = {
+    limit: Scalars['Int']['input'];
+    page: Scalars['Int']['input'];
+};
+export type ITokenQueriesTokenLiquidityArgs = {
+    token: Scalars['String']['input'];
 };
 export type ITokenQueriesTokenMetadataByIdArgs = {
     token_id: Scalars['String']['input'];

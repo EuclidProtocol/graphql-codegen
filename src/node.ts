@@ -56,7 +56,9 @@ export type IVlps = {
   vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{ [key: string]: never; }>;
+export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
+  chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
 
 
 export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }> } };
@@ -149,7 +151,7 @@ export type ICodegenGeneratedChainsRouterConfigQuery = { __typename?: 'Query', c
 export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
+export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -363,30 +365,41 @@ export type ICodegenGeneratedPoolMyPoolsQueryVariables = Exact<{
 
 export type ICodegenGeneratedPoolMyPoolsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', height: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string }, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
-export type ICodegenGeneratedPoolTokenLiquiditiesQueryVariables = Exact<{
-  pool_token_liquidities_limit: Scalars['Int']['input'];
-  pool_token_liquidities_page: Scalars['Int']['input'];
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
+  pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquiditiesQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string }> } };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: { __typename?: 'TokenPairWithLiquidityPaginated', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number } } } };
 
-export type ICodegenGeneratedPoolTokenLiquidityQueryVariables = Exact<{
-  pool_token_liquidity_token: Scalars['String']['input'];
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
+  pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
-export type ICodegenGeneratedPoolTokenLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: { __typename?: 'TokenPairWithLiquidityPaginated', results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
 
-export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables = Exact<{ [key: string]: never; }>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
+  pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
+}>;
 
 
-export type ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: { __typename?: 'TokenPairWithLiquidityPaginated', results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
 
-export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{ [key: string]: never; }>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
+  pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
+}>;
 
 
-export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: { __typename?: 'TokenPairWithLiquidityPaginated', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number }, results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
 
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -401,7 +414,7 @@ export type ICodegenGeneratedPoolVolumeQuery = { __typename?: 'Query', pool: { _
 export type ICodegenGeneratedPoolQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ICodegenGeneratedPoolQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', fees_collected: { __typename?: 'FeesResponse', total_overall: number, breakdown: Array<{ __typename?: 'FeeBreakdown', token1: string, token2: string, total_fee: number }> }, token_pair_with_liquidity: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }>, volume: { __typename?: 'VolumeResponse', total_liquidity: string, total_volume: string, volume_24hours: string, volume_breakdown_24hours: Array<{ __typename?: 'VolumeBreakdown', pair: string, volume: string }> } } };
+export type ICodegenGeneratedPoolQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', fees_collected: { __typename?: 'FeesResponse', total_overall: number, breakdown: Array<{ __typename?: 'FeeBreakdown', token1: string, token2: string, total_fee: number }> }, volume: { __typename?: 'VolumeResponse', total_liquidity: string, total_volume: string, volume_24hours: string, volume_breakdown_24hours: Array<{ __typename?: 'VolumeBreakdown', pair: string, volume: string }> } } };
 
 export type ICodegenGeneratedRouterAllChainsQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -562,6 +575,21 @@ export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: st
 
 
 export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
+
+export type ICodegenGeneratedTokenTokenLiquiditiesQueryVariables = Exact<{
+  token_token_liquidities_limit: Scalars['Int']['input'];
+  token_token_liquidities_page: Scalars['Int']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenTokenLiquiditiesQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_liquidities: Array<{ __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string }> } };
+
+export type ICodegenGeneratedTokenTokenLiquidityQueryVariables = Exact<{
+  token_token_liquidity_token: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenTokenLiquidityQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
   token_token_metadata_by_id_token_id: Scalars['String']['input'];
@@ -766,9 +794,9 @@ export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typenam
 
 
 export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
   chains {
-    all_chains {
+    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
       chain_id
       chain_uid
       display_name
@@ -1003,14 +1031,6 @@ export const CodegenGeneratedChainsRouterConfigDocument = /*#__PURE__*/ gql`
 export const CodegenGeneratedChainsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CHAINS {
   chains {
-    all_chains {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      logo
-    }
     router_config {
       chain_uid
       contract_address
@@ -1404,54 +1424,84 @@ export const CodegenGeneratedPoolMyPoolsDocument = /*#__PURE__*/ gql`
   }
 }
     `;
-export const CodegenGeneratedPoolTokenLiquiditiesDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES($pool_token_liquidities_limit: Int!, $pool_token_liquidities_page: Int!) {
+export const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
-    token_liquidities(
-      limit: $pool_token_liquidities_limit
-      page: $pool_token_liquidities_page
+    token_pair_with_liquidity(
+      limit: $pool_token_pair_with_liquidity_limit
+      offset: $pool_token_pair_with_liquidity_offset
+      token: $pool_token_pair_with_liquidity_token
     ) {
-      token
-      total_liquidity
-      total_volume
+      pagination {
+        limit
+        offset
+        total_count
+      }
     }
   }
 }
     `;
-export const CodegenGeneratedPoolTokenLiquidityDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY($pool_token_liquidity_token: String!) {
+export const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
-    token_liquidity(token: $pool_token_liquidity_token) {
-      token
-      total_liquidity
-      total_volume
+    token_pair_with_liquidity(
+      limit: $pool_token_pair_with_liquidity_limit
+      offset: $pool_token_pair_with_liquidity_offset
+      token: $pool_token_pair_with_liquidity_token
+    ) {
+      results {
+        pair {
+          token_1
+          token_2
+        }
+      }
     }
   }
 }
     `;
-export const CodegenGeneratedPoolTokenPairWithLiquidityPairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR {
+export const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
-    token_pair_with_liquidity {
-      pair {
-        token_1
-        token_2
+    token_pair_with_liquidity(
+      limit: $pool_token_pair_with_liquidity_limit
+      offset: $pool_token_pair_with_liquidity_offset
+      token: $pool_token_pair_with_liquidity_token
+    ) {
+      results {
+        apr
+        pair {
+          token_1
+          token_2
+        }
+        total_liquidity
+        vlp
       }
     }
   }
 }
     `;
 export const CodegenGeneratedPoolTokenPairWithLiquidityDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
-    token_pair_with_liquidity {
-      apr
-      pair {
-        token_1
-        token_2
+    token_pair_with_liquidity(
+      limit: $pool_token_pair_with_liquidity_limit
+      offset: $pool_token_pair_with_liquidity_offset
+      token: $pool_token_pair_with_liquidity_token
+    ) {
+      pagination {
+        limit
+        offset
+        total_count
       }
-      total_liquidity
-      vlp
+      results {
+        apr
+        pair {
+          token_1
+          token_2
+        }
+        total_liquidity
+        vlp
+      }
     }
   }
 }
@@ -1493,15 +1543,6 @@ export const CodegenGeneratedPoolDocument = /*#__PURE__*/ gql`
         total_fee
       }
       total_overall
-    }
-    token_pair_with_liquidity {
-      apr
-      pair {
-        token_1
-        token_2
-      }
-      total_liquidity
-      vlp
     }
     volume {
       total_liquidity
@@ -1835,6 +1876,31 @@ export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
     get_all_faucets {
       faucet_link
       token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedTokenTokenLiquiditiesDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES($token_token_liquidities_limit: Int!, $token_token_liquidities_page: Int!) {
+  token {
+    token_liquidities(
+      limit: $token_token_liquidities_limit
+      page: $token_token_liquidities_page
+    ) {
+      token
+      total_liquidity
+      total_volume
+    }
+  }
+}
+    `;
+export const CodegenGeneratedTokenTokenLiquidityDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY($token_token_liquidity_token: String!) {
+  token {
+    token_liquidity(token: $token_token_liquidity_token) {
+      token
+      total_liquidity
+      total_volume
     }
   }
 }
@@ -2399,14 +2465,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_POOL_MY_POOLS(variables: ICodegenGeneratedPoolMyPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolMyPoolsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolMyPoolsQuery>(CodegenGeneratedPoolMyPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_MY_POOLS', 'query');
     },
-    CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedPoolTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquiditiesQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquiditiesQuery>(CodegenGeneratedPoolTokenLiquiditiesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITIES', 'query');
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery>(CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION', 'query');
     },
-    CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY(variables: ICodegenGeneratedPoolTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenLiquidityQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenLiquidityQuery>(CodegenGeneratedPoolTokenLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_LIQUIDITY', 'query');
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery>(CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR', 'query');
     },
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityPairQuery>(CodegenGeneratedPoolTokenPairWithLiquidityPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAIR', 'query');
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery>(CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS', 'query');
     },
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityQuery>(CodegenGeneratedPoolTokenPairWithLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY', 'query');
@@ -2479,6 +2545,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenGetAllFaucetsQuery>(CodegenGeneratedTokenGetAllFaucetsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS', 'query');
+    },
+    CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedTokenTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquiditiesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenLiquiditiesQuery>(CodegenGeneratedTokenTokenLiquiditiesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES', 'query');
+    },
+    CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY(variables: ICodegenGeneratedTokenTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquidityQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenLiquidityQuery>(CodegenGeneratedTokenTokenLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY', 'query');
     },
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenMetadataByIdQuery>(CodegenGeneratedTokenTokenMetadataByIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID', 'query');
