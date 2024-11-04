@@ -79,7 +79,7 @@ export type IVlps = {
     vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
-    [key: string]: never;
+    chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedChainsAllChainsQuery = {
     __typename?: 'Query';
@@ -367,15 +367,6 @@ export type ICodegenGeneratedChainsQuery = {
     __typename?: 'Query';
     chains: {
         __typename?: 'Chains';
-        all_chains: Array<{
-            __typename?: 'ChainConfig';
-            chain_id: string;
-            chain_uid: string;
-            display_name: string;
-            explorer_url: string;
-            factory_address: string;
-            logo: string;
-        }>;
         router_config: {
             __typename?: 'RouterConfig';
             chain_uid: string;

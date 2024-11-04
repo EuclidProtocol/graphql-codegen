@@ -56,7 +56,9 @@ export type IVlps = {
   vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{ [key: string]: never; }>;
+export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
+  chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
 
 
 export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }> } };
@@ -149,7 +151,7 @@ export type ICodegenGeneratedChainsRouterConfigQuery = { __typename?: 'Query', c
 export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
+export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -792,9 +794,9 @@ export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typenam
 
 
 export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
   chains {
-    all_chains {
+    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
       chain_id
       chain_uid
       display_name
@@ -818,6 +820,7 @@ export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
  * @example
  * const { data, loading, error } = useCodegenGeneratedChainsAllChainsQuery({
  *   variables: {
+ *      chains_all_chains_show_all_chains: // value for 'chains_all_chains_show_all_chains'
  *   },
  * });
  */
@@ -1409,14 +1412,6 @@ export function refetchCodegenGeneratedChainsRouterConfigQuery(variables?: ICode
 export const CodegenGeneratedChainsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CHAINS {
   chains {
-    all_chains {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      logo
-    }
     router_config {
       chain_uid
       contract_address

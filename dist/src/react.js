@@ -320,9 +320,9 @@ const client_1 = require("@apollo/client");
 const Apollo = __importStar(require("@apollo/client"));
 const defaultOptions = {};
 exports.CodegenGeneratedChainsAllChainsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
   chains {
-    all_chains {
+    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
       chain_id
       chain_uid
       display_name
@@ -345,6 +345,7 @@ exports.CodegenGeneratedChainsAllChainsDocument = (0, client_1.gql) `
  * @example
  * const { data, loading, error } = useCodegenGeneratedChainsAllChainsQuery({
  *   variables: {
+ *      chains_all_chains_show_all_chains: // value for 'chains_all_chains_show_all_chains'
  *   },
  * });
  */
@@ -889,14 +890,6 @@ function refetchCodegenGeneratedChainsRouterConfigQuery(variables) {
 exports.CodegenGeneratedChainsDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_CHAINS {
   chains {
-    all_chains {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      logo
-    }
     router_config {
       chain_uid
       contract_address

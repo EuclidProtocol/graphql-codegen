@@ -8,9 +8,9 @@ exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollec
 exports.getSdk = getSdk;
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 exports.CodegenGeneratedChainsAllChainsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
   chains {
-    all_chains {
+    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
       chain_id
       chain_uid
       display_name
@@ -245,14 +245,6 @@ exports.CodegenGeneratedChainsRouterConfigDocument = (0, graphql_tag_1.default) 
 exports.CodegenGeneratedChainsDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_CHAINS {
   chains {
-    all_chains {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      logo
-    }
     router_config {
       chain_uid
       contract_address

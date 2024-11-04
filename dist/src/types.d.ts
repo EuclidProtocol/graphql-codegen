@@ -138,6 +138,9 @@ export type IChains = {
     keplr_config: Maybe<IKeplr>;
     router_config: Maybe<IRouterConfig>;
 };
+export type IChainsAllChainsArgs = {
+    show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+};
 export type IChainsChainConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
     chain_uid?: InputMaybe<Scalars['String']['input']>;

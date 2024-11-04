@@ -78,7 +78,7 @@ export type IVlps = {
     vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
-    [key: string]: never;
+    chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedChainsAllChainsQuery = {
     __typename?: 'Query';
@@ -366,15 +366,6 @@ export type ICodegenGeneratedChainsQuery = {
     __typename?: 'Query';
     chains: {
         __typename?: 'Chains';
-        all_chains: Array<{
-            __typename?: 'ChainConfig';
-            chain_id: string;
-            chain_uid: string;
-            display_name: string;
-            explorer_url: string;
-            factory_address: string;
-            logo: string;
-        }>;
         router_config: {
             __typename?: 'RouterConfig';
             chain_uid: string;
@@ -2141,14 +2132,15 @@ export declare const CodegenGeneratedChainsAllChainsDocument: Apollo.DocumentNod
  * @example
  * const { data, loading, error } = useCodegenGeneratedChainsAllChainsQuery({
  *   variables: {
+ *      chains_all_chains_show_all_chains: // value for 'chains_all_chains_show_all_chains'
  *   },
  * });
  */
 export declare function useCodegenGeneratedChainsAllChainsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllChainsQuery, ICodegenGeneratedChainsAllChainsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllChainsQuery, Exact<{
-    [key: string]: never;
+    chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedChainsAllChainsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllChainsQuery, ICodegenGeneratedChainsAllChainsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllChainsQuery, Exact<{
-    [key: string]: never;
+    chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export type CodegenGeneratedChainsAllChainsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllChainsQuery>;
 export type CodegenGeneratedChainsAllChainsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllChainsLazyQuery>;
@@ -2156,7 +2148,7 @@ export type CodegenGeneratedChainsAllChainsQueryResult = Apollo.QueryResult<ICod
 export declare function refetchCodegenGeneratedChainsAllChainsQuery(variables?: ICodegenGeneratedChainsAllChainsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        [key: string]: never;
+        chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedChainsChainConfigDocument: Apollo.DocumentNode;

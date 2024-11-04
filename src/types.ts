@@ -124,6 +124,11 @@ export type IChains = {
 };
 
 
+export type IChainsAllChainsArgs = {
+  show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
 export type IChainsChainConfigArgs = {
   chain_id?: InputMaybe<Scalars['String']['input']>;
   chain_uid?: InputMaybe<Scalars['String']['input']>;
