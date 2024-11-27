@@ -353,7 +353,7 @@ export type ResultAndErrorFieldPolicy = {
     error?: FieldPolicy<any> | FieldReadFunction<any>;
     success?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'escrows' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_pairs_from_vlp' | 'vlp' | RouterKeySpecifier)[];
+export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'escrows' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_denoms' | 'token_pairs_from_vlp' | 'vlp' | RouterKeySpecifier)[];
 export type RouterFieldPolicy = {
     all_chains?: FieldPolicy<any> | FieldReadFunction<any>;
     all_escrows?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -364,6 +364,7 @@ export type RouterFieldPolicy = {
     simulate_release_escrow?: FieldPolicy<any> | FieldReadFunction<any>;
     simulate_swap?: FieldPolicy<any> | FieldReadFunction<any>;
     state?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_denoms?: FieldPolicy<any> | FieldReadFunction<any>;
     token_pairs_from_vlp?: FieldPolicy<any> | FieldReadFunction<any>;
     vlp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -398,6 +399,15 @@ export type StakeCurrencyFieldPolicy = {
 export type TokenArrayKeySpecifier = ('tokens' | TokenArrayKeySpecifier)[];
 export type TokenArrayFieldPolicy = {
     tokens?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TokenDenomKeySpecifier = ('chain_uid' | 'token_type' | TokenDenomKeySpecifier)[];
+export type TokenDenomFieldPolicy = {
+    chain_uid?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_type?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TokenDenomsResponseKeySpecifier = ('denoms' | TokenDenomsResponseKeySpecifier)[];
+export type TokenDenomsResponseFieldPolicy = {
+    denoms?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type TokenIdKeySpecifier = ('id' | TokenIdKeySpecifier)[];
 export type TokenIdFieldPolicy = {
@@ -766,6 +776,14 @@ export type StrictTypedTypePolicies = {
     TokenArray?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenArrayKeySpecifier | (() => undefined | TokenArrayKeySpecifier);
         fields?: TokenArrayFieldPolicy;
+    };
+    TokenDenom?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | TokenDenomKeySpecifier | (() => undefined | TokenDenomKeySpecifier);
+        fields?: TokenDenomFieldPolicy;
+    };
+    TokenDenomsResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | TokenDenomsResponseKeySpecifier | (() => undefined | TokenDenomsResponseKeySpecifier);
+        fields?: TokenDenomsResponseFieldPolicy;
     };
     TokenId?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenIdKeySpecifier | (() => undefined | TokenIdKeySpecifier);

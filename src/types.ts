@@ -572,6 +572,7 @@ export type IRouter = {
   simulate_release_escrow: Maybe<ISimulateReleaseEscrow>;
   simulate_swap: Maybe<ITokenOut>;
   state: Maybe<IContractStateOfRouter>;
+  token_denoms: ITokenDenomsResponse;
   token_pairs_from_vlp: Maybe<IVlpWithTokenPair>;
   vlp: Maybe<IVlpWithTokenPair>;
 };
@@ -631,6 +632,11 @@ export type IRouterSimulateSwapArgs = {
 };
 
 
+export type IRouterTokenDenomsArgs = {
+  token: Scalars['String']['input'];
+};
+
+
 export type IRouterTokenPairsFromVlpArgs = {
   vlp: Scalars['String']['input'];
 };
@@ -681,6 +687,17 @@ export type IStakeCurrency = {
 export type ITokenArray = {
   __typename?: 'TokenArray';
   tokens: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+
+export type ITokenDenom = {
+  __typename?: 'TokenDenom';
+  chain_uid: Scalars['String']['output'];
+  token_type: ITokenType;
+};
+
+export type ITokenDenomsResponse = {
+  __typename?: 'TokenDenomsResponse';
+  denoms: Maybe<Array<Maybe<ITokenDenom>>>;
 };
 
 export type ITokenId = {
