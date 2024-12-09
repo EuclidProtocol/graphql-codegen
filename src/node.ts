@@ -552,20 +552,6 @@ export type ICodegenGeneratedRouterStateQueryVariables = Exact<{ [key: string]: 
 
 export type ICodegenGeneratedRouterStateQuery = { __typename?: 'Query', router: { __typename?: 'Router', state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
-export type ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables = Exact<{
-  router_token_denoms_token: Scalars['String']['input'];
-}>;
-
-
-export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = { __typename?: 'Query', router: { __typename?: 'Router', token_denoms: { __typename?: 'TokenDenomsResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
-
-export type ICodegenGeneratedRouterTokenDenomsQueryVariables = Exact<{
-  router_token_denoms_token: Scalars['String']['input'];
-}>;
-
-
-export type ICodegenGeneratedRouterTokenDenomsQuery = { __typename?: 'Query', router: { __typename?: 'Router', token_denoms: { __typename?: 'TokenDenomsResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
-
 export type ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables = Exact<{
   router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
 }>;
@@ -606,19 +592,24 @@ export type ICodegenGeneratedTokenTokenLiquidityQueryVariables = Exact<{
 export type ICodegenGeneratedTokenTokenLiquidityQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
+  token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars['String']['input']>;
+  token_token_metadata_by_id_dex?: InputMaybe<Scalars['String']['input']>;
   token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', coinDecimal: number, description: string, displayName: string, image: string, price: string, tokenId: string } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', coinDecimal: number, description: string, dex: string, displayName: string, image: string, price: string, tokenId: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+  token_token_metadatas_chain_uid?: InputMaybe<Scalars['String']['input']>;
+  token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
   token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
   token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+  token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, displayName: string, image: string, price: string, tokenId: string }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, dex: string, displayName: string, image: string, price: string, tokenId: string }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1846,58 +1837,6 @@ export const CodegenGeneratedRouterStateDocument = /*#__PURE__*/ gql`
   }
 }
     `;
-export const CodegenGeneratedRouterTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS($router_token_denoms_token: String!) {
-  router {
-    token_denoms(token: $router_token_denoms_token) {
-      denoms {
-        chain_uid
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-    }
-  }
-}
-    `;
-export const CodegenGeneratedRouterTokenDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS($router_token_denoms_token: String!) {
-  router {
-    token_denoms(token: $router_token_denoms_token) {
-      denoms {
-        chain_uid
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-    }
-  }
-}
-    `;
 export const CodegenGeneratedRouterTokenPairsFromVlpDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
@@ -1972,11 +1911,16 @@ export const CodegenGeneratedTokenTokenLiquidityDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_chain_uid: String, $token_token_metadata_by_id_dex: String, $token_token_metadata_by_id_token_id: String!) {
   token {
-    token_metadata_by_id(token_id: $token_token_metadata_by_id_token_id) {
+    token_metadata_by_id(
+      chain_uid: $token_token_metadata_by_id_chain_uid
+      dex: $token_token_metadata_by_id_dex
+      token_id: $token_token_metadata_by_id_token_id
+    ) {
       coinDecimal
       description
+      dex
       displayName
       image
       price
@@ -1986,14 +1930,18 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uid: String, $token_token_metadatas_dex: [String], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
+      chain_uid: $token_token_metadatas_chain_uid
+      dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
+      verified: $token_token_metadatas_verified
     ) {
       coinDecimal
       description
+      dex
       displayName
       image
       price
@@ -2599,12 +2547,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_ROUTER_STATE(variables?: ICodegenGeneratedRouterStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterStateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterStateQuery>(CodegenGeneratedRouterStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_STATE', 'query');
-    },
-    CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS(variables: ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterTokenDenomsDenomsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterTokenDenomsDenomsQuery>(CodegenGeneratedRouterTokenDenomsDenomsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS', 'query');
-    },
-    CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS(variables: ICodegenGeneratedRouterTokenDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterTokenDenomsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterTokenDenomsQuery>(CodegenGeneratedRouterTokenDenomsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS', 'query');
     },
     CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP(variables: ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterTokenPairsFromVlpQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterTokenPairsFromVlpQuery>(CodegenGeneratedRouterTokenPairsFromVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP', 'query');

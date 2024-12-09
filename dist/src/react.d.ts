@@ -1425,70 +1425,6 @@ export type ICodegenGeneratedRouterStateQuery = {
         };
     };
 };
-export type ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables = Exact<{
-    router_token_denoms_token: Scalars['String']['input'];
-}>;
-export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = {
-    __typename?: 'Query';
-    router: {
-        __typename?: 'Router';
-        token_denoms: {
-            __typename?: 'TokenDenomsResponse';
-            denoms: Array<{
-                __typename?: 'TokenDenom';
-                chain_uid: string;
-                token_type: {
-                    __typename?: 'NativeTokenType';
-                    native: {
-                        __typename?: 'NativeToken';
-                        denom: string;
-                    };
-                } | {
-                    __typename?: 'SmartTokenType';
-                    smart: {
-                        __typename?: 'SmartToken';
-                        contract_address: string;
-                    };
-                } | {
-                    __typename?: 'VoucherTokenType';
-                    voucher: any;
-                };
-            }>;
-        };
-    };
-};
-export type ICodegenGeneratedRouterTokenDenomsQueryVariables = Exact<{
-    router_token_denoms_token: Scalars['String']['input'];
-}>;
-export type ICodegenGeneratedRouterTokenDenomsQuery = {
-    __typename?: 'Query';
-    router: {
-        __typename?: 'Router';
-        token_denoms: {
-            __typename?: 'TokenDenomsResponse';
-            denoms: Array<{
-                __typename?: 'TokenDenom';
-                chain_uid: string;
-                token_type: {
-                    __typename?: 'NativeTokenType';
-                    native: {
-                        __typename?: 'NativeToken';
-                        denom: string;
-                    };
-                } | {
-                    __typename?: 'SmartTokenType';
-                    smart: {
-                        __typename?: 'SmartToken';
-                        contract_address: string;
-                    };
-                } | {
-                    __typename?: 'VoucherTokenType';
-                    voucher: any;
-                };
-            }>;
-        };
-    };
-};
 export type ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables = Exact<{
     router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
 }>;
@@ -1586,6 +1522,8 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
+    token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars['String']['input']>;
+    token_token_metadata_by_id_dex?: InputMaybe<Scalars['String']['input']>;
     token_token_metadata_by_id_token_id: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
@@ -1596,6 +1534,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             __typename?: 'Metadata';
             coinDecimal: number;
             description: string;
+            dex: string;
             displayName: string;
             image: string;
             price: string;
@@ -1604,8 +1543,11 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+    token_token_metadatas_chain_uid?: InputMaybe<Scalars['String']['input']>;
+    token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadatasQuery = {
     __typename?: 'Query';
@@ -1615,6 +1557,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             __typename?: 'Metadata';
             coinDecimal: number;
             description: string;
+            dex: string;
             displayName: string;
             image: string;
             price: string;
@@ -4482,70 +4425,6 @@ export declare function refetchCodegenGeneratedRouterStateQuery(variables?: ICod
         [key: string]: never;
     }> | undefined;
 };
-export declare const CodegenGeneratedRouterTokenDenomsDenomsDocument: Apollo.DocumentNode;
-/**
- * __useCodegenGeneratedRouterTokenDenomsDenomsQuery__
- *
- * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsDenomsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCodegenGeneratedRouterTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsDenomsQuery({
- *   variables: {
- *      router_token_denoms_token: // value for 'router_token_denoms_token'
- *   },
- * });
- */
-export declare function useCodegenGeneratedRouterTokenDenomsDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsDenomsQuery, Exact<{
-    router_token_denoms_token: Scalars["String"]["input"];
-}>>;
-export declare function useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenDenomsDenomsQuery, Exact<{
-    router_token_denoms_token: Scalars["String"]["input"];
-}>>;
-export type CodegenGeneratedRouterTokenDenomsDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsDenomsQuery>;
-export type CodegenGeneratedRouterTokenDenomsDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery>;
-export type CodegenGeneratedRouterTokenDenomsDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>;
-export declare function refetchCodegenGeneratedRouterTokenDenomsDenomsQuery(variables: ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables): {
-    query: Apollo.DocumentNode;
-    variables: Exact<{
-        router_token_denoms_token: Scalars["String"]["input"];
-    }>;
-};
-export declare const CodegenGeneratedRouterTokenDenomsDocument: Apollo.DocumentNode;
-/**
- * __useCodegenGeneratedRouterTokenDenomsQuery__
- *
- * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCodegenGeneratedRouterTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsQuery({
- *   variables: {
- *      router_token_denoms_token: // value for 'router_token_denoms_token'
- *   },
- * });
- */
-export declare function useCodegenGeneratedRouterTokenDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsQuery, Exact<{
-    router_token_denoms_token: Scalars["String"]["input"];
-}>>;
-export declare function useCodegenGeneratedRouterTokenDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenDenomsQuery, Exact<{
-    router_token_denoms_token: Scalars["String"]["input"];
-}>>;
-export type CodegenGeneratedRouterTokenDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsQuery>;
-export type CodegenGeneratedRouterTokenDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsLazyQuery>;
-export type CodegenGeneratedRouterTokenDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>;
-export declare function refetchCodegenGeneratedRouterTokenDenomsQuery(variables: ICodegenGeneratedRouterTokenDenomsQueryVariables): {
-    query: Apollo.DocumentNode;
-    variables: Exact<{
-        router_token_denoms_token: Scalars["String"]["input"];
-    }>;
-};
 export declare const CodegenGeneratedRouterTokenPairsFromVlpDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedRouterTokenPairsFromVlpQuery__
@@ -4753,14 +4632,20 @@ export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: Apollo.Docu
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
+ *      token_token_metadata_by_id_chain_uid: // value for 'token_token_metadata_by_id_chain_uid'
+ *      token_token_metadata_by_id_dex: // value for 'token_token_metadata_by_id_dex'
  *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
  *   },
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadataByIdQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
+    token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadata_by_id_dex?: InputMaybe<Scalars["String"]["input"]>;
     token_token_metadata_by_id_token_id: Scalars["String"]["input"];
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadataByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
+    token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadata_by_id_dex?: InputMaybe<Scalars["String"]["input"]>;
     token_token_metadata_by_id_token_id: Scalars["String"]["input"];
 }>>;
 export type CodegenGeneratedTokenTokenMetadataByIdQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadataByIdQuery>;
@@ -4769,6 +4654,8 @@ export type CodegenGeneratedTokenTokenMetadataByIdQueryResult = Apollo.QueryResu
 export declare function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
+        token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+        token_token_metadata_by_id_dex?: InputMaybe<Scalars["String"]["input"]>;
         token_token_metadata_by_id_token_id: Scalars["String"]["input"];
     }>;
 };
@@ -4785,18 +4672,27 @@ export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.Documen
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uid: // value for 'token_token_metadatas_chain_uid'
+ *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadatasQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadatasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export type CodegenGeneratedTokenTokenMetadatasQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadatasQuery>;
 export type CodegenGeneratedTokenTokenMetadatasLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadatasLazyQuery>;
@@ -4804,8 +4700,11 @@ export type CodegenGeneratedTokenTokenMetadatasQueryResult = Apollo.QueryResult<
 export declare function refetchCodegenGeneratedTokenTokenMetadatasQuery(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
+        token_token_metadatas_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+        token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
         token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedTokenDocument: Apollo.DocumentNode;

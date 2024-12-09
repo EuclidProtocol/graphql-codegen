@@ -24,7 +24,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllChainsDocument = void 0;
-exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = void 0;
+exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = void 0;
 exports.useCodegenGeneratedChainsAllChainsQuery = useCodegenGeneratedChainsAllChainsQuery;
 exports.useCodegenGeneratedChainsAllChainsLazyQuery = useCodegenGeneratedChainsAllChainsLazyQuery;
 exports.refetchCodegenGeneratedChainsAllChainsQuery = refetchCodegenGeneratedChainsAllChainsQuery;
@@ -214,12 +214,6 @@ exports.refetchCodegenGeneratedRouterSimulateSwapQuery = refetchCodegenGenerated
 exports.useCodegenGeneratedRouterStateQuery = useCodegenGeneratedRouterStateQuery;
 exports.useCodegenGeneratedRouterStateLazyQuery = useCodegenGeneratedRouterStateLazyQuery;
 exports.refetchCodegenGeneratedRouterStateQuery = refetchCodegenGeneratedRouterStateQuery;
-exports.useCodegenGeneratedRouterTokenDenomsDenomsQuery = useCodegenGeneratedRouterTokenDenomsDenomsQuery;
-exports.useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery = useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery;
-exports.refetchCodegenGeneratedRouterTokenDenomsDenomsQuery = refetchCodegenGeneratedRouterTokenDenomsDenomsQuery;
-exports.useCodegenGeneratedRouterTokenDenomsQuery = useCodegenGeneratedRouterTokenDenomsQuery;
-exports.useCodegenGeneratedRouterTokenDenomsLazyQuery = useCodegenGeneratedRouterTokenDenomsLazyQuery;
-exports.refetchCodegenGeneratedRouterTokenDenomsQuery = refetchCodegenGeneratedRouterTokenDenomsQuery;
 exports.useCodegenGeneratedRouterTokenPairsFromVlpQuery = useCodegenGeneratedRouterTokenPairsFromVlpQuery;
 exports.useCodegenGeneratedRouterTokenPairsFromVlpLazyQuery = useCodegenGeneratedRouterTokenPairsFromVlpLazyQuery;
 exports.refetchCodegenGeneratedRouterTokenPairsFromVlpQuery = refetchCodegenGeneratedRouterTokenPairsFromVlpQuery;
@@ -3129,112 +3123,6 @@ function useCodegenGeneratedRouterStateLazyQuery(baseOptions) {
 function refetchCodegenGeneratedRouterStateQuery(variables) {
     return { query: exports.CodegenGeneratedRouterStateDocument, variables: variables };
 }
-exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS($router_token_denoms_token: String!) {
-  router {
-    token_denoms(token: $router_token_denoms_token) {
-      denoms {
-        chain_uid
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-    }
-  }
-}
-    `;
-/**
- * __useCodegenGeneratedRouterTokenDenomsDenomsQuery__
- *
- * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsDenomsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCodegenGeneratedRouterTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsDenomsQuery({
- *   variables: {
- *      router_token_denoms_token: // value for 'router_token_denoms_token'
- *   },
- * });
- */
-function useCodegenGeneratedRouterTokenDenomsDenomsQuery(baseOptions) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery(exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
-}
-function useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery(baseOptions) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery(exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
-}
-function refetchCodegenGeneratedRouterTokenDenomsDenomsQuery(variables) {
-    return { query: exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, variables: variables };
-}
-exports.CodegenGeneratedRouterTokenDenomsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS($router_token_denoms_token: String!) {
-  router {
-    token_denoms(token: $router_token_denoms_token) {
-      denoms {
-        chain_uid
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-    }
-  }
-}
-    `;
-/**
- * __useCodegenGeneratedRouterTokenDenomsQuery__
- *
- * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsQuery` and pass it any options that fit your needs.
- * When your component renders, `useCodegenGeneratedRouterTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsQuery({
- *   variables: {
- *      router_token_denoms_token: // value for 'router_token_denoms_token'
- *   },
- * });
- */
-function useCodegenGeneratedRouterTokenDenomsQuery(baseOptions) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useQuery(exports.CodegenGeneratedRouterTokenDenomsDocument, options);
-}
-function useCodegenGeneratedRouterTokenDenomsLazyQuery(baseOptions) {
-    const options = { ...defaultOptions, ...baseOptions };
-    return Apollo.useLazyQuery(exports.CodegenGeneratedRouterTokenDenomsDocument, options);
-}
-function refetchCodegenGeneratedRouterTokenDenomsQuery(variables) {
-    return { query: exports.CodegenGeneratedRouterTokenDenomsDocument, variables: variables };
-}
 exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
@@ -3470,11 +3358,16 @@ function refetchCodegenGeneratedTokenTokenLiquidityQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenLiquidityDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_chain_uid: String, $token_token_metadata_by_id_dex: String, $token_token_metadata_by_id_token_id: String!) {
   token {
-    token_metadata_by_id(token_id: $token_token_metadata_by_id_token_id) {
+    token_metadata_by_id(
+      chain_uid: $token_token_metadata_by_id_chain_uid
+      dex: $token_token_metadata_by_id_dex
+      token_id: $token_token_metadata_by_id_token_id
+    ) {
       coinDecimal
       description
+      dex
       displayName
       image
       price
@@ -3495,6 +3388,8 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
+ *      token_token_metadata_by_id_chain_uid: // value for 'token_token_metadata_by_id_chain_uid'
+ *      token_token_metadata_by_id_dex: // value for 'token_token_metadata_by_id_dex'
  *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
  *   },
  * });
@@ -3511,14 +3406,18 @@ function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uid: String, $token_token_metadatas_dex: [String], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
+      chain_uid: $token_token_metadatas_chain_uid
+      dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
+      verified: $token_token_metadatas_verified
     ) {
       coinDecimal
       description
+      dex
       displayName
       image
       price
@@ -3539,8 +3438,11 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uid: // value for 'token_token_metadatas_chain_uid'
+ *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
  * });
  */
