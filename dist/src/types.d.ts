@@ -352,7 +352,7 @@ export type IMetadata = {
     __typename?: 'Metadata';
     coinDecimal: Scalars['Int']['output'];
     description: Scalars['String']['output'];
-    dex: Maybe<Scalars['String']['output']>;
+    dex: Maybe<Array<Scalars['String']['output']>>;
     displayName: Scalars['String']['output'];
     image: Scalars['String']['output'];
     price: Scalars['String']['output'];
@@ -501,6 +501,7 @@ export type IRouter = {
     simulate_release_escrow: Maybe<ISimulateReleaseEscrow>;
     simulate_swap: Maybe<ITokenOut>;
     state: Maybe<IContractStateOfRouter>;
+    token_denoms: ITokenDenomsResponse;
     token_pairs_from_vlp: Maybe<IVlpWithTokenPair>;
     vlp: Maybe<IVlpWithTokenPair>;
 };
@@ -544,6 +545,9 @@ export type IRouterSimulateSwapArgs = {
     min_amount_out: Scalars['String']['input'];
     swaps?: InputMaybe<Array<Scalars['String']['input']>>;
 };
+export type IRouterTokenDenomsArgs = {
+    token: Scalars['String']['input'];
+};
 export type IRouterTokenPairsFromVlpArgs = {
     vlp: Scalars['String']['input'];
 };
@@ -586,6 +590,20 @@ export type ITokenArray = {
     __typename?: 'TokenArray';
     tokens: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
+export type ITokenDenom = {
+    __typename?: 'TokenDenom';
+    chain_uid: Scalars['String']['output'];
+    token_type: ITokenType;
+};
+export type ITokenDenomWithTokenIdResponse = {
+    __typename?: 'TokenDenomWithTokenIdResponse';
+    denoms: Array<Maybe<ITokenDenom>>;
+    token_id: Scalars['String']['output'];
+};
+export type ITokenDenomsResponse = {
+    __typename?: 'TokenDenomsResponse';
+    denoms: Maybe<Array<Maybe<ITokenDenom>>>;
+};
 export type ITokenId = {
     __typename?: 'TokenId';
     id: Maybe<Scalars['String']['output']>;
@@ -623,10 +641,14 @@ export type ITokenPairWithLiquidityResponse = {
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
     get_all_faucets: Array<IFaucet>;
+    token_denoms: ITokenDenomWithTokenIdResponse;
     token_liquidities: Array<ITokenLiquidity>;
     token_liquidity: Maybe<ITokenLiquidity>;
     token_metadata_by_id: Maybe<IMetadata>;
     token_metadatas: Array<Maybe<IMetadata>>;
+};
+export type ITokenQueriesTokenDenomsArgs = {
+    denom: Scalars['String']['input'];
 };
 export type ITokenQueriesTokenLiquiditiesArgs = {
     limit: Scalars['Int']['input'];
@@ -636,13 +658,11 @@ export type ITokenQueriesTokenLiquidityArgs = {
     token: Scalars['String']['input'];
 };
 export type ITokenQueriesTokenMetadataByIdArgs = {
-    chain_uid?: InputMaybe<Scalars['String']['input']>;
-    dex?: InputMaybe<Scalars['String']['input']>;
     token_id: Scalars['String']['input'];
+    verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type ITokenQueriesTokenMetadatasArgs = {
-    chain_uid?: InputMaybe<Scalars['String']['input']>;
-    dex?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+    dex?: InputMaybe<Array<Scalars['String']['input']>>;
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     verified?: InputMaybe<Scalars['Boolean']['input']>;
