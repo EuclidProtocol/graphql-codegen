@@ -552,6 +552,20 @@ export type ICodegenGeneratedRouterStateQueryVariables = Exact<{ [key: string]: 
 
 export type ICodegenGeneratedRouterStateQuery = { __typename?: 'Query', router: { __typename?: 'Router', state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables = Exact<{
+  router_token_denoms_token: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = { __typename?: 'Query', router: { __typename?: 'Router', token_denoms: { __typename?: 'TokenDenomsResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
+
+export type ICodegenGeneratedRouterTokenDenomsQueryVariables = Exact<{
+  router_token_denoms_token: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedRouterTokenDenomsQuery = { __typename?: 'Query', router: { __typename?: 'Router', token_denoms: { __typename?: 'TokenDenomsResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
+
 export type ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables = Exact<{
   router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
 }>;
@@ -576,6 +590,20 @@ export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: st
 
 export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
 
+export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
+  token_token_denoms_denom: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_denoms: { __typename?: 'TokenDenomWithTokenIdResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
+
+export type ICodegenGeneratedTokenTokenDenomsQueryVariables = Exact<{
+  token_token_denoms_denom: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenTokenDenomsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_denoms: { __typename?: 'TokenDenomWithTokenIdResponse', token_id: string, denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
+
 export type ICodegenGeneratedTokenTokenLiquiditiesQueryVariables = Exact<{
   token_token_liquidities_limit: Scalars['Int']['input'];
   token_token_liquidities_page: Scalars['Int']['input'];
@@ -592,24 +620,22 @@ export type ICodegenGeneratedTokenTokenLiquidityQueryVariables = Exact<{
 export type ICodegenGeneratedTokenTokenLiquidityQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
-  token_token_metadata_by_id_chain_uid?: InputMaybe<Scalars['String']['input']>;
-  token_token_metadata_by_id_dex?: InputMaybe<Scalars['String']['input']>;
   token_token_metadata_by_id_token_id: Scalars['String']['input'];
+  token_token_metadata_by_id_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', coinDecimal: number, description: string, dex: string, displayName: string, image: string, price: string, tokenId: string } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, tokenId: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
-  token_token_metadatas_chain_uid?: InputMaybe<Scalars['String']['input']>;
-  token_token_metadatas_dex?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
   token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
   token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, dex: string, displayName: string, image: string, price: string, tokenId: string }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, tokenId: string }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3854,6 +3880,120 @@ export type CodegenGeneratedRouterStateQueryResult = Apollo.QueryResult<ICodegen
 export function refetchCodegenGeneratedRouterStateQuery(variables?: ICodegenGeneratedRouterStateQueryVariables) {
       return { query: CodegenGeneratedRouterStateDocument, variables: variables }
     }
+export const CodegenGeneratedRouterTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS($router_token_denoms_token: String!) {
+  router {
+    token_denoms(token: $router_token_denoms_token) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedRouterTokenDenomsDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsDenomsQuery({
+ *   variables: {
+ *      router_token_denoms_token: // value for 'router_token_denoms_token'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedRouterTokenDenomsDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>(CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
+      }
+export function useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>(CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
+        }
+export type CodegenGeneratedRouterTokenDenomsDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsDenomsQuery>;
+export type CodegenGeneratedRouterTokenDenomsDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery>;
+export type CodegenGeneratedRouterTokenDenomsDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsDenomsQuery, ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables>;
+export function refetchCodegenGeneratedRouterTokenDenomsDenomsQuery(variables: ICodegenGeneratedRouterTokenDenomsDenomsQueryVariables) {
+      return { query: CodegenGeneratedRouterTokenDenomsDenomsDocument, variables: variables }
+    }
+export const CodegenGeneratedRouterTokenDenomsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS($router_token_denoms_token: String!) {
+  router {
+    token_denoms(token: $router_token_denoms_token) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedRouterTokenDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsQuery({
+ *   variables: {
+ *      router_token_denoms_token: // value for 'router_token_denoms_token'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedRouterTokenDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>(CodegenGeneratedRouterTokenDenomsDocument, options);
+      }
+export function useCodegenGeneratedRouterTokenDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>(CodegenGeneratedRouterTokenDenomsDocument, options);
+        }
+export type CodegenGeneratedRouterTokenDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsQuery>;
+export type CodegenGeneratedRouterTokenDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenDenomsLazyQuery>;
+export type CodegenGeneratedRouterTokenDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenDenomsQuery, ICodegenGeneratedRouterTokenDenomsQueryVariables>;
+export function refetchCodegenGeneratedRouterTokenDenomsQuery(variables: ICodegenGeneratedRouterTokenDenomsQueryVariables) {
+      return { query: CodegenGeneratedRouterTokenDenomsDocument, variables: variables }
+    }
 export const CodegenGeneratedRouterTokenPairsFromVlpDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
@@ -4024,6 +4164,121 @@ export type CodegenGeneratedTokenGetAllFaucetsQueryResult = Apollo.QueryResult<I
 export function refetchCodegenGeneratedTokenGetAllFaucetsQuery(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables) {
       return { query: CodegenGeneratedTokenGetAllFaucetsDocument, variables: variables }
     }
+export const CodegenGeneratedTokenTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_denom: String!) {
+  token {
+    token_denoms(denom: $token_token_denoms_denom) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedTokenTokenDenomsDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedTokenTokenDenomsDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>(CodegenGeneratedTokenTokenDenomsDenomsDocument, options);
+      }
+export function useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>(CodegenGeneratedTokenTokenDenomsDenomsDocument, options);
+        }
+export type CodegenGeneratedTokenTokenDenomsDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsDenomsQuery>;
+export type CodegenGeneratedTokenTokenDenomsDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery>;
+export type CodegenGeneratedTokenTokenDenomsDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>;
+export function refetchCodegenGeneratedTokenTokenDenomsDenomsQuery(variables: ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables) {
+      return { query: CodegenGeneratedTokenTokenDenomsDenomsDocument, variables: variables }
+    }
+export const CodegenGeneratedTokenTokenDenomsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_denom: String!) {
+  token {
+    token_denoms(denom: $token_token_denoms_denom) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+      token_id
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedTokenTokenDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedTokenTokenDenomsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>(CodegenGeneratedTokenTokenDenomsDocument, options);
+      }
+export function useCodegenGeneratedTokenTokenDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>(CodegenGeneratedTokenTokenDenomsDocument, options);
+        }
+export type CodegenGeneratedTokenTokenDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsQuery>;
+export type CodegenGeneratedTokenTokenDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsLazyQuery>;
+export type CodegenGeneratedTokenTokenDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>;
+export function refetchCodegenGeneratedTokenTokenDenomsQuery(variables: ICodegenGeneratedTokenTokenDenomsQueryVariables) {
+      return { query: CodegenGeneratedTokenTokenDenomsDocument, variables: variables }
+    }
 export const CodegenGeneratedTokenTokenLiquiditiesDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES($token_token_liquidities_limit: Int!, $token_token_liquidities_page: Int!) {
   token {
@@ -4113,12 +4368,11 @@ export function refetchCodegenGeneratedTokenTokenLiquidityQuery(variables: ICode
       return { query: CodegenGeneratedTokenTokenLiquidityDocument, variables: variables }
     }
 export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_chain_uid: String, $token_token_metadata_by_id_dex: String, $token_token_metadata_by_id_token_id: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!, $token_token_metadata_by_id_verified: Boolean) {
   token {
     token_metadata_by_id(
-      chain_uid: $token_token_metadata_by_id_chain_uid
-      dex: $token_token_metadata_by_id_dex
       token_id: $token_token_metadata_by_id_token_id
+      verified: $token_token_metadata_by_id_verified
     ) {
       coinDecimal
       description
@@ -4144,9 +4398,8 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
- *      token_token_metadata_by_id_chain_uid: // value for 'token_token_metadata_by_id_chain_uid'
- *      token_token_metadata_by_id_dex: // value for 'token_token_metadata_by_id_dex'
  *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
+ *      token_token_metadata_by_id_verified: // value for 'token_token_metadata_by_id_verified'
  *   },
  * });
  */
@@ -4165,10 +4418,9 @@ export function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables: IC
       return { query: CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables }
     }
 export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uid: String, $token_token_metadatas_dex: [String], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
-      chain_uid: $token_token_metadatas_chain_uid
       dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
@@ -4198,7 +4450,6 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
- *      token_token_metadatas_chain_uid: // value for 'token_token_metadatas_chain_uid'
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
