@@ -585,6 +585,13 @@ export type ICodegenGeneratedRouterQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedRouterQuery = { __typename?: 'Query', router: { __typename?: 'Router', all_chains: Array<{ __typename?: 'Chain', chain_id: string, chain_uid: string, factory_address: string }>, state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
+  token_dex_metadata_dex: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenDexMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', dex_metadata: { __typename?: 'DexMetadata', bg_color: string, dex_name: string, fg_color: string, logo: string } } };
+
 export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4123,6 +4130,49 @@ export type CodegenGeneratedRouterLazyQueryHookResult = ReturnType<typeof useCod
 export type CodegenGeneratedRouterQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterQuery, ICodegenGeneratedRouterQueryVariables>;
 export function refetchCodegenGeneratedRouterQuery(variables?: ICodegenGeneratedRouterQueryVariables) {
       return { query: CodegenGeneratedRouterDocument, variables: variables }
+    }
+export const CodegenGeneratedTokenDexMetadataDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_DEX_METADATA($token_dex_metadata_dex: String!) {
+  token {
+    dex_metadata(dex: $token_dex_metadata_dex) {
+      bg_color
+      dex_name
+      fg_color
+      logo
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedTokenDexMetadataQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenDexMetadataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenDexMetadataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenDexMetadataQuery({
+ *   variables: {
+ *      token_dex_metadata_dex: // value for 'token_dex_metadata_dex'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedTokenDexMetadataQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>(CodegenGeneratedTokenDexMetadataDocument, options);
+      }
+export function useCodegenGeneratedTokenDexMetadataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>(CodegenGeneratedTokenDexMetadataDocument, options);
+        }
+export type CodegenGeneratedTokenDexMetadataQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenDexMetadataQuery>;
+export type CodegenGeneratedTokenDexMetadataLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenDexMetadataLazyQuery>;
+export type CodegenGeneratedTokenDexMetadataQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>;
+export function refetchCodegenGeneratedTokenDexMetadataQuery(variables: ICodegenGeneratedTokenDexMetadataQueryVariables) {
+      return { query: CodegenGeneratedTokenDexMetadataDocument, variables: variables }
     }
 export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS {

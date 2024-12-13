@@ -1,6 +1,6 @@
 {
   "name": "@euclidprotocol/graphql-codegen",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Euclid Graphql Codegen for React and Nodejs",
   "main": "./dist/index.js",
   "files": [
@@ -26,6 +26,7 @@
   "homepage": "https://github.com/EuclidProtocol/graphql-codegen#readme",
   "dependencies": {
     "@apollo/client": "^3.11.8",
+    "@euclidprotocol/graphql-codegen": "^1.0.3",
     "graphql": "^16.9.0",
     "graphql-request": "^6.1.0",
     "graphql-tag": "^2.12.6"

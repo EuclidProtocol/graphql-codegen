@@ -242,6 +242,14 @@ export type IDenomination = {
   denom: Scalars['String']['output'];
 };
 
+export type IDexMetadata = {
+  __typename?: 'DexMetadata';
+  bg_color: Scalars['String']['output'];
+  dex_name: Scalars['String']['output'];
+  fg_color: Scalars['String']['output'];
+  logo: Scalars['String']['output'];
+};
+
 export type IEscrow = {
   __typename?: 'Escrow';
   balance: Scalars['String']['output'];
@@ -749,12 +757,18 @@ export type ITokenPairWithLiquidityResponse = {
 
 export type ITokenQueries = {
   __typename?: 'TokenQueries';
+  dex_metadata: IDexMetadata;
   get_all_faucets: Array<IFaucet>;
   token_denoms: ITokenDenomWithTokenIdResponse;
   token_liquidities: Array<ITokenLiquidity>;
   token_liquidity: Maybe<ITokenLiquidity>;
   token_metadata_by_id: Maybe<IMetadata>;
   token_metadatas: Array<Maybe<IMetadata>>;
+};
+
+
+export type ITokenQueriesDexMetadataArgs = {
+  dex: Scalars['String']['input'];
 };
 
 

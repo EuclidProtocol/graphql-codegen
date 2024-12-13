@@ -585,6 +585,13 @@ export type ICodegenGeneratedRouterQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedRouterQuery = { __typename?: 'Query', router: { __typename?: 'Router', all_chains: Array<{ __typename?: 'Chain', chain_id: string, chain_uid: string, factory_address: string }>, state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
+  token_dex_metadata_dex: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedTokenDexMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', dex_metadata: { __typename?: 'DexMetadata', bg_color: string, dex_name: string, fg_color: string, logo: string } } };
+
 export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -1953,6 +1960,18 @@ export const CodegenGeneratedRouterDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedTokenDexMetadataDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_DEX_METADATA($token_dex_metadata_dex: String!) {
+  token {
+    dex_metadata(dex: $token_dex_metadata_dex) {
+      bg_color
+      dex_name
+      fg_color
+      logo
+    }
+  }
+}
+    `;
 export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS {
   token {
@@ -2691,6 +2710,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterQuery>(CodegenGeneratedRouterDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER', 'query');
+    },
+    CODEGEN_GENERATED_TOKEN_DEX_METADATA(variables: ICodegenGeneratedTokenDexMetadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenDexMetadataQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenDexMetadataQuery>(CodegenGeneratedTokenDexMetadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_DEX_METADATA', 'query');
     },
     CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenGetAllFaucetsQuery>(CodegenGeneratedTokenGetAllFaucetsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS', 'query');

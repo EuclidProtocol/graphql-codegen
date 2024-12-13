@@ -156,6 +156,13 @@ export type DenominationFieldPolicy = {
 	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type DexMetadataKeySpecifier = ('bg_color' | 'dex_name' | 'fg_color' | 'logo' | DexMetadataKeySpecifier)[];
+export type DexMetadataFieldPolicy = {
+	bg_color?: FieldPolicy<any> | FieldReadFunction<any>,
+	dex_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fg_color?: FieldPolicy<any> | FieldReadFunction<any>,
+	logo?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type EscrowKeySpecifier = ('balance' | 'chain_id' | 'chain_uid' | EscrowKeySpecifier)[];
 export type EscrowFieldPolicy = {
 	balance?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -449,8 +456,9 @@ export type TokenPairWithLiquidityResponseFieldPolicy = {
 	total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type TokenQueriesKeySpecifier = ('get_all_faucets' | 'token_denoms' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
+export type TokenQueriesKeySpecifier = ('dex_metadata' | 'get_all_faucets' | 'token_denoms' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
 export type TokenQueriesFieldPolicy = {
+	dex_metadata?: FieldPolicy<any> | FieldReadFunction<any>,
 	get_all_faucets?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_denoms?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_liquidities?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -627,6 +635,10 @@ export type StrictTypedTypePolicies = {
 	Denomination?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | DenominationKeySpecifier | (() => undefined | DenominationKeySpecifier),
 		fields?: DenominationFieldPolicy,
+	},
+	DexMetadata?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DexMetadataKeySpecifier | (() => undefined | DexMetadataKeySpecifier),
+		fields?: DexMetadataFieldPolicy,
 	},
 	Escrow?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | EscrowKeySpecifier | (() => undefined | EscrowKeySpecifier),
