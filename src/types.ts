@@ -773,7 +773,8 @@ export type ITokenQueriesDexMetadataArgs = {
 
 
 export type ITokenQueriesTokenDenomsArgs = {
-  denom: Scalars['String']['input'];
+  denom?: InputMaybe<Scalars['String']['input']>;
+  token_id?: InputMaybe<Scalars['String']['input']>;
 };
 
 

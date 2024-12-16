@@ -1,6 +1,6 @@
 {
   "name": "@euclidprotocol/graphql-codegen",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Euclid Graphql Codegen for React and Nodejs",
   "main": "./dist/index.js",
   "files": [

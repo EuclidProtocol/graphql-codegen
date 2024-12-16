@@ -233,6 +233,13 @@ export type IDenomination = {
     amount: Scalars['String']['output'];
     denom: Scalars['String']['output'];
 };
+export type IDexMetadata = {
+    __typename?: 'DexMetadata';
+    bg_color: Scalars['String']['output'];
+    dex_name: Scalars['String']['output'];
+    fg_color: Scalars['String']['output'];
+    logo: Scalars['String']['output'];
+};
 export type IEscrow = {
     __typename?: 'Escrow';
     balance: Scalars['String']['output'];
@@ -640,6 +647,7 @@ export type ITokenPairWithLiquidityResponse = {
 };
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
+    dex_metadata: IDexMetadata;
     get_all_faucets: Array<IFaucet>;
     token_denoms: ITokenDenomWithTokenIdResponse;
     token_liquidities: Array<ITokenLiquidity>;
@@ -647,8 +655,12 @@ export type ITokenQueries = {
     token_metadata_by_id: Maybe<IMetadata>;
     token_metadatas: Array<Maybe<IMetadata>>;
 };
+export type ITokenQueriesDexMetadataArgs = {
+    dex: Scalars['String']['input'];
+};
 export type ITokenQueriesTokenDenomsArgs = {
-    denom: Scalars['String']['input'];
+    denom?: InputMaybe<Scalars['String']['input']>;
+    token_id?: InputMaybe<Scalars['String']['input']>;
 };
 export type ITokenQueriesTokenLiquiditiesArgs = {
     limit: Scalars['Int']['input'];

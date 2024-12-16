@@ -598,14 +598,16 @@ export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: st
 export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
 
 export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
-  token_token_denoms_denom: Scalars['String']['input'];
+  token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
+  token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
 export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_denoms: { __typename?: 'TokenDenomWithTokenIdResponse', denoms: Array<{ __typename?: 'TokenDenom', chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> } } };
 
 export type ICodegenGeneratedTokenTokenDenomsQueryVariables = Exact<{
-  token_token_denoms_denom: Scalars['String']['input'];
+  token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
+  token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 
@@ -1983,9 +1985,12 @@ export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_denom: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
-    token_denoms(denom: $token_token_denoms_denom) {
+    token_denoms(
+      denom: $token_token_denoms_denom
+      token_id: $token_token_denoms_token_id
+    ) {
       denoms {
         chain_uid
         token_type {
@@ -2009,9 +2014,12 @@ export const CodegenGeneratedTokenTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_denom: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
-    token_denoms(denom: $token_token_denoms_denom) {
+    token_denoms(
+      denom: $token_token_denoms_denom
+      token_id: $token_token_denoms_token_id
+    ) {
       denoms {
         chain_uid
         token_type {
@@ -2717,10 +2725,10 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenGetAllFaucetsQuery>(CodegenGeneratedTokenGetAllFaucetsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS', 'query');
     },
-    CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS(variables: ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenDenomsDenomsQuery> {
+    CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS(variables?: ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenDenomsDenomsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenDenomsDenomsQuery>(CodegenGeneratedTokenTokenDenomsDenomsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS', 'query');
     },
-    CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS(variables: ICodegenGeneratedTokenTokenDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenDenomsQuery> {
+    CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS(variables?: ICodegenGeneratedTokenTokenDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenDenomsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenTokenDenomsQuery>(CodegenGeneratedTokenTokenDenomsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS', 'query');
     },
     CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES(variables: ICodegenGeneratedTokenTokenLiquiditiesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquiditiesQuery> {
