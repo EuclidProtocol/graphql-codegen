@@ -61,7 +61,7 @@ export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }> } };
+export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string, type: string }> } };
 
 export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
   chains_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
@@ -69,7 +69,7 @@ export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedChainsChainConfigQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', chain_config: { __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string } } };
+export type ICodegenGeneratedChainsChainConfigQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', chain_config: { __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string, type: string } } };
 
 export type ICodegenGeneratedChainsContractsQueryVariables = Exact<{
   chains_contracts_chainUId?: InputMaybe<Scalars['String']['input']>;
@@ -683,7 +683,8 @@ export type ICodegenGeneratedVcoinQueryVariables = Exact<{ [key: string]: never;
 export type ICodegenGeneratedVcoinQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', state: { __typename?: 'ContractStateOfVcoin', admin: string, router: string } } };
 
 export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -692,7 +693,8 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPaginationQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number } } } };
 
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -701,7 +703,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pools: Array<{ __typename?: 'Pools', pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -710,7 +713,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPoolsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pools: Array<{ __typename?: 'Pools', chain_uid: string, pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -719,35 +723,40 @@ export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number }, pools: Array<{ __typename?: 'Pools', chain_uid: string, pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpLiquidityPairQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', liquidity: { __typename?: 'Liquidity', pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpLiquidityQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_pool_chain_uid: Scalars['String']['input'];
 }>;
 
@@ -755,70 +764,80 @@ export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
 export type ICodegenGeneratedVlpPoolQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } } };
 
 export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStatePairQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_total_fees_collected_per_denom_denom: Scalars['String']['input'];
 }>;
 
@@ -826,7 +845,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected_per_denom: { __typename?: 'TotalFeesPerDenomResponse', euclid_fees: string, lp_fees: string } } };
 
 export type ICodegenGeneratedVlpQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
@@ -843,6 +863,7 @@ export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
       explorer_url
       factory_address
       logo
+      type
     }
   }
 }
@@ -891,6 +912,7 @@ export const CodegenGeneratedChainsChainConfigDocument = /*#__PURE__*/ gql`
       explorer_url
       factory_address
       logo
+      type
     }
   }
 }
@@ -4778,8 +4800,8 @@ export function refetchCodegenGeneratedVcoinQuery(variables?: ICodegenGeneratedV
       return { query: CodegenGeneratedVcoinDocument, variables: variables }
     }
 export const CodegenGeneratedVlpAllPoolsPaginationDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -4804,12 +4826,13 @@ export const CodegenGeneratedVlpAllPoolsPaginationDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPaginationQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpAllPoolsPaginationQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>) {
+export function useCodegenGeneratedVlpAllPoolsPaginationQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>(CodegenGeneratedVlpAllPoolsPaginationDocument, options);
       }
@@ -4820,12 +4843,12 @@ export function useCodegenGeneratedVlpAllPoolsPaginationLazyQuery(baseOptions?: 
 export type CodegenGeneratedVlpAllPoolsPaginationQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPaginationQuery>;
 export type CodegenGeneratedVlpAllPoolsPaginationLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPaginationLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPaginationQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>;
-export function refetchCodegenGeneratedVlpAllPoolsPaginationQuery(variables: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables) {
+export function refetchCodegenGeneratedVlpAllPoolsPaginationQuery(variables?: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables) {
       return { query: CodegenGeneratedVlpAllPoolsPaginationDocument, variables: variables }
     }
 export const CodegenGeneratedVlpAllPoolsPoolsPoolDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         pool {
@@ -4852,12 +4875,13 @@ export const CodegenGeneratedVlpAllPoolsPoolsPoolDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpAllPoolsPoolsPoolQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>) {
+export function useCodegenGeneratedVlpAllPoolsPoolsPoolQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>(CodegenGeneratedVlpAllPoolsPoolsPoolDocument, options);
       }
@@ -4868,12 +4892,12 @@ export function useCodegenGeneratedVlpAllPoolsPoolsPoolLazyQuery(baseOptions?: A
 export type CodegenGeneratedVlpAllPoolsPoolsPoolQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsPoolLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsPoolQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>;
-export function refetchCodegenGeneratedVlpAllPoolsPoolsPoolQuery(variables: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables) {
+export function refetchCodegenGeneratedVlpAllPoolsPoolsPoolQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables) {
       return { query: CodegenGeneratedVlpAllPoolsPoolsPoolDocument, variables: variables }
     }
 export const CodegenGeneratedVlpAllPoolsPoolsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         chain_uid
@@ -4901,12 +4925,13 @@ export const CodegenGeneratedVlpAllPoolsPoolsDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpAllPoolsPoolsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>) {
+export function useCodegenGeneratedVlpAllPoolsPoolsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>(CodegenGeneratedVlpAllPoolsPoolsDocument, options);
       }
@@ -4917,12 +4942,12 @@ export function useCodegenGeneratedVlpAllPoolsPoolsLazyQuery(baseOptions?: Apoll
 export type CodegenGeneratedVlpAllPoolsPoolsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>;
-export function refetchCodegenGeneratedVlpAllPoolsPoolsQuery(variables: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables) {
+export function refetchCodegenGeneratedVlpAllPoolsPoolsQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables) {
       return { query: CodegenGeneratedVlpAllPoolsPoolsDocument, variables: variables }
     }
 export const CodegenGeneratedVlpAllPoolsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -4955,12 +4980,13 @@ export const CodegenGeneratedVlpAllPoolsDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpAllPoolsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>) {
+export function useCodegenGeneratedVlpAllPoolsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>(CodegenGeneratedVlpAllPoolsDocument, options);
       }
@@ -4971,12 +4997,12 @@ export function useCodegenGeneratedVlpAllPoolsLazyQuery(baseOptions?: Apollo.Laz
 export type CodegenGeneratedVlpAllPoolsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsQuery>;
 export type CodegenGeneratedVlpAllPoolsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>;
-export function refetchCodegenGeneratedVlpAllPoolsQuery(variables: ICodegenGeneratedVlpAllPoolsQueryVariables) {
+export function refetchCodegenGeneratedVlpAllPoolsQuery(variables?: ICodegenGeneratedVlpAllPoolsQueryVariables) {
       return { query: CodegenGeneratedVlpAllPoolsDocument, variables: variables }
     }
 export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       recipient {
         address
@@ -5000,10 +5026,11 @@ export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpFeeRecipientQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>) {
+export function useCodegenGeneratedVlpFeeRecipientQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>(CodegenGeneratedVlpFeeRecipientDocument, options);
       }
@@ -5014,12 +5041,12 @@ export function useCodegenGeneratedVlpFeeRecipientLazyQuery(baseOptions?: Apollo
 export type CodegenGeneratedVlpFeeRecipientQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeRecipientQuery>;
 export type CodegenGeneratedVlpFeeRecipientLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeRecipientLazyQuery>;
 export type CodegenGeneratedVlpFeeRecipientQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>;
-export function refetchCodegenGeneratedVlpFeeRecipientQuery(variables: ICodegenGeneratedVlpFeeRecipientQueryVariables) {
+export function refetchCodegenGeneratedVlpFeeRecipientQuery(variables?: ICodegenGeneratedVlpFeeRecipientQueryVariables) {
       return { query: CodegenGeneratedVlpFeeRecipientDocument, variables: variables }
     }
 export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -5045,10 +5072,11 @@ export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpFeeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>) {
+export function useCodegenGeneratedVlpFeeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>(CodegenGeneratedVlpFeeDocument, options);
       }
@@ -5059,12 +5087,12 @@ export function useCodegenGeneratedVlpFeeLazyQuery(baseOptions?: Apollo.LazyQuer
 export type CodegenGeneratedVlpFeeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeQuery>;
 export type CodegenGeneratedVlpFeeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeLazyQuery>;
 export type CodegenGeneratedVlpFeeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>;
-export function refetchCodegenGeneratedVlpFeeQuery(variables: ICodegenGeneratedVlpFeeQueryVariables) {
+export function refetchCodegenGeneratedVlpFeeQuery(variables?: ICodegenGeneratedVlpFeeQueryVariables) {
       return { query: CodegenGeneratedVlpFeeDocument, variables: variables }
     }
 export const CodegenGeneratedVlpLiquidityPairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -5088,10 +5116,11 @@ export const CodegenGeneratedVlpLiquidityPairDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityPairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpLiquidityPairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>) {
+export function useCodegenGeneratedVlpLiquidityPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>(CodegenGeneratedVlpLiquidityPairDocument, options);
       }
@@ -5102,12 +5131,12 @@ export function useCodegenGeneratedVlpLiquidityPairLazyQuery(baseOptions?: Apoll
 export type CodegenGeneratedVlpLiquidityPairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityPairQuery>;
 export type CodegenGeneratedVlpLiquidityPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityPairLazyQuery>;
 export type CodegenGeneratedVlpLiquidityPairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>;
-export function refetchCodegenGeneratedVlpLiquidityPairQuery(variables: ICodegenGeneratedVlpLiquidityPairQueryVariables) {
+export function refetchCodegenGeneratedVlpLiquidityPairQuery(variables?: ICodegenGeneratedVlpLiquidityPairQueryVariables) {
       return { query: CodegenGeneratedVlpLiquidityPairDocument, variables: variables }
     }
 export const CodegenGeneratedVlpLiquidityDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -5134,10 +5163,11 @@ export const CodegenGeneratedVlpLiquidityDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpLiquidityQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>) {
+export function useCodegenGeneratedVlpLiquidityQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>(CodegenGeneratedVlpLiquidityDocument, options);
       }
@@ -5148,12 +5178,12 @@ export function useCodegenGeneratedVlpLiquidityLazyQuery(baseOptions?: Apollo.La
 export type CodegenGeneratedVlpLiquidityQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityQuery>;
 export type CodegenGeneratedVlpLiquidityLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityLazyQuery>;
 export type CodegenGeneratedVlpLiquidityQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>;
-export function refetchCodegenGeneratedVlpLiquidityQuery(variables: ICodegenGeneratedVlpLiquidityQueryVariables) {
+export function refetchCodegenGeneratedVlpLiquidityQuery(variables?: ICodegenGeneratedVlpLiquidityQueryVariables) {
       return { query: CodegenGeneratedVlpLiquidityDocument, variables: variables }
     }
 export const CodegenGeneratedVlpPoolDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_POOL($contract: String!, $vlp_pool_chain_uid: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_POOL($contract: String, $pair: PairInput, $vlp_pool_chain_uid: String!) {
+  vlp(contract: $contract, pair: $pair) {
     pool(chain_uid: $vlp_pool_chain_uid) {
       lp_shares
       reserve_1
@@ -5176,6 +5206,7 @@ export const CodegenGeneratedVlpPoolDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
  *   },
  * });
@@ -5195,8 +5226,8 @@ export function refetchCodegenGeneratedVlpPoolQuery(variables: ICodegenGenerated
       return { query: CodegenGeneratedVlpPoolDocument, variables: variables }
     }
 export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         recipient {
@@ -5222,10 +5253,11 @@ export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpStateFeeRecipientQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>) {
+export function useCodegenGeneratedVlpStateFeeRecipientQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>(CodegenGeneratedVlpStateFeeRecipientDocument, options);
       }
@@ -5236,12 +5268,12 @@ export function useCodegenGeneratedVlpStateFeeRecipientLazyQuery(baseOptions?: A
 export type CodegenGeneratedVlpStateFeeRecipientQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeRecipientQuery>;
 export type CodegenGeneratedVlpStateFeeRecipientLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeRecipientLazyQuery>;
 export type CodegenGeneratedVlpStateFeeRecipientQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>;
-export function refetchCodegenGeneratedVlpStateFeeRecipientQuery(variables: ICodegenGeneratedVlpStateFeeRecipientQueryVariables) {
+export function refetchCodegenGeneratedVlpStateFeeRecipientQuery(variables?: ICodegenGeneratedVlpStateFeeRecipientQueryVariables) {
       return { query: CodegenGeneratedVlpStateFeeRecipientDocument, variables: variables }
     }
 export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         euclid_fee_bps
@@ -5269,10 +5301,11 @@ export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpStateFeeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>) {
+export function useCodegenGeneratedVlpStateFeeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>(CodegenGeneratedVlpStateFeeDocument, options);
       }
@@ -5283,12 +5316,12 @@ export function useCodegenGeneratedVlpStateFeeLazyQuery(baseOptions?: Apollo.Laz
 export type CodegenGeneratedVlpStateFeeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeQuery>;
 export type CodegenGeneratedVlpStateFeeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeLazyQuery>;
 export type CodegenGeneratedVlpStateFeeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>;
-export function refetchCodegenGeneratedVlpStateFeeQuery(variables: ICodegenGeneratedVlpStateFeeQueryVariables) {
+export function refetchCodegenGeneratedVlpStateFeeQuery(variables?: ICodegenGeneratedVlpStateFeeQueryVariables) {
       return { query: CodegenGeneratedVlpStateFeeDocument, variables: variables }
     }
 export const CodegenGeneratedVlpStatePairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       pair {
         token_1
@@ -5312,10 +5345,11 @@ export const CodegenGeneratedVlpStatePairDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpStatePairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpStatePairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>) {
+export function useCodegenGeneratedVlpStatePairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>(CodegenGeneratedVlpStatePairDocument, options);
       }
@@ -5326,12 +5360,12 @@ export function useCodegenGeneratedVlpStatePairLazyQuery(baseOptions?: Apollo.La
 export type CodegenGeneratedVlpStatePairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePairQuery>;
 export type CodegenGeneratedVlpStatePairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePairLazyQuery>;
 export type CodegenGeneratedVlpStatePairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>;
-export function refetchCodegenGeneratedVlpStatePairQuery(variables: ICodegenGeneratedVlpStatePairQueryVariables) {
+export function refetchCodegenGeneratedVlpStatePairQuery(variables?: ICodegenGeneratedVlpStatePairQueryVariables) {
       return { query: CodegenGeneratedVlpStatePairDocument, variables: variables }
     }
 export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       admin
       fee {
@@ -5368,10 +5402,11 @@ export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpStateQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpStateQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>) {
+export function useCodegenGeneratedVlpStateQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>(CodegenGeneratedVlpStateDocument, options);
       }
@@ -5382,12 +5417,12 @@ export function useCodegenGeneratedVlpStateLazyQuery(baseOptions?: Apollo.LazyQu
 export type CodegenGeneratedVlpStateQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateQuery>;
 export type CodegenGeneratedVlpStateLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateLazyQuery>;
 export type CodegenGeneratedVlpStateQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>;
-export function refetchCodegenGeneratedVlpStateQuery(variables: ICodegenGeneratedVlpStateQueryVariables) {
+export function refetchCodegenGeneratedVlpStateQuery(variables?: ICodegenGeneratedVlpStateQueryVariables) {
       return { query: CodegenGeneratedVlpStateDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -5413,10 +5448,11 @@ export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = /*#
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>) {
+export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, options);
       }
@@ -5427,12 +5463,12 @@ export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQuer
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>;
-export function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables) {
+export function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables) {
       return { query: CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -5458,10 +5494,11 @@ export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = /*#__PURE
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>) {
+export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, options);
       }
@@ -5472,12 +5509,12 @@ export function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQuery(base
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>;
-export function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables) {
+export function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables) {
       return { query: CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -5503,10 +5540,11 @@ export const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = /*#__PU
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>) {
+export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>(CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, options);
       }
@@ -5517,12 +5555,12 @@ export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQuery(ba
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>;
-export function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables) {
+export function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables) {
       return { query: CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -5548,10 +5586,11 @@ export const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = /*#__PURE__*/
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>) {
+export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>(CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, options);
       }
@@ -5562,12 +5601,12 @@ export function useCodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQuery(baseOpti
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>;
-export function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables) {
+export function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables) {
       return { query: CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -5599,10 +5638,11 @@ export const CodegenGeneratedVlpTotalFeesCollectedDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpTotalFeesCollectedQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>) {
+export function useCodegenGeneratedVlpTotalFeesCollectedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>(CodegenGeneratedVlpTotalFeesCollectedDocument, options);
       }
@@ -5613,12 +5653,12 @@ export function useCodegenGeneratedVlpTotalFeesCollectedLazyQuery(baseOptions?: 
 export type CodegenGeneratedVlpTotalFeesCollectedQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>;
-export function refetchCodegenGeneratedVlpTotalFeesCollectedQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables) {
+export function refetchCodegenGeneratedVlpTotalFeesCollectedQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables) {
       return { query: CodegenGeneratedVlpTotalFeesCollectedDocument, variables: variables }
     }
 export const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String!, $vlp_total_fees_collected_per_denom_denom: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String, $pair: PairInput, $vlp_total_fees_collected_per_denom_denom: String!) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected_per_denom(denom: $vlp_total_fees_collected_per_denom_denom) {
       euclid_fees
       lp_fees
@@ -5640,6 +5680,7 @@ export const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = /*#__PURE__
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_total_fees_collected_per_denom_denom: // value for 'vlp_total_fees_collected_per_denom_denom'
  *   },
  * });
@@ -5659,8 +5700,8 @@ export function refetchCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery(variab
       return { query: CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument, variables: variables }
     }
 export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -5728,10 +5769,11 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
  * const { data, loading, error } = useCodegenGeneratedVlpQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export function useCodegenGeneratedVlpQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>) {
+export function useCodegenGeneratedVlpQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
         return Apollo.useQuery<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>(CodegenGeneratedVlpDocument, options);
       }
@@ -5742,6 +5784,6 @@ export function useCodegenGeneratedVlpLazyQuery(baseOptions?: Apollo.LazyQueryHo
 export type CodegenGeneratedVlpQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpQuery>;
 export type CodegenGeneratedVlpLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLazyQuery>;
 export type CodegenGeneratedVlpQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>;
-export function refetchCodegenGeneratedVlpQuery(variables: ICodegenGeneratedVlpQueryVariables) {
+export function refetchCodegenGeneratedVlpQuery(variables?: ICodegenGeneratedVlpQueryVariables) {
       return { query: CodegenGeneratedVlpDocument, variables: variables }
     }

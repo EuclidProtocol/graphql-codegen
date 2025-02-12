@@ -93,6 +93,7 @@ export type IChainConfig = {
   explorer_url: Scalars['String']['output'];
   factory_address: Scalars['String']['output'];
   logo: Scalars['String']['output'];
+  type: Scalars['String']['output'];
 };
 
 export type IChainDetail = {
@@ -546,7 +547,8 @@ export type IQueryFactoryArgs = {
 
 
 export type IQueryVlpArgs = {
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 };
 
 export type IRawQueryInput = {

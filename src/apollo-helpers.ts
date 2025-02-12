@@ -54,14 +54,15 @@ export type ChainAndFactoryInfoFieldPolicy = {
 	factory?: FieldPolicy<any> | FieldReadFunction<any>,
 	factory_chain_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'display_name' | 'explorer_url' | 'factory_address' | 'logo' | ChainConfigKeySpecifier)[];
+export type ChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'display_name' | 'explorer_url' | 'factory_address' | 'logo' | 'type' | ChainConfigKeySpecifier)[];
 export type ChainConfigFieldPolicy = {
 	chain_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
 	display_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	explorer_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
-	logo?: FieldPolicy<any> | FieldReadFunction<any>
+	logo?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ChainDetailKeySpecifier = ('factory' | 'factory_chain_id' | 'from_factory_channel' | 'from_hub_channel' | ChainDetailKeySpecifier)[];
 export type ChainDetailFieldPolicy = {

@@ -61,7 +61,7 @@ export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string }> } };
+export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string, type: string }> } };
 
 export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
   chains_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
@@ -69,7 +69,7 @@ export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedChainsChainConfigQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', chain_config: { __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string } } };
+export type ICodegenGeneratedChainsChainConfigQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', chain_config: { __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string, type: string } } };
 
 export type ICodegenGeneratedChainsContractsQueryVariables = Exact<{
   chains_contracts_chainUId?: InputMaybe<Scalars['String']['input']>;
@@ -683,7 +683,8 @@ export type ICodegenGeneratedVcoinQueryVariables = Exact<{ [key: string]: never;
 export type ICodegenGeneratedVcoinQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', state: { __typename?: 'ContractStateOfVcoin', admin: string, router: string } } };
 
 export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -692,7 +693,8 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPaginationQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number } } } };
 
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -701,7 +703,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pools: Array<{ __typename?: 'Pools', pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -710,7 +713,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsPoolsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pools: Array<{ __typename?: 'Pools', chain_uid: string, pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
   vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -719,35 +723,40 @@ export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
 export type ICodegenGeneratedVlpAllPoolsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', all_pools: { __typename?: 'PoolsResponse', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number }, pools: Array<{ __typename?: 'Pools', chain_uid: string, pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } }> } } };
 
 export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpLiquidityPairQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', liquidity: { __typename?: 'Liquidity', pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpLiquidityQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_pool_chain_uid: Scalars['String']['input'];
 }>;
 
@@ -755,70 +764,80 @@ export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
 export type ICodegenGeneratedVlpPoolQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', pool: { __typename?: 'Pool', lp_shares: string, reserve_1: string, reserve_2: string } } };
 
 export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStatePairQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
 export type ICodegenGeneratedVlpTotalFeesCollectedQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
   vlp_total_fees_collected_per_denom_denom: Scalars['String']['input'];
 }>;
 
@@ -826,7 +845,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', total_fees_collected_per_denom: { __typename?: 'TotalFeesPerDenomResponse', euclid_fees: string, lp_fees: string } } };
 
 export type ICodegenGeneratedVlpQueryVariables = Exact<{
-  contract: Scalars['String']['input'];
+  contract?: InputMaybe<Scalars['String']['input']>;
+  pair?: InputMaybe<IPairInput>;
 }>;
 
 
@@ -843,6 +863,7 @@ export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
       explorer_url
       factory_address
       logo
+      type
     }
   }
 }
@@ -860,6 +881,7 @@ export const CodegenGeneratedChainsChainConfigDocument = /*#__PURE__*/ gql`
       explorer_url
       factory_address
       logo
+      type
     }
   }
 }
@@ -2170,8 +2192,8 @@ export const CodegenGeneratedVcoinDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpAllPoolsPaginationDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -2183,8 +2205,8 @@ export const CodegenGeneratedVlpAllPoolsPaginationDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpAllPoolsPoolsPoolDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         pool {
@@ -2198,8 +2220,8 @@ export const CodegenGeneratedVlpAllPoolsPoolsPoolDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpAllPoolsPoolsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         chain_uid
@@ -2214,8 +2236,8 @@ export const CodegenGeneratedVlpAllPoolsPoolsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpAllPoolsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -2235,8 +2257,8 @@ export const CodegenGeneratedVlpAllPoolsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       recipient {
         address
@@ -2247,8 +2269,8 @@ export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -2261,8 +2283,8 @@ export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpLiquidityPairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -2273,8 +2295,8 @@ export const CodegenGeneratedVlpLiquidityPairDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpLiquidityDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -2288,8 +2310,8 @@ export const CodegenGeneratedVlpLiquidityDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpPoolDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_POOL($contract: String!, $vlp_pool_chain_uid: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_POOL($contract: String, $pair: PairInput, $vlp_pool_chain_uid: String!) {
+  vlp(contract: $contract, pair: $pair) {
     pool(chain_uid: $vlp_pool_chain_uid) {
       lp_shares
       reserve_1
@@ -2299,8 +2321,8 @@ export const CodegenGeneratedVlpPoolDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         recipient {
@@ -2313,8 +2335,8 @@ export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         euclid_fee_bps
@@ -2329,8 +2351,8 @@ export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpStatePairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       pair {
         token_1
@@ -2341,8 +2363,8 @@ export const CodegenGeneratedVlpStatePairDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_STATE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       admin
       fee {
@@ -2366,8 +2388,8 @@ export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -2380,8 +2402,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = /*#
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -2394,8 +2416,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = /*#__PURE
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -2408,8 +2430,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = /*#__PU
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -2422,8 +2444,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = /*#__PURE__*/
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -2442,8 +2464,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String!, $vlp_total_fees_collected_per_denom_denom: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String, $pair: PairInput, $vlp_total_fees_collected_per_denom_denom: String!) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected_per_denom(denom: $vlp_total_fees_collected_per_denom_denom) {
       euclid_fees
       lp_fees
@@ -2452,8 +2474,8 @@ export const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = /*#__PURE__
 }
     `;
 export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_VLP($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -2761,64 +2783,64 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_VCOIN(variables?: ICodegenGeneratedVcoinQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinQuery>(CodegenGeneratedVcoinDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN', 'query');
     },
-    CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION(variables: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPaginationQuery> {
+    CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION(variables?: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPaginationQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPaginationQuery>(CodegenGeneratedVlpAllPoolsPaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION', 'query');
     },
-    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL(variables: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery> {
+    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery>(CodegenGeneratedVlpAllPoolsPoolsPoolDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL', 'query');
     },
-    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS(variables: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsQuery> {
+    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS(variables?: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsPoolsQuery>(CodegenGeneratedVlpAllPoolsPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS', 'query');
     },
-    CODEGEN_GENERATED_VLP_ALL_POOLS(variables: ICodegenGeneratedVlpAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsQuery> {
+    CODEGEN_GENERATED_VLP_ALL_POOLS(variables?: ICodegenGeneratedVlpAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpAllPoolsQuery>(CodegenGeneratedVlpAllPoolsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_ALL_POOLS', 'query');
     },
-    CODEGEN_GENERATED_VLP_FEE_RECIPIENT(variables: ICodegenGeneratedVlpFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeRecipientQuery> {
+    CODEGEN_GENERATED_VLP_FEE_RECIPIENT(variables?: ICodegenGeneratedVlpFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeRecipientQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeRecipientQuery>(CodegenGeneratedVlpFeeRecipientDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_FEE_RECIPIENT', 'query');
     },
-    CODEGEN_GENERATED_VLP_FEE(variables: ICodegenGeneratedVlpFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeQuery> {
+    CODEGEN_GENERATED_VLP_FEE(variables?: ICodegenGeneratedVlpFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpFeeQuery>(CodegenGeneratedVlpFeeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_FEE', 'query');
     },
-    CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR(variables: ICodegenGeneratedVlpLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityPairQuery> {
+    CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR(variables?: ICodegenGeneratedVlpLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityPairQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityPairQuery>(CodegenGeneratedVlpLiquidityPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR', 'query');
     },
-    CODEGEN_GENERATED_VLP_LIQUIDITY(variables: ICodegenGeneratedVlpLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityQuery> {
+    CODEGEN_GENERATED_VLP_LIQUIDITY(variables?: ICodegenGeneratedVlpLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpLiquidityQuery>(CodegenGeneratedVlpLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_LIQUIDITY', 'query');
     },
     CODEGEN_GENERATED_VLP_POOL(variables: ICodegenGeneratedVlpPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpPoolQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpPoolQuery>(CodegenGeneratedVlpPoolDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_POOL', 'query');
     },
-    CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery> {
+    CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables?: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeRecipientQuery>(CodegenGeneratedVlpStateFeeRecipientDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT', 'query');
     },
-    CODEGEN_GENERATED_VLP_STATE_FEE(variables: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery> {
+    CODEGEN_GENERATED_VLP_STATE_FEE(variables?: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateFeeQuery>(CodegenGeneratedVlpStateFeeDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_FEE', 'query');
     },
-    CODEGEN_GENERATED_VLP_STATE_PAIR(variables: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery> {
+    CODEGEN_GENERATED_VLP_STATE_PAIR(variables?: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStatePairQuery>(CodegenGeneratedVlpStatePairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE_PAIR', 'query');
     },
-    CODEGEN_GENERATED_VLP_STATE(variables: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery> {
+    CODEGEN_GENERATED_VLP_STATE(variables?: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpStateQuery>(CodegenGeneratedVlpStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_STATE', 'query');
     },
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery> {
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS', 'query');
     },
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery> {
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES', 'query');
     },
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery> {
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS', 'query');
     },
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery> {
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>(CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES', 'query');
     },
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED(variables: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedQuery> {
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED(variables?: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedQuery>(CodegenGeneratedVlpTotalFeesCollectedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED', 'query');
     },
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM(variables: ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery>(CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM', 'query');
     },
-    CODEGEN_GENERATED_VLP(variables: ICodegenGeneratedVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpQuery> {
+    CODEGEN_GENERATED_VLP(variables?: ICodegenGeneratedVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVlpQuery>(CodegenGeneratedVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VLP', 'query');
     }
   };
