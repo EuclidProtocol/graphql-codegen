@@ -113,6 +113,7 @@ export type IChainConfig = {
     explorer_url: Scalars['String']['output'];
     factory_address: Scalars['String']['output'];
     logo: Scalars['String']['output'];
+    type: Scalars['String']['output'];
 };
 export type IChainDetail = {
     __typename?: 'ChainDetail';
@@ -363,6 +364,8 @@ export type IMetadata = {
     displayName: Scalars['String']['output'];
     image: Scalars['String']['output'];
     price: Scalars['String']['output'];
+    price_change_7d: Scalars['Float']['output'];
+    price_change_24h: Scalars['Float']['output'];
     tokenId: Scalars['String']['output'];
 };
 export type IMultiQuery = {
@@ -478,7 +481,8 @@ export type IQueryFactoryArgs = {
     chain_uid: Scalars['String']['input'];
 };
 export type IQueryVlpArgs = {
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 };
 export type IRawQueryInput = {
     rawQuery: Scalars['JSON']['input'];
@@ -649,7 +653,7 @@ export type ITokenQueries = {
     __typename?: 'TokenQueries';
     dex_metadata: IDexMetadata;
     get_all_faucets: Array<IFaucet>;
-    token_denoms: ITokenDenomWithTokenIdResponse;
+    token_denoms: Array<ITokenDenomWithTokenIdResponse>;
     token_liquidities: Array<ITokenLiquidity>;
     token_liquidity: Maybe<ITokenLiquidity>;
     token_metadata_by_id: Maybe<IMetadata>;
@@ -659,6 +663,7 @@ export type ITokenQueriesDexMetadataArgs = {
     dex: Scalars['String']['input'];
 };
 export type ITokenQueriesTokenDenomsArgs = {
+    chain_uid?: InputMaybe<Array<Scalars['String']['input']>>;
     denom?: InputMaybe<Scalars['String']['input']>;
     token_id?: InputMaybe<Scalars['String']['input']>;
 };

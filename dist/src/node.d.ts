@@ -93,6 +93,7 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            type: string;
         }>;
     };
 };
@@ -112,6 +113,7 @@ export type ICodegenGeneratedChainsChainConfigQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            type: string;
         };
     };
 };
@@ -1572,6 +1574,7 @@ export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
+    token_token_denoms_chain_uid?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
     token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
@@ -1579,7 +1582,7 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
-        token_denoms: {
+        token_denoms: Array<{
             __typename?: 'TokenDenomWithTokenIdResponse';
             denoms: Array<{
                 __typename?: 'TokenDenom';
@@ -1601,10 +1604,11 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
                     voucher: any;
                 };
             }>;
-        };
+        }>;
     };
 };
 export type ICodegenGeneratedTokenTokenDenomsQueryVariables = Exact<{
+    token_token_denoms_chain_uid?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
     token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
@@ -1612,7 +1616,7 @@ export type ICodegenGeneratedTokenTokenDenomsQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
-        token_denoms: {
+        token_denoms: Array<{
             __typename?: 'TokenDenomWithTokenIdResponse';
             token_id: string;
             denoms: Array<{
@@ -1635,7 +1639,7 @@ export type ICodegenGeneratedTokenTokenDenomsQuery = {
                     voucher: any;
                 };
             }>;
-        };
+        }>;
     };
 };
 export type ICodegenGeneratedTokenTokenLiquiditiesQueryVariables = Exact<{
@@ -1685,6 +1689,8 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             displayName: string;
             image: string;
             price: string;
+            price_change_7d: number;
+            price_change_24h: number;
             tokenId: string;
         };
     };
@@ -1707,6 +1713,8 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             displayName: string;
             image: string;
             price: string;
+            price_change_7d: number;
+            price_change_24h: number;
             tokenId: string;
         }>;
     };
@@ -1801,7 +1809,8 @@ export type ICodegenGeneratedVcoinQuery = {
     };
 };
 export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1821,7 +1830,8 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQuery = {
     };
 };
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1844,7 +1854,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsPoolQuery = {
     };
 };
 export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1868,7 +1879,8 @@ export type ICodegenGeneratedVlpAllPoolsPoolsQuery = {
     };
 };
 export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1898,7 +1910,8 @@ export type ICodegenGeneratedVlpAllPoolsQuery = {
     };
 };
 export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpFeeRecipientQuery = {
     __typename?: 'Query';
@@ -1915,7 +1928,8 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
     };
 };
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpFeeQuery = {
     __typename?: 'Query';
@@ -1934,7 +1948,8 @@ export type ICodegenGeneratedVlpFeeQuery = {
     };
 };
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpLiquidityPairQuery = {
     __typename?: 'Query';
@@ -1951,7 +1966,8 @@ export type ICodegenGeneratedVlpLiquidityPairQuery = {
     };
 };
 export type ICodegenGeneratedVlpLiquidityQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpLiquidityQuery = {
     __typename?: 'Query';
@@ -1971,7 +1987,8 @@ export type ICodegenGeneratedVlpLiquidityQuery = {
     };
 };
 export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_pool_chain_uid: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedVlpPoolQuery = {
@@ -1987,7 +2004,8 @@ export type ICodegenGeneratedVlpPoolQuery = {
     };
 };
 export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
     __typename?: 'Query';
@@ -2007,7 +2025,8 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
     };
 };
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateFeeQuery = {
     __typename?: 'Query';
@@ -2029,7 +2048,8 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
     };
 };
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStatePairQuery = {
     __typename?: 'Query';
@@ -2046,7 +2066,8 @@ export type ICodegenGeneratedVlpStatePairQuery = {
     };
 };
 export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateQuery = {
     __typename?: 'Query';
@@ -2078,7 +2099,8 @@ export type ICodegenGeneratedVlpStateQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = {
     __typename?: 'Query';
@@ -2098,7 +2120,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = {
     __typename?: 'Query';
@@ -2118,7 +2141,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = {
     __typename?: 'Query';
@@ -2138,7 +2162,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = {
     __typename?: 'Query';
@@ -2158,7 +2183,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedQuery = {
     __typename?: 'Query';
@@ -2186,7 +2212,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedQuery = {
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_total_fees_collected_per_denom_denom: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = {
@@ -2201,7 +2228,8 @@ export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = {
     };
 };
 export type ICodegenGeneratedVlpQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpQuery = {
     __typename?: 'Query';
@@ -2458,25 +2486,25 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES(variables?: ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceBalancesQuery>;
     CODEGEN_GENERATED_VCOIN_USER_BALANCE(variables?: ICodegenGeneratedVcoinUserBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceQuery>;
     CODEGEN_GENERATED_VCOIN(variables?: ICodegenGeneratedVcoinQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinQuery>;
-    CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION(variables: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPaginationQuery>;
-    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL(variables: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery>;
-    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS(variables: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsQuery>;
-    CODEGEN_GENERATED_VLP_ALL_POOLS(variables: ICodegenGeneratedVlpAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsQuery>;
-    CODEGEN_GENERATED_VLP_FEE_RECIPIENT(variables: ICodegenGeneratedVlpFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeRecipientQuery>;
-    CODEGEN_GENERATED_VLP_FEE(variables: ICodegenGeneratedVlpFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeQuery>;
-    CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR(variables: ICodegenGeneratedVlpLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityPairQuery>;
-    CODEGEN_GENERATED_VLP_LIQUIDITY(variables: ICodegenGeneratedVlpLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityQuery>;
+    CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION(variables?: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPaginationQuery>;
+    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery>;
+    CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS(variables?: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsPoolsQuery>;
+    CODEGEN_GENERATED_VLP_ALL_POOLS(variables?: ICodegenGeneratedVlpAllPoolsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpAllPoolsQuery>;
+    CODEGEN_GENERATED_VLP_FEE_RECIPIENT(variables?: ICodegenGeneratedVlpFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeRecipientQuery>;
+    CODEGEN_GENERATED_VLP_FEE(variables?: ICodegenGeneratedVlpFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpFeeQuery>;
+    CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR(variables?: ICodegenGeneratedVlpLiquidityPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityPairQuery>;
+    CODEGEN_GENERATED_VLP_LIQUIDITY(variables?: ICodegenGeneratedVlpLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpLiquidityQuery>;
     CODEGEN_GENERATED_VLP_POOL(variables: ICodegenGeneratedVlpPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpPoolQuery>;
-    CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery>;
-    CODEGEN_GENERATED_VLP_STATE_FEE(variables: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery>;
-    CODEGEN_GENERATED_VLP_STATE_PAIR(variables: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery>;
-    CODEGEN_GENERATED_VLP_STATE(variables: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery>;
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>;
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>;
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>;
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>;
-    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED(variables: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedQuery>;
+    CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables?: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery>;
+    CODEGEN_GENERATED_VLP_STATE_FEE(variables?: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery>;
+    CODEGEN_GENERATED_VLP_STATE_PAIR(variables?: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery>;
+    CODEGEN_GENERATED_VLP_STATE(variables?: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery>;
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>;
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>;
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>;
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>;
+    CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED(variables?: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedQuery>;
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM(variables: ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery>;
-    CODEGEN_GENERATED_VLP(variables: ICodegenGeneratedVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpQuery>;
+    CODEGEN_GENERATED_VLP(variables?: ICodegenGeneratedVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpQuery>;
 };
 export type Sdk = ReturnType<typeof getSdk>;
