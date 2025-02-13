@@ -400,6 +400,8 @@ export type IMetadata = {
   displayName: Scalars['String']['output'];
   image: Scalars['String']['output'];
   price: Scalars['String']['output'];
+  price_change_7d: Scalars['Float']['output'];
+  price_change_24h: Scalars['Float']['output'];
   tokenId: Scalars['String']['output'];
 };
 
@@ -761,7 +763,7 @@ export type ITokenQueries = {
   __typename?: 'TokenQueries';
   dex_metadata: IDexMetadata;
   get_all_faucets: Array<IFaucet>;
-  token_denoms: ITokenDenomWithTokenIdResponse;
+  token_denoms: Array<ITokenDenomWithTokenIdResponse>;
   token_liquidities: Array<ITokenLiquidity>;
   token_liquidity: Maybe<ITokenLiquidity>;
   token_metadata_by_id: Maybe<IMetadata>;
@@ -775,6 +777,7 @@ export type ITokenQueriesDexMetadataArgs = {
 
 
 export type ITokenQueriesTokenDenomsArgs = {
+  chain_uid?: InputMaybe<Array<Scalars['String']['input']>>;
   denom?: InputMaybe<Scalars['String']['input']>;
   token_id?: InputMaybe<Scalars['String']['input']>;
 };

@@ -259,7 +259,7 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
 	token_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type MetadataKeySpecifier = ('coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'tokenId' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
 	coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -267,6 +267,8 @@ export type MetadataFieldPolicy = {
 	displayName?: FieldPolicy<any> | FieldReadFunction<any>,
 	image?: FieldPolicy<any> | FieldReadFunction<any>,
 	price?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_change_7d?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_change_24h?: FieldPolicy<any> | FieldReadFunction<any>,
 	tokenId?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type MultiQueryKeySpecifier = ('raw_queries' | 'smart_queries' | MultiQueryKeySpecifier)[];
