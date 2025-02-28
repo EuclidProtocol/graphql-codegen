@@ -79,6 +79,38 @@ export type ICodegenGeneratedChainsContractsQueryVariables = Exact<{
 
 export type ICodegenGeneratedChainsContractsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', contracts: Array<{ __typename?: 'Contract', ChainUID: string, ContractAddress: string, Type: string }> } };
 
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables = Exact<{
+  chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+  chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', evm_chain_config: { __typename?: 'EVMChainConfig', native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string } } } };
+
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables = Exact<{
+  chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+  chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', evm_chain_config: { __typename?: 'EVMChainConfig', rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } } } };
+
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables = Exact<{
+  chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+  chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', evm_chain_config: { __typename?: 'EVMChainConfig', rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } } } };
+
+export type ICodegenGeneratedChainsEvmChainConfigQueryVariables = Exact<{
+  chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+  chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+
+
+export type ICodegenGeneratedChainsEvmChainConfigQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', evm_chain_config: { __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } } } };
+
 export type ICodegenGeneratedChainsKeplrConfigBech32ConfigQueryVariables = Exact<{
   chains_keplr_config_chain_id?: InputMaybe<Scalars['String']['input']>;
   chains_keplr_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -895,6 +927,79 @@ export const CodegenGeneratedChainsContractsDocument = /*#__PURE__*/ gql`
       ChainUID
       ContractAddress
       Type
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsEvmChainConfigDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
     }
   }
 }
@@ -2553,6 +2658,18 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_CHAINS_CONTRACTS(variables?: ICodegenGeneratedChainsContractsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsContractsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsContractsQuery>(CodegenGeneratedChainsContractsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_CONTRACTS', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY(variables?: ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery>(CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery>(CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery>(CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG(variables?: ICodegenGeneratedChainsEvmChainConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsEvmChainConfigQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsEvmChainConfigQuery>(CodegenGeneratedChainsEvmChainConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG', 'query');
     },
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG(variables?: ICodegenGeneratedChainsKeplrConfigBech32ConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery>(CodegenGeneratedChainsKeplrConfigBech32ConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG', 'query');

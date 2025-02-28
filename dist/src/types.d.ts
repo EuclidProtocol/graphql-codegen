@@ -136,6 +136,7 @@ export type IChains = {
     all_chains: Array<IChainConfig>;
     chain_config: Maybe<IChainConfig>;
     contracts: Array<IContract>;
+    evm_chain_config: Maybe<IEvmChainConfig>;
     keplr_config: Maybe<IKeplr>;
     router_config: Maybe<IRouterConfig>;
 };
@@ -149,6 +150,10 @@ export type IChainsChainConfigArgs = {
 export type IChainsContractsArgs = {
     chainUId?: InputMaybe<Scalars['String']['input']>;
     type?: InputMaybe<Scalars['String']['input']>;
+};
+export type IChainsEvmChainConfigArgs = {
+    chain_id?: InputMaybe<Scalars['String']['input']>;
+    chain_uid?: InputMaybe<Scalars['String']['input']>;
 };
 export type IChainsKeplrConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
@@ -240,6 +245,15 @@ export type IDexMetadata = {
     dex_name: Scalars['String']['output'];
     fg_color: Scalars['String']['output'];
     logo: Scalars['String']['output'];
+};
+export type IEvmChainConfig = {
+    __typename?: 'EVMChainConfig';
+    chain_id: Maybe<Scalars['String']['output']>;
+    chain_uid: Maybe<Scalars['String']['output']>;
+    explorer_url: Maybe<Scalars['String']['output']>;
+    name: Scalars['String']['output'];
+    native_currency: INativeCurrency;
+    rpc_urls: IRpcUrls;
 };
 export type IEscrow = {
     __typename?: 'Escrow';
@@ -390,6 +404,12 @@ export type INative = {
     __typename?: 'Native';
     denom: Maybe<Scalars['String']['output']>;
 };
+export type INativeCurrency = {
+    __typename?: 'NativeCurrency';
+    decimals: Scalars['Int']['output'];
+    name: Scalars['String']['output'];
+    symbol: Scalars['String']['output'];
+};
 export type INativeToken = {
     __typename?: 'NativeToken';
     denom: Scalars['String']['output'];
@@ -483,6 +503,14 @@ export type IQueryFactoryArgs = {
 export type IQueryVlpArgs = {
     contract?: InputMaybe<Scalars['String']['input']>;
     pair?: InputMaybe<IPairInput>;
+};
+export type IRpcConfig = {
+    __typename?: 'RPCConfig';
+    http: Array<Scalars['String']['output']>;
+};
+export type IRpcUrls = {
+    __typename?: 'RPCUrls';
+    default: IRpcConfig;
 };
 export type IRawQueryInput = {
     rawQuery: Scalars['JSON']['input'];

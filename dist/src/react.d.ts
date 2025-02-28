@@ -132,6 +132,95 @@ export type ICodegenGeneratedChainsContractsQuery = {
         }>;
     };
 };
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                name: string;
+                symbol: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        };
+    };
+};
 export type ICodegenGeneratedChainsKeplrConfigBech32ConfigQueryVariables = Exact<{
     chains_keplr_config_chain_id?: InputMaybe<Scalars['String']['input']>;
     chains_keplr_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -2401,6 +2490,150 @@ export declare function refetchCodegenGeneratedChainsContractsQuery(variables?: 
     variables: Exact<{
         chains_contracts_chainUId?: InputMaybe<Scalars["String"]["input"]>;
         chains_contracts_type?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(variables?: ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigQuery>;
+export type CodegenGeneratedChainsEvmChainConfigLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigQuery(variables?: ICodegenGeneratedChainsEvmChainConfigQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedChainsKeplrConfigBech32ConfigDocument: Apollo.DocumentNode;

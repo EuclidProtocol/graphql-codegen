@@ -80,11 +80,12 @@ export type ChainTypeKeySpecifier = ('ibc' | ChainTypeKeySpecifier)[];
 export type ChainTypeFieldPolicy = {
 	ibc?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ChainsKeySpecifier = ('all_chains' | 'chain_config' | 'contracts' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
+export type ChainsKeySpecifier = ('all_chains' | 'chain_config' | 'contracts' | 'evm_chain_config' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
 export type ChainsFieldPolicy = {
 	all_chains?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	contracts?: FieldPolicy<any> | FieldReadFunction<any>,
+	evm_chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	keplr_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	router_config?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -163,6 +164,15 @@ export type DexMetadataFieldPolicy = {
 	dex_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	fg_color?: FieldPolicy<any> | FieldReadFunction<any>,
 	logo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EVMChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'explorer_url' | 'name' | 'native_currency' | 'rpc_urls' | EVMChainConfigKeySpecifier)[];
+export type EVMChainConfigFieldPolicy = {
+	chain_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	explorer_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	native_currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	rpc_urls?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type EscrowKeySpecifier = ('balance' | 'chain_id' | 'chain_uid' | EscrowKeySpecifier)[];
 export type EscrowFieldPolicy = {
@@ -287,6 +297,12 @@ export type NativeKeySpecifier = ('denom' | NativeKeySpecifier)[];
 export type NativeFieldPolicy = {
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type NativeCurrencyKeySpecifier = ('decimals' | 'name' | 'symbol' | NativeCurrencyKeySpecifier)[];
+export type NativeCurrencyFieldPolicy = {
+	decimals?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	symbol?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type NativeTokenKeySpecifier = ('denom' | NativeTokenKeySpecifier)[];
 export type NativeTokenFieldPolicy = {
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
@@ -349,6 +365,14 @@ export type QueryFieldPolicy = {
 	token?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RPCConfigKeySpecifier = ('http' | RPCConfigKeySpecifier)[];
+export type RPCConfigFieldPolicy = {
+	http?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RPCUrlsKeySpecifier = ('default' | RPCUrlsKeySpecifier)[];
+export type RPCUrlsFieldPolicy = {
+	default?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type RawQueryResponseKeySpecifier = ('results' | RawQueryResponseKeySpecifier)[];
 export type RawQueryResponseFieldPolicy = {
@@ -643,6 +667,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | DexMetadataKeySpecifier | (() => undefined | DexMetadataKeySpecifier),
 		fields?: DexMetadataFieldPolicy,
 	},
+	EVMChainConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EVMChainConfigKeySpecifier | (() => undefined | EVMChainConfigKeySpecifier),
+		fields?: EVMChainConfigFieldPolicy,
+	},
 	Escrow?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | EscrowKeySpecifier | (() => undefined | EscrowKeySpecifier),
 		fields?: EscrowFieldPolicy,
@@ -715,6 +743,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | NativeKeySpecifier | (() => undefined | NativeKeySpecifier),
 		fields?: NativeFieldPolicy,
 	},
+	NativeCurrency?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NativeCurrencyKeySpecifier | (() => undefined | NativeCurrencyKeySpecifier),
+		fields?: NativeCurrencyFieldPolicy,
+	},
 	NativeToken?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | NativeTokenKeySpecifier | (() => undefined | NativeTokenKeySpecifier),
 		fields?: NativeTokenFieldPolicy,
@@ -758,6 +790,14 @@ export type StrictTypedTypePolicies = {
 	Query?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | QueryKeySpecifier | (() => undefined | QueryKeySpecifier),
 		fields?: QueryFieldPolicy,
+	},
+	RPCConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RPCConfigKeySpecifier | (() => undefined | RPCConfigKeySpecifier),
+		fields?: RPCConfigFieldPolicy,
+	},
+	RPCUrls?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RPCUrlsKeySpecifier | (() => undefined | RPCUrlsKeySpecifier),
+		fields?: RPCUrlsFieldPolicy,
 	},
 	RawQueryResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | RawQueryResponseKeySpecifier | (() => undefined | RawQueryResponseKeySpecifier),
