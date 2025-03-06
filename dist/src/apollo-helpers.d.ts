@@ -269,8 +269,9 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
     token_address?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type MetadataKeySpecifier = ('coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
+    chain_uids?: FieldPolicy<any> | FieldReadFunction<any>;
     coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>;
     description?: FieldPolicy<any> | FieldReadFunction<any>;
     dex?: FieldPolicy<any> | FieldReadFunction<any>;

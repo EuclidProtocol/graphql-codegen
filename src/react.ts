@@ -668,7 +668,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
   token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
@@ -678,7 +678,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4695,6 +4695,7 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
       token_id: $token_token_metadata_by_id_token_id
       verified: $token_token_metadata_by_id_verified
     ) {
+      chain_uids
       coinDecimal
       description
       dex
@@ -4749,6 +4750,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
       offset: $token_token_metadatas_offset
       verified: $token_token_metadatas_verified
     ) {
+      chain_uids
       coinDecimal
       description
       dex

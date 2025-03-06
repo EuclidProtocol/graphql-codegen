@@ -3843,6 +3843,7 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
       token_id: $token_token_metadata_by_id_token_id
       verified: $token_token_metadata_by_id_verified
     ) {
+      chain_uids
       coinDecimal
       description
       dex
@@ -3893,6 +3894,7 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
       offset: $token_token_metadatas_offset
       verified: $token_token_metadatas_verified
     ) {
+      chain_uids
       coinDecimal
       description
       dex

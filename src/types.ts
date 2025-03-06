@@ -411,6 +411,7 @@ export type ILpTokenAddr = {
 
 export type IMetadata = {
   __typename?: 'Metadata';
+  chain_uids: Maybe<Array<Scalars['String']['output']>>;
   coinDecimal: Scalars['Int']['output'];
   description: Scalars['String']['output'];
   dex: Maybe<Array<Scalars['String']['output']>>;
