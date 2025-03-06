@@ -671,6 +671,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
 export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+  token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
   token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
@@ -4742,9 +4743,10 @@ export function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables: IC
       return { query: CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables }
     }
 export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
+      chain_uids: $token_token_metadatas_chain_uids
       dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
@@ -4777,6 +4779,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uids: // value for 'token_token_metadatas_chain_uids'
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'

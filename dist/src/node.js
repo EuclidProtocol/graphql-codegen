@@ -1342,9 +1342,10 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.defau
 }
     `;
 exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
+      chain_uids: $token_token_metadatas_chain_uids
       dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset

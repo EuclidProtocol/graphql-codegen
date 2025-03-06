@@ -1786,6 +1786,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;

@@ -836,6 +836,7 @@ export type ITokenQueriesTokenMetadataByIdArgs = {
 
 
 export type ITokenQueriesTokenMetadatasArgs = {
+  chain_uids?: InputMaybe<Array<Scalars['String']['input']>>;
   dex?: InputMaybe<Array<Scalars['String']['input']>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;

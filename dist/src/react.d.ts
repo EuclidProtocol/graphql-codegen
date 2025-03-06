@@ -1785,6 +1785,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
@@ -5252,6 +5253,7 @@ export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.Documen
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uids: // value for 'token_token_metadatas_chain_uids'
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
@@ -5260,12 +5262,14 @@ export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.Documen
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadatasQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadatasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
@@ -5277,6 +5281,7 @@ export type CodegenGeneratedTokenTokenMetadatasQueryResult = Apollo.QueryResult<
 export declare function refetchCodegenGeneratedTokenTokenMetadatasQuery(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
+        token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
         token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
         token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
