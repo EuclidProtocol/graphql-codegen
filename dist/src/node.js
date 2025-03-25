@@ -1217,7 +1217,9 @@ exports.CodegenGeneratedTokenDexMetadataDocument = (0, graphql_tag_1.default) `
   token {
     dex_metadata(dex: $token_dex_metadata_dex) {
       bg_color
+      chain_uid
       dex_name
+      display_name
       fg_color
       logo
     }
@@ -1337,6 +1339,8 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.defau
       price_change_7d
       price_change_24h
       tokenId
+      total_volume
+      total_volume_24h
     }
   }
 }
@@ -1361,6 +1365,8 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default)
       price_change_7d
       price_change_24h
       tokenId
+      total_volume
+      total_volume_24h
     }
   }
 }

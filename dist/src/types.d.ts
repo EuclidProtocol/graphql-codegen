@@ -242,7 +242,9 @@ export type IDenomination = {
 export type IDexMetadata = {
     __typename?: 'DexMetadata';
     bg_color: Scalars['String']['output'];
+    chain_uid: Scalars['String']['output'];
     dex_name: Scalars['String']['output'];
+    display_name: Scalars['String']['output'];
     fg_color: Scalars['String']['output'];
     logo: Scalars['String']['output'];
 };
@@ -382,6 +384,8 @@ export type IMetadata = {
     price_change_7d: Scalars['Float']['output'];
     price_change_24h: Scalars['Float']['output'];
     tokenId: Scalars['String']['output'];
+    total_volume: Scalars['Float']['output'];
+    total_volume_24h: Scalars['Float']['output'];
 };
 export type IMultiQuery = {
     __typename?: 'MultiQuery';

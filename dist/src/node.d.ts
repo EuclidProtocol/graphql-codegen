@@ -1642,7 +1642,9 @@ export type ICodegenGeneratedTokenDexMetadataQuery = {
         dex_metadata: {
             __typename?: 'DexMetadata';
             bg_color: string;
+            chain_uid: string;
             dex_name: string;
+            display_name: string;
             fg_color: string;
             logo: string;
         };
@@ -1782,6 +1784,8 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             price_change_7d: number;
             price_change_24h: number;
             tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
         };
     };
 };
@@ -1808,6 +1812,8 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             price_change_7d: number;
             price_change_24h: number;
             tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
         }>;
     };
 };

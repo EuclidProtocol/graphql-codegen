@@ -158,10 +158,12 @@ export type DenominationFieldPolicy = {
 	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type DexMetadataKeySpecifier = ('bg_color' | 'dex_name' | 'fg_color' | 'logo' | DexMetadataKeySpecifier)[];
+export type DexMetadataKeySpecifier = ('bg_color' | 'chain_uid' | 'dex_name' | 'display_name' | 'fg_color' | 'logo' | DexMetadataKeySpecifier)[];
 export type DexMetadataFieldPolicy = {
 	bg_color?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
 	dex_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	display_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	fg_color?: FieldPolicy<any> | FieldReadFunction<any>,
 	logo?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -269,7 +271,7 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
 	token_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
 	chain_uids?: FieldPolicy<any> | FieldReadFunction<any>,
 	coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -280,7 +282,9 @@ export type MetadataFieldPolicy = {
 	price?: FieldPolicy<any> | FieldReadFunction<any>,
 	price_change_7d?: FieldPolicy<any> | FieldReadFunction<any>,
 	price_change_24h?: FieldPolicy<any> | FieldReadFunction<any>,
-	tokenId?: FieldPolicy<any> | FieldReadFunction<any>
+	tokenId?: FieldPolicy<any> | FieldReadFunction<any>,
+	total_volume?: FieldPolicy<any> | FieldReadFunction<any>,
+	total_volume_24h?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type MultiQueryKeySpecifier = ('raw_queries' | 'smart_queries' | MultiQueryKeySpecifier)[];
 export type MultiQueryFieldPolicy = {
