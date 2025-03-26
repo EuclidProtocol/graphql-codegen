@@ -800,13 +800,20 @@ export type ITokenPairWithLiquidityResponse = {
 
 export type ITokenQueries = {
   __typename?: 'TokenQueries';
+  all_dexes: Array<IDexMetadata>;
   dex_metadata: IDexMetadata;
   get_all_faucets: Array<IFaucet>;
   token_denoms: Array<ITokenDenomWithTokenIdResponse>;
   token_liquidities: Array<ITokenLiquidity>;
   token_liquidity: Maybe<ITokenLiquidity>;
-  token_metadata_by_id: Maybe<IMetadata>;
+  token_metadata_by_id: Array<IMetadata>;
   token_metadatas: Array<Maybe<IMetadata>>;
+};
+
+
+export type ITokenQueriesAllDexesArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -834,7 +841,7 @@ export type ITokenQueriesTokenLiquidityArgs = {
 
 
 export type ITokenQueriesTokenMetadataByIdArgs = {
-  token_id: Scalars['String']['input'];
+  token_ids: Array<Scalars['String']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 

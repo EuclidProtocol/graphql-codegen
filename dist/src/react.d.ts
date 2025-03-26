@@ -1631,6 +1631,25 @@ export type ICodegenGeneratedRouterQuery = {
         };
     };
 };
+export type ICodegenGeneratedTokenAllDexesQueryVariables = Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars['Int']['input']>;
+    token_all_dexes_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedTokenAllDexesQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        all_dexes: Array<{
+            __typename?: 'DexMetadata';
+            bg_color: string;
+            chain_uid: string;
+            dex_name: string;
+            display_name: string;
+            fg_color: string;
+            logo: string;
+        }>;
+    };
+};
 export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
     token_dex_metadata_dex: Scalars['String']['input'];
 }>;
@@ -1764,14 +1783,14 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
-    token_token_metadata_by_id_token_id: Scalars['String']['input'];
+    token_token_metadata_by_id_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
     token_token_metadata_by_id_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
-        token_metadata_by_id: {
+        token_metadata_by_id: Array<{
             __typename?: 'Metadata';
             chain_uids: Array<string>;
             coinDecimal: number;
@@ -1785,7 +1804,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             tokenId: string;
             total_volume: number;
             total_volume_24h: number;
-        };
+        }>;
     };
 };
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
@@ -4999,6 +5018,42 @@ export declare function refetchCodegenGeneratedRouterQuery(variables?: ICodegenG
         [key: string]: never;
     }> | undefined;
 };
+export declare const CodegenGeneratedTokenAllDexesDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenAllDexesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenAllDexesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenAllDexesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenAllDexesQuery({
+ *   variables: {
+ *      token_all_dexes_limit: // value for 'token_all_dexes_limit'
+ *      token_all_dexes_offset: // value for 'token_all_dexes_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenAllDexesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenAllDexesQuery, Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedTokenAllDexesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenAllDexesQuery, Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedTokenAllDexesQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenAllDexesQuery>;
+export type CodegenGeneratedTokenAllDexesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenAllDexesLazyQuery>;
+export type CodegenGeneratedTokenAllDexesQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>;
+export declare function refetchCodegenGeneratedTokenAllDexesQuery(variables?: ICodegenGeneratedTokenAllDexesQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
 export declare const CodegenGeneratedTokenDexMetadataDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedTokenDexMetadataQuery__
@@ -5223,17 +5278,17 @@ export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: Apollo.Docu
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
- *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
+ *      token_token_metadata_by_id_token_ids: // value for 'token_token_metadata_by_id_token_ids'
  *      token_token_metadata_by_id_verified: // value for 'token_token_metadata_by_id_verified'
  *   },
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadataByIdQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
-    token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+    token_token_metadata_by_id_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
     token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadataByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
-    token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+    token_token_metadata_by_id_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
     token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export type CodegenGeneratedTokenTokenMetadataByIdQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadataByIdQuery>;
@@ -5242,7 +5297,7 @@ export type CodegenGeneratedTokenTokenMetadataByIdQueryResult = Apollo.QueryResu
 export declare function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+        token_token_metadata_by_id_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
         token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     }>;
 };

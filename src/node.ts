@@ -617,6 +617,14 @@ export type ICodegenGeneratedRouterQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedRouterQuery = { __typename?: 'Query', router: { __typename?: 'Router', all_chains: Array<{ __typename?: 'Chain', chain_id: string, chain_uid: string, factory_address: string }>, state: { __typename?: 'ContractStateOfRouter', admin: string, virtual_balance_address: string, vlp_code_id: number } } };
 
+export type ICodegenGeneratedTokenAllDexesQueryVariables = Exact<{
+  token_all_dexes_limit?: InputMaybe<Scalars['Int']['input']>;
+  token_all_dexes_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedTokenAllDexesQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', all_dexes: Array<{ __typename?: 'DexMetadata', bg_color: string, chain_uid: string, dex_name: string, display_name: string, fg_color: string, logo: string }> } };
+
 export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
   token_dex_metadata_dex: Scalars['String']['input'];
 }>;
@@ -663,12 +671,12 @@ export type ICodegenGeneratedTokenTokenLiquidityQueryVariables = Exact<{
 export type ICodegenGeneratedTokenTokenLiquidityQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_liquidity: { __typename?: 'TokenLiquidity', token: string, total_liquidity: string, total_volume: string } } };
 
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
-  token_token_metadata_by_id_token_id: Scalars['String']['input'];
+  token_token_metadata_by_id_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
   token_token_metadata_by_id_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string, total_volume: number, total_volume_24h: number } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
   token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
@@ -2092,6 +2100,20 @@ export const CodegenGeneratedRouterDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedTokenAllDexesDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_TOKEN_ALL_DEXES($token_all_dexes_limit: Int, $token_all_dexes_offset: Int) {
+  token {
+    all_dexes(limit: $token_all_dexes_limit, offset: $token_all_dexes_offset) {
+      bg_color
+      chain_uid
+      dex_name
+      display_name
+      fg_color
+      logo
+    }
+  }
+}
+    `;
 export const CodegenGeneratedTokenDexMetadataDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_TOKEN_DEX_METADATA($token_dex_metadata_dex: String!) {
   token {
@@ -2203,10 +2225,10 @@ export const CodegenGeneratedTokenTokenLiquidityDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!, $token_token_metadata_by_id_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_ids: [String!]!, $token_token_metadata_by_id_verified: Boolean) {
   token {
     token_metadata_by_id(
-      token_id: $token_token_metadata_by_id_token_id
+      token_ids: $token_token_metadata_by_id_token_ids
       verified: $token_token_metadata_by_id_verified
     ) {
       chain_uids
@@ -2875,6 +2897,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterQuery>(CodegenGeneratedRouterDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER', 'query');
+    },
+    CODEGEN_GENERATED_TOKEN_ALL_DEXES(variables?: ICodegenGeneratedTokenAllDexesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenAllDexesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenAllDexesQuery>(CodegenGeneratedTokenAllDexesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_ALL_DEXES', 'query');
     },
     CODEGEN_GENERATED_TOKEN_DEX_METADATA(variables: ICodegenGeneratedTokenDexMetadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenDexMetadataQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedTokenDexMetadataQuery>(CodegenGeneratedTokenDexMetadataDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_TOKEN_DEX_METADATA', 'query');
