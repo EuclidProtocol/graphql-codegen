@@ -1784,14 +1784,42 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
     };
 };
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
-    token_token_metadata_by_id_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
+    token_token_metadata_by_id_token_id: Scalars['String']['input'];
     token_token_metadata_by_id_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
-        token_metadata_by_id: Array<{
+        token_metadata_by_id: {
+            __typename?: 'Metadata';
+            chain_uids: Array<string>;
+            coinDecimal: number;
+            description: string;
+            dex: Array<string>;
+            displayName: string;
+            image: string;
+            price: string;
+            price_change_7d: number;
+            price_change_24h: number;
+            tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
+        };
+    };
+};
+export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+export type ICodegenGeneratedTokenTokenMetadatasQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        token_metadatas: Array<{
             __typename?: 'Metadata';
             chain_uids: Array<string>;
             coinDecimal: number;
@@ -1808,18 +1836,15 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
         }>;
     };
 };
-export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
-    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
-    token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
-    token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
-    token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
-    token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
+export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
+    token_tokens_metadata_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
+    token_tokens_metadata_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
-export type ICodegenGeneratedTokenTokenMetadatasQuery = {
+export type ICodegenGeneratedTokenTokensMetadataQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
-        token_metadatas: Array<{
+        tokens_metadata: Array<{
             __typename?: 'Metadata';
             chain_uids: Array<string>;
             coinDecimal: number;
@@ -2498,6 +2523,7 @@ export declare const CodegenGeneratedTokenTokenLiquiditiesDocument: import("grap
 export declare const CodegenGeneratedTokenTokenLiquidityDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenMetadatasDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenTokensMetadataDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVcoinBalanceDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVcoinStateDocument: import("graphql").DocumentNode;
@@ -2607,6 +2633,7 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY(variables: ICodegenGeneratedTokenTokenLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenLiquidityQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID(variables: ICodegenGeneratedTokenTokenMetadataByIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadataByIdQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenMetadatasQuery>;
+    CODEGEN_GENERATED_TOKEN_TOKENS_METADATA(variables: ICodegenGeneratedTokenTokensMetadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokensMetadataQuery>;
     CODEGEN_GENERATED_TOKEN(variables?: ICodegenGeneratedTokenQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenQuery>;
     CODEGEN_GENERATED_VCOIN_BALANCE(variables?: ICodegenGeneratedVcoinBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinBalanceQuery>;
     CODEGEN_GENERATED_VCOIN_STATE(variables?: ICodegenGeneratedVcoinStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinStateQuery>;

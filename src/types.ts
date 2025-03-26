@@ -806,8 +806,9 @@ export type ITokenQueries = {
   token_denoms: Array<ITokenDenomWithTokenIdResponse>;
   token_liquidities: Array<ITokenLiquidity>;
   token_liquidity: Maybe<ITokenLiquidity>;
-  token_metadata_by_id: Array<IMetadata>;
+  token_metadata_by_id: IMetadata;
   token_metadatas: Array<Maybe<IMetadata>>;
+  tokens_metadata: Array<IMetadata>;
 };
 
 
@@ -841,7 +842,7 @@ export type ITokenQueriesTokenLiquidityArgs = {
 
 
 export type ITokenQueriesTokenMetadataByIdArgs = {
-  token_ids: Array<Scalars['String']['input']>;
+  token_id: Scalars['String']['input'];
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -851,6 +852,12 @@ export type ITokenQueriesTokenMetadatasArgs = {
   dex?: InputMaybe<Array<Scalars['String']['input']>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+  verified?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type ITokenQueriesTokensMetadataArgs = {
+  token_ids: Array<Scalars['String']['input']>;
   verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 

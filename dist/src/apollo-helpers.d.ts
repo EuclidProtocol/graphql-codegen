@@ -488,7 +488,7 @@ export type TokenPairWithLiquidityResponseFieldPolicy = {
     total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     vlp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type TokenQueriesKeySpecifier = ('all_dexes' | 'dex_metadata' | 'get_all_faucets' | 'token_denoms' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
+export type TokenQueriesKeySpecifier = ('all_dexes' | 'dex_metadata' | 'get_all_faucets' | 'token_denoms' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | 'tokens_metadata' | TokenQueriesKeySpecifier)[];
 export type TokenQueriesFieldPolicy = {
     all_dexes?: FieldPolicy<any> | FieldReadFunction<any>;
     dex_metadata?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -498,6 +498,7 @@ export type TokenQueriesFieldPolicy = {
     token_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadata_by_id?: FieldPolicy<any> | FieldReadFunction<any>;
     token_metadatas?: FieldPolicy<any> | FieldReadFunction<any>;
+    tokens_metadata?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type TotalFeesCollectedKeySpecifier = ('euclid_fees' | 'lp_fees' | TotalFeesCollectedKeySpecifier)[];
 export type TotalFeesCollectedFieldPolicy = {
