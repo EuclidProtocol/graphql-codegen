@@ -97,6 +97,91 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
         }>;
     };
 };
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                name: string;
+                symbol: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        }>;
+    };
+};
 export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
     chains_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
     chains_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -458,6 +543,26 @@ export type ICodegenGeneratedChainsQuery = {
     __typename?: 'Query';
     chains: {
         __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                };
+            };
+        }>;
         router_config: {
             __typename?: 'RouterConfig';
             chain_uid: string;
@@ -1802,6 +1907,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            tags: Array<string>;
             tokenId: string;
             total_volume: number;
             total_volume_24h: number;
@@ -1830,6 +1936,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            tags: Array<string>;
             tokenId: string;
             total_volume: number;
             total_volume_24h: number;
@@ -1855,6 +1962,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            tags: Array<string>;
             tokenId: string;
             total_volume: number;
             total_volume_24h: number;
@@ -2443,6 +2551,10 @@ export type ICodegenGeneratedVlpQuery = {
     };
 };
 export declare const CodegenGeneratedChainsAllChainsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedChainsAllEvmChainsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsChainConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsContractsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument: import("graphql").DocumentNode;
@@ -2553,6 +2665,10 @@ export declare const CodegenGeneratedVlpDocument: import("graphql").DocumentNode
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?: Record<string, string>) => Promise<T>, operationName: string, operationType?: string) => Promise<T>;
 export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionWrapper): {
     CODEGEN_GENERATED_CHAINS_ALL_CHAINS(variables?: ICodegenGeneratedChainsAllChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllChainsQuery>;
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY(variables?: ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery>;
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery>;
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery>;
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS(variables?: ICodegenGeneratedChainsAllEvmChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsQuery>;
     CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG(variables?: ICodegenGeneratedChainsChainConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsChainConfigQuery>;
     CODEGEN_GENERATED_CHAINS_CONTRACTS(variables?: ICodegenGeneratedChainsContractsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsContractsQuery>;
     CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY(variables?: ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery>;

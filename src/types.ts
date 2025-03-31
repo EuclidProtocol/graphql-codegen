@@ -118,6 +118,7 @@ export type IChainType = {
 export type IChains = {
   __typename?: 'Chains';
   all_chains: Array<IChainConfig>;
+  all_evm_chains: Array<IEvmChainConfig>;
   chain_config: Maybe<IChainConfig>;
   contracts: Array<IContract>;
   evm_chain_config: Maybe<IEvmChainConfig>;
@@ -422,6 +423,7 @@ export type IMetadata = {
   price: Scalars['String']['output'];
   price_change_7d: Scalars['Float']['output'];
   price_change_24h: Scalars['Float']['output'];
+  tags: Maybe<Array<Scalars['String']['output']>>;
   tokenId: Scalars['String']['output'];
   total_volume: Scalars['Float']['output'];
   total_volume_24h: Scalars['Float']['output'];

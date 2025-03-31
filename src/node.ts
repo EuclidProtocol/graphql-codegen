@@ -63,6 +63,26 @@ export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
 
 export type ICodegenGeneratedChainsAllChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_chains: Array<{ __typename?: 'ChainConfig', chain_id: string, chain_uid: string, display_name: string, explorer_url: string, factory_address: string, logo: string, type: string }> } };
 
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string } }> } };
+
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }> } };
+
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }> } };
+
+export type ICodegenGeneratedChainsAllEvmChainsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedChainsAllEvmChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }> } };
+
 export type ICodegenGeneratedChainsChainConfigQueryVariables = Exact<{
   chains_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
   chains_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -183,7 +203,7 @@ export type ICodegenGeneratedChainsRouterConfigQuery = { __typename?: 'Query', c
 export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
+export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -676,7 +696,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string, total_volume: number, total_volume_24h: number } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
   token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
@@ -687,7 +707,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
   token_tokens_metadata_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
@@ -695,7 +715,7 @@ export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -915,6 +935,67 @@ export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
       factory_address
       logo
       type
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY {
+  chains {
+    all_evm_chains {
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT {
+  chains {
+    all_evm_chains {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS {
+  chains {
+    all_evm_chains {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedChainsAllEvmChainsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS {
+  chains {
+    all_evm_chains {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
     }
   }
 }
@@ -1217,6 +1298,22 @@ export const CodegenGeneratedChainsRouterConfigDocument = /*#__PURE__*/ gql`
 export const CodegenGeneratedChainsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CHAINS {
   chains {
+    all_evm_chains {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
     router_config {
       chain_uid
       contract_address
@@ -2248,6 +2345,7 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      tags
       tokenId
       total_volume
       total_volume_24h
@@ -2274,6 +2372,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      tags
       tokenId
       total_volume
       total_volume_24h
@@ -2297,6 +2396,7 @@ export const CodegenGeneratedTokenTokensMetadataDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      tags
       tokenId
       total_volume
       total_volume_24h
@@ -2715,6 +2815,18 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
   return {
     CODEGEN_GENERATED_CHAINS_ALL_CHAINS(variables?: ICodegenGeneratedChainsAllChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllChainsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllChainsQuery>(CodegenGeneratedChainsAllChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_CHAINS', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY(variables?: ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery>(CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery>(CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery>(CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS', 'query');
+    },
+    CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS(variables?: ICodegenGeneratedChainsAllEvmChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsAllEvmChainsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsAllEvmChainsQuery>(CodegenGeneratedChainsAllEvmChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS', 'query');
     },
     CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG(variables?: ICodegenGeneratedChainsChainConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsChainConfigQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsChainConfigQuery>(CodegenGeneratedChainsChainConfigDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG', 'query');

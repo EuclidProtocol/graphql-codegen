@@ -80,9 +80,10 @@ export type ChainTypeKeySpecifier = ('ibc' | ChainTypeKeySpecifier)[];
 export type ChainTypeFieldPolicy = {
 	ibc?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ChainsKeySpecifier = ('all_chains' | 'chain_config' | 'contracts' | 'evm_chain_config' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
+export type ChainsKeySpecifier = ('all_chains' | 'all_evm_chains' | 'chain_config' | 'contracts' | 'evm_chain_config' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
 export type ChainsFieldPolicy = {
 	all_chains?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_evm_chains?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	contracts?: FieldPolicy<any> | FieldReadFunction<any>,
 	evm_chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -271,7 +272,7 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
 	token_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'price' | 'price_change_7d' | 'price_change_24h' | 'tags' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
 	chain_uids?: FieldPolicy<any> | FieldReadFunction<any>,
 	coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -282,6 +283,7 @@ export type MetadataFieldPolicy = {
 	price?: FieldPolicy<any> | FieldReadFunction<any>,
 	price_change_7d?: FieldPolicy<any> | FieldReadFunction<any>,
 	price_change_24h?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
 	tokenId?: FieldPolicy<any> | FieldReadFunction<any>,
 	total_volume?: FieldPolicy<any> | FieldReadFunction<any>,
 	total_volume_24h?: FieldPolicy<any> | FieldReadFunction<any>
