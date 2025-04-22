@@ -118,12 +118,13 @@ export type ContractStateOfVcoinFieldPolicy = {
     admin?: FieldPolicy<any> | FieldReadFunction<any>;
     router?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type ContractStateOfVlpKeySpecifier = ('admin' | 'fee' | 'last_updated' | 'pair' | 'router' | 'total_lp_tokens' | 'vcoin' | ContractStateOfVlpKeySpecifier)[];
+export type ContractStateOfVlpKeySpecifier = ('admin' | 'fee' | 'last_updated' | 'pair' | 'pool_config' | 'router' | 'total_lp_tokens' | 'vcoin' | ContractStateOfVlpKeySpecifier)[];
 export type ContractStateOfVlpFieldPolicy = {
     admin?: FieldPolicy<any> | FieldReadFunction<any>;
     fee?: FieldPolicy<any> | FieldReadFunction<any>;
     last_updated?: FieldPolicy<any> | FieldReadFunction<any>;
     pair?: FieldPolicy<any> | FieldReadFunction<any>;
+    pool_config?: FieldPolicy<any> | FieldReadFunction<any>;
     router?: FieldPolicy<any> | FieldReadFunction<any>;
     total_lp_tokens?: FieldPolicy<any> | FieldReadFunction<any>;
     vcoin?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -344,6 +345,11 @@ export type PoolFieldPolicy = {
     reserve_1?: FieldPolicy<any> | FieldReadFunction<any>;
     reserve_2?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type PoolConfigKeySpecifier = ('constant_product' | 'stable' | PoolConfigKeySpecifier)[];
+export type PoolConfigFieldPolicy = {
+    constant_product?: FieldPolicy<any> | FieldReadFunction<any>;
+    stable?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
     fees_collected?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -431,6 +437,10 @@ export type SmartTokenTypeKeySpecifier = ('smart' | SmartTokenTypeKeySpecifier)[
 export type SmartTokenTypeFieldPolicy = {
     smart?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type StablePoolConfigKeySpecifier = ('amp_factor' | StablePoolConfigKeySpecifier)[];
+export type StablePoolConfigFieldPolicy = {
+    amp_factor?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type StakeCurrencyKeySpecifier = ('coinDecimals' | 'coinDenom' | 'coinGeckoID' | 'coinMinimalDenom' | StakeCurrencyKeySpecifier)[];
 export type StakeCurrencyFieldPolicy = {
     coinDecimals?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -483,10 +493,12 @@ export type TokenPairWithLiquidityPaginatedFieldPolicy = {
     pagination?: FieldPolicy<any> | FieldReadFunction<any>;
     results?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'pair' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
+export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'created_at' | 'pair' | 'tags' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
 export type TokenPairWithLiquidityResponseFieldPolicy = {
     apr?: FieldPolicy<any> | FieldReadFunction<any>;
+    created_at?: FieldPolicy<any> | FieldReadFunction<any>;
     pair?: FieldPolicy<any> | FieldReadFunction<any>;
+    tags?: FieldPolicy<any> | FieldReadFunction<any>;
     total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
     vlp?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -784,6 +796,10 @@ export type StrictTypedTypePolicies = {
         keyFields?: false | PoolKeySpecifier | (() => undefined | PoolKeySpecifier);
         fields?: PoolFieldPolicy;
     };
+    PoolConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | PoolConfigKeySpecifier | (() => undefined | PoolConfigKeySpecifier);
+        fields?: PoolConfigFieldPolicy;
+    };
     PoolQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | PoolQueriesKeySpecifier | (() => undefined | PoolQueriesKeySpecifier);
         fields?: PoolQueriesFieldPolicy;
@@ -839,6 +855,10 @@ export type StrictTypedTypePolicies = {
     SmartTokenType?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | SmartTokenTypeKeySpecifier | (() => undefined | SmartTokenTypeKeySpecifier);
         fields?: SmartTokenTypeFieldPolicy;
+    };
+    StablePoolConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | StablePoolConfigKeySpecifier | (() => undefined | StablePoolConfigKeySpecifier);
+        fields?: StablePoolConfigFieldPolicy;
     };
     StakeCurrency?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | StakeCurrencyKeySpecifier | (() => undefined | StakeCurrencyKeySpecifier);

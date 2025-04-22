@@ -75,11 +75,20 @@ export type ISmartQueryInput = {
     contract_address: Scalars['String']['input'];
     msg: Scalars['JSON']['input'];
 };
+export declare enum ISortOrder {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+export declare enum ITokenPairSortBy {
+    CREATED_AT = "CREATED_AT",
+    TOTAL_LIQUIDITY = "TOTAL_LIQUIDITY"
+}
 export type IVlps = {
     vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
     chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+    chains_all_chains_type?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedChainsAllChainsQuery = {
     __typename?: 'Query';
@@ -1114,6 +1123,8 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
@@ -1134,6 +1145,8 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
@@ -1156,6 +1169,8 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
@@ -1167,6 +1182,8 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
             results: Array<{
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
+                created_at: string;
+                tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
@@ -1181,6 +1198,8 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
@@ -1198,6 +1217,8 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
             results: Array<{
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
+                created_at: string;
+                tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
@@ -1919,6 +1940,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
     token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_show_volume?: InputMaybe<Scalars['Boolean']['input']>;
     token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadatasQuery = {
@@ -2315,6 +2337,47 @@ export type ICodegenGeneratedVlpStatePairQuery = {
         };
     };
 };
+export type ICodegenGeneratedVlpStatePoolConfigStableQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpStatePoolConfigStableQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        state: {
+            __typename?: 'ContractStateOfVlp';
+            pool_config: {
+                __typename?: 'PoolConfig';
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpStatePoolConfigQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpStatePoolConfigQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        state: {
+            __typename?: 'ContractStateOfVlp';
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                };
+            };
+        };
+    };
+};
 export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
     contract?: InputMaybe<Scalars['String']['input']>;
     pair?: InputMaybe<IPairInput>;
@@ -2344,6 +2407,14 @@ export type ICodegenGeneratedVlpStateQuery = {
                 __typename?: 'Pair';
                 token_1: string;
                 token_2: string;
+            };
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                };
             };
         };
     };
@@ -2528,6 +2599,14 @@ export type ICodegenGeneratedVlpQuery = {
                 token_1: string;
                 token_2: string;
             };
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                };
+            };
         };
         total_fees_collected: {
             __typename?: 'TotalFeesCollected';
@@ -2654,6 +2733,8 @@ export declare const CodegenGeneratedVlpPoolDocument: import("graphql").Document
 export declare const CodegenGeneratedVlpStateFeeRecipientDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVlpStateFeeDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVlpStatePairDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedVlpStatePoolConfigStableDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedVlpStatePoolConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVlpStateDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument: import("graphql").DocumentNode;
@@ -2768,6 +2849,8 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT(variables?: ICodegenGeneratedVlpStateFeeRecipientQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeRecipientQuery>;
     CODEGEN_GENERATED_VLP_STATE_FEE(variables?: ICodegenGeneratedVlpStateFeeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateFeeQuery>;
     CODEGEN_GENERATED_VLP_STATE_PAIR(variables?: ICodegenGeneratedVlpStatePairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePairQuery>;
+    CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG_STABLE(variables?: ICodegenGeneratedVlpStatePoolConfigStableQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePoolConfigStableQuery>;
+    CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG(variables?: ICodegenGeneratedVlpStatePoolConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStatePoolConfigQuery>;
     CODEGEN_GENERATED_VLP_STATE(variables?: ICodegenGeneratedVlpStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpStateQuery>;
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>;
     CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>;

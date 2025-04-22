@@ -143,6 +143,7 @@ export type IChains = {
 };
 export type IChainsAllChainsArgs = {
     show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+    type?: InputMaybe<Scalars['String']['input']>;
 };
 export type IChainsChainConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
@@ -194,6 +195,7 @@ export type IContractStateOfVlp = {
     fee: Maybe<IFeeInfo>;
     last_updated: Maybe<Scalars['Int']['output']>;
     pair: Maybe<IPair>;
+    pool_config: Maybe<IPoolConfig>;
     router: Maybe<Scalars['String']['output']>;
     total_lp_tokens: Maybe<Scalars['String']['output']>;
     vcoin: Maybe<Scalars['String']['output']>;
@@ -459,6 +461,11 @@ export type IPool = {
     reserve_1: Maybe<Scalars['String']['output']>;
     reserve_2: Maybe<Scalars['String']['output']>;
 };
+export type IPoolConfig = {
+    __typename?: 'PoolConfig';
+    constant_product: Maybe<Scalars['JSON']['output']>;
+    stable: Maybe<IStablePoolConfig>;
+};
 export type IPoolQueries = {
     __typename?: 'PoolQueries';
     fees_collected: Maybe<IFeesResponse>;
@@ -473,6 +480,8 @@ export type IPoolQueriesMyPoolsArgs = {
 export type IPoolQueriesTokenPairWithLiquidityArgs = {
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
+    sort_by?: InputMaybe<ITokenPairSortBy>;
+    sort_order?: InputMaybe<ISortOrder>;
     token?: InputMaybe<Scalars['String']['input']>;
 };
 export type IPools = {
@@ -625,6 +634,14 @@ export type ISmartTokenType = {
     __typename?: 'SmartTokenType';
     smart: Maybe<ISmartToken>;
 };
+export declare enum ISortOrder {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+export type IStablePoolConfig = {
+    __typename?: 'StablePoolConfig';
+    amp_factor: Maybe<Scalars['String']['output']>;
+};
 export type IStakeCurrency = {
     __typename?: 'StakeCurrency';
     coinDecimals: Scalars['Int']['output'];
@@ -672,6 +689,10 @@ export type ITokenOut = {
     amount_out: Maybe<Scalars['String']['output']>;
     asset_out: Maybe<Scalars['String']['output']>;
 };
+export declare enum ITokenPairSortBy {
+    CREATED_AT = "CREATED_AT",
+    TOTAL_LIQUIDITY = "TOTAL_LIQUIDITY"
+}
 export type ITokenPairWithLiquidityPaginated = {
     __typename?: 'TokenPairWithLiquidityPaginated';
     pagination: Maybe<IPaginationInfo>;
@@ -680,7 +701,9 @@ export type ITokenPairWithLiquidityPaginated = {
 export type ITokenPairWithLiquidityResponse = {
     __typename?: 'TokenPairWithLiquidityResponse';
     apr: Scalars['String']['output'];
+    created_at: Scalars['String']['output'];
     pair: IPair;
+    tags: Array<Scalars['String']['output']>;
     total_liquidity: Scalars['String']['output'];
     vlp: Scalars['String']['output'];
 };
@@ -724,6 +747,7 @@ export type ITokenQueriesTokenMetadatasArgs = {
     dex?: InputMaybe<Array<Scalars['String']['input']>>;
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
+    show_volume?: InputMaybe<Scalars['Boolean']['input']>;
     verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type ITokenQueriesTokensMetadataArgs = {
