@@ -1090,6 +1090,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1115,6 +1116,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1123,6 +1125,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1145,6 +1148,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1169,6 +1173,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1198,6 +1203,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1522,6 +1528,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1548,6 +1555,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1575,6 +1583,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1603,6 +1612,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1928,6 +1938,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -1958,6 +1969,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -1984,6 +1996,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -2194,6 +2207,7 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2214,6 +2228,7 @@ export type ICodegenGeneratedVlpFeeQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2290,6 +2305,7 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2313,6 +2329,7 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2400,6 +2417,7 @@ export type ICodegenGeneratedVlpStateQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2563,6 +2581,7 @@ export type ICodegenGeneratedVlpQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2591,6 +2610,7 @@ export type ICodegenGeneratedVlpQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };

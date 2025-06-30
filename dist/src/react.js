@@ -2414,6 +2414,7 @@ exports.CodegenGeneratedPoolMyPoolsUserDocument = (0, client_1.gql) `
     ) {
       user {
         address
+        amount
         chain_uid
       }
     }
@@ -2462,6 +2463,7 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, client_1.gql) `
       }
       user {
         address
+        amount
         chain_uid
       }
       vlp
@@ -2498,11 +2500,12 @@ function refetchCodegenGeneratedPoolMyPoolsQuery(variables) {
     return { query: exports.CodegenGeneratedPoolMyPoolsDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -2530,6 +2533,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, clien
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -2548,11 +2552,12 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery(variab
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -2581,6 +2586,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, clie
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -2599,11 +2605,12 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery(varia
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -2637,6 +2644,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, client_1
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -2655,11 +2663,12 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery(variables
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -2698,6 +2707,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, client_1.gql) `
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -3303,6 +3313,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserU
         cross_chain_user {
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -3353,6 +3364,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserD
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -3404,6 +3416,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = (0, 
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -3455,6 +3468,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = (0, client_1.gql) 
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -4135,6 +4149,7 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -4191,6 +4206,7 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -4247,6 +4263,7 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, client_1.gql) `
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -4696,6 +4713,7 @@ exports.CodegenGeneratedVlpFeeRecipientDocument = (0, client_1.gql) `
     fee {
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -4738,6 +4756,7 @@ exports.CodegenGeneratedVlpFeeDocument = (0, client_1.gql) `
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -4902,6 +4921,7 @@ exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, client_1.gql) `
       fee {
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -4946,6 +4966,7 @@ exports.CodegenGeneratedVlpStateFeeDocument = (0, client_1.gql) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -5114,6 +5135,7 @@ exports.CodegenGeneratedVlpStateDocument = (0, client_1.gql) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -5426,6 +5448,7 @@ exports.CodegenGeneratedVlpDocument = (0, client_1.gql) `
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -5445,6 +5468,7 @@ exports.CodegenGeneratedVlpDocument = (0, client_1.gql) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }

@@ -777,6 +777,7 @@ exports.CodegenGeneratedPoolMyPoolsUserDocument = (0, graphql_tag_1.default) `
     ) {
       user {
         address
+        amount
         chain_uid
       }
     }
@@ -797,6 +798,7 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, graphql_tag_1.default) `
       }
       user {
         address
+        amount
         chain_uid
       }
       vlp
@@ -805,11 +807,12 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -824,11 +827,12 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, graph
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -844,11 +848,12 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, grap
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -869,11 +874,12 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, graphql_
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -1123,6 +1129,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserU
         cross_chain_user {
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -1144,6 +1151,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserD
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -1166,6 +1174,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = (0, 
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -1188,6 +1197,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = (0, graphql_tag_1.
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -1454,6 +1464,7 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.defau
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -1482,6 +1493,7 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default)
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -1506,6 +1518,7 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, graphql_tag_1.default)
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -1648,6 +1661,7 @@ exports.CodegenGeneratedVlpFeeRecipientDocument = (0, graphql_tag_1.default) `
     fee {
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -1662,6 +1676,7 @@ exports.CodegenGeneratedVlpFeeDocument = (0, graphql_tag_1.default) `
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -1713,6 +1728,7 @@ exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, graphql_tag_1.default
       fee {
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -1729,6 +1745,7 @@ exports.CodegenGeneratedVlpStateFeeDocument = (0, graphql_tag_1.default) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -1785,6 +1802,7 @@ exports.CodegenGeneratedVlpStateDocument = (0, graphql_tag_1.default) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -1900,6 +1918,7 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -1919,6 +1938,7 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }

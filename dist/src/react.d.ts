@@ -1089,6 +1089,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1114,6 +1115,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1122,6 +1124,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1144,6 +1147,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1168,6 +1172,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1197,6 +1202,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -1521,6 +1527,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1547,6 +1554,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1574,6 +1582,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1602,6 +1611,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
+                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1927,6 +1937,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -1957,6 +1968,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -1983,6 +1995,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             price: string;
             price_change_7d: number;
             price_change_24h: number;
+            social: any;
             tags: Array<string>;
             tokenId: string;
             total_volume: number;
@@ -2193,6 +2206,7 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2213,6 +2227,7 @@ export type ICodegenGeneratedVlpFeeQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2289,6 +2304,7 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2312,6 +2328,7 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2399,6 +2416,7 @@ export type ICodegenGeneratedVlpStateQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2562,6 +2580,7 @@ export type ICodegenGeneratedVlpQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
+                amount: string;
                 chain_uid: string;
             };
         };
@@ -2590,6 +2609,7 @@ export type ICodegenGeneratedVlpQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
+                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -4339,6 +4359,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocumen
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -4348,6 +4369,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocumen
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4355,6 +4377,7 @@ export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPaginationQ
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4367,6 +4390,7 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityPaginat
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
         pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
         pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4387,6 +4411,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocume
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -4396,6 +4421,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocume
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4403,6 +4429,7 @@ export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsPair
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4415,6 +4442,7 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityResults
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
         pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
         pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4435,6 +4463,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: 
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -4444,6 +4473,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: 
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4451,6 +4481,7 @@ export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsQuer
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4463,6 +4494,7 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityResults
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
         pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
         pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4483,6 +4515,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: Apollo.
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -4492,6 +4525,7 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: Apollo.
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4499,6 +4533,7 @@ export declare function useCodegenGeneratedPoolTokenPairWithLiquidityQuery(baseO
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
     pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
@@ -4511,6 +4546,7 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityQuery(v
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
         pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
         pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
