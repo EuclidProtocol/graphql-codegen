@@ -204,6 +204,7 @@ export type IContractStateOfVlp = {
 export type ICrossChainUser = {
   __typename?: 'CrossChainUser';
   address: Maybe<Scalars['String']['output']>;
+  amount: Scalars['String']['output'];
   chain_uid: Maybe<Scalars['String']['output']>;
 };
 
@@ -425,6 +426,7 @@ export type IMetadata = {
   price: Scalars['String']['output'];
   price_change_7d: Scalars['Float']['output'];
   price_change_24h: Scalars['Float']['output'];
+  social: Scalars['JSON']['output'];
   tags: Maybe<Array<Scalars['String']['output']>>;
   tokenId: Scalars['String']['output'];
   total_volume: Scalars['Float']['output'];
@@ -542,6 +544,7 @@ export type IPoolQueriesMyPoolsArgs = {
 export type IPoolQueriesTokenPairWithLiquidityArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
+  only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
   sort_by?: InputMaybe<ITokenPairSortBy>;
   sort_order?: InputMaybe<ISortOrder>;
   token?: InputMaybe<Scalars['String']['input']>;

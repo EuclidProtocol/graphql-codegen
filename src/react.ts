@@ -418,7 +418,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolMyPoolsUserQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedPoolMyPoolsUserQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedPoolMyPoolsQueryVariables = Exact<{
   pool_my_pools_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -426,11 +426,12 @@ export type ICodegenGeneratedPoolMyPoolsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolMyPoolsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', height: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string }, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedPoolMyPoolsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', height: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string }, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
   pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
   pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
   pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
   pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
   pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -442,6 +443,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = { __typ
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
   pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
   pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
   pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
   pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
   pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -453,6 +455,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = { __ty
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
   pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
   pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
   pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
   pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
   pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -464,6 +467,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = { __typena
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
   pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
   pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+  pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
   pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
   pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
   pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
@@ -578,7 +582,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -587,7 +591,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -596,7 +600,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQueryVaria
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -605,7 +609,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', remaining_amount: string, release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', remaining_amount: string, release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateSwapQueryVariables = Exact<{
   router_simulate_swap_amount_in: Scalars['String']['input'];
@@ -715,7 +719,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
   token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
@@ -727,7 +731,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
   token_tokens_metadata_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
@@ -735,7 +739,7 @@ export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -819,7 +823,7 @@ export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -827,7 +831,7 @@ export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -860,7 +864,7 @@ export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
+export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -868,7 +872,7 @@ export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
+export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -900,7 +904,7 @@ export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } } } };
+export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -957,7 +961,7 @@ export type ICodegenGeneratedVlpQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }, state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } }, total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
+export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }, state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } }, total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 
 export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
@@ -3177,6 +3181,7 @@ export const CodegenGeneratedPoolMyPoolsUserDocument = /*#__PURE__*/ gql`
     ) {
       user {
         address
+        amount
         chain_uid
       }
     }
@@ -3229,6 +3234,7 @@ export const CodegenGeneratedPoolMyPoolsDocument = /*#__PURE__*/ gql`
       }
       user {
         address
+        amount
         chain_uid
       }
       vlp
@@ -3269,11 +3275,12 @@ export function refetchCodegenGeneratedPoolMyPoolsQuery(variables: ICodegenGener
       return { query: CodegenGeneratedPoolMyPoolsDocument, variables: variables }
     }
 export const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -3302,6 +3309,7 @@ export const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = /*#_
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -3323,11 +3331,12 @@ export function refetchCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery
       return { query: CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument, variables: variables }
     }
 export const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -3357,6 +3366,7 @@ export const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = /*#
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -3378,11 +3388,12 @@ export function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuer
       return { query: CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument, variables: variables }
     }
 export const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -3417,6 +3428,7 @@ export const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = /*#__PU
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -3438,11 +3450,12 @@ export function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery(va
       return { query: CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument, variables: variables }
     }
 export const CodegenGeneratedPoolTokenPairWithLiquidityDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
       sort_by: $pool_token_pair_with_liquidity_sort_by
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
@@ -3482,6 +3495,7 @@ export const CodegenGeneratedPoolTokenPairWithLiquidityDocument = /*#__PURE__*/ 
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
  *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
  *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
@@ -4142,6 +4156,7 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
         cross_chain_user {
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -4196,6 +4211,7 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -4251,6 +4267,7 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument =
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -4306,6 +4323,7 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowDocument = /*#__PURE__*/
           limit
           user {
             address
+            amount
             chain_uid
           }
         }
@@ -5046,6 +5064,7 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -5106,6 +5125,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -5166,6 +5186,7 @@ export const CodegenGeneratedTokenTokensMetadataDocument = /*#__PURE__*/ gql`
       price
       price_change_7d
       price_change_24h
+      social
       tags
       tokenId
       total_volume
@@ -5659,6 +5680,7 @@ export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
     fee {
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -5705,6 +5727,7 @@ export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -5885,6 +5908,7 @@ export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
       fee {
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -5933,6 +5957,7 @@ export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -6117,6 +6142,7 @@ export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
@@ -6457,6 +6483,7 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
       lp_fee_bps
       recipient {
         address
+        amount
         chain_uid
       }
     }
@@ -6476,6 +6503,7 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
+          amount
           chain_uid
         }
       }
