@@ -101,6 +101,7 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            token_factory_address: string;
             type: string;
         }>;
     };
@@ -206,6 +207,7 @@ export type ICodegenGeneratedChainsChainConfigQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            token_factory_address: string;
             type: string;
         };
     };
@@ -1786,6 +1788,26 @@ export type ICodegenGeneratedTokenAllDexesQuery = {
         }>;
     };
 };
+export type ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenChainsForTokenLaunchQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
+    };
+};
 export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
     token_dex_metadata_dex: Scalars['String']['input'];
 }>;
@@ -1934,6 +1956,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -1965,6 +1988,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -1992,6 +2016,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -2010,6 +2035,17 @@ export type ICodegenGeneratedTokenQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
@@ -5460,6 +5496,37 @@ export declare function refetchCodegenGeneratedTokenAllDexesQuery(variables?: IC
     variables: Exact<{
         token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenChainsForTokenLaunchDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenChainsForTokenLaunchQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenChainsForTokenLaunchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenChainsForTokenLaunchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenChainsForTokenLaunchQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenChainsForTokenLaunchQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenChainsForTokenLaunchQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenChainsForTokenLaunchQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedTokenChainsForTokenLaunchQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenChainsForTokenLaunchQuery>;
+export type CodegenGeneratedTokenChainsForTokenLaunchLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery>;
+export type CodegenGeneratedTokenChainsForTokenLaunchQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>;
+export declare function refetchCodegenGeneratedTokenChainsForTokenLaunchQuery(variables?: ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
     }> | undefined;
 };
 export declare const CodegenGeneratedTokenDexMetadataDocument: Apollo.DocumentNode;

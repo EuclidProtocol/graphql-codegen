@@ -113,6 +113,7 @@ export type IChainConfig = {
     explorer_url: Scalars['String']['output'];
     factory_address: Scalars['String']['output'];
     logo: Scalars['String']['output'];
+    token_factory_address: Maybe<Scalars['String']['output']>;
     type: Scalars['String']['output'];
 };
 export type IChainDetail = {
@@ -384,6 +385,7 @@ export type IMetadata = {
     dex: Maybe<Array<Scalars['String']['output']>>;
     displayName: Scalars['String']['output'];
     image: Scalars['String']['output'];
+    min_swap_value: Scalars['Float']['output'];
     price: Scalars['String']['output'];
     price_change_7d: Scalars['Float']['output'];
     price_change_24h: Scalars['Float']['output'];
@@ -713,6 +715,7 @@ export type ITokenPairWithLiquidityResponse = {
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
     all_dexes: Array<IDexMetadata>;
+    chains_for_token_launch: Maybe<Array<Maybe<IChainConfig>>>;
     dex_metadata: IDexMetadata;
     get_all_faucets: Array<IFaucet>;
     token_denoms: Array<ITokenDenomWithTokenIdResponse>;

@@ -102,6 +102,7 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            token_factory_address: string;
             type: string;
         }>;
     };
@@ -207,6 +208,7 @@ export type ICodegenGeneratedChainsChainConfigQuery = {
             explorer_url: string;
             factory_address: string;
             logo: string;
+            token_factory_address: string;
             type: string;
         };
     };
@@ -1787,6 +1789,26 @@ export type ICodegenGeneratedTokenAllDexesQuery = {
         }>;
     };
 };
+export type ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenChainsForTokenLaunchQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
+    };
+};
 export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
     token_dex_metadata_dex: Scalars['String']['input'];
 }>;
@@ -1935,6 +1957,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -1966,6 +1989,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -1993,6 +2017,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            min_swap_value: number;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -2011,6 +2036,17 @@ export type ICodegenGeneratedTokenQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
@@ -2726,6 +2762,7 @@ export declare const CodegenGeneratedRouterTokenPairsFromVlpDocument: import("gr
 export declare const CodegenGeneratedRouterVlpDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenAllDexesDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedTokenChainsForTokenLaunchDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenDexMetadataDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenGetAllFaucetsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedTokenTokenDenomsDenomsDocument: import("graphql").DocumentNode;
@@ -2842,6 +2879,7 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_ROUTER_VLP(variables?: ICodegenGeneratedRouterVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterVlpQuery>;
     CODEGEN_GENERATED_ROUTER(variables?: ICodegenGeneratedRouterQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterQuery>;
     CODEGEN_GENERATED_TOKEN_ALL_DEXES(variables?: ICodegenGeneratedTokenAllDexesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenAllDexesQuery>;
+    CODEGEN_GENERATED_TOKEN_CHAINS_FOR_TOKEN_LAUNCH(variables?: ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenChainsForTokenLaunchQuery>;
     CODEGEN_GENERATED_TOKEN_DEX_METADATA(variables: ICodegenGeneratedTokenDexMetadataQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenDexMetadataQuery>;
     CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables?: ICodegenGeneratedTokenGetAllFaucetsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenGetAllFaucetsQuery>;
     CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS(variables?: ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedTokenTokenDenomsDenomsQuery>;
