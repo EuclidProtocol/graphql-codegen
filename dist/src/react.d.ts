@@ -1956,6 +1956,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
@@ -1973,6 +1974,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
     token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_search?: InputMaybe<Scalars['String']['input']>;
     token_token_metadatas_show_volume?: InputMaybe<Scalars['Boolean']['input']>;
     token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
@@ -1988,6 +1990,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
@@ -2016,6 +2019,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
@@ -5793,6 +5797,7 @@ export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.Documen
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_search: // value for 'token_token_metadatas_search'
  *      token_token_metadatas_show_volume: // value for 'token_token_metadatas_show_volume'
  *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
@@ -5803,6 +5808,7 @@ export declare function useCodegenGeneratedTokenTokenMetadatasQuery(baseOptions?
     token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
     token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
     token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
@@ -5811,6 +5817,7 @@ export declare function useCodegenGeneratedTokenTokenMetadatasLazyQuery(baseOpti
     token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
     token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
     token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
@@ -5824,6 +5831,7 @@ export declare function refetchCodegenGeneratedTokenTokenMetadatasQuery(variable
         token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
         token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
         token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
         token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     }> | undefined;

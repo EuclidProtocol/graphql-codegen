@@ -385,6 +385,7 @@ export type IMetadata = {
     dex: Maybe<Array<Scalars['String']['output']>>;
     displayName: Scalars['String']['output'];
     image: Scalars['String']['output'];
+    is_verified: Scalars['Boolean']['output'];
     min_swap_value: Scalars['Float']['output'];
     price: Scalars['String']['output'];
     price_change_7d: Scalars['Float']['output'];
@@ -753,6 +754,7 @@ export type ITokenQueriesTokenMetadatasArgs = {
     dex?: InputMaybe<Array<Scalars['String']['input']>>;
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
+    search?: InputMaybe<Scalars['String']['input']>;
     show_volume?: InputMaybe<Scalars['Boolean']['input']>;
     verified?: InputMaybe<Scalars['Boolean']['input']>;
 };

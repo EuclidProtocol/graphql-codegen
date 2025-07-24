@@ -724,19 +724,20 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number } } };
+export type ICodegenGeneratedTokenTokenMetadataByIdQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadata_by_id: { __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, is_verified: boolean, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number } } };
 
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
   token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
   token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+  token_token_metadatas_search?: InputMaybe<Scalars['String']['input']>;
   token_token_metadatas_show_volume?: InputMaybe<Scalars['Boolean']['input']>;
   token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 
 
-export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokenMetadatasQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_metadatas: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, is_verified: boolean, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
   token_tokens_metadata_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
@@ -744,7 +745,7 @@ export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
+export type ICodegenGeneratedTokenTokensMetadataQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', tokens_metadata: Array<{ __typename?: 'Metadata', chain_uids: Array<string>, coinDecimal: number, description: string, dex: Array<string>, displayName: string, image: string, is_verified: boolean, min_swap_value: number, price: string, price_change_7d: number, price_change_24h: number, social: any, tags: Array<string>, tokenId: string, total_volume: number, total_volume_24h: number }> } };
 
 export type ICodegenGeneratedTokenQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -5114,6 +5115,7 @@ export const CodegenGeneratedTokenTokenMetadataByIdDocument = /*#__PURE__*/ gql`
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d
@@ -5160,13 +5162,14 @@ export function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables: IC
       return { query: CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables }
     }
 export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_search: String, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
       chain_uids: $token_token_metadatas_chain_uids
       dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
+      search: $token_token_metadatas_search
       show_volume: $token_token_metadatas_show_volume
       verified: $token_token_metadatas_verified
     ) {
@@ -5176,6 +5179,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d
@@ -5206,6 +5210,7 @@ export const CodegenGeneratedTokenTokenMetadatasDocument = /*#__PURE__*/ gql`
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_search: // value for 'token_token_metadatas_search'
  *      token_token_metadatas_show_volume: // value for 'token_token_metadatas_show_volume'
  *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
@@ -5238,6 +5243,7 @@ export const CodegenGeneratedTokenTokensMetadataDocument = /*#__PURE__*/ gql`
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d

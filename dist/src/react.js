@@ -4193,6 +4193,7 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d
@@ -4235,13 +4236,14 @@ function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_search: String, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
       chain_uids: $token_token_metadatas_chain_uids
       dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
+      search: $token_token_metadatas_search
       show_volume: $token_token_metadatas_show_volume
       verified: $token_token_metadatas_verified
     ) {
@@ -4251,6 +4253,7 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d
@@ -4280,6 +4283,7 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
  *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_search: // value for 'token_token_metadatas_search'
  *      token_token_metadatas_show_volume: // value for 'token_token_metadatas_show_volume'
  *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
@@ -4309,6 +4313,7 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, client_1.gql) `
       dex
       displayName
       image
+      is_verified
       min_swap_value
       price
       price_change_7d

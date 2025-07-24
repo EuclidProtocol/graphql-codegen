@@ -1957,6 +1957,7 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
@@ -1974,6 +1975,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
     token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_search?: InputMaybe<Scalars['String']['input']>;
     token_token_metadatas_show_volume?: InputMaybe<Scalars['Boolean']['input']>;
     token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
@@ -1989,6 +1991,7 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
@@ -2017,6 +2020,7 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             dex: Array<string>;
             displayName: string;
             image: string;
+            is_verified: boolean;
             min_swap_value: number;
             price: string;
             price_change_7d: number;
