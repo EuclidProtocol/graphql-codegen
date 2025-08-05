@@ -164,12 +164,23 @@ export type IChainsResponse = {
 
 export type IClaimQueries = {
   __typename?: 'ClaimQueries';
-  user_claims: Array<Maybe<Scalars['String']['output']>>;
+  user_claims: Array<Maybe<IClaimerResponse>>;
 };
 
 
 export type IClaimQueriesUserClaimsArgs = {
-  pubKey: Scalars['String']['input'];
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  public_secret: Scalars['String']['input'];
+};
+
+export type IClaimerResponse = {
+  __typename?: 'ClaimerResponse';
+  amount: Scalars['String']['output'];
+  claim_id: Scalars['String']['output'];
+  claimer: Scalars['String']['output'];
+  sender: ICrossChainUser;
+  token: Scalars['String']['output'];
 };
 
 export type IContract = {
@@ -215,7 +226,6 @@ export type IContractStateOfVlp = {
 export type ICrossChainUser = {
   __typename?: 'CrossChainUser';
   address: Maybe<Scalars['String']['output']>;
-  amount: Scalars['String']['output'];
   chain_uid: Maybe<Scalars['String']['output']>;
 };
 

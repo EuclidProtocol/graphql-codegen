@@ -584,14 +584,46 @@ export type ICodegenGeneratedChainsQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimUserClaimsSenderQueryVariables = Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        }>;
+    };
+};
 export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
-    claim_user_claims_pubKey: Scalars['String']['input'];
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedClaimUserClaimsQuery = {
     __typename?: 'Query';
     claim: {
         __typename?: 'ClaimQueries';
-        user_claims: Array<string>;
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_id: string;
+            claimer: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        }>;
     };
 };
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
@@ -1102,7 +1134,6 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1128,7 +1159,6 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1540,7 +1570,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1567,7 +1596,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1595,7 +1623,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1624,7 +1651,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -2257,7 +2283,6 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2278,7 +2303,6 @@ export type ICodegenGeneratedVlpFeeQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2355,7 +2379,6 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2379,7 +2402,6 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2467,7 +2489,6 @@ export type ICodegenGeneratedVlpStateQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2631,7 +2652,6 @@ export type ICodegenGeneratedVlpQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2660,7 +2680,6 @@ export type ICodegenGeneratedVlpQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2720,6 +2739,7 @@ export declare const CodegenGeneratedChainsKeplrConfigStakecurrencyDocument: imp
 export declare const CodegenGeneratedChainsKeplrConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsRouterConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedClaimUserClaimsSenderDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimUserClaimsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedCwBalanceDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedCwTokenInfoDocument: import("graphql").DocumentNode;
@@ -2838,6 +2858,7 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG(variables?: ICodegenGeneratedChainsKeplrConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigQuery>;
     CODEGEN_GENERATED_CHAINS_ROUTER_CONFIG(variables?: ICodegenGeneratedChainsRouterConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsRouterConfigQuery>;
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery>;
+    CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER(variables: ICodegenGeneratedClaimUserClaimsSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsSenderQuery>;
     CODEGEN_GENERATED_CLAIM_USER_CLAIMS(variables: ICodegenGeneratedClaimUserClaimsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsQuery>;
     CODEGEN_GENERATED_CW_BALANCE(variables: ICodegenGeneratedCwBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwBalanceQuery>;
     CODEGEN_GENERATED_CW_TOKEN_INFO(variables: ICodegenGeneratedCwTokenInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwTokenInfoQuery>;

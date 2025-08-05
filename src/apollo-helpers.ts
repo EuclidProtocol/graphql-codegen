@@ -99,6 +99,14 @@ export type ClaimQueriesKeySpecifier = ('user_claims' | ClaimQueriesKeySpecifier
 export type ClaimQueriesFieldPolicy = {
 	user_claims?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type ClaimerResponseKeySpecifier = ('amount' | 'claim_id' | 'claimer' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
+export type ClaimerResponseFieldPolicy = {
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claimer?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	token?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type ContractKeySpecifier = ('ChainUID' | 'ContractAddress' | 'Type' | ContractKeySpecifier)[];
 export type ContractFieldPolicy = {
 	ChainUID?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -134,10 +142,9 @@ export type ContractStateOfVlpFieldPolicy = {
 	total_lp_tokens?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type CrossChainUserKeySpecifier = ('address' | 'amount' | 'chain_uid' | CrossChainUserKeySpecifier)[];
+export type CrossChainUserKeySpecifier = ('address' | 'chain_uid' | CrossChainUserKeySpecifier)[];
 export type CrossChainUserFieldPolicy = {
 	address?: FieldPolicy<any> | FieldReadFunction<any>,
-	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type CrossChainUserWithLimitKeySpecifier = ('limit' | 'user' | CrossChainUserWithLimitKeySpecifier)[];
@@ -654,6 +661,10 @@ export type StrictTypedTypePolicies = {
 	ClaimQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ClaimQueriesKeySpecifier | (() => undefined | ClaimQueriesKeySpecifier),
 		fields?: ClaimQueriesFieldPolicy,
+	},
+	ClaimerResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimerResponseKeySpecifier | (() => undefined | ClaimerResponseKeySpecifier),
+		fields?: ClaimerResponseFieldPolicy,
 	},
 	Contract?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContractKeySpecifier | (() => undefined | ContractKeySpecifier),

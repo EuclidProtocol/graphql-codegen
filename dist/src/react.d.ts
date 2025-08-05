@@ -583,14 +583,46 @@ export type ICodegenGeneratedChainsQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimUserClaimsSenderQueryVariables = Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        }>;
+    };
+};
 export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
-    claim_user_claims_pubKey: Scalars['String']['input'];
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedClaimUserClaimsQuery = {
     __typename?: 'Query';
     claim: {
         __typename?: 'ClaimQueries';
-        user_claims: Array<string>;
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_id: string;
+            claimer: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        }>;
     };
 };
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
@@ -1101,7 +1133,6 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1127,7 +1158,6 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
             user: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         }>;
@@ -1539,7 +1569,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1566,7 +1595,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1594,7 +1622,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -1623,7 +1650,6 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
-                        amount: string;
                         chain_uid: string;
                     };
                 };
@@ -2256,7 +2282,6 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2277,7 +2302,6 @@ export type ICodegenGeneratedVlpFeeQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2354,7 +2378,6 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2378,7 +2401,6 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2466,7 +2488,6 @@ export type ICodegenGeneratedVlpStateQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -2630,7 +2651,6 @@ export type ICodegenGeneratedVlpQuery = {
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
-                amount: string;
                 chain_uid: string;
             };
         };
@@ -2659,7 +2679,6 @@ export type ICodegenGeneratedVlpQuery = {
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
-                    amount: string;
                     chain_uid: string;
                 };
             };
@@ -3424,6 +3443,46 @@ export declare function refetchCodegenGeneratedChainsQuery(variables?: ICodegenG
         [key: string]: never;
     }> | undefined;
 };
+export declare const CodegenGeneratedClaimUserClaimsSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimUserClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsSenderQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimUserClaimsSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsSenderQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimUserClaimsSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimUserClaimsSenderQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimUserClaimsSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimUserClaimsSenderQuery(variables: ICodegenGeneratedClaimUserClaimsSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_public_secret: Scalars["String"]["input"];
+    }>;
+};
 export declare const CodegenGeneratedClaimUserClaimsDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedClaimUserClaimsQuery__
@@ -3437,15 +3496,21 @@ export declare const CodegenGeneratedClaimUserClaimsDocument: Apollo.DocumentNod
  * @example
  * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
  *   variables: {
- *      claim_user_claims_pubKey: // value for 'claim_user_claims_pubKey'
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
  *   },
  * });
  */
 export declare function useCodegenGeneratedClaimUserClaimsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
-    claim_user_claims_pubKey: Scalars["String"]["input"];
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
 }>>;
 export declare function useCodegenGeneratedClaimUserClaimsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
-    claim_user_claims_pubKey: Scalars["String"]["input"];
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
 }>>;
 export type CodegenGeneratedClaimUserClaimsQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsQuery>;
 export type CodegenGeneratedClaimUserClaimsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsLazyQuery>;
@@ -3453,7 +3518,9 @@ export type CodegenGeneratedClaimUserClaimsQueryResult = Apollo.QueryResult<ICod
 export declare function refetchCodegenGeneratedClaimUserClaimsQuery(variables: ICodegenGeneratedClaimUserClaimsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        claim_user_claims_pubKey: Scalars["String"]["input"];
+        claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_public_secret: Scalars["String"]["input"];
     }>;
 };
 export declare const CodegenGeneratedCwBalanceDocument: Apollo.DocumentNode;

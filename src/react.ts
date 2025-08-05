@@ -216,12 +216,23 @@ export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
-export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
-  claim_user_claims_pubKey: Scalars['String']['input'];
+export type ICodegenGeneratedClaimUserClaimsSenderQueryVariables = Exact<{
+  claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+  claim_user_claims_public_secret: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<string> } };
+export type ICodegenGeneratedClaimUserClaimsSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<{ __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+  claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+  claim_user_claims_public_secret: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -425,7 +436,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolMyPoolsUserQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }> } };
+export type ICodegenGeneratedPoolMyPoolsUserQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedPoolMyPoolsQueryVariables = Exact<{
   pool_my_pools_chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -433,7 +444,7 @@ export type ICodegenGeneratedPoolMyPoolsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedPoolMyPoolsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', height: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string }, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }> } };
+export type ICodegenGeneratedPoolMyPoolsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', my_pools: Array<{ __typename?: 'MyPools', height: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string }, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
   pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
@@ -589,7 +600,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -598,7 +609,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -607,7 +618,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQueryVaria
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateReleaseEscrowQueryVariables = Exact<{
   router_simulate_release_escrow_amount?: InputMaybe<Scalars['Int']['input']>;
@@ -616,7 +627,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', remaining_amount: string, release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } }> } } };
+export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = { __typename?: 'Query', router: { __typename?: 'Router', simulate_release_escrow: { __typename?: 'SimulateReleaseEscrow', remaining_amount: string, release_amounts: Array<{ __typename?: 'ReleaseAmounts', amount: string, cross_chain_user: { __typename?: 'CrossChainUserWithLimit', limit: string, user: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } }> } } };
 
 export type ICodegenGeneratedRouterSimulateSwapQueryVariables = Exact<{
   router_simulate_swap_amount_in: Scalars['String']['input'];
@@ -836,7 +847,7 @@ export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } };
+export type ICodegenGeneratedVlpFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -844,7 +855,7 @@ export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } };
+export type ICodegenGeneratedVlpFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -877,7 +888,7 @@ export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } } };
+export type ICodegenGeneratedVlpStateFeeRecipientQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -885,7 +896,7 @@ export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } } } } };
+export type ICodegenGeneratedVlpStateFeeQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } } };
 
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -917,7 +928,7 @@ export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } } } };
+export type ICodegenGeneratedVlpStateQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } } } };
 
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
   contract?: InputMaybe<Scalars['String']['input']>;
@@ -974,7 +985,7 @@ export type ICodegenGeneratedVlpQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }, state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, amount: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } }, total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
+export type ICodegenGeneratedVlpQuery = { __typename?: 'Query', vlp: { __typename?: 'Vlp', fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, liquidity: { __typename?: 'Liquidity', token_1_reserve: string, token_2_reserve: string, total_lp_tokens: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }, state: { __typename?: 'ContractStateOfVlp', admin: string, last_updated: number, router: string, total_lp_tokens: string, vcoin: string, fee: { __typename?: 'FeeInfo', euclid_fee_bps: number, lp_fee_bps: number, recipient: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }, pair: { __typename?: 'Pair', token_1: string, token_2: string }, pool_config: { __typename?: 'PoolConfig', constant_product: any, stable: { __typename?: 'StablePoolConfig', amp_factor: string } } }, total_fees_collected: { __typename?: 'TotalFeesCollected', euclid_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> }, lp_fees: { __typename?: 'DenomFees', totals: Array<{ __typename?: 'Denomination', amount: string, denom: string }> } } } };
 
 
 export const CodegenGeneratedChainsAllChainsDocument = /*#__PURE__*/ gql`
@@ -2042,10 +2053,72 @@ export type CodegenGeneratedChainsQueryResult = Apollo.QueryResult<ICodegenGener
 export function refetchCodegenGeneratedChainsQuery(variables?: ICodegenGeneratedChainsQueryVariables) {
       return { query: CodegenGeneratedChainsDocument, variables: variables }
     }
-export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_pubKey: String!) {
+export const CodegenGeneratedClaimUserClaimsSenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
   claim {
-    user_claims(pubKey: $claim_user_claims_pubKey)
+    user_claims(
+      limit: $claim_user_claims_limit
+      offset: $claim_user_claims_offset
+      public_secret: $claim_user_claims_public_secret
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedClaimUserClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsSenderQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedClaimUserClaimsSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>(CodegenGeneratedClaimUserClaimsSenderDocument, options);
+      }
+export function useCodegenGeneratedClaimUserClaimsSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>(CodegenGeneratedClaimUserClaimsSenderDocument, options);
+        }
+export type CodegenGeneratedClaimUserClaimsSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>;
+export function refetchCodegenGeneratedClaimUserClaimsSenderQuery(variables: ICodegenGeneratedClaimUserClaimsSenderQueryVariables) {
+      return { query: CodegenGeneratedClaimUserClaimsSenderDocument, variables: variables }
+    }
+export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
+  claim {
+    user_claims(
+      limit: $claim_user_claims_limit
+      offset: $claim_user_claims_offset
+      public_secret: $claim_user_claims_public_secret
+    ) {
+      amount
+      claim_id
+      claimer
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
   }
 }
     `;
@@ -2062,7 +2135,9 @@ export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
  * @example
  * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
  *   variables: {
- *      claim_user_claims_pubKey: // value for 'claim_user_claims_pubKey'
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
  *   },
  * });
  */
@@ -3234,7 +3309,6 @@ export const CodegenGeneratedPoolMyPoolsUserDocument = /*#__PURE__*/ gql`
     ) {
       user {
         address
-        amount
         chain_uid
       }
     }
@@ -3287,7 +3361,6 @@ export const CodegenGeneratedPoolMyPoolsDocument = /*#__PURE__*/ gql`
       }
       user {
         address
-        amount
         chain_uid
       }
       vlp
@@ -4209,7 +4282,6 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
         cross_chain_user {
           user {
             address
-            amount
             chain_uid
           }
         }
@@ -4264,7 +4336,6 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
           limit
           user {
             address
-            amount
             chain_uid
           }
         }
@@ -4320,7 +4391,6 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument =
           limit
           user {
             address
-            amount
             chain_uid
           }
         }
@@ -4376,7 +4446,6 @@ export const CodegenGeneratedRouterSimulateReleaseEscrowDocument = /*#__PURE__*/
           limit
           user {
             address
-            amount
             chain_uid
           }
         }
@@ -5797,7 +5866,6 @@ export const CodegenGeneratedVlpFeeRecipientDocument = /*#__PURE__*/ gql`
     fee {
       recipient {
         address
-        amount
         chain_uid
       }
     }
@@ -5844,7 +5912,6 @@ export const CodegenGeneratedVlpFeeDocument = /*#__PURE__*/ gql`
       lp_fee_bps
       recipient {
         address
-        amount
         chain_uid
       }
     }
@@ -6025,7 +6092,6 @@ export const CodegenGeneratedVlpStateFeeRecipientDocument = /*#__PURE__*/ gql`
       fee {
         recipient {
           address
-          amount
           chain_uid
         }
       }
@@ -6074,7 +6140,6 @@ export const CodegenGeneratedVlpStateFeeDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
-          amount
           chain_uid
         }
       }
@@ -6259,7 +6324,6 @@ export const CodegenGeneratedVlpStateDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
-          amount
           chain_uid
         }
       }
@@ -6600,7 +6664,6 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
       lp_fee_bps
       recipient {
         address
-        amount
         chain_uid
       }
     }
@@ -6620,7 +6683,6 @@ export const CodegenGeneratedVlpDocument = /*#__PURE__*/ gql`
         lp_fee_bps
         recipient {
           address
-          amount
           chain_uid
         }
       }
