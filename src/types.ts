@@ -162,6 +162,16 @@ export type IChainsResponse = {
   chains: Array<Maybe<IChain>>;
 };
 
+export type IClaimQueries = {
+  __typename?: 'ClaimQueries';
+  user_claims: Array<Maybe<Scalars['String']['output']>>;
+};
+
+
+export type IClaimQueriesUserClaimsArgs = {
+  pubKey: Scalars['String']['input'];
+};
+
 export type IContract = {
   __typename?: 'Contract';
   ChainUID: Maybe<Scalars['String']['output']>;
@@ -568,6 +578,7 @@ export type IPoolsResponse = {
 export type IQuery = {
   __typename?: 'Query';
   chains: Maybe<IChains>;
+  claim: Maybe<IClaimQueries>;
   cw: Maybe<ICw>;
   cw_multicall: Maybe<IMultiQuery>;
   factory: Maybe<IFactory>;

@@ -583,6 +583,16 @@ export type ICodegenGeneratedChainsQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+    claim_user_claims_pubKey: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<string>;
+    };
+};
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
     chain_uid: Scalars['String']['input'];
     contract: Scalars['String']['input'];
@@ -3413,6 +3423,38 @@ export declare function refetchCodegenGeneratedChainsQuery(variables?: ICodegenG
     variables: Exact<{
         [key: string]: never;
     }> | undefined;
+};
+export declare const CodegenGeneratedClaimUserClaimsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimUserClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
+ *   variables: {
+ *      claim_user_claims_pubKey: // value for 'claim_user_claims_pubKey'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimUserClaimsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
+    claim_user_claims_pubKey: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimUserClaimsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
+    claim_user_claims_pubKey: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimUserClaimsQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsQuery>;
+export type CodegenGeneratedClaimUserClaimsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>;
+export declare function refetchCodegenGeneratedClaimUserClaimsQuery(variables: ICodegenGeneratedClaimUserClaimsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_user_claims_pubKey: Scalars["String"]["input"];
+    }>;
 };
 export declare const CodegenGeneratedCwBalanceDocument: Apollo.DocumentNode;
 /**

@@ -584,6 +584,16 @@ export type ICodegenGeneratedChainsQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+    claim_user_claims_pubKey: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<string>;
+    };
+};
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
     chain_uid: Scalars['String']['input'];
     contract: Scalars['String']['input'];
@@ -2710,6 +2720,7 @@ export declare const CodegenGeneratedChainsKeplrConfigStakecurrencyDocument: imp
 export declare const CodegenGeneratedChainsKeplrConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsRouterConfigDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedChainsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedClaimUserClaimsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedCwBalanceDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedCwTokenInfoDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedCwDocument: import("graphql").DocumentNode;
@@ -2827,6 +2838,7 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG(variables?: ICodegenGeneratedChainsKeplrConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsKeplrConfigQuery>;
     CODEGEN_GENERATED_CHAINS_ROUTER_CONFIG(variables?: ICodegenGeneratedChainsRouterConfigQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsRouterConfigQuery>;
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery>;
+    CODEGEN_GENERATED_CLAIM_USER_CLAIMS(variables: ICodegenGeneratedClaimUserClaimsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsQuery>;
     CODEGEN_GENERATED_CW_BALANCE(variables: ICodegenGeneratedCwBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwBalanceQuery>;
     CODEGEN_GENERATED_CW_TOKEN_INFO(variables: ICodegenGeneratedCwTokenInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwTokenInfoQuery>;
     CODEGEN_GENERATED_CW(variables: ICodegenGeneratedCwQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwQuery>;

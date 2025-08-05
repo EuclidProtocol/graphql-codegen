@@ -216,6 +216,13 @@ export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+  claim_user_claims_pubKey: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<string> } };
+
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
   contract: Scalars['String']['input'];
@@ -2034,6 +2041,44 @@ export type CodegenGeneratedChainsLazyQueryHookResult = ReturnType<typeof useCod
 export type CodegenGeneratedChainsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsQuery, ICodegenGeneratedChainsQueryVariables>;
 export function refetchCodegenGeneratedChainsQuery(variables?: ICodegenGeneratedChainsQueryVariables) {
       return { query: CodegenGeneratedChainsDocument, variables: variables }
+    }
+export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_pubKey: String!) {
+  claim {
+    user_claims(pubKey: $claim_user_claims_pubKey)
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedClaimUserClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
+ *   variables: {
+ *      claim_user_claims_pubKey: // value for 'claim_user_claims_pubKey'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedClaimUserClaimsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>(CodegenGeneratedClaimUserClaimsDocument, options);
+      }
+export function useCodegenGeneratedClaimUserClaimsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>(CodegenGeneratedClaimUserClaimsDocument, options);
+        }
+export type CodegenGeneratedClaimUserClaimsQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsQuery>;
+export type CodegenGeneratedClaimUserClaimsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>;
+export function refetchCodegenGeneratedClaimUserClaimsQuery(variables: ICodegenGeneratedClaimUserClaimsQueryVariables) {
+      return { query: CodegenGeneratedClaimUserClaimsDocument, variables: variables }
     }
 export const CodegenGeneratedCwBalanceDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CW_BALANCE($chain_uid: String!, $contract: String!, $cw_balance_address: String!) {

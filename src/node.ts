@@ -216,6 +216,13 @@ export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+  claim_user_claims_pubKey: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<string> } };
+
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
   contract: Scalars['String']['input'];
@@ -1372,6 +1379,13 @@ export const CodegenGeneratedChainsDocument = /*#__PURE__*/ gql`
       logo
       type
     }
+  }
+}
+    `;
+export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_pubKey: String!) {
+  claim {
+    user_claims(pubKey: $claim_user_claims_pubKey)
   }
 }
     `;
@@ -3031,6 +3045,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsQuery>(CodegenGeneratedChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_USER_CLAIMS(variables: ICodegenGeneratedClaimUserClaimsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimUserClaimsQuery>(CodegenGeneratedClaimUserClaimsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_USER_CLAIMS', 'query');
     },
     CODEGEN_GENERATED_CW_BALANCE(variables: ICodegenGeneratedCwBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwBalanceQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwBalanceQuery>(CodegenGeneratedCwBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_BALANCE', 'query');
