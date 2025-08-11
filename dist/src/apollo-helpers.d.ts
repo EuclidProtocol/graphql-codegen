@@ -95,9 +95,21 @@ export type ChainsResponseKeySpecifier = ('chains' | ChainsResponseKeySpecifier)
 export type ChainsResponseFieldPolicy = {
     chains?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type ClaimQueriesKeySpecifier = ('user_claims' | ClaimQueriesKeySpecifier)[];
+export type ClaimQueriesKeySpecifier = ('claim' | 'claims_by_claimer_pub_Key' | 'claims_by_email' | 'sender_claims' | 'state' | 'user_claims' | ClaimQueriesKeySpecifier)[];
 export type ClaimQueriesFieldPolicy = {
+    claim?: FieldPolicy<any> | FieldReadFunction<any>;
+    claims_by_claimer_pub_Key?: FieldPolicy<any> | FieldReadFunction<any>;
+    claims_by_email?: FieldPolicy<any> | FieldReadFunction<any>;
+    sender_claims?: FieldPolicy<any> | FieldReadFunction<any>;
+    state?: FieldPolicy<any> | FieldReadFunction<any>;
     user_claims?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ClaimStateKeySpecifier = ('admin' | 'chain_uid' | 'factory_address' | 'vcoin_address' | ClaimStateKeySpecifier)[];
+export type ClaimStateFieldPolicy = {
+    admin?: FieldPolicy<any> | FieldReadFunction<any>;
+    chain_uid?: FieldPolicy<any> | FieldReadFunction<any>;
+    factory_address?: FieldPolicy<any> | FieldReadFunction<any>;
+    vcoin_address?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type ClaimerResponseKeySpecifier = ('amount' | 'claim_id' | 'claimer' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
 export type ClaimerResponseFieldPolicy = {
@@ -661,6 +673,10 @@ export type StrictTypedTypePolicies = {
     ClaimQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | ClaimQueriesKeySpecifier | (() => undefined | ClaimQueriesKeySpecifier);
         fields?: ClaimQueriesFieldPolicy;
+    };
+    ClaimState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | ClaimStateKeySpecifier | (() => undefined | ClaimStateKeySpecifier);
+        fields?: ClaimStateFieldPolicy;
     };
     ClaimerResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | ClaimerResponseKeySpecifier | (() => undefined | ClaimerResponseKeySpecifier);

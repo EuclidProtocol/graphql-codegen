@@ -216,6 +216,79 @@ export type ICodegenGeneratedChainsQueryVariables = Exact<{ [key: string]: never
 
 export type ICodegenGeneratedChainsQuery = { __typename?: 'Query', chains: { __typename?: 'Chains', all_evm_chains: Array<{ __typename?: 'EVMChainConfig', chain_id: string, chain_uid: string, explorer_url: string, name: string, native_currency: { __typename?: 'NativeCurrency', decimals: number, name: string, symbol: string }, rpc_urls: { __typename?: 'RPCUrls', default: { __typename?: 'RPCConfig', http: Array<string> } } }>, router_config: { __typename?: 'RouterConfig', chain_uid: string, contract_address: string, explorer_url: string, logo: string, type: string } } };
 
+export type ICodegenGeneratedClaimClaimSenderQueryVariables = Exact<{
+  claim_claim_claim_id: Scalars['Int']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimClaimSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim: { __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+
+export type ICodegenGeneratedClaimClaimQueryVariables = Exact<{
+  claim_claim_claim_id: Scalars['Int']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimClaimQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim: { __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
+  claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
+  claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_claimer_pub_Key: Array<{ __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables = Exact<{
+  claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
+  claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_claimer_pub_Key: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables = Exact<{
+  claim_claims_by_email_email: Scalars['String']['input'];
+  claim_claims_by_email_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_claims_by_email_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimClaimsByEmailQueryVariables = Exact<{
+  claim_claims_by_email_email: Scalars['String']['input'];
+  claim_claims_by_email_limit?: InputMaybe<Scalars['Int']['input']>;
+  claim_claims_by_email_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedClaimClaimsByEmailQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimSenderClaimsSenderQueryVariables = Exact<{
+  claim_sender_claims_limit: Scalars['Int']['input'];
+  claim_sender_claims_offset: Scalars['Int']['input'];
+  claim_sender_claims_sender: ICrossChainUserInput;
+}>;
+
+
+export type ICodegenGeneratedClaimSenderClaimsSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', sender_claims: Array<{ __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimSenderClaimsQueryVariables = Exact<{
+  claim_sender_claims_limit: Scalars['Int']['input'];
+  claim_sender_claims_offset: Scalars['Int']['input'];
+  claim_sender_claims_sender: ICrossChainUserInput;
+}>;
+
+
+export type ICodegenGeneratedClaimSenderClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', sender_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimStateQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedClaimStateQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', state: { __typename?: 'ClaimState', admin: string, chain_uid: string, factory_address: string, vcoin_address: string } } };
+
 export type ICodegenGeneratedClaimUserClaimsSenderQueryVariables = Exact<{
   claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
   claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
@@ -233,6 +306,11 @@ export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
 
 
 export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_id: string, claimer: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+
+export type ICodegenGeneratedClaimQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type ICodegenGeneratedClaimQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', state: { __typename?: 'ClaimState', admin: string, chain_uid: string, factory_address: string, vcoin_address: string } } };
 
 export type ICodegenGeneratedCwBalanceQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -1393,6 +1471,154 @@ export const CodegenGeneratedChainsDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedClaimClaimSenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIM_SENDER($claim_claim_claim_id: Int!) {
+  claim {
+    claim(claim_id: $claim_claim_claim_id) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIM($claim_claim_claim_id: Int!) {
+  claim {
+    claim(claim_id: $claim_claim_claim_id) {
+      amount
+      claim_id
+      claimer
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
+  claim {
+    claims_by_claimer_pub_Key(
+      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
+      limit: $claim_claims_by_claimer_pub_Key_limit
+      offset: $claim_claims_by_claimer_pub_Key_offset
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
+  claim {
+    claims_by_claimer_pub_Key(
+      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
+      limit: $claim_claims_by_claimer_pub_Key_limit
+      offset: $claim_claims_by_claimer_pub_Key_offset
+    ) {
+      amount
+      claim_id
+      claimer
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimsByEmailSenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
+  claim {
+    claims_by_email(
+      email: $claim_claims_by_email_email
+      limit: $claim_claims_by_email_limit
+      offset: $claim_claims_by_email_offset
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimsByEmailDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
+  claim {
+    claims_by_email(
+      email: $claim_claims_by_email_email
+      limit: $claim_claims_by_email_limit
+      offset: $claim_claims_by_email_offset
+    ) {
+      amount
+      claim_id
+      claimer
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimSenderClaimsSenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
+  claim {
+    sender_claims(
+      limit: $claim_sender_claims_limit
+      offset: $claim_sender_claims_offset
+      sender: $claim_sender_claims_sender
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimSenderClaimsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
+  claim {
+    sender_claims(
+      limit: $claim_sender_claims_limit
+      offset: $claim_sender_claims_offset
+      sender: $claim_sender_claims_sender
+    ) {
+      amount
+      claim_id
+      claimer
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimStateDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_STATE {
+  claim {
+    state {
+      admin
+      chain_uid
+      factory_address
+      vcoin_address
+    }
+  }
+}
+    `;
 export const CodegenGeneratedClaimUserClaimsSenderDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
   claim {
@@ -1425,6 +1651,18 @@ export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
         chain_uid
       }
       token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM {
+  claim {
+    state {
+      admin
+      chain_uid
+      factory_address
+      vcoin_address
     }
   }
 }
@@ -3073,11 +3311,41 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedChainsQuery>(CodegenGeneratedChainsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CHAINS', 'query');
     },
+    CODEGEN_GENERATED_CLAIM_CLAIM_SENDER(variables: ICodegenGeneratedClaimClaimSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimSenderQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimSenderQuery>(CodegenGeneratedClaimClaimSenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIM_SENDER', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIM(variables: ICodegenGeneratedClaimClaimQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimQuery>(CodegenGeneratedClaimClaimDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIM', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery>(CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery>(CodegenGeneratedClaimClaimsByClaimerPubKeyDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER(variables: ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByEmailSenderQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimsByEmailSenderQuery>(CodegenGeneratedClaimClaimsByEmailSenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL(variables: ICodegenGeneratedClaimClaimsByEmailQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByEmailQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimsByEmailQuery>(CodegenGeneratedClaimClaimsByEmailDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER(variables: ICodegenGeneratedClaimSenderClaimsSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimSenderClaimsSenderQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimSenderClaimsSenderQuery>(CodegenGeneratedClaimSenderClaimsSenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS(variables: ICodegenGeneratedClaimSenderClaimsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimSenderClaimsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimSenderClaimsQuery>(CodegenGeneratedClaimSenderClaimsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_STATE(variables?: ICodegenGeneratedClaimStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimStateQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimStateQuery>(CodegenGeneratedClaimStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_STATE', 'query');
+    },
     CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER(variables: ICodegenGeneratedClaimUserClaimsSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsSenderQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimUserClaimsSenderQuery>(CodegenGeneratedClaimUserClaimsSenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER', 'query');
     },
     CODEGEN_GENERATED_CLAIM_USER_CLAIMS(variables: ICodegenGeneratedClaimUserClaimsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimUserClaimsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimUserClaimsQuery>(CodegenGeneratedClaimUserClaimsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_USER_CLAIMS', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM(variables?: ICodegenGeneratedClaimQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimQuery>(CodegenGeneratedClaimDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM', 'query');
     },
     CODEGEN_GENERATED_CW_BALANCE(variables: ICodegenGeneratedCwBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedCwBalanceQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedCwBalanceQuery>(CodegenGeneratedCwBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CW_BALANCE', 'query');

@@ -164,7 +164,38 @@ export type IChainsResponse = {
 
 export type IClaimQueries = {
   __typename?: 'ClaimQueries';
+  claim: Maybe<IClaimerResponse>;
+  claims_by_claimer_pub_Key: Array<Maybe<IClaimerResponse>>;
+  claims_by_email: Array<Maybe<IClaimerResponse>>;
+  sender_claims: Array<Maybe<IClaimerResponse>>;
+  state: Maybe<IClaimState>;
   user_claims: Array<Maybe<IClaimerResponse>>;
+};
+
+
+export type IClaimQueriesClaimArgs = {
+  claim_id: Scalars['Int']['input'];
+};
+
+
+export type IClaimQueriesClaimsByClaimerPubKeyArgs = {
+  claimer_pub_key: Scalars['String']['input'];
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IClaimQueriesClaimsByEmailArgs = {
+  email: Scalars['String']['input'];
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type IClaimQueriesSenderClaimsArgs = {
+  limit: Scalars['Int']['input'];
+  offset: Scalars['Int']['input'];
+  sender: ICrossChainUserInput;
 };
 
 
@@ -172,6 +203,14 @@ export type IClaimQueriesUserClaimsArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   public_secret: Scalars['String']['input'];
+};
+
+export type IClaimState = {
+  __typename?: 'ClaimState';
+  admin: Scalars['String']['output'];
+  chain_uid: Scalars['String']['output'];
+  factory_address: Scalars['String']['output'];
+  vcoin_address: Scalars['String']['output'];
 };
 
 export type IClaimerResponse = {
