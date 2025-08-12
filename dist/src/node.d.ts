@@ -611,8 +611,10 @@ export type ICodegenGeneratedClaimClaimQuery = {
         claim: {
             __typename?: 'ClaimerResponse';
             amount: string;
+            claim_group_id: string;
             claim_id: string;
             claimer: string;
+            pseudo_claim_id: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -653,8 +655,10 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = {
         claims_by_claimer_pub_Key: Array<{
             __typename?: 'ClaimerResponse';
             amount: string;
+            claim_group_id: string;
             claim_id: string;
             claimer: string;
+            pseudo_claim_id: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -695,8 +699,10 @@ export type ICodegenGeneratedClaimClaimsByEmailQuery = {
         claims_by_email: Array<{
             __typename?: 'ClaimerResponse';
             amount: string;
+            claim_group_id: string;
             claim_id: string;
             claimer: string;
+            pseudo_claim_id: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -737,8 +743,10 @@ export type ICodegenGeneratedClaimSenderClaimsQuery = {
         sender_claims: Array<{
             __typename?: 'ClaimerResponse';
             amount: string;
+            claim_group_id: string;
             claim_id: string;
             claimer: string;
+            pseudo_claim_id: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -795,8 +803,10 @@ export type ICodegenGeneratedClaimUserClaimsQuery = {
         user_claims: Array<{
             __typename?: 'ClaimerResponse';
             amount: string;
+            claim_group_id: string;
             claim_id: string;
             claimer: string;
+            pseudo_claim_id: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';

@@ -208,8 +208,10 @@ export type IClaimState = {
 export type IClaimerResponse = {
     __typename?: 'ClaimerResponse';
     amount: Scalars['String']['output'];
+    claim_group_id: Scalars['String']['output'];
     claim_id: Scalars['String']['output'];
     claimer: Scalars['String']['output'];
+    pseudo_claim_id: Scalars['String']['output'];
     sender: ICrossChainUser;
     token: Scalars['String']['output'];
 };

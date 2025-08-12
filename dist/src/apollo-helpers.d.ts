@@ -111,11 +111,13 @@ export type ClaimStateFieldPolicy = {
     factory_address?: FieldPolicy<any> | FieldReadFunction<any>;
     vcoin_address?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type ClaimerResponseKeySpecifier = ('amount' | 'claim_id' | 'claimer' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
+export type ClaimerResponseKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
 export type ClaimerResponseFieldPolicy = {
     amount?: FieldPolicy<any> | FieldReadFunction<any>;
+    claim_group_id?: FieldPolicy<any> | FieldReadFunction<any>;
     claim_id?: FieldPolicy<any> | FieldReadFunction<any>;
     claimer?: FieldPolicy<any> | FieldReadFunction<any>;
+    pseudo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>;
     sender?: FieldPolicy<any> | FieldReadFunction<any>;
     token?: FieldPolicy<any> | FieldReadFunction<any>;
 };

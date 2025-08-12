@@ -1445,8 +1445,10 @@ exports.CodegenGeneratedClaimClaimDocument = (0, client_1.gql) `
   claim {
     claim(claim_id: $claim_claim_claim_id) {
       amount
+      claim_group_id
       claim_id
       claimer
+      pseudo_claim_id
       sender {
         address
         chain_uid
@@ -1537,8 +1539,10 @@ exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, client_1.gql) `
       offset: $claim_claims_by_claimer_pub_Key_offset
     ) {
       amount
+      claim_group_id
       claim_id
       claimer
+      pseudo_claim_id
       sender {
         address
         chain_uid
@@ -1631,8 +1635,10 @@ exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, client_1.gql) `
       offset: $claim_claims_by_email_offset
     ) {
       amount
+      claim_group_id
       claim_id
       claimer
+      pseudo_claim_id
       sender {
         address
         chain_uid
@@ -1725,8 +1731,10 @@ exports.CodegenGeneratedClaimSenderClaimsDocument = (0, client_1.gql) `
       sender: $claim_sender_claims_sender
     ) {
       amount
+      claim_group_id
       claim_id
       claimer
+      pseudo_claim_id
       sender {
         address
         chain_uid
@@ -1857,8 +1865,10 @@ exports.CodegenGeneratedClaimUserClaimsDocument = (0, client_1.gql) `
       public_secret: $claim_user_claims_public_secret
     ) {
       amount
+      claim_group_id
       claim_id
       claimer
+      pseudo_claim_id
       sender {
         address
         chain_uid
