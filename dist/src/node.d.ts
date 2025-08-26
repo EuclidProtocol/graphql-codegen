@@ -624,6 +624,46 @@ export type ICodegenGeneratedClaimClaimQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            pseudo_claim_id: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        };
+    };
+};
 export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
     claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
     claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
@@ -2947,6 +2987,8 @@ export declare const CodegenGeneratedChainsRouterConfigDocument: import("graphql
 export declare const CodegenGeneratedChainsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimClaimSenderDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimClaimDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimClaimsByClaimerPubKeyDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedClaimClaimsByEmailSenderDocument: import("graphql").DocumentNode;
@@ -3076,6 +3118,8 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_CHAINS(variables?: ICodegenGeneratedChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedChainsQuery>;
     CODEGEN_GENERATED_CLAIM_CLAIM_SENDER(variables: ICodegenGeneratedClaimClaimSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimSenderQuery>;
     CODEGEN_GENERATED_CLAIM_CLAIM(variables: ICodegenGeneratedClaimClaimQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimQuery>;
+    CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery>;
+    CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery>;
     CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery>;
     CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery>;
     CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER(variables: ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByEmailSenderQuery>;

@@ -165,6 +165,7 @@ export type IChainsResponse = {
 export type IClaimQueries = {
   __typename?: 'ClaimQueries';
   claim: Maybe<IClaimerResponse>;
+  claim_by_psuedo_claim_id: Maybe<IClaimerResponse>;
   claims_by_claimer_pub_Key: Array<Maybe<IClaimerResponse>>;
   claims_by_email: Array<Maybe<IClaimerResponse>>;
   sender_claims: Array<Maybe<IClaimerResponse>>;
@@ -175,6 +176,11 @@ export type IClaimQueries = {
 
 export type IClaimQueriesClaimArgs = {
   claim_id: Scalars['Int']['input'];
+};
+
+
+export type IClaimQueriesClaimByPsuedoClaimIdArgs = {
+  psuedo_claim_id: Scalars['String']['input'];
 };
 
 

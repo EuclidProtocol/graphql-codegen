@@ -230,6 +230,20 @@ export type ICodegenGeneratedClaimClaimQueryVariables = Exact<{
 
 export type ICodegenGeneratedClaimClaimQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim: { __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables = Exact<{
+  claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables = Exact<{
+  claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+
 export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
   claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
   claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
@@ -1487,6 +1501,40 @@ export const CodegenGeneratedClaimClaimDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_CLAIM_CLAIM($claim_claim_claim_id: Int!) {
   claim {
     claim(claim_id: $claim_claim_claim_id) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
+  claim {
+    claim_by_psuedo_claim_id(
+      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
+  claim {
+    claim_by_psuedo_claim_id(
+      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
+    ) {
       amount
       claim_group_id
       claim_id
@@ -3326,6 +3374,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_CLAIM_CLAIM(variables: ICodegenGeneratedClaimClaimQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimQuery>(CodegenGeneratedClaimClaimDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIM', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery>(CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER', 'query');
+    },
+    CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery>(CodegenGeneratedClaimClaimByPsuedoClaimIdDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID', 'query');
     },
     CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery>(CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER', 'query');

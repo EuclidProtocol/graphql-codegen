@@ -95,9 +95,10 @@ export type ChainsResponseKeySpecifier = ('chains' | ChainsResponseKeySpecifier)
 export type ChainsResponseFieldPolicy = {
 	chains?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ClaimQueriesKeySpecifier = ('claim' | 'claims_by_claimer_pub_Key' | 'claims_by_email' | 'sender_claims' | 'state' | 'user_claims' | ClaimQueriesKeySpecifier)[];
+export type ClaimQueriesKeySpecifier = ('claim' | 'claim_by_psuedo_claim_id' | 'claims_by_claimer_pub_Key' | 'claims_by_email' | 'sender_claims' | 'state' | 'user_claims' | ClaimQueriesKeySpecifier)[];
 export type ClaimQueriesFieldPolicy = {
 	claim?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_by_psuedo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	claims_by_claimer_pub_Key?: FieldPolicy<any> | FieldReadFunction<any>,
 	claims_by_email?: FieldPolicy<any> | FieldReadFunction<any>,
 	sender_claims?: FieldPolicy<any> | FieldReadFunction<any>,

@@ -623,6 +623,46 @@ export type ICodegenGeneratedClaimClaimQuery = {
         };
     };
 };
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            pseudo_claim_id: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+            };
+        };
+    };
+};
 export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
     claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
     claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
@@ -3711,6 +3751,70 @@ export declare function refetchCodegenGeneratedClaimClaimQuery(variables: ICodeg
     query: Apollo.DocumentNode;
     variables: Exact<{
         claim_claim_claim_id: Scalars["Int"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
     }>;
 };
 export declare const CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument: Apollo.DocumentNode;
