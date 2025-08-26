@@ -95,9 +95,32 @@ export type ChainsResponseKeySpecifier = ('chains' | ChainsResponseKeySpecifier)
 export type ChainsResponseFieldPolicy = {
 	chains?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ClaimQueriesKeySpecifier = ('user_claims' | ClaimQueriesKeySpecifier)[];
+export type ClaimQueriesKeySpecifier = ('claim' | 'claim_by_psuedo_claim_id' | 'claims_by_claimer_pub_Key' | 'claims_by_email' | 'sender_claims' | 'state' | 'user_claims' | ClaimQueriesKeySpecifier)[];
 export type ClaimQueriesFieldPolicy = {
+	claim?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_by_psuedo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claims_by_claimer_pub_Key?: FieldPolicy<any> | FieldReadFunction<any>,
+	claims_by_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_claims?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_claims?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimStateKeySpecifier = ('admin' | 'chain_uid' | 'factory_address' | 'vcoin_address' | ClaimStateKeySpecifier)[];
+export type ClaimStateFieldPolicy = {
+	admin?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	vcoin_address?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimerResponseKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
+export type ClaimerResponseFieldPolicy = {
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_group_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claimer?: FieldPolicy<any> | FieldReadFunction<any>,
+	pseudo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	token?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ContractKeySpecifier = ('ChainUID' | 'ContractAddress' | 'Type' | ContractKeySpecifier)[];
 export type ContractFieldPolicy = {
@@ -134,10 +157,9 @@ export type ContractStateOfVlpFieldPolicy = {
 	total_lp_tokens?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type CrossChainUserKeySpecifier = ('address' | 'amount' | 'chain_uid' | CrossChainUserKeySpecifier)[];
+export type CrossChainUserKeySpecifier = ('address' | 'chain_uid' | CrossChainUserKeySpecifier)[];
 export type CrossChainUserFieldPolicy = {
 	address?: FieldPolicy<any> | FieldReadFunction<any>,
-	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type CrossChainUserWithLimitKeySpecifier = ('limit' | 'user' | CrossChainUserWithLimitKeySpecifier)[];
@@ -654,6 +676,14 @@ export type StrictTypedTypePolicies = {
 	ClaimQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ClaimQueriesKeySpecifier | (() => undefined | ClaimQueriesKeySpecifier),
 		fields?: ClaimQueriesFieldPolicy,
+	},
+	ClaimState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimStateKeySpecifier | (() => undefined | ClaimStateKeySpecifier),
+		fields?: ClaimStateFieldPolicy,
+	},
+	ClaimerResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimerResponseKeySpecifier | (() => undefined | ClaimerResponseKeySpecifier),
+		fields?: ClaimerResponseFieldPolicy,
 	},
 	Contract?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContractKeySpecifier | (() => undefined | ContractKeySpecifier),
