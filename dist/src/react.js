@@ -23,17 +23,42 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllChainsDocument = void 0;
-exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = void 0;
+exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedClaimDocument = exports.CodegenGeneratedClaimUserClaimsDocument = exports.CodegenGeneratedClaimUserClaimsSenderDocument = exports.CodegenGeneratedClaimStateDocument = exports.CodegenGeneratedClaimSenderClaimsDocument = exports.CodegenGeneratedClaimSenderClaimsSenderDocument = exports.CodegenGeneratedClaimClaimsByEmailDocument = exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = exports.CodegenGeneratedClaimClaimDocument = exports.CodegenGeneratedClaimClaimSenderDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllEvmChainsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = exports.CodegenGeneratedChainsAllChainsDocument = exports.ITokenPairSortBy = exports.ISortOrder = void 0;
+exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = exports.CodegenGeneratedTokenAllDexesDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = void 0;
+exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = void 0;
 exports.useCodegenGeneratedChainsAllChainsQuery = useCodegenGeneratedChainsAllChainsQuery;
 exports.useCodegenGeneratedChainsAllChainsLazyQuery = useCodegenGeneratedChainsAllChainsLazyQuery;
 exports.refetchCodegenGeneratedChainsAllChainsQuery = refetchCodegenGeneratedChainsAllChainsQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQuery = useCodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQuery;
+exports.refetchCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = refetchCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQuery = useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQuery;
+exports.refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQuery = useCodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQuery;
+exports.refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsQuery = useCodegenGeneratedChainsAllEvmChainsQuery;
+exports.useCodegenGeneratedChainsAllEvmChainsLazyQuery = useCodegenGeneratedChainsAllEvmChainsLazyQuery;
+exports.refetchCodegenGeneratedChainsAllEvmChainsQuery = refetchCodegenGeneratedChainsAllEvmChainsQuery;
 exports.useCodegenGeneratedChainsChainConfigQuery = useCodegenGeneratedChainsChainConfigQuery;
 exports.useCodegenGeneratedChainsChainConfigLazyQuery = useCodegenGeneratedChainsChainConfigLazyQuery;
 exports.refetchCodegenGeneratedChainsChainConfigQuery = refetchCodegenGeneratedChainsChainConfigQuery;
 exports.useCodegenGeneratedChainsContractsQuery = useCodegenGeneratedChainsContractsQuery;
 exports.useCodegenGeneratedChainsContractsLazyQuery = useCodegenGeneratedChainsContractsLazyQuery;
 exports.refetchCodegenGeneratedChainsContractsQuery = refetchCodegenGeneratedChainsContractsQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery = useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery;
+exports.refetchCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = refetchCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery = useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery;
+exports.refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery = useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery;
+exports.refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigQuery = useCodegenGeneratedChainsEvmChainConfigQuery;
+exports.useCodegenGeneratedChainsEvmChainConfigLazyQuery = useCodegenGeneratedChainsEvmChainConfigLazyQuery;
+exports.refetchCodegenGeneratedChainsEvmChainConfigQuery = refetchCodegenGeneratedChainsEvmChainConfigQuery;
 exports.useCodegenGeneratedChainsKeplrConfigBech32ConfigQuery = useCodegenGeneratedChainsKeplrConfigBech32ConfigQuery;
 exports.useCodegenGeneratedChainsKeplrConfigBech32ConfigLazyQuery = useCodegenGeneratedChainsKeplrConfigBech32ConfigLazyQuery;
 exports.refetchCodegenGeneratedChainsKeplrConfigBech32ConfigQuery = refetchCodegenGeneratedChainsKeplrConfigBech32ConfigQuery;
@@ -64,6 +89,48 @@ exports.refetchCodegenGeneratedChainsRouterConfigQuery = refetchCodegenGenerated
 exports.useCodegenGeneratedChainsQuery = useCodegenGeneratedChainsQuery;
 exports.useCodegenGeneratedChainsLazyQuery = useCodegenGeneratedChainsLazyQuery;
 exports.refetchCodegenGeneratedChainsQuery = refetchCodegenGeneratedChainsQuery;
+exports.useCodegenGeneratedClaimClaimSenderQuery = useCodegenGeneratedClaimClaimSenderQuery;
+exports.useCodegenGeneratedClaimClaimSenderLazyQuery = useCodegenGeneratedClaimClaimSenderLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimSenderQuery = refetchCodegenGeneratedClaimClaimSenderQuery;
+exports.useCodegenGeneratedClaimClaimQuery = useCodegenGeneratedClaimClaimQuery;
+exports.useCodegenGeneratedClaimClaimLazyQuery = useCodegenGeneratedClaimClaimLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimQuery = refetchCodegenGeneratedClaimClaimQuery;
+exports.useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery;
+exports.useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery = useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = refetchCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery;
+exports.useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery = useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery;
+exports.useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery = useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimByPsuedoClaimIdQuery = refetchCodegenGeneratedClaimClaimByPsuedoClaimIdQuery;
+exports.useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery = useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery;
+exports.useCodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQuery = useCodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery = refetchCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery;
+exports.useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery = useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery;
+exports.useCodegenGeneratedClaimClaimsByClaimerPubKeyLazyQuery = useCodegenGeneratedClaimClaimsByClaimerPubKeyLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimsByClaimerPubKeyQuery = refetchCodegenGeneratedClaimClaimsByClaimerPubKeyQuery;
+exports.useCodegenGeneratedClaimClaimsByEmailSenderQuery = useCodegenGeneratedClaimClaimsByEmailSenderQuery;
+exports.useCodegenGeneratedClaimClaimsByEmailSenderLazyQuery = useCodegenGeneratedClaimClaimsByEmailSenderLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimsByEmailSenderQuery = refetchCodegenGeneratedClaimClaimsByEmailSenderQuery;
+exports.useCodegenGeneratedClaimClaimsByEmailQuery = useCodegenGeneratedClaimClaimsByEmailQuery;
+exports.useCodegenGeneratedClaimClaimsByEmailLazyQuery = useCodegenGeneratedClaimClaimsByEmailLazyQuery;
+exports.refetchCodegenGeneratedClaimClaimsByEmailQuery = refetchCodegenGeneratedClaimClaimsByEmailQuery;
+exports.useCodegenGeneratedClaimSenderClaimsSenderQuery = useCodegenGeneratedClaimSenderClaimsSenderQuery;
+exports.useCodegenGeneratedClaimSenderClaimsSenderLazyQuery = useCodegenGeneratedClaimSenderClaimsSenderLazyQuery;
+exports.refetchCodegenGeneratedClaimSenderClaimsSenderQuery = refetchCodegenGeneratedClaimSenderClaimsSenderQuery;
+exports.useCodegenGeneratedClaimSenderClaimsQuery = useCodegenGeneratedClaimSenderClaimsQuery;
+exports.useCodegenGeneratedClaimSenderClaimsLazyQuery = useCodegenGeneratedClaimSenderClaimsLazyQuery;
+exports.refetchCodegenGeneratedClaimSenderClaimsQuery = refetchCodegenGeneratedClaimSenderClaimsQuery;
+exports.useCodegenGeneratedClaimStateQuery = useCodegenGeneratedClaimStateQuery;
+exports.useCodegenGeneratedClaimStateLazyQuery = useCodegenGeneratedClaimStateLazyQuery;
+exports.refetchCodegenGeneratedClaimStateQuery = refetchCodegenGeneratedClaimStateQuery;
+exports.useCodegenGeneratedClaimUserClaimsSenderQuery = useCodegenGeneratedClaimUserClaimsSenderQuery;
+exports.useCodegenGeneratedClaimUserClaimsSenderLazyQuery = useCodegenGeneratedClaimUserClaimsSenderLazyQuery;
+exports.refetchCodegenGeneratedClaimUserClaimsSenderQuery = refetchCodegenGeneratedClaimUserClaimsSenderQuery;
+exports.useCodegenGeneratedClaimUserClaimsQuery = useCodegenGeneratedClaimUserClaimsQuery;
+exports.useCodegenGeneratedClaimUserClaimsLazyQuery = useCodegenGeneratedClaimUserClaimsLazyQuery;
+exports.refetchCodegenGeneratedClaimUserClaimsQuery = refetchCodegenGeneratedClaimUserClaimsQuery;
+exports.useCodegenGeneratedClaimQuery = useCodegenGeneratedClaimQuery;
+exports.useCodegenGeneratedClaimLazyQuery = useCodegenGeneratedClaimLazyQuery;
+exports.refetchCodegenGeneratedClaimQuery = refetchCodegenGeneratedClaimQuery;
 exports.useCodegenGeneratedCwBalanceQuery = useCodegenGeneratedCwBalanceQuery;
 exports.useCodegenGeneratedCwBalanceLazyQuery = useCodegenGeneratedCwBalanceLazyQuery;
 exports.refetchCodegenGeneratedCwBalanceQuery = refetchCodegenGeneratedCwBalanceQuery;
@@ -214,6 +281,12 @@ exports.refetchCodegenGeneratedRouterSimulateSwapQuery = refetchCodegenGenerated
 exports.useCodegenGeneratedRouterStateQuery = useCodegenGeneratedRouterStateQuery;
 exports.useCodegenGeneratedRouterStateLazyQuery = useCodegenGeneratedRouterStateLazyQuery;
 exports.refetchCodegenGeneratedRouterStateQuery = refetchCodegenGeneratedRouterStateQuery;
+exports.useCodegenGeneratedRouterTokenDenomsDenomsQuery = useCodegenGeneratedRouterTokenDenomsDenomsQuery;
+exports.useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery = useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery;
+exports.refetchCodegenGeneratedRouterTokenDenomsDenomsQuery = refetchCodegenGeneratedRouterTokenDenomsDenomsQuery;
+exports.useCodegenGeneratedRouterTokenDenomsQuery = useCodegenGeneratedRouterTokenDenomsQuery;
+exports.useCodegenGeneratedRouterTokenDenomsLazyQuery = useCodegenGeneratedRouterTokenDenomsLazyQuery;
+exports.refetchCodegenGeneratedRouterTokenDenomsQuery = refetchCodegenGeneratedRouterTokenDenomsQuery;
 exports.useCodegenGeneratedRouterTokenPairsFromVlpQuery = useCodegenGeneratedRouterTokenPairsFromVlpQuery;
 exports.useCodegenGeneratedRouterTokenPairsFromVlpLazyQuery = useCodegenGeneratedRouterTokenPairsFromVlpLazyQuery;
 exports.refetchCodegenGeneratedRouterTokenPairsFromVlpQuery = refetchCodegenGeneratedRouterTokenPairsFromVlpQuery;
@@ -223,9 +296,24 @@ exports.refetchCodegenGeneratedRouterVlpQuery = refetchCodegenGeneratedRouterVlp
 exports.useCodegenGeneratedRouterQuery = useCodegenGeneratedRouterQuery;
 exports.useCodegenGeneratedRouterLazyQuery = useCodegenGeneratedRouterLazyQuery;
 exports.refetchCodegenGeneratedRouterQuery = refetchCodegenGeneratedRouterQuery;
+exports.useCodegenGeneratedTokenAllDexesQuery = useCodegenGeneratedTokenAllDexesQuery;
+exports.useCodegenGeneratedTokenAllDexesLazyQuery = useCodegenGeneratedTokenAllDexesLazyQuery;
+exports.refetchCodegenGeneratedTokenAllDexesQuery = refetchCodegenGeneratedTokenAllDexesQuery;
+exports.useCodegenGeneratedTokenChainsForTokenLaunchQuery = useCodegenGeneratedTokenChainsForTokenLaunchQuery;
+exports.useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery = useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery;
+exports.refetchCodegenGeneratedTokenChainsForTokenLaunchQuery = refetchCodegenGeneratedTokenChainsForTokenLaunchQuery;
+exports.useCodegenGeneratedTokenDexMetadataQuery = useCodegenGeneratedTokenDexMetadataQuery;
+exports.useCodegenGeneratedTokenDexMetadataLazyQuery = useCodegenGeneratedTokenDexMetadataLazyQuery;
+exports.refetchCodegenGeneratedTokenDexMetadataQuery = refetchCodegenGeneratedTokenDexMetadataQuery;
 exports.useCodegenGeneratedTokenGetAllFaucetsQuery = useCodegenGeneratedTokenGetAllFaucetsQuery;
 exports.useCodegenGeneratedTokenGetAllFaucetsLazyQuery = useCodegenGeneratedTokenGetAllFaucetsLazyQuery;
 exports.refetchCodegenGeneratedTokenGetAllFaucetsQuery = refetchCodegenGeneratedTokenGetAllFaucetsQuery;
+exports.useCodegenGeneratedTokenTokenDenomsDenomsQuery = useCodegenGeneratedTokenTokenDenomsDenomsQuery;
+exports.useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery = useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery;
+exports.refetchCodegenGeneratedTokenTokenDenomsDenomsQuery = refetchCodegenGeneratedTokenTokenDenomsDenomsQuery;
+exports.useCodegenGeneratedTokenTokenDenomsQuery = useCodegenGeneratedTokenTokenDenomsQuery;
+exports.useCodegenGeneratedTokenTokenDenomsLazyQuery = useCodegenGeneratedTokenTokenDenomsLazyQuery;
+exports.refetchCodegenGeneratedTokenTokenDenomsQuery = refetchCodegenGeneratedTokenTokenDenomsQuery;
 exports.useCodegenGeneratedTokenTokenLiquiditiesQuery = useCodegenGeneratedTokenTokenLiquiditiesQuery;
 exports.useCodegenGeneratedTokenTokenLiquiditiesLazyQuery = useCodegenGeneratedTokenTokenLiquiditiesLazyQuery;
 exports.refetchCodegenGeneratedTokenTokenLiquiditiesQuery = refetchCodegenGeneratedTokenTokenLiquiditiesQuery;
@@ -238,6 +326,9 @@ exports.refetchCodegenGeneratedTokenTokenMetadataByIdQuery = refetchCodegenGener
 exports.useCodegenGeneratedTokenTokenMetadatasQuery = useCodegenGeneratedTokenTokenMetadatasQuery;
 exports.useCodegenGeneratedTokenTokenMetadatasLazyQuery = useCodegenGeneratedTokenTokenMetadatasLazyQuery;
 exports.refetchCodegenGeneratedTokenTokenMetadatasQuery = refetchCodegenGeneratedTokenTokenMetadatasQuery;
+exports.useCodegenGeneratedTokenTokensMetadataQuery = useCodegenGeneratedTokenTokensMetadataQuery;
+exports.useCodegenGeneratedTokenTokensMetadataLazyQuery = useCodegenGeneratedTokenTokensMetadataLazyQuery;
+exports.refetchCodegenGeneratedTokenTokensMetadataQuery = refetchCodegenGeneratedTokenTokensMetadataQuery;
 exports.useCodegenGeneratedTokenQuery = useCodegenGeneratedTokenQuery;
 exports.useCodegenGeneratedTokenLazyQuery = useCodegenGeneratedTokenLazyQuery;
 exports.refetchCodegenGeneratedTokenQuery = refetchCodegenGeneratedTokenQuery;
@@ -292,6 +383,12 @@ exports.refetchCodegenGeneratedVlpStateFeeQuery = refetchCodegenGeneratedVlpStat
 exports.useCodegenGeneratedVlpStatePairQuery = useCodegenGeneratedVlpStatePairQuery;
 exports.useCodegenGeneratedVlpStatePairLazyQuery = useCodegenGeneratedVlpStatePairLazyQuery;
 exports.refetchCodegenGeneratedVlpStatePairQuery = refetchCodegenGeneratedVlpStatePairQuery;
+exports.useCodegenGeneratedVlpStatePoolConfigStableQuery = useCodegenGeneratedVlpStatePoolConfigStableQuery;
+exports.useCodegenGeneratedVlpStatePoolConfigStableLazyQuery = useCodegenGeneratedVlpStatePoolConfigStableLazyQuery;
+exports.refetchCodegenGeneratedVlpStatePoolConfigStableQuery = refetchCodegenGeneratedVlpStatePoolConfigStableQuery;
+exports.useCodegenGeneratedVlpStatePoolConfigQuery = useCodegenGeneratedVlpStatePoolConfigQuery;
+exports.useCodegenGeneratedVlpStatePoolConfigLazyQuery = useCodegenGeneratedVlpStatePoolConfigLazyQuery;
+exports.refetchCodegenGeneratedVlpStatePoolConfigQuery = refetchCodegenGeneratedVlpStatePoolConfigQuery;
 exports.useCodegenGeneratedVlpStateQuery = useCodegenGeneratedVlpStateQuery;
 exports.useCodegenGeneratedVlpStateLazyQuery = useCodegenGeneratedVlpStateLazyQuery;
 exports.refetchCodegenGeneratedVlpStateQuery = refetchCodegenGeneratedVlpStateQuery;
@@ -319,16 +416,31 @@ exports.refetchCodegenGeneratedVlpQuery = refetchCodegenGeneratedVlpQuery;
 const client_1 = require("@apollo/client");
 const Apollo = __importStar(require("@apollo/client"));
 const defaultOptions = {};
+var ISortOrder;
+(function (ISortOrder) {
+    ISortOrder["ASC"] = "ASC";
+    ISortOrder["DESC"] = "DESC";
+})(ISortOrder || (exports.ISortOrder = ISortOrder = {}));
+var ITokenPairSortBy;
+(function (ITokenPairSortBy) {
+    ITokenPairSortBy["CREATED_AT"] = "CREATED_AT";
+    ITokenPairSortBy["TOTAL_LIQUIDITY"] = "TOTAL_LIQUIDITY";
+})(ITokenPairSortBy || (exports.ITokenPairSortBy = ITokenPairSortBy = {}));
 exports.CodegenGeneratedChainsAllChainsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean, $chains_all_chains_type: String) {
   chains {
-    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
+    all_chains(
+      show_all_chains: $chains_all_chains_show_all_chains
+      type: $chains_all_chains_type
+    ) {
       chain_id
       chain_uid
       display_name
       explorer_url
       factory_address
       logo
+      token_factory_address
+      type
     }
   }
 }
@@ -346,6 +458,7 @@ exports.CodegenGeneratedChainsAllChainsDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedChainsAllChainsQuery({
  *   variables: {
  *      chains_all_chains_show_all_chains: // value for 'chains_all_chains_show_all_chains'
+ *      chains_all_chains_type: // value for 'chains_all_chains_type'
  *   },
  * });
  */
@@ -360,6 +473,171 @@ function useCodegenGeneratedChainsAllChainsLazyQuery(baseOptions) {
 function refetchCodegenGeneratedChainsAllChainsQuery(variables) {
     return { query: exports.CodegenGeneratedChainsAllChainsDocument, variables: variables };
 }
+exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY {
+  chains {
+    all_evm_chains {
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument, options);
+}
+function useCodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument, options);
+}
+function refetchCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT {
+  chains {
+    all_evm_chains {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument, options);
+}
+function useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument, options);
+}
+function refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS {
+  chains {
+    all_evm_chains {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument, options);
+}
+function useCodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument, options);
+}
+function refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsAllEvmChainsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS {
+  chains {
+    all_evm_chains {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsAllEvmChainsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsAllEvmChainsDocument, options);
+}
+function useCodegenGeneratedChainsAllEvmChainsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsAllEvmChainsDocument, options);
+}
+function refetchCodegenGeneratedChainsAllEvmChainsQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsAllEvmChainsDocument, variables: variables };
+}
 exports.CodegenGeneratedChainsChainConfigDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG($chains_chain_config_chain_id: String, $chains_chain_config_chain_uid: String) {
   chains {
@@ -373,6 +651,8 @@ exports.CodegenGeneratedChainsChainConfigDocument = (0, client_1.gql) `
       explorer_url
       factory_address
       logo
+      token_factory_address
+      type
     }
   }
 }
@@ -443,6 +723,191 @@ function useCodegenGeneratedChainsContractsLazyQuery(baseOptions) {
 }
 function refetchCodegenGeneratedChainsContractsQuery(variables) {
     return { query: exports.CodegenGeneratedChainsContractsDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument, options);
+}
+function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument, options);
+}
+function refetchCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument, options);
+}
+function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument, options);
+}
+function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument, options);
+}
+function useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument, options);
+}
+function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument, variables: variables };
+}
+exports.CodegenGeneratedChainsEvmChainConfigDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
+  chains {
+    evm_chain_config(
+      chain_id: $chains_evm_chain_config_chain_id
+      chain_uid: $chains_evm_chain_config_chain_uid
+    ) {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+function useCodegenGeneratedChainsEvmChainConfigQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedChainsEvmChainConfigDocument, options);
+}
+function useCodegenGeneratedChainsEvmChainConfigLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedChainsEvmChainConfigDocument, options);
+}
+function refetchCodegenGeneratedChainsEvmChainConfigQuery(variables) {
+    return { query: exports.CodegenGeneratedChainsEvmChainConfigDocument, variables: variables };
 }
 exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG($chains_keplr_config_chain_id: String, $chains_keplr_config_chain_uid: String) {
@@ -890,6 +1355,22 @@ function refetchCodegenGeneratedChainsRouterConfigQuery(variables) {
 exports.CodegenGeneratedChainsDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_CHAINS {
   chains {
+    all_evm_chains {
+      chain_id
+      chain_uid
+      explorer_url
+      name
+      native_currency {
+        decimals
+        name
+        symbol
+      }
+      rpc_urls {
+        default {
+          http
+        }
+      }
+    }
     router_config {
       chain_uid
       contract_address
@@ -925,6 +1406,638 @@ function useCodegenGeneratedChainsLazyQuery(baseOptions) {
 }
 function refetchCodegenGeneratedChainsQuery(variables) {
     return { query: exports.CodegenGeneratedChainsDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimSenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIM_SENDER($claim_claim_claim_id: Int!) {
+  claim {
+    claim(claim_id: $claim_claim_claim_id) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimSenderQuery({
+ *   variables: {
+ *      claim_claim_claim_id: // value for 'claim_claim_claim_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimSenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimSenderDocument, options);
+}
+function useCodegenGeneratedClaimClaimSenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimSenderDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimSenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimSenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIM($claim_claim_claim_id: Int!) {
+  claim {
+    claim(claim_id: $claim_claim_claim_id) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimQuery({
+ *   variables: {
+ *      claim_claim_claim_id: // value for 'claim_claim_claim_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimDocument, options);
+}
+function useCodegenGeneratedClaimClaimLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
+  claim {
+    claim_by_psuedo_claim_id(
+      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument, options);
+}
+function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
+  claim {
+    claim_by_psuedo_claim_id(
+      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
+    ) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument, options);
+}
+function useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
+  claim {
+    claims_by_claimer_pub_Key(
+      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
+      limit: $claim_claims_by_claimer_pub_Key_limit
+      offset: $claim_claims_by_claimer_pub_Key_offset
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery({
+ *   variables: {
+ *      claim_claims_by_claimer_pub_Key_claimer_pub_key: // value for 'claim_claims_by_claimer_pub_Key_claimer_pub_key'
+ *      claim_claims_by_claimer_pub_Key_limit: // value for 'claim_claims_by_claimer_pub_Key_limit'
+ *      claim_claims_by_claimer_pub_Key_offset: // value for 'claim_claims_by_claimer_pub_Key_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, options);
+}
+function useCodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
+  claim {
+    claims_by_claimer_pub_Key(
+      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
+      limit: $claim_claims_by_claimer_pub_Key_limit
+      offset: $claim_claims_by_claimer_pub_Key_offset
+    ) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery({
+ *   variables: {
+ *      claim_claims_by_claimer_pub_Key_claimer_pub_key: // value for 'claim_claims_by_claimer_pub_Key_claimer_pub_key'
+ *      claim_claims_by_claimer_pub_Key_limit: // value for 'claim_claims_by_claimer_pub_Key_limit'
+ *      claim_claims_by_claimer_pub_Key_offset: // value for 'claim_claims_by_claimer_pub_Key_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument, options);
+}
+function useCodegenGeneratedClaimClaimsByClaimerPubKeyLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimsByClaimerPubKeyQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
+  claim {
+    claims_by_email(
+      email: $claim_claims_by_email_email
+      limit: $claim_claims_by_email_limit
+      offset: $claim_claims_by_email_offset
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimsByEmailSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByEmailSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByEmailSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByEmailSenderQuery({
+ *   variables: {
+ *      claim_claims_by_email_email: // value for 'claim_claims_by_email_email'
+ *      claim_claims_by_email_limit: // value for 'claim_claims_by_email_limit'
+ *      claim_claims_by_email_offset: // value for 'claim_claims_by_email_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimsByEmailSenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimsByEmailSenderDocument, options);
+}
+function useCodegenGeneratedClaimClaimsByEmailSenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimsByEmailSenderDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimsByEmailSenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimsByEmailSenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
+  claim {
+    claims_by_email(
+      email: $claim_claims_by_email_email
+      limit: $claim_claims_by_email_limit
+      offset: $claim_claims_by_email_offset
+    ) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimClaimsByEmailQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByEmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByEmailQuery({
+ *   variables: {
+ *      claim_claims_by_email_email: // value for 'claim_claims_by_email_email'
+ *      claim_claims_by_email_limit: // value for 'claim_claims_by_email_limit'
+ *      claim_claims_by_email_offset: // value for 'claim_claims_by_email_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimClaimsByEmailQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimClaimsByEmailDocument, options);
+}
+function useCodegenGeneratedClaimClaimsByEmailLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimClaimsByEmailDocument, options);
+}
+function refetchCodegenGeneratedClaimClaimsByEmailQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimClaimsByEmailDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimSenderClaimsSenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
+  claim {
+    sender_claims(
+      limit: $claim_sender_claims_limit
+      offset: $claim_sender_claims_offset
+      sender: $claim_sender_claims_sender
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimSenderClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimSenderClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimSenderClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimSenderClaimsSenderQuery({
+ *   variables: {
+ *      claim_sender_claims_limit: // value for 'claim_sender_claims_limit'
+ *      claim_sender_claims_offset: // value for 'claim_sender_claims_offset'
+ *      claim_sender_claims_sender: // value for 'claim_sender_claims_sender'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimSenderClaimsSenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimSenderClaimsSenderDocument, options);
+}
+function useCodegenGeneratedClaimSenderClaimsSenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimSenderClaimsSenderDocument, options);
+}
+function refetchCodegenGeneratedClaimSenderClaimsSenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimSenderClaimsSenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimSenderClaimsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
+  claim {
+    sender_claims(
+      limit: $claim_sender_claims_limit
+      offset: $claim_sender_claims_offset
+      sender: $claim_sender_claims_sender
+    ) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimSenderClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimSenderClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimSenderClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimSenderClaimsQuery({
+ *   variables: {
+ *      claim_sender_claims_limit: // value for 'claim_sender_claims_limit'
+ *      claim_sender_claims_offset: // value for 'claim_sender_claims_offset'
+ *      claim_sender_claims_sender: // value for 'claim_sender_claims_sender'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimSenderClaimsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimSenderClaimsDocument, options);
+}
+function useCodegenGeneratedClaimSenderClaimsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimSenderClaimsDocument, options);
+}
+function refetchCodegenGeneratedClaimSenderClaimsQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimSenderClaimsDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimStateDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_STATE {
+  claim {
+    state {
+      admin
+      chain_uid
+      factory_address
+      vcoin_address
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimStateQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimStateQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimStateQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimStateQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimStateQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimStateDocument, options);
+}
+function useCodegenGeneratedClaimStateLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimStateDocument, options);
+}
+function refetchCodegenGeneratedClaimStateQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimStateDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimUserClaimsSenderDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
+  claim {
+    user_claims(
+      limit: $claim_user_claims_limit
+      offset: $claim_user_claims_offset
+      public_secret: $claim_user_claims_public_secret
+    ) {
+      sender {
+        address
+        chain_uid
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimUserClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsSenderQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimUserClaimsSenderQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimUserClaimsSenderDocument, options);
+}
+function useCodegenGeneratedClaimUserClaimsSenderLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimUserClaimsSenderDocument, options);
+}
+function refetchCodegenGeneratedClaimUserClaimsSenderQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimUserClaimsSenderDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimUserClaimsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
+  claim {
+    user_claims(
+      limit: $claim_user_claims_limit
+      offset: $claim_user_claims_offset
+      public_secret: $claim_user_claims_public_secret
+    ) {
+      amount
+      claim_group_id
+      claim_id
+      claimer
+      pseudo_claim_id
+      sender {
+        address
+        chain_uid
+      }
+      token
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimUserClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimUserClaimsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimUserClaimsDocument, options);
+}
+function useCodegenGeneratedClaimUserClaimsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimUserClaimsDocument, options);
+}
+function refetchCodegenGeneratedClaimUserClaimsQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimUserClaimsDocument, variables: variables };
+}
+exports.CodegenGeneratedClaimDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_CLAIM {
+  claim {
+    state {
+      admin
+      chain_uid
+      factory_address
+      vcoin_address
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedClaimQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedClaimQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedClaimDocument, options);
+}
+function useCodegenGeneratedClaimLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedClaimDocument, options);
+}
+function refetchCodegenGeneratedClaimQuery(variables) {
+    return { query: exports.CodegenGeneratedClaimDocument, variables: variables };
 }
 exports.CodegenGeneratedCwBalanceDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_CW_BALANCE($chain_uid: String!, $contract: String!, $cw_balance_address: String!) {
@@ -2064,11 +3177,14 @@ function refetchCodegenGeneratedPoolMyPoolsQuery(variables) {
     return { query: exports.CodegenGeneratedPoolMyPoolsDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
+      sort_by: $pool_token_pair_with_liquidity_sort_by
+      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       pagination {
@@ -2094,6 +3210,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, clien
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -2110,11 +3229,14 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery(variab
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
+      sort_by: $pool_token_pair_with_liquidity_sort_by
+      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       results {
@@ -2141,6 +3263,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, clie
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -2157,19 +3282,24 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery(varia
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
+      sort_by: $pool_token_pair_with_liquidity_sort_by
+      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       results {
         apr
+        created_at
         pair {
           token_1
           token_2
         }
+        tags
         total_liquidity
         vlp
       }
@@ -2191,6 +3321,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, client_1
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -2207,11 +3340,14 @@ function refetchCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery(variables
     return { query: exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument, variables: variables };
 }
 exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
+      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
+      sort_by: $pool_token_pair_with_liquidity_sort_by
+      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       pagination {
@@ -2221,10 +3357,12 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, client_1.gql) `
       }
       results {
         apr
+        created_at
         pair {
           token_1
           token_2
         }
+        tags
         total_liquidity
         vlp
       }
@@ -2246,6 +3384,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, client_1.gql) `
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -3123,6 +4264,112 @@ function useCodegenGeneratedRouterStateLazyQuery(baseOptions) {
 function refetchCodegenGeneratedRouterStateQuery(variables) {
     return { query: exports.CodegenGeneratedRouterStateDocument, variables: variables };
 }
+exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS_DENOMS($router_token_denoms_token: String!) {
+  router {
+    token_denoms(token: $router_token_denoms_token) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedRouterTokenDenomsDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsDenomsQuery({
+ *   variables: {
+ *      router_token_denoms_token: // value for 'router_token_denoms_token'
+ *   },
+ * });
+ */
+function useCodegenGeneratedRouterTokenDenomsDenomsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
+}
+function useCodegenGeneratedRouterTokenDenomsDenomsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, options);
+}
+function refetchCodegenGeneratedRouterTokenDenomsDenomsQuery(variables) {
+    return { query: exports.CodegenGeneratedRouterTokenDenomsDenomsDocument, variables: variables };
+}
+exports.CodegenGeneratedRouterTokenDenomsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_ROUTER_TOKEN_DENOMS($router_token_denoms_token: String!) {
+  router {
+    token_denoms(token: $router_token_denoms_token) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedRouterTokenDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenDenomsQuery({
+ *   variables: {
+ *      router_token_denoms_token: // value for 'router_token_denoms_token'
+ *   },
+ * });
+ */
+function useCodegenGeneratedRouterTokenDenomsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedRouterTokenDenomsDocument, options);
+}
+function useCodegenGeneratedRouterTokenDenomsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedRouterTokenDenomsDocument, options);
+}
+function refetchCodegenGeneratedRouterTokenDenomsQuery(variables) {
+    return { query: exports.CodegenGeneratedRouterTokenDenomsDocument, variables: variables };
+}
 exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
@@ -3241,6 +4488,131 @@ function useCodegenGeneratedRouterLazyQuery(baseOptions) {
 function refetchCodegenGeneratedRouterQuery(variables) {
     return { query: exports.CodegenGeneratedRouterDocument, variables: variables };
 }
+exports.CodegenGeneratedTokenAllDexesDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_ALL_DEXES($token_all_dexes_limit: Int, $token_all_dexes_offset: Int) {
+  token {
+    all_dexes(limit: $token_all_dexes_limit, offset: $token_all_dexes_offset) {
+      bg_color
+      chain_uid
+      dex_name
+      display_name
+      fg_color
+      logo
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenAllDexesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenAllDexesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenAllDexesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenAllDexesQuery({
+ *   variables: {
+ *      token_all_dexes_limit: // value for 'token_all_dexes_limit'
+ *      token_all_dexes_offset: // value for 'token_all_dexes_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenAllDexesQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenAllDexesDocument, options);
+}
+function useCodegenGeneratedTokenAllDexesLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenAllDexesDocument, options);
+}
+function refetchCodegenGeneratedTokenAllDexesQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenAllDexesDocument, variables: variables };
+}
+exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_CHAINS_FOR_TOKEN_LAUNCH {
+  token {
+    chains_for_token_launch {
+      chain_id
+      chain_uid
+      display_name
+      explorer_url
+      factory_address
+      logo
+      token_factory_address
+      type
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenChainsForTokenLaunchQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenChainsForTokenLaunchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenChainsForTokenLaunchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenChainsForTokenLaunchQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenChainsForTokenLaunchQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenChainsForTokenLaunchDocument, options);
+}
+function useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenChainsForTokenLaunchDocument, options);
+}
+function refetchCodegenGeneratedTokenChainsForTokenLaunchQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenChainsForTokenLaunchDocument, variables: variables };
+}
+exports.CodegenGeneratedTokenDexMetadataDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_DEX_METADATA($token_dex_metadata_dex: String!) {
+  token {
+    dex_metadata(dex: $token_dex_metadata_dex) {
+      bg_color
+      chain_uid
+      dex_name
+      display_name
+      fg_color
+      logo
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenDexMetadataQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenDexMetadataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenDexMetadataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenDexMetadataQuery({
+ *   variables: {
+ *      token_dex_metadata_dex: // value for 'token_dex_metadata_dex'
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenDexMetadataQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenDexMetadataDocument, options);
+}
+function useCodegenGeneratedTokenDexMetadataLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenDexMetadataDocument, options);
+}
+function refetchCodegenGeneratedTokenDexMetadataQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenDexMetadataDocument, variables: variables };
+}
 exports.CodegenGeneratedTokenGetAllFaucetsDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS {
   token {
@@ -3276,6 +4648,125 @@ function useCodegenGeneratedTokenGetAllFaucetsLazyQuery(baseOptions) {
 }
 function refetchCodegenGeneratedTokenGetAllFaucetsQuery(variables) {
     return { query: exports.CodegenGeneratedTokenGetAllFaucetsDocument, variables: variables };
+}
+exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+  token {
+    token_denoms(
+      chain_uid: $token_token_denoms_chain_uid
+      denom: $token_token_denoms_denom
+      token_id: $token_token_denoms_token_id
+    ) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenTokenDenomsDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_chain_uid: // value for 'token_token_denoms_chain_uid'
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *      token_token_denoms_token_id: // value for 'token_token_denoms_token_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenTokenDenomsDenomsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenTokenDenomsDenomsDocument, options);
+}
+function useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenTokenDenomsDenomsDocument, options);
+}
+function refetchCodegenGeneratedTokenTokenDenomsDenomsQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenTokenDenomsDenomsDocument, variables: variables };
+}
+exports.CodegenGeneratedTokenTokenDenomsDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+  token {
+    token_denoms(
+      chain_uid: $token_token_denoms_chain_uid
+      denom: $token_token_denoms_denom
+      token_id: $token_token_denoms_token_id
+    ) {
+      denoms {
+        chain_uid
+        token_type {
+          ... on NativeTokenType {
+            native {
+              denom
+            }
+          }
+          ... on SmartTokenType {
+            smart {
+              contract_address
+            }
+          }
+          ... on VoucherTokenType {
+            voucher
+          }
+        }
+      }
+      token_id
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenTokenDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_chain_uid: // value for 'token_token_denoms_chain_uid'
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *      token_token_denoms_token_id: // value for 'token_token_denoms_token_id'
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenTokenDenomsQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenTokenDenomsDocument, options);
+}
+function useCodegenGeneratedTokenTokenDenomsLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenTokenDenomsDocument, options);
+}
+function refetchCodegenGeneratedTokenTokenDenomsQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenTokenDenomsDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenLiquiditiesDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES($token_token_liquidities_limit: Int!, $token_token_liquidities_page: Int!) {
@@ -3358,15 +4849,28 @@ function refetchCodegenGeneratedTokenTokenLiquidityQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenLiquidityDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!, $token_token_metadata_by_id_verified: Boolean) {
   token {
-    token_metadata_by_id(token_id: $token_token_metadata_by_id_token_id) {
+    token_metadata_by_id(
+      token_id: $token_token_metadata_by_id_token_id
+      verified: $token_token_metadata_by_id_verified
+    ) {
+      chain_uids
       coinDecimal
       description
+      dex
       displayName
       image
+      is_verified
+      min_swap_value
       price
+      price_change_7d
+      price_change_24h
+      social
+      tags
       tokenId
+      total_volume
+      total_volume_24h
     }
   }
 }
@@ -3384,6 +4888,7 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
  *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
+ *      token_token_metadata_by_id_verified: // value for 'token_token_metadata_by_id_verified'
  *   },
  * });
  */
@@ -3399,18 +4904,33 @@ function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenMetadataByIdDocument, variables: variables };
 }
 exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_search: String, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
   token {
     token_metadatas(
+      chain_uids: $token_token_metadatas_chain_uids
+      dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
+      search: $token_token_metadatas_search
+      show_volume: $token_token_metadatas_show_volume
+      verified: $token_token_metadatas_verified
     ) {
+      chain_uids
       coinDecimal
       description
+      dex
       displayName
       image
+      is_verified
+      min_swap_value
       price
+      price_change_7d
+      price_change_24h
+      social
+      tags
       tokenId
+      total_volume
+      total_volume_24h
     }
   }
 }
@@ -3427,8 +4947,13 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, client_1.gql) `
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uids: // value for 'token_token_metadatas_chain_uids'
+ *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_search: // value for 'token_token_metadatas_search'
+ *      token_token_metadatas_show_volume: // value for 'token_token_metadatas_show_volume'
+ *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
  * });
  */
@@ -3443,9 +4968,74 @@ function useCodegenGeneratedTokenTokenMetadatasLazyQuery(baseOptions) {
 function refetchCodegenGeneratedTokenTokenMetadatasQuery(variables) {
     return { query: exports.CodegenGeneratedTokenTokenMetadatasDocument, variables: variables };
 }
+exports.CodegenGeneratedTokenTokensMetadataDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_TOKEN_TOKENS_METADATA($token_tokens_metadata_token_ids: [String!]!, $token_tokens_metadata_verified: Boolean) {
+  token {
+    tokens_metadata(
+      token_ids: $token_tokens_metadata_token_ids
+      verified: $token_tokens_metadata_verified
+    ) {
+      chain_uids
+      coinDecimal
+      description
+      dex
+      displayName
+      image
+      is_verified
+      min_swap_value
+      price
+      price_change_7d
+      price_change_24h
+      social
+      tags
+      tokenId
+      total_volume
+      total_volume_24h
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedTokenTokensMetadataQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokensMetadataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokensMetadataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokensMetadataQuery({
+ *   variables: {
+ *      token_tokens_metadata_token_ids: // value for 'token_tokens_metadata_token_ids'
+ *      token_tokens_metadata_verified: // value for 'token_tokens_metadata_verified'
+ *   },
+ * });
+ */
+function useCodegenGeneratedTokenTokensMetadataQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedTokenTokensMetadataDocument, options);
+}
+function useCodegenGeneratedTokenTokensMetadataLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedTokenTokensMetadataDocument, options);
+}
+function refetchCodegenGeneratedTokenTokensMetadataQuery(variables) {
+    return { query: exports.CodegenGeneratedTokenTokensMetadataDocument, variables: variables };
+}
 exports.CodegenGeneratedTokenDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_TOKEN {
   token {
+    chains_for_token_launch {
+      chain_id
+      chain_uid
+      display_name
+      explorer_url
+      factory_address
+      logo
+      token_factory_address
+      type
+    }
     get_all_faucets {
       faucet_link
       token
@@ -3666,8 +5256,8 @@ function refetchCodegenGeneratedVcoinQuery(variables) {
     return { query: exports.CodegenGeneratedVcoinDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpAllPoolsPaginationDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -3691,6 +5281,7 @@ exports.CodegenGeneratedVlpAllPoolsPaginationDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPaginationQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
@@ -3708,8 +5299,8 @@ function refetchCodegenGeneratedVlpAllPoolsPaginationQuery(variables) {
     return { query: exports.CodegenGeneratedVlpAllPoolsPaginationDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         pool {
@@ -3735,6 +5326,7 @@ exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
@@ -3752,8 +5344,8 @@ function refetchCodegenGeneratedVlpAllPoolsPoolsPoolQuery(variables) {
     return { query: exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpAllPoolsPoolsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         chain_uid
@@ -3780,6 +5372,7 @@ exports.CodegenGeneratedVlpAllPoolsPoolsDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
@@ -3797,8 +5390,8 @@ function refetchCodegenGeneratedVlpAllPoolsPoolsQuery(variables) {
     return { query: exports.CodegenGeneratedVlpAllPoolsPoolsDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpAllPoolsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
         limit
@@ -3830,6 +5423,7 @@ exports.CodegenGeneratedVlpAllPoolsDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
@@ -3847,8 +5441,8 @@ function refetchCodegenGeneratedVlpAllPoolsQuery(variables) {
     return { query: exports.CodegenGeneratedVlpAllPoolsDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpFeeRecipientDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       recipient {
         address
@@ -3871,6 +5465,7 @@ exports.CodegenGeneratedVlpFeeRecipientDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -3886,8 +5481,8 @@ function refetchCodegenGeneratedVlpFeeRecipientQuery(variables) {
     return { query: exports.CodegenGeneratedVlpFeeRecipientDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpFeeDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -3912,6 +5507,7 @@ exports.CodegenGeneratedVlpFeeDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -3927,8 +5523,8 @@ function refetchCodegenGeneratedVlpFeeQuery(variables) {
     return { query: exports.CodegenGeneratedVlpFeeDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpLiquidityPairDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -3951,6 +5547,7 @@ exports.CodegenGeneratedVlpLiquidityPairDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityPairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -3966,8 +5563,8 @@ function refetchCodegenGeneratedVlpLiquidityPairQuery(variables) {
     return { query: exports.CodegenGeneratedVlpLiquidityPairDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpLiquidityDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
         token_1
@@ -3993,6 +5590,7 @@ exports.CodegenGeneratedVlpLiquidityDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4008,8 +5606,8 @@ function refetchCodegenGeneratedVlpLiquidityQuery(variables) {
     return { query: exports.CodegenGeneratedVlpLiquidityDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpPoolDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_POOL($contract: String!, $vlp_pool_chain_uid: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_POOL($contract: String, $pair: PairInput, $vlp_pool_chain_uid: String!) {
+  vlp(contract: $contract, pair: $pair) {
     pool(chain_uid: $vlp_pool_chain_uid) {
       lp_shares
       reserve_1
@@ -4031,6 +5629,7 @@ exports.CodegenGeneratedVlpPoolDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
  *   },
  * });
@@ -4047,8 +5646,8 @@ function refetchCodegenGeneratedVlpPoolQuery(variables) {
     return { query: exports.CodegenGeneratedVlpPoolDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         recipient {
@@ -4073,6 +5672,7 @@ exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4088,8 +5688,8 @@ function refetchCodegenGeneratedVlpStateFeeRecipientQuery(variables) {
     return { query: exports.CodegenGeneratedVlpStateFeeRecipientDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpStateFeeDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       fee {
         euclid_fee_bps
@@ -4116,6 +5716,7 @@ exports.CodegenGeneratedVlpStateFeeDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4131,8 +5732,8 @@ function refetchCodegenGeneratedVlpStateFeeQuery(variables) {
     return { query: exports.CodegenGeneratedVlpStateFeeDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpStatePairDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       pair {
         token_1
@@ -4155,6 +5756,7 @@ exports.CodegenGeneratedVlpStatePairDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpStatePairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4169,9 +5771,92 @@ function useCodegenGeneratedVlpStatePairLazyQuery(baseOptions) {
 function refetchCodegenGeneratedVlpStatePairQuery(variables) {
     return { query: exports.CodegenGeneratedVlpStatePairDocument, variables: variables };
 }
+exports.CodegenGeneratedVlpStatePoolConfigStableDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG_STABLE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
+    state {
+      pool_config {
+        stable {
+          amp_factor
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedVlpStatePoolConfigStableQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpStatePoolConfigStableQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpStatePoolConfigStableQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpStatePoolConfigStableQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+function useCodegenGeneratedVlpStatePoolConfigStableQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedVlpStatePoolConfigStableDocument, options);
+}
+function useCodegenGeneratedVlpStatePoolConfigStableLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedVlpStatePoolConfigStableDocument, options);
+}
+function refetchCodegenGeneratedVlpStatePoolConfigStableQuery(variables) {
+    return { query: exports.CodegenGeneratedVlpStatePoolConfigStableDocument, variables: variables };
+}
+exports.CodegenGeneratedVlpStatePoolConfigDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
+    state {
+      pool_config {
+        constant_product
+        stable {
+          amp_factor
+        }
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedVlpStatePoolConfigQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpStatePoolConfigQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpStatePoolConfigQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpStatePoolConfigQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+function useCodegenGeneratedVlpStatePoolConfigQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedVlpStatePoolConfigDocument, options);
+}
+function useCodegenGeneratedVlpStatePoolConfigLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedVlpStatePoolConfigDocument, options);
+}
+function refetchCodegenGeneratedVlpStatePoolConfigQuery(variables) {
+    return { query: exports.CodegenGeneratedVlpStatePoolConfigDocument, variables: variables };
+}
 exports.CodegenGeneratedVlpStateDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_STATE($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_STATE($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     state {
       admin
       fee {
@@ -4186,6 +5871,12 @@ exports.CodegenGeneratedVlpStateDocument = (0, client_1.gql) `
       pair {
         token_1
         token_2
+      }
+      pool_config {
+        constant_product
+        stable {
+          amp_factor
+        }
       }
       router
       total_lp_tokens
@@ -4207,6 +5898,7 @@ exports.CodegenGeneratedVlpStateDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpStateQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4222,8 +5914,8 @@ function refetchCodegenGeneratedVlpStateQuery(variables) {
     return { query: exports.CodegenGeneratedVlpStateDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -4248,6 +5940,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = (0, clie
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4263,8 +5956,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(varia
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -4289,6 +5982,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = (0, client_1.g
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4304,8 +5998,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(variables) 
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -4330,6 +6024,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = (0, client_1
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4345,8 +6040,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(variables
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
         totals {
@@ -4371,6 +6066,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = (0, client_1.gql) 
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4386,8 +6082,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(variables) {
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
         totals {
@@ -4418,6 +6114,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
@@ -4433,8 +6130,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedQuery(variables) {
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String!, $vlp_total_fees_collected_per_denom_denom: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String, $pair: PairInput, $vlp_total_fees_collected_per_denom_denom: String!) {
+  vlp(contract: $contract, pair: $pair) {
     total_fees_collected_per_denom(denom: $vlp_total_fees_collected_per_denom_denom) {
       euclid_fees
       lp_fees
@@ -4455,6 +6152,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = (0, client_1.gql
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_total_fees_collected_per_denom_denom: // value for 'vlp_total_fees_collected_per_denom_denom'
  *   },
  * });
@@ -4471,8 +6169,8 @@ function refetchCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery(variables) {
     return { query: exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument, variables: variables };
 }
 exports.CodegenGeneratedVlpDocument = (0, client_1.gql) `
-    query CODEGEN_GENERATED_VLP($contract: String!) {
-  vlp(contract: $contract) {
+    query CODEGEN_GENERATED_VLP($contract: String, $pair: PairInput) {
+  vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
       lp_fee_bps
@@ -4504,6 +6202,12 @@ exports.CodegenGeneratedVlpDocument = (0, client_1.gql) `
       pair {
         token_1
         token_2
+      }
+      pool_config {
+        constant_product
+        stable {
+          amp_factor
+        }
       }
       router
       total_lp_tokens
@@ -4539,6 +6243,7 @@ exports.CodegenGeneratedVlpDocument = (0, client_1.gql) `
  * const { data, loading, error } = useCodegenGeneratedVlpQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */

@@ -54,14 +54,16 @@ export type ChainAndFactoryInfoFieldPolicy = {
 	factory?: FieldPolicy<any> | FieldReadFunction<any>,
 	factory_chain_id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'display_name' | 'explorer_url' | 'factory_address' | 'logo' | ChainConfigKeySpecifier)[];
+export type ChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'display_name' | 'explorer_url' | 'factory_address' | 'logo' | 'token_factory_address' | 'type' | ChainConfigKeySpecifier)[];
 export type ChainConfigFieldPolicy = {
 	chain_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
 	display_name?: FieldPolicy<any> | FieldReadFunction<any>,
 	explorer_url?: FieldPolicy<any> | FieldReadFunction<any>,
 	factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
-	logo?: FieldPolicy<any> | FieldReadFunction<any>
+	logo?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	type?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ChainDetailKeySpecifier = ('factory' | 'factory_chain_id' | 'from_factory_channel' | 'from_hub_channel' | ChainDetailKeySpecifier)[];
 export type ChainDetailFieldPolicy = {
@@ -79,17 +81,46 @@ export type ChainTypeKeySpecifier = ('ibc' | ChainTypeKeySpecifier)[];
 export type ChainTypeFieldPolicy = {
 	ibc?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ChainsKeySpecifier = ('all_chains' | 'chain_config' | 'contracts' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
+export type ChainsKeySpecifier = ('all_chains' | 'all_evm_chains' | 'chain_config' | 'contracts' | 'evm_chain_config' | 'keplr_config' | 'router_config' | ChainsKeySpecifier)[];
 export type ChainsFieldPolicy = {
 	all_chains?: FieldPolicy<any> | FieldReadFunction<any>,
+	all_evm_chains?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	contracts?: FieldPolicy<any> | FieldReadFunction<any>,
+	evm_chain_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	keplr_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	router_config?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ChainsResponseKeySpecifier = ('chains' | ChainsResponseKeySpecifier)[];
 export type ChainsResponseFieldPolicy = {
 	chains?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimQueriesKeySpecifier = ('claim' | 'claim_by_psuedo_claim_id' | 'claims_by_claimer_pub_Key' | 'claims_by_email' | 'sender_claims' | 'state' | 'user_claims' | ClaimQueriesKeySpecifier)[];
+export type ClaimQueriesFieldPolicy = {
+	claim?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_by_psuedo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claims_by_claimer_pub_Key?: FieldPolicy<any> | FieldReadFunction<any>,
+	claims_by_email?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender_claims?: FieldPolicy<any> | FieldReadFunction<any>,
+	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_claims?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimStateKeySpecifier = ('admin' | 'chain_uid' | 'factory_address' | 'vcoin_address' | ClaimStateKeySpecifier)[];
+export type ClaimStateFieldPolicy = {
+	admin?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	vcoin_address?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimerResponseKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
+export type ClaimerResponseFieldPolicy = {
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_group_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claimer?: FieldPolicy<any> | FieldReadFunction<any>,
+	pseudo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	token?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ContractKeySpecifier = ('ChainUID' | 'ContractAddress' | 'Type' | ContractKeySpecifier)[];
 export type ContractFieldPolicy = {
@@ -115,12 +146,13 @@ export type ContractStateOfVcoinFieldPolicy = {
 	admin?: FieldPolicy<any> | FieldReadFunction<any>,
 	router?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ContractStateOfVlpKeySpecifier = ('admin' | 'fee' | 'last_updated' | 'pair' | 'router' | 'total_lp_tokens' | 'vcoin' | ContractStateOfVlpKeySpecifier)[];
+export type ContractStateOfVlpKeySpecifier = ('admin' | 'fee' | 'last_updated' | 'pair' | 'pool_config' | 'router' | 'total_lp_tokens' | 'vcoin' | ContractStateOfVlpKeySpecifier)[];
 export type ContractStateOfVlpFieldPolicy = {
 	admin?: FieldPolicy<any> | FieldReadFunction<any>,
 	fee?: FieldPolicy<any> | FieldReadFunction<any>,
 	last_updated?: FieldPolicy<any> | FieldReadFunction<any>,
 	pair?: FieldPolicy<any> | FieldReadFunction<any>,
+	pool_config?: FieldPolicy<any> | FieldReadFunction<any>,
 	router?: FieldPolicy<any> | FieldReadFunction<any>,
 	total_lp_tokens?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin?: FieldPolicy<any> | FieldReadFunction<any>
@@ -155,6 +187,24 @@ export type DenominationKeySpecifier = ('amount' | 'denom' | DenominationKeySpec
 export type DenominationFieldPolicy = {
 	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type DexMetadataKeySpecifier = ('bg_color' | 'chain_uid' | 'dex_name' | 'display_name' | 'fg_color' | 'logo' | DexMetadataKeySpecifier)[];
+export type DexMetadataFieldPolicy = {
+	bg_color?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	dex_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	display_name?: FieldPolicy<any> | FieldReadFunction<any>,
+	fg_color?: FieldPolicy<any> | FieldReadFunction<any>,
+	logo?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type EVMChainConfigKeySpecifier = ('chain_id' | 'chain_uid' | 'explorer_url' | 'name' | 'native_currency' | 'rpc_urls' | EVMChainConfigKeySpecifier)[];
+export type EVMChainConfigFieldPolicy = {
+	chain_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	explorer_url?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	native_currency?: FieldPolicy<any> | FieldReadFunction<any>,
+	rpc_urls?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type EscrowKeySpecifier = ('balance' | 'chain_id' | 'chain_uid' | EscrowKeySpecifier)[];
 export type EscrowFieldPolicy = {
@@ -251,14 +301,24 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
 	token_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type MetadataKeySpecifier = ('coinDecimal' | 'description' | 'displayName' | 'image' | 'price' | 'tokenId' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'is_verified' | 'min_swap_value' | 'price' | 'price_change_7d' | 'price_change_24h' | 'social' | 'tags' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
+	chain_uids?: FieldPolicy<any> | FieldReadFunction<any>,
 	coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
+	dex?: FieldPolicy<any> | FieldReadFunction<any>,
 	displayName?: FieldPolicy<any> | FieldReadFunction<any>,
 	image?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_verified?: FieldPolicy<any> | FieldReadFunction<any>,
+	min_swap_value?: FieldPolicy<any> | FieldReadFunction<any>,
 	price?: FieldPolicy<any> | FieldReadFunction<any>,
-	tokenId?: FieldPolicy<any> | FieldReadFunction<any>
+	price_change_7d?: FieldPolicy<any> | FieldReadFunction<any>,
+	price_change_24h?: FieldPolicy<any> | FieldReadFunction<any>,
+	social?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
+	tokenId?: FieldPolicy<any> | FieldReadFunction<any>,
+	total_volume?: FieldPolicy<any> | FieldReadFunction<any>,
+	total_volume_24h?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type MultiQueryKeySpecifier = ('raw_queries' | 'smart_queries' | MultiQueryKeySpecifier)[];
 export type MultiQueryFieldPolicy = {
@@ -275,6 +335,12 @@ export type MyPoolsFieldPolicy = {
 export type NativeKeySpecifier = ('denom' | NativeKeySpecifier)[];
 export type NativeFieldPolicy = {
 	denom?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type NativeCurrencyKeySpecifier = ('decimals' | 'name' | 'symbol' | NativeCurrencyKeySpecifier)[];
+export type NativeCurrencyFieldPolicy = {
+	decimals?: FieldPolicy<any> | FieldReadFunction<any>,
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	symbol?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type NativeTokenKeySpecifier = ('denom' | NativeTokenKeySpecifier)[];
 export type NativeTokenFieldPolicy = {
@@ -310,6 +376,11 @@ export type PoolFieldPolicy = {
 	reserve_1?: FieldPolicy<any> | FieldReadFunction<any>,
 	reserve_2?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type PoolConfigKeySpecifier = ('constant_product' | 'stable' | PoolConfigKeySpecifier)[];
+export type PoolConfigFieldPolicy = {
+	constant_product?: FieldPolicy<any> | FieldReadFunction<any>,
+	stable?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
 	fees_collected?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -327,9 +398,10 @@ export type PoolsResponseFieldPolicy = {
 	pagination?: FieldPolicy<any> | FieldReadFunction<any>,
 	pools?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type QueryKeySpecifier = ('chains' | 'cw' | 'cw_multicall' | 'factory' | 'pool' | 'router' | 'token' | 'vcoin' | 'vlp' | QueryKeySpecifier)[];
+export type QueryKeySpecifier = ('chains' | 'claim' | 'cw' | 'cw_multicall' | 'factory' | 'pool' | 'router' | 'token' | 'vcoin' | 'vlp' | QueryKeySpecifier)[];
 export type QueryFieldPolicy = {
 	chains?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim?: FieldPolicy<any> | FieldReadFunction<any>,
 	cw?: FieldPolicy<any> | FieldReadFunction<any>,
 	cw_multicall?: FieldPolicy<any> | FieldReadFunction<any>,
 	factory?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -338,6 +410,14 @@ export type QueryFieldPolicy = {
 	token?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RPCConfigKeySpecifier = ('http' | RPCConfigKeySpecifier)[];
+export type RPCConfigFieldPolicy = {
+	http?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type RPCUrlsKeySpecifier = ('default' | RPCUrlsKeySpecifier)[];
+export type RPCUrlsFieldPolicy = {
+	default?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type RawQueryResponseKeySpecifier = ('results' | RawQueryResponseKeySpecifier)[];
 export type RawQueryResponseFieldPolicy = {
@@ -353,7 +433,7 @@ export type ResultAndErrorFieldPolicy = {
 	error?: FieldPolicy<any> | FieldReadFunction<any>,
 	success?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'escrows' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_pairs_from_vlp' | 'vlp' | RouterKeySpecifier)[];
+export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'escrows' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_denoms' | 'token_pairs_from_vlp' | 'vlp' | RouterKeySpecifier)[];
 export type RouterFieldPolicy = {
 	all_chains?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_escrows?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -364,6 +444,7 @@ export type RouterFieldPolicy = {
 	simulate_release_escrow?: FieldPolicy<any> | FieldReadFunction<any>,
 	simulate_swap?: FieldPolicy<any> | FieldReadFunction<any>,
 	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_denoms?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_pairs_from_vlp?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
 };
@@ -388,6 +469,10 @@ export type SmartTokenTypeKeySpecifier = ('smart' | SmartTokenTypeKeySpecifier)[
 export type SmartTokenTypeFieldPolicy = {
 	smart?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type StablePoolConfigKeySpecifier = ('amp_factor' | StablePoolConfigKeySpecifier)[];
+export type StablePoolConfigFieldPolicy = {
+	amp_factor?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type StakeCurrencyKeySpecifier = ('coinDecimals' | 'coinDenom' | 'coinGeckoID' | 'coinMinimalDenom' | StakeCurrencyKeySpecifier)[];
 export type StakeCurrencyFieldPolicy = {
 	coinDecimals?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -398,6 +483,20 @@ export type StakeCurrencyFieldPolicy = {
 export type TokenArrayKeySpecifier = ('tokens' | TokenArrayKeySpecifier)[];
 export type TokenArrayFieldPolicy = {
 	tokens?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TokenDenomKeySpecifier = ('chain_uid' | 'token_type' | TokenDenomKeySpecifier)[];
+export type TokenDenomFieldPolicy = {
+	chain_uid?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_type?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TokenDenomWithTokenIdResponseKeySpecifier = ('denoms' | 'token_id' | TokenDenomWithTokenIdResponseKeySpecifier)[];
+export type TokenDenomWithTokenIdResponseFieldPolicy = {
+	denoms?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type TokenDenomsResponseKeySpecifier = ('denoms' | TokenDenomsResponseKeySpecifier)[];
+export type TokenDenomsResponseFieldPolicy = {
+	denoms?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type TokenIdKeySpecifier = ('id' | TokenIdKeySpecifier)[];
 export type TokenIdFieldPolicy = {
@@ -426,20 +525,27 @@ export type TokenPairWithLiquidityPaginatedFieldPolicy = {
 	pagination?: FieldPolicy<any> | FieldReadFunction<any>,
 	results?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'pair' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
+export type TokenPairWithLiquidityResponseKeySpecifier = ('apr' | 'created_at' | 'pair' | 'tags' | 'total_liquidity' | 'vlp' | TokenPairWithLiquidityResponseKeySpecifier)[];
 export type TokenPairWithLiquidityResponseFieldPolicy = {
 	apr?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	pair?: FieldPolicy<any> | FieldReadFunction<any>,
+	tags?: FieldPolicy<any> | FieldReadFunction<any>,
 	total_liquidity?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type TokenQueriesKeySpecifier = ('get_all_faucets' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | TokenQueriesKeySpecifier)[];
+export type TokenQueriesKeySpecifier = ('all_dexes' | 'chains_for_token_launch' | 'dex_metadata' | 'get_all_faucets' | 'token_denoms' | 'token_liquidities' | 'token_liquidity' | 'token_metadata_by_id' | 'token_metadatas' | 'tokens_metadata' | TokenQueriesKeySpecifier)[];
 export type TokenQueriesFieldPolicy = {
+	all_dexes?: FieldPolicy<any> | FieldReadFunction<any>,
+	chains_for_token_launch?: FieldPolicy<any> | FieldReadFunction<any>,
+	dex_metadata?: FieldPolicy<any> | FieldReadFunction<any>,
 	get_all_faucets?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_denoms?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_liquidities?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_liquidity?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_metadata_by_id?: FieldPolicy<any> | FieldReadFunction<any>,
-	token_metadatas?: FieldPolicy<any> | FieldReadFunction<any>
+	token_metadatas?: FieldPolicy<any> | FieldReadFunction<any>,
+	tokens_metadata?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type TotalFeesCollectedKeySpecifier = ('euclid_fees' | 'lp_fees' | TotalFeesCollectedKeySpecifier)[];
 export type TotalFeesCollectedFieldPolicy = {
@@ -567,6 +673,18 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | ChainsResponseKeySpecifier | (() => undefined | ChainsResponseKeySpecifier),
 		fields?: ChainsResponseFieldPolicy,
 	},
+	ClaimQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimQueriesKeySpecifier | (() => undefined | ClaimQueriesKeySpecifier),
+		fields?: ClaimQueriesFieldPolicy,
+	},
+	ClaimState?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimStateKeySpecifier | (() => undefined | ClaimStateKeySpecifier),
+		fields?: ClaimStateFieldPolicy,
+	},
+	ClaimerResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimerResponseKeySpecifier | (() => undefined | ClaimerResponseKeySpecifier),
+		fields?: ClaimerResponseFieldPolicy,
+	},
 	Contract?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContractKeySpecifier | (() => undefined | ContractKeySpecifier),
 		fields?: ContractFieldPolicy,
@@ -610,6 +728,14 @@ export type StrictTypedTypePolicies = {
 	Denomination?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | DenominationKeySpecifier | (() => undefined | DenominationKeySpecifier),
 		fields?: DenominationFieldPolicy,
+	},
+	DexMetadata?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | DexMetadataKeySpecifier | (() => undefined | DexMetadataKeySpecifier),
+		fields?: DexMetadataFieldPolicy,
+	},
+	EVMChainConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | EVMChainConfigKeySpecifier | (() => undefined | EVMChainConfigKeySpecifier),
+		fields?: EVMChainConfigFieldPolicy,
 	},
 	Escrow?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | EscrowKeySpecifier | (() => undefined | EscrowKeySpecifier),
@@ -683,6 +809,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | NativeKeySpecifier | (() => undefined | NativeKeySpecifier),
 		fields?: NativeFieldPolicy,
 	},
+	NativeCurrency?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | NativeCurrencyKeySpecifier | (() => undefined | NativeCurrencyKeySpecifier),
+		fields?: NativeCurrencyFieldPolicy,
+	},
 	NativeToken?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | NativeTokenKeySpecifier | (() => undefined | NativeTokenKeySpecifier),
 		fields?: NativeTokenFieldPolicy,
@@ -711,6 +841,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | PoolKeySpecifier | (() => undefined | PoolKeySpecifier),
 		fields?: PoolFieldPolicy,
 	},
+	PoolConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PoolConfigKeySpecifier | (() => undefined | PoolConfigKeySpecifier),
+		fields?: PoolConfigFieldPolicy,
+	},
 	PoolQueries?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | PoolQueriesKeySpecifier | (() => undefined | PoolQueriesKeySpecifier),
 		fields?: PoolQueriesFieldPolicy,
@@ -726,6 +860,14 @@ export type StrictTypedTypePolicies = {
 	Query?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | QueryKeySpecifier | (() => undefined | QueryKeySpecifier),
 		fields?: QueryFieldPolicy,
+	},
+	RPCConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RPCConfigKeySpecifier | (() => undefined | RPCConfigKeySpecifier),
+		fields?: RPCConfigFieldPolicy,
+	},
+	RPCUrls?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | RPCUrlsKeySpecifier | (() => undefined | RPCUrlsKeySpecifier),
+		fields?: RPCUrlsFieldPolicy,
 	},
 	RawQueryResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | RawQueryResponseKeySpecifier | (() => undefined | RawQueryResponseKeySpecifier),
@@ -759,6 +901,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | SmartTokenTypeKeySpecifier | (() => undefined | SmartTokenTypeKeySpecifier),
 		fields?: SmartTokenTypeFieldPolicy,
 	},
+	StablePoolConfig?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | StablePoolConfigKeySpecifier | (() => undefined | StablePoolConfigKeySpecifier),
+		fields?: StablePoolConfigFieldPolicy,
+	},
 	StakeCurrency?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | StakeCurrencyKeySpecifier | (() => undefined | StakeCurrencyKeySpecifier),
 		fields?: StakeCurrencyFieldPolicy,
@@ -766,6 +912,18 @@ export type StrictTypedTypePolicies = {
 	TokenArray?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | TokenArrayKeySpecifier | (() => undefined | TokenArrayKeySpecifier),
 		fields?: TokenArrayFieldPolicy,
+	},
+	TokenDenom?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TokenDenomKeySpecifier | (() => undefined | TokenDenomKeySpecifier),
+		fields?: TokenDenomFieldPolicy,
+	},
+	TokenDenomWithTokenIdResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TokenDenomWithTokenIdResponseKeySpecifier | (() => undefined | TokenDenomWithTokenIdResponseKeySpecifier),
+		fields?: TokenDenomWithTokenIdResponseFieldPolicy,
+	},
+	TokenDenomsResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | TokenDenomsResponseKeySpecifier | (() => undefined | TokenDenomsResponseKeySpecifier),
+		fields?: TokenDenomsResponseFieldPolicy,
 	},
 	TokenId?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | TokenIdKeySpecifier | (() => undefined | TokenIdKeySpecifier),

@@ -113,6 +113,8 @@ export type IChainConfig = {
     explorer_url: Scalars['String']['output'];
     factory_address: Scalars['String']['output'];
     logo: Scalars['String']['output'];
+    token_factory_address: Maybe<Scalars['String']['output']>;
+    type: Scalars['String']['output'];
 };
 export type IChainDetail = {
     __typename?: 'ChainDetail';
@@ -133,13 +135,16 @@ export type IChainType = {
 export type IChains = {
     __typename?: 'Chains';
     all_chains: Array<IChainConfig>;
+    all_evm_chains: Array<IEvmChainConfig>;
     chain_config: Maybe<IChainConfig>;
     contracts: Array<IContract>;
+    evm_chain_config: Maybe<IEvmChainConfig>;
     keplr_config: Maybe<IKeplr>;
     router_config: Maybe<IRouterConfig>;
 };
 export type IChainsAllChainsArgs = {
     show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+    type?: InputMaybe<Scalars['String']['input']>;
 };
 export type IChainsChainConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
@@ -149,6 +154,10 @@ export type IChainsContractsArgs = {
     chainUId?: InputMaybe<Scalars['String']['input']>;
     type?: InputMaybe<Scalars['String']['input']>;
 };
+export type IChainsEvmChainConfigArgs = {
+    chain_id?: InputMaybe<Scalars['String']['input']>;
+    chain_uid?: InputMaybe<Scalars['String']['input']>;
+};
 export type IChainsKeplrConfigArgs = {
     chain_id?: InputMaybe<Scalars['String']['input']>;
     chain_uid?: InputMaybe<Scalars['String']['input']>;
@@ -156,6 +165,59 @@ export type IChainsKeplrConfigArgs = {
 export type IChainsResponse = {
     __typename?: 'ChainsResponse';
     chains: Array<Maybe<IChain>>;
+};
+export type IClaimQueries = {
+    __typename?: 'ClaimQueries';
+    claim: Maybe<IClaimerResponse>;
+    claim_by_psuedo_claim_id: Maybe<IClaimerResponse>;
+    claims_by_claimer_pub_Key: Array<Maybe<IClaimerResponse>>;
+    claims_by_email: Array<Maybe<IClaimerResponse>>;
+    sender_claims: Array<Maybe<IClaimerResponse>>;
+    state: Maybe<IClaimState>;
+    user_claims: Array<Maybe<IClaimerResponse>>;
+};
+export type IClaimQueriesClaimArgs = {
+    claim_id: Scalars['Int']['input'];
+};
+export type IClaimQueriesClaimByPsuedoClaimIdArgs = {
+    psuedo_claim_id: Scalars['String']['input'];
+};
+export type IClaimQueriesClaimsByClaimerPubKeyArgs = {
+    claimer_pub_key: Scalars['String']['input'];
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+};
+export type IClaimQueriesClaimsByEmailArgs = {
+    email: Scalars['String']['input'];
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+};
+export type IClaimQueriesSenderClaimsArgs = {
+    limit: Scalars['Int']['input'];
+    offset: Scalars['Int']['input'];
+    sender: ICrossChainUserInput;
+};
+export type IClaimQueriesUserClaimsArgs = {
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    public_secret: Scalars['String']['input'];
+};
+export type IClaimState = {
+    __typename?: 'ClaimState';
+    admin: Scalars['String']['output'];
+    chain_uid: Scalars['String']['output'];
+    factory_address: Scalars['String']['output'];
+    vcoin_address: Scalars['String']['output'];
+};
+export type IClaimerResponse = {
+    __typename?: 'ClaimerResponse';
+    amount: Scalars['String']['output'];
+    claim_group_id: Scalars['String']['output'];
+    claim_id: Scalars['String']['output'];
+    claimer: Scalars['String']['output'];
+    pseudo_claim_id: Scalars['String']['output'];
+    sender: ICrossChainUser;
+    token: Scalars['String']['output'];
 };
 export type IContract = {
     __typename?: 'Contract';
@@ -187,6 +249,7 @@ export type IContractStateOfVlp = {
     fee: Maybe<IFeeInfo>;
     last_updated: Maybe<Scalars['Int']['output']>;
     pair: Maybe<IPair>;
+    pool_config: Maybe<IPoolConfig>;
     router: Maybe<Scalars['String']['output']>;
     total_lp_tokens: Maybe<Scalars['String']['output']>;
     vcoin: Maybe<Scalars['String']['output']>;
@@ -232,6 +295,24 @@ export type IDenomination = {
     __typename?: 'Denomination';
     amount: Scalars['String']['output'];
     denom: Scalars['String']['output'];
+};
+export type IDexMetadata = {
+    __typename?: 'DexMetadata';
+    bg_color: Scalars['String']['output'];
+    chain_uid: Scalars['String']['output'];
+    dex_name: Scalars['String']['output'];
+    display_name: Scalars['String']['output'];
+    fg_color: Scalars['String']['output'];
+    logo: Scalars['String']['output'];
+};
+export type IEvmChainConfig = {
+    __typename?: 'EVMChainConfig';
+    chain_id: Maybe<Scalars['String']['output']>;
+    chain_uid: Maybe<Scalars['String']['output']>;
+    explorer_url: Maybe<Scalars['String']['output']>;
+    name: Scalars['String']['output'];
+    native_currency: INativeCurrency;
+    rpc_urls: IRpcUrls;
 };
 export type IEscrow = {
     __typename?: 'Escrow';
@@ -350,12 +431,22 @@ export type ILpTokenAddr = {
 };
 export type IMetadata = {
     __typename?: 'Metadata';
+    chain_uids: Maybe<Array<Scalars['String']['output']>>;
     coinDecimal: Scalars['Int']['output'];
     description: Scalars['String']['output'];
+    dex: Maybe<Array<Scalars['String']['output']>>;
     displayName: Scalars['String']['output'];
     image: Scalars['String']['output'];
+    is_verified: Scalars['Boolean']['output'];
+    min_swap_value: Scalars['Float']['output'];
     price: Scalars['String']['output'];
+    price_change_7d: Scalars['Float']['output'];
+    price_change_24h: Scalars['Float']['output'];
+    social: Scalars['JSON']['output'];
+    tags: Maybe<Array<Scalars['String']['output']>>;
     tokenId: Scalars['String']['output'];
+    total_volume: Scalars['Float']['output'];
+    total_volume_24h: Scalars['Float']['output'];
 };
 export type IMultiQuery = {
     __typename?: 'MultiQuery';
@@ -378,6 +469,12 @@ export type IMyPools = {
 export type INative = {
     __typename?: 'Native';
     denom: Maybe<Scalars['String']['output']>;
+};
+export type INativeCurrency = {
+    __typename?: 'NativeCurrency';
+    decimals: Scalars['Int']['output'];
+    name: Scalars['String']['output'];
+    symbol: Scalars['String']['output'];
 };
 export type INativeToken = {
     __typename?: 'NativeToken';
@@ -421,6 +518,11 @@ export type IPool = {
     reserve_1: Maybe<Scalars['String']['output']>;
     reserve_2: Maybe<Scalars['String']['output']>;
 };
+export type IPoolConfig = {
+    __typename?: 'PoolConfig';
+    constant_product: Maybe<Scalars['JSON']['output']>;
+    stable: Maybe<IStablePoolConfig>;
+};
 export type IPoolQueries = {
     __typename?: 'PoolQueries';
     fees_collected: Maybe<IFeesResponse>;
@@ -435,6 +537,9 @@ export type IPoolQueriesMyPoolsArgs = {
 export type IPoolQueriesTokenPairWithLiquidityArgs = {
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
+    only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    sort_by?: InputMaybe<ITokenPairSortBy>;
+    sort_order?: InputMaybe<ISortOrder>;
     token?: InputMaybe<Scalars['String']['input']>;
 };
 export type IPools = {
@@ -450,6 +555,7 @@ export type IPoolsResponse = {
 export type IQuery = {
     __typename?: 'Query';
     chains: Maybe<IChains>;
+    claim: Maybe<IClaimQueries>;
     cw: Maybe<ICw>;
     cw_multicall: Maybe<IMultiQuery>;
     factory: Maybe<IFactory>;
@@ -470,7 +576,16 @@ export type IQueryFactoryArgs = {
     chain_uid: Scalars['String']['input'];
 };
 export type IQueryVlpArgs = {
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+};
+export type IRpcConfig = {
+    __typename?: 'RPCConfig';
+    http: Array<Scalars['String']['output']>;
+};
+export type IRpcUrls = {
+    __typename?: 'RPCUrls';
+    default: IRpcConfig;
 };
 export type IRawQueryInput = {
     rawQuery: Scalars['JSON']['input'];
@@ -500,6 +615,7 @@ export type IRouter = {
     simulate_release_escrow: Maybe<ISimulateReleaseEscrow>;
     simulate_swap: Maybe<ITokenOut>;
     state: Maybe<IContractStateOfRouter>;
+    token_denoms: ITokenDenomsResponse;
     token_pairs_from_vlp: Maybe<IVlpWithTokenPair>;
     vlp: Maybe<IVlpWithTokenPair>;
 };
@@ -543,6 +659,9 @@ export type IRouterSimulateSwapArgs = {
     min_amount_out: Scalars['String']['input'];
     swaps?: InputMaybe<Array<Scalars['String']['input']>>;
 };
+export type IRouterTokenDenomsArgs = {
+    token: Scalars['String']['input'];
+};
 export type IRouterTokenPairsFromVlpArgs = {
     vlp: Scalars['String']['input'];
 };
@@ -574,6 +693,14 @@ export type ISmartTokenType = {
     __typename?: 'SmartTokenType';
     smart: Maybe<ISmartToken>;
 };
+export declare enum ISortOrder {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+export type IStablePoolConfig = {
+    __typename?: 'StablePoolConfig';
+    amp_factor: Maybe<Scalars['String']['output']>;
+};
 export type IStakeCurrency = {
     __typename?: 'StakeCurrency';
     coinDecimals: Scalars['Int']['output'];
@@ -584,6 +711,20 @@ export type IStakeCurrency = {
 export type ITokenArray = {
     __typename?: 'TokenArray';
     tokens: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+};
+export type ITokenDenom = {
+    __typename?: 'TokenDenom';
+    chain_uid: Scalars['String']['output'];
+    token_type: ITokenType;
+};
+export type ITokenDenomWithTokenIdResponse = {
+    __typename?: 'TokenDenomWithTokenIdResponse';
+    denoms: Array<Maybe<ITokenDenom>>;
+    token_id: Scalars['String']['output'];
+};
+export type ITokenDenomsResponse = {
+    __typename?: 'TokenDenomsResponse';
+    denoms: Maybe<Array<Maybe<ITokenDenom>>>;
 };
 export type ITokenId = {
     __typename?: 'TokenId';
@@ -607,6 +748,10 @@ export type ITokenOut = {
     amount_out: Maybe<Scalars['String']['output']>;
     asset_out: Maybe<Scalars['String']['output']>;
 };
+export declare enum ITokenPairSortBy {
+    CREATED_AT = "CREATED_AT",
+    TOTAL_LIQUIDITY = "TOTAL_LIQUIDITY"
+}
 export type ITokenPairWithLiquidityPaginated = {
     __typename?: 'TokenPairWithLiquidityPaginated';
     pagination: Maybe<IPaginationInfo>;
@@ -615,17 +760,36 @@ export type ITokenPairWithLiquidityPaginated = {
 export type ITokenPairWithLiquidityResponse = {
     __typename?: 'TokenPairWithLiquidityResponse';
     apr: Scalars['String']['output'];
+    created_at: Scalars['String']['output'];
     pair: IPair;
+    tags: Array<Scalars['String']['output']>;
     total_liquidity: Scalars['String']['output'];
     vlp: Scalars['String']['output'];
 };
 export type ITokenQueries = {
     __typename?: 'TokenQueries';
+    all_dexes: Array<IDexMetadata>;
+    chains_for_token_launch: Maybe<Array<Maybe<IChainConfig>>>;
+    dex_metadata: IDexMetadata;
     get_all_faucets: Array<IFaucet>;
+    token_denoms: Array<ITokenDenomWithTokenIdResponse>;
     token_liquidities: Array<ITokenLiquidity>;
     token_liquidity: Maybe<ITokenLiquidity>;
-    token_metadata_by_id: Maybe<IMetadata>;
+    token_metadata_by_id: IMetadata;
     token_metadatas: Array<Maybe<IMetadata>>;
+    tokens_metadata: Array<IMetadata>;
+};
+export type ITokenQueriesAllDexesArgs = {
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+};
+export type ITokenQueriesDexMetadataArgs = {
+    dex: Scalars['String']['input'];
+};
+export type ITokenQueriesTokenDenomsArgs = {
+    chain_uid?: InputMaybe<Array<Scalars['String']['input']>>;
+    denom?: InputMaybe<Scalars['String']['input']>;
+    token_id?: InputMaybe<Scalars['String']['input']>;
 };
 export type ITokenQueriesTokenLiquiditiesArgs = {
     limit: Scalars['Int']['input'];
@@ -636,10 +800,20 @@ export type ITokenQueriesTokenLiquidityArgs = {
 };
 export type ITokenQueriesTokenMetadataByIdArgs = {
     token_id: Scalars['String']['input'];
+    verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type ITokenQueriesTokenMetadatasArgs = {
+    chain_uids?: InputMaybe<Array<Scalars['String']['input']>>;
+    dex?: InputMaybe<Array<Scalars['String']['input']>>;
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
+    search?: InputMaybe<Scalars['String']['input']>;
+    show_volume?: InputMaybe<Scalars['Boolean']['input']>;
+    verified?: InputMaybe<Scalars['Boolean']['input']>;
+};
+export type ITokenQueriesTokensMetadataArgs = {
+    token_ids: Array<Scalars['String']['input']>;
+    verified?: InputMaybe<Scalars['Boolean']['input']>;
 };
 export type ITokenType = INativeTokenType | ISmartTokenType | IVoucherTokenType;
 export type ITotalFeesCollected = {
