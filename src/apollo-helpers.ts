@@ -112,7 +112,7 @@ export type ClaimStateFieldPolicy = {
 	factory_address?: FieldPolicy<any> | FieldReadFunction<any>,
 	vcoin_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type ClaimerResponseKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'token' | ClaimerResponseKeySpecifier)[];
+export type ClaimerResponseKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'status' | 'token' | ClaimerResponseKeySpecifier)[];
 export type ClaimerResponseFieldPolicy = {
 	amount?: FieldPolicy<any> | FieldReadFunction<any>,
 	claim_group_id?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -120,6 +120,18 @@ export type ClaimerResponseFieldPolicy = {
 	claimer?: FieldPolicy<any> | FieldReadFunction<any>,
 	pseudo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
 	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
+	token?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type ClaimerResponseWithStatusKeySpecifier = ('amount' | 'claim_group_id' | 'claim_id' | 'claimer' | 'pseudo_claim_id' | 'sender' | 'status' | 'token' | ClaimerResponseWithStatusKeySpecifier)[];
+export type ClaimerResponseWithStatusFieldPolicy = {
+	amount?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_group_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	claimer?: FieldPolicy<any> | FieldReadFunction<any>,
+	pseudo_claim_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	sender?: FieldPolicy<any> | FieldReadFunction<any>,
+	status?: FieldPolicy<any> | FieldReadFunction<any>,
 	token?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type ContractKeySpecifier = ('ChainUID' | 'ContractAddress' | 'Type' | ContractKeySpecifier)[];
@@ -684,6 +696,10 @@ export type StrictTypedTypePolicies = {
 	ClaimerResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ClaimerResponseKeySpecifier | (() => undefined | ClaimerResponseKeySpecifier),
 		fields?: ClaimerResponseFieldPolicy,
+	},
+	ClaimerResponseWithStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | ClaimerResponseWithStatusKeySpecifier | (() => undefined | ClaimerResponseWithStatusKeySpecifier),
+		fields?: ClaimerResponseWithStatusFieldPolicy,
 	},
 	Contract?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContractKeySpecifier | (() => undefined | ContractKeySpecifier),

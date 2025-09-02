@@ -1459,6 +1459,7 @@ exports.CodegenGeneratedClaimClaimDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1547,6 +1548,7 @@ exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1641,6 +1643,7 @@ exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1737,6 +1740,7 @@ exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1833,6 +1837,7 @@ exports.CodegenGeneratedClaimSenderClaimsDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1967,6 +1972,7 @@ exports.CodegenGeneratedClaimUserClaimsDocument = (0, client_1.gql) `
         address
         chain_uid
       }
+      status
       token
     }
   }

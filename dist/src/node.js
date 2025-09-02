@@ -448,6 +448,7 @@ exports.CodegenGeneratedClaimClaimDocument = (0, graphql_tag_1.default) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -482,6 +483,7 @@ exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = (0, graphql_tag_1.de
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -520,6 +522,7 @@ exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, graphql_tag_1.d
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -558,6 +561,7 @@ exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, graphql_tag_1.default) 
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -596,6 +600,7 @@ exports.CodegenGeneratedClaimSenderClaimsDocument = (0, graphql_tag_1.default) `
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -646,6 +651,7 @@ exports.CodegenGeneratedClaimUserClaimsDocument = (0, graphql_tag_1.default) `
         address
         chain_uid
       }
+      status
       token
     }
   }

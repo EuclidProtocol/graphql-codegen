@@ -615,6 +615,7 @@ export type ICodegenGeneratedClaimClaimQuery = {
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -632,7 +633,7 @@ export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = {
     claim: {
         __typename?: 'ClaimQueries';
         claim_by_psuedo_claim_id: {
-            __typename?: 'ClaimerResponse';
+            __typename?: 'ClaimerResponseWithStatus';
             sender: {
                 __typename?: 'CrossChainUser';
                 address: string;
@@ -649,12 +650,13 @@ export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
     claim: {
         __typename?: 'ClaimQueries';
         claim_by_psuedo_claim_id: {
-            __typename?: 'ClaimerResponse';
+            __typename?: 'ClaimerResponseWithStatus';
             amount: string;
             claim_group_id: string;
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -699,6 +701,7 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = {
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -718,7 +721,7 @@ export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = {
     claim: {
         __typename?: 'ClaimQueries';
         claims_by_email: Array<{
-            __typename?: 'ClaimerResponse';
+            __typename?: 'ClaimerResponseWithStatus';
             sender: {
                 __typename?: 'CrossChainUser';
                 address: string;
@@ -737,12 +740,13 @@ export type ICodegenGeneratedClaimClaimsByEmailQuery = {
     claim: {
         __typename?: 'ClaimQueries';
         claims_by_email: Array<{
-            __typename?: 'ClaimerResponse';
+            __typename?: 'ClaimerResponseWithStatus';
             amount: string;
             claim_group_id: string;
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -787,6 +791,7 @@ export type ICodegenGeneratedClaimSenderClaimsQuery = {
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
@@ -847,6 +852,7 @@ export type ICodegenGeneratedClaimUserClaimsQuery = {
             claim_id: string;
             claimer: string;
             pseudo_claim_id: string;
+            status: string;
             token: string;
             sender: {
                 __typename?: 'CrossChainUser';
