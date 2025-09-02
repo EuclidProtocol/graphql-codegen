@@ -165,9 +165,9 @@ export type IChainsResponse = {
 export type IClaimQueries = {
   __typename?: 'ClaimQueries';
   claim: Maybe<IClaimerResponse>;
-  claim_by_psuedo_claim_id: Maybe<IClaimerResponse>;
+  claim_by_psuedo_claim_id: Maybe<IClaimerResponseWithStatus>;
   claims_by_claimer_pub_Key: Array<Maybe<IClaimerResponse>>;
-  claims_by_email: Array<Maybe<IClaimerResponse>>;
+  claims_by_email: Array<Maybe<IClaimerResponseWithStatus>>;
   sender_claims: Array<Maybe<IClaimerResponse>>;
   state: Maybe<IClaimState>;
   user_claims: Array<Maybe<IClaimerResponse>>;
@@ -227,6 +227,19 @@ export type IClaimerResponse = {
   claimer: Scalars['String']['output'];
   pseudo_claim_id: Scalars['String']['output'];
   sender: ICrossChainUser;
+  status: Scalars['String']['output'];
+  token: Scalars['String']['output'];
+};
+
+export type IClaimerResponseWithStatus = {
+  __typename?: 'ClaimerResponseWithStatus';
+  amount: Scalars['String']['output'];
+  claim_group_id: Scalars['String']['output'];
+  claim_id: Scalars['String']['output'];
+  claimer: Scalars['String']['output'];
+  pseudo_claim_id: Scalars['String']['output'];
+  sender: ICrossChainUser;
+  status: Scalars['String']['output'];
   token: Scalars['String']['output'];
 };
 

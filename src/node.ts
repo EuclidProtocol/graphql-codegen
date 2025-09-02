@@ -228,21 +228,21 @@ export type ICodegenGeneratedClaimClaimQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimClaimQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim: { __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+export type ICodegenGeneratedClaimClaimQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim: { __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables = Exact<{
   claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponseWithStatus', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables = Exact<{
   claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
 }>;
 
 
-export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claim_by_psuedo_claim_id: { __typename?: 'ClaimerResponseWithStatus', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } } } };
 
 export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
   claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
@@ -260,7 +260,7 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_claimer_pub_Key: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_claimer_pub_Key: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables = Exact<{
   claim_claims_by_email_email: Scalars['String']['input'];
@@ -269,7 +269,7 @@ export type ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponse', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponseWithStatus', sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedClaimClaimsByEmailQueryVariables = Exact<{
   claim_claims_by_email_email: Scalars['String']['input'];
@@ -278,7 +278,7 @@ export type ICodegenGeneratedClaimClaimsByEmailQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimClaimsByEmailQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedClaimClaimsByEmailQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', claims_by_email: Array<{ __typename?: 'ClaimerResponseWithStatus', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedClaimSenderClaimsSenderQueryVariables = Exact<{
   claim_sender_claims_limit: Scalars['Int']['input'];
@@ -296,7 +296,7 @@ export type ICodegenGeneratedClaimSenderClaimsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimSenderClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', sender_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedClaimSenderClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', sender_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedClaimStateQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -319,7 +319,7 @@ export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
+export type ICodegenGeneratedClaimUserClaimsQuery = { __typename?: 'Query', claim: { __typename?: 'ClaimQueries', user_claims: Array<{ __typename?: 'ClaimerResponse', amount: string, claim_group_id: string, claim_id: string, claimer: string, pseudo_claim_id: string, status: string, token: string, sender: { __typename?: 'CrossChainUser', address: string, chain_uid: string } }> } };
 
 export type ICodegenGeneratedClaimQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -1510,6 +1510,7 @@ export const CodegenGeneratedClaimClaimDocument = /*#__PURE__*/ gql`
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1544,6 +1545,7 @@ export const CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = /*#__PURE__*/ g
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1582,6 +1584,7 @@ export const CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = /*#__PURE__*/ 
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1620,6 +1623,7 @@ export const CodegenGeneratedClaimClaimsByEmailDocument = /*#__PURE__*/ gql`
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1658,6 +1662,7 @@ export const CodegenGeneratedClaimSenderClaimsDocument = /*#__PURE__*/ gql`
         address
         chain_uid
       }
+      status
       token
     }
   }
@@ -1708,6 +1713,7 @@ export const CodegenGeneratedClaimUserClaimsDocument = /*#__PURE__*/ gql`
         address
         chain_uid
       }
+      status
       token
     }
   }
