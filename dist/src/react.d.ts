@@ -1529,6 +1529,120 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
         };
     };
 };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                created_at: string;
+                tags: Array<string>;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
+            };
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                created_at: string;
+                tags: Array<string>;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{
     [key: string]: never;
 }>;
@@ -1566,6 +1680,43 @@ export type ICodegenGeneratedPoolVolumeQuery = {
         };
     };
 };
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolVolumeClickhouseQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedPoolQueryVariables = Exact<{
     [key: string]: never;
 }>;
@@ -1584,6 +1735,17 @@ export type ICodegenGeneratedPoolQuery = {
             }>;
         };
         volume: {
+            __typename?: 'VolumeResponse';
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+        volume_clickhouse: {
             __typename?: 'VolumeResponse';
             total_liquidity: string;
             total_volume: string;
@@ -1952,7 +2114,8 @@ export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = {
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -1984,7 +2147,8 @@ export type ICodegenGeneratedRouterTokenDenomsQuery = {
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -2140,7 +2304,8 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
         token_denoms: Array<{
             __typename?: 'TokenDenomWithTokenIdResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -2175,7 +2340,8 @@ export type ICodegenGeneratedTokenTokenDenomsQuery = {
             __typename?: 'TokenDenomWithTokenIdResponse';
             token_id: string;
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -5383,6 +5549,214 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityQuery(v
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery({
+ *   variables: {
+ *      pool_token_pair_with_liquidity_clickhouse_limit: // value for 'pool_token_pair_with_liquidity_clickhouse_limit'
+ *      pool_token_pair_with_liquidity_clickhouse_offset: // value for 'pool_token_pair_with_liquidity_clickhouse_offset'
+ *      pool_token_pair_with_liquidity_clickhouse_only_show_verified: // value for 'pool_token_pair_with_liquidity_clickhouse_only_show_verified'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_by: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_by'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_order: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_order'
+ *      pool_token_pair_with_liquidity_clickhouse_token: // value for 'pool_token_pair_with_liquidity_clickhouse_token'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+        pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery({
+ *   variables: {
+ *      pool_token_pair_with_liquidity_clickhouse_limit: // value for 'pool_token_pair_with_liquidity_clickhouse_limit'
+ *      pool_token_pair_with_liquidity_clickhouse_offset: // value for 'pool_token_pair_with_liquidity_clickhouse_offset'
+ *      pool_token_pair_with_liquidity_clickhouse_only_show_verified: // value for 'pool_token_pair_with_liquidity_clickhouse_only_show_verified'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_by: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_by'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_order: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_order'
+ *      pool_token_pair_with_liquidity_clickhouse_token: // value for 'pool_token_pair_with_liquidity_clickhouse_token'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+        pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery({
+ *   variables: {
+ *      pool_token_pair_with_liquidity_clickhouse_limit: // value for 'pool_token_pair_with_liquidity_clickhouse_limit'
+ *      pool_token_pair_with_liquidity_clickhouse_offset: // value for 'pool_token_pair_with_liquidity_clickhouse_offset'
+ *      pool_token_pair_with_liquidity_clickhouse_only_show_verified: // value for 'pool_token_pair_with_liquidity_clickhouse_only_show_verified'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_by: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_by'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_order: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_order'
+ *      pool_token_pair_with_liquidity_clickhouse_token: // value for 'pool_token_pair_with_liquidity_clickhouse_token'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+        pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery({
+ *   variables: {
+ *      pool_token_pair_with_liquidity_clickhouse_limit: // value for 'pool_token_pair_with_liquidity_clickhouse_limit'
+ *      pool_token_pair_with_liquidity_clickhouse_offset: // value for 'pool_token_pair_with_liquidity_clickhouse_offset'
+ *      pool_token_pair_with_liquidity_clickhouse_only_show_verified: // value for 'pool_token_pair_with_liquidity_clickhouse_only_show_verified'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_by: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_by'
+ *      pool_token_pair_with_liquidity_clickhouse_sort_order: // value for 'pool_token_pair_with_liquidity_clickhouse_sort_order'
+ *      pool_token_pair_with_liquidity_clickhouse_token: // value for 'pool_token_pair_with_liquidity_clickhouse_token'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery, Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityClickhouseLazyQuery>;
+export type CodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery, ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables>;
+export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+        pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
 export declare const CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery__
@@ -5440,6 +5814,68 @@ export type CodegenGeneratedPoolVolumeQueryHookResult = ReturnType<typeof useCod
 export type CodegenGeneratedPoolVolumeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeLazyQuery>;
 export type CodegenGeneratedPoolVolumeQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeQuery, ICodegenGeneratedPoolVolumeQueryVariables>;
 export declare function refetchCodegenGeneratedPoolVolumeQuery(variables?: ICodegenGeneratedPoolVolumeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>;
+export declare function refetchCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery(variables?: ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolVolumeClickhouseDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolVolumeClickhouseQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolVolumeClickhouseQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolVolumeClickhouseQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolVolumeClickhouseQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolVolumeClickhouseQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolVolumeClickhouseLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolVolumeClickhouseQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolVolumeClickhouseQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseLazyQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>;
+export declare function refetchCodegenGeneratedPoolVolumeClickhouseQuery(variables?: ICodegenGeneratedPoolVolumeClickhouseQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
         [key: string]: never;

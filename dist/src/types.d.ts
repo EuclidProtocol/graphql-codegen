@@ -540,13 +540,23 @@ export type IPoolQueries = {
     fees_collected: Maybe<IFeesResponse>;
     my_pools: Array<IMyPools>;
     token_pair_with_liquidity: ITokenPairWithLiquidityPaginated;
+    token_pair_with_liquidity_clickhouse: ITokenPairWithLiquidityPaginated;
     volume: Maybe<IVolumeResponse>;
+    volume_clickhouse: Maybe<IVolumeResponse>;
 };
 export type IPoolQueriesMyPoolsArgs = {
     chain_uid?: InputMaybe<Scalars['String']['input']>;
     user_address: Scalars['String']['input'];
 };
 export type IPoolQueriesTokenPairWithLiquidityArgs = {
+    limit?: InputMaybe<Scalars['Int']['input']>;
+    offset?: InputMaybe<Scalars['Int']['input']>;
+    only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    sort_by?: InputMaybe<ITokenPairSortBy>;
+    sort_order?: InputMaybe<ISortOrder>;
+    token?: InputMaybe<Scalars['String']['input']>;
+};
+export type IPoolQueriesTokenPairWithLiquidityClickhouseArgs = {
     limit?: InputMaybe<Scalars['Int']['input']>;
     offset?: InputMaybe<Scalars['Int']['input']>;
     only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
@@ -729,14 +739,20 @@ export type ITokenDenom = {
     chain_uid: Scalars['String']['output'];
     token_type: ITokenType;
 };
+export type ITokenDenomWithChainType = {
+    __typename?: 'TokenDenomWithChainType';
+    chain_type: Maybe<Scalars['String']['output']>;
+    chain_uid: Scalars['String']['output'];
+    token_type: ITokenType;
+};
 export type ITokenDenomWithTokenIdResponse = {
     __typename?: 'TokenDenomWithTokenIdResponse';
-    denoms: Array<Maybe<ITokenDenom>>;
+    denoms: Array<Maybe<ITokenDenomWithChainType>>;
     token_id: Scalars['String']['output'];
 };
 export type ITokenDenomsResponse = {
     __typename?: 'TokenDenomsResponse';
-    denoms: Maybe<Array<Maybe<ITokenDenom>>>;
+    denoms: Maybe<Array<Maybe<ITokenDenomWithChainType>>>;
 };
 export type ITokenId = {
     __typename?: 'TokenId';

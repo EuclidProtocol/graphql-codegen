@@ -393,12 +393,14 @@ export type PoolConfigFieldPolicy = {
     constant_product?: FieldPolicy<any> | FieldReadFunction<any>;
     stable?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'volume' | PoolQueriesKeySpecifier)[];
+export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'token_pair_with_liquidity_clickhouse' | 'volume' | 'volume_clickhouse' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
     fees_collected?: FieldPolicy<any> | FieldReadFunction<any>;
     my_pools?: FieldPolicy<any> | FieldReadFunction<any>;
     token_pair_with_liquidity?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_pair_with_liquidity_clickhouse?: FieldPolicy<any> | FieldReadFunction<any>;
     volume?: FieldPolicy<any> | FieldReadFunction<any>;
+    volume_clickhouse?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type PoolsKeySpecifier = ('chain_uid' | 'pool' | PoolsKeySpecifier)[];
 export type PoolsFieldPolicy = {
@@ -498,6 +500,12 @@ export type TokenArrayFieldPolicy = {
 };
 export type TokenDenomKeySpecifier = ('chain_uid' | 'token_type' | TokenDenomKeySpecifier)[];
 export type TokenDenomFieldPolicy = {
+    chain_uid?: FieldPolicy<any> | FieldReadFunction<any>;
+    token_type?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TokenDenomWithChainTypeKeySpecifier = ('chain_type' | 'chain_uid' | 'token_type' | TokenDenomWithChainTypeKeySpecifier)[];
+export type TokenDenomWithChainTypeFieldPolicy = {
+    chain_type?: FieldPolicy<any> | FieldReadFunction<any>;
     chain_uid?: FieldPolicy<any> | FieldReadFunction<any>;
     token_type?: FieldPolicy<any> | FieldReadFunction<any>;
 };
@@ -932,6 +940,10 @@ export type StrictTypedTypePolicies = {
     TokenDenom?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenDenomKeySpecifier | (() => undefined | TokenDenomKeySpecifier);
         fields?: TokenDenomFieldPolicy;
+    };
+    TokenDenomWithChainType?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | TokenDenomWithChainTypeKeySpecifier | (() => undefined | TokenDenomWithChainTypeKeySpecifier);
+        fields?: TokenDenomWithChainTypeFieldPolicy;
     };
     TokenDenomWithTokenIdResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | TokenDenomWithTokenIdResponseKeySpecifier | (() => undefined | TokenDenomWithTokenIdResponseKeySpecifier);

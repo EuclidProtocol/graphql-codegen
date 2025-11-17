@@ -1530,6 +1530,120 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
         };
     };
 };
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                created_at: string;
+                tags: Array<string>;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables = Exact<{
+    pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
+    pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        token_pair_with_liquidity_clickhouse: {
+            __typename?: 'TokenPairWithLiquidityPaginated';
+            pagination: {
+                __typename?: 'PaginationInfo';
+                limit: number;
+                offset: number;
+                total_count: number;
+            };
+            results: Array<{
+                __typename?: 'TokenPairWithLiquidityResponse';
+                apr: string;
+                created_at: string;
+                tags: Array<string>;
+                total_liquidity: string;
+                vlp: string;
+                pair: {
+                    __typename?: 'Pair';
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{
     [key: string]: never;
 }>;
@@ -1567,6 +1681,43 @@ export type ICodegenGeneratedPoolVolumeQuery = {
         };
     };
 };
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolVolumeClickhouseQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedPoolQueryVariables = Exact<{
     [key: string]: never;
 }>;
@@ -1585,6 +1736,17 @@ export type ICodegenGeneratedPoolQuery = {
             }>;
         };
         volume: {
+            __typename?: 'VolumeResponse';
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                pair: string;
+                volume: string;
+            }>;
+        };
+        volume_clickhouse: {
             __typename?: 'VolumeResponse';
             total_liquidity: string;
             total_volume: string;
@@ -1953,7 +2115,8 @@ export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = {
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -1985,7 +2148,8 @@ export type ICodegenGeneratedRouterTokenDenomsQuery = {
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -2141,7 +2305,8 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
         token_denoms: Array<{
             __typename?: 'TokenDenomWithTokenIdResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -2176,7 +2341,8 @@ export type ICodegenGeneratedTokenTokenDenomsQuery = {
             __typename?: 'TokenDenomWithTokenIdResponse';
             token_id: string;
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
@@ -3036,8 +3202,14 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocumen
 export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolVolumeDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedPoolVolumeClickhouseDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterAllChainsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterAllEscrowsDocument: import("graphql").DocumentNode;
@@ -3167,8 +3339,14 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery>;
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery>;
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery>;
+    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery>;
     CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS(variables?: ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery>;
     CODEGEN_GENERATED_POOL_VOLUME(variables?: ICodegenGeneratedPoolVolumeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeQuery>;
+    CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE_VOLUME_BREAKDOWN_24HOURS(variables?: ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery>;
+    CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE(variables?: ICodegenGeneratedPoolVolumeClickhouseQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeClickhouseQuery>;
     CODEGEN_GENERATED_POOL(variables?: ICodegenGeneratedPoolQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolQuery>;
     CODEGEN_GENERATED_ROUTER_ALL_CHAINS(variables?: ICodegenGeneratedRouterAllChainsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllChainsQuery>;
     CODEGEN_GENERATED_ROUTER_ALL_ESCROWS(variables?: ICodegenGeneratedRouterAllEscrowsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterAllEscrowsQuery>;
