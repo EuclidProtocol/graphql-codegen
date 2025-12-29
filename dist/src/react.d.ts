@@ -2404,8 +2404,10 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
         __typename?: 'TokenQueries';
         token_metadata_by_id: {
             __typename?: 'Metadata';
+            chain_type: Array<string>;
             chain_uids: Array<string>;
             coinDecimal: number;
+            created_at: string;
             description: string;
             dex: Array<string>;
             displayName: string;
@@ -2438,8 +2440,10 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
         __typename?: 'TokenQueries';
         token_metadatas: Array<{
             __typename?: 'Metadata';
+            chain_type: Array<string>;
             chain_uids: Array<string>;
             coinDecimal: number;
+            created_at: string;
             description: string;
             dex: Array<string>;
             displayName: string;
@@ -2467,8 +2471,10 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
         __typename?: 'TokenQueries';
         tokens_metadata: Array<{
             __typename?: 'Metadata';
+            chain_type: Array<string>;
             chain_uids: Array<string>;
             coinDecimal: number;
+            created_at: string;
             description: string;
             dex: Array<string>;
             displayName: string;

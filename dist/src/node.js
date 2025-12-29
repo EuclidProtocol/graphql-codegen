@@ -1851,8 +1851,10 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.defau
       token_id: $token_token_metadata_by_id_token_id
       verified: $token_token_metadata_by_id_verified
     ) {
+      chain_type
       chain_uids
       coinDecimal
+      created_at
       description
       dex
       displayName
@@ -1883,8 +1885,10 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default)
       show_volume: $token_token_metadatas_show_volume
       verified: $token_token_metadatas_verified
     ) {
+      chain_type
       chain_uids
       coinDecimal
+      created_at
       description
       dex
       displayName
@@ -1910,8 +1914,10 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, graphql_tag_1.default)
       token_ids: $token_tokens_metadata_token_ids
       verified: $token_tokens_metadata_verified
     ) {
+      chain_type
       chain_uids
       coinDecimal
+      created_at
       description
       dex
       displayName

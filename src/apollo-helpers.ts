@@ -313,10 +313,12 @@ export type LpTokenAddrKeySpecifier = ('token_address' | LpTokenAddrKeySpecifier
 export type LpTokenAddrFieldPolicy = {
 	token_address?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type MetadataKeySpecifier = ('chain_uids' | 'coinDecimal' | 'description' | 'dex' | 'displayName' | 'image' | 'is_verified' | 'min_swap_value' | 'price' | 'price_change_7d' | 'price_change_24h' | 'social' | 'tags' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
+export type MetadataKeySpecifier = ('chain_type' | 'chain_uids' | 'coinDecimal' | 'created_at' | 'description' | 'dex' | 'displayName' | 'image' | 'is_verified' | 'min_swap_value' | 'price' | 'price_change_7d' | 'price_change_24h' | 'social' | 'tags' | 'tokenId' | 'total_volume' | 'total_volume_24h' | MetadataKeySpecifier)[];
 export type MetadataFieldPolicy = {
+	chain_type?: FieldPolicy<any> | FieldReadFunction<any>,
 	chain_uids?: FieldPolicy<any> | FieldReadFunction<any>,
 	coinDecimal?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	dex?: FieldPolicy<any> | FieldReadFunction<any>,
 	displayName?: FieldPolicy<any> | FieldReadFunction<any>,
