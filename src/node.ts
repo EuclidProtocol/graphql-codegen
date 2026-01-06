@@ -932,6 +932,26 @@ export type ICodegenGeneratedVcoinStateQueryVariables = Exact<{ [key: string]: n
 
 export type ICodegenGeneratedVcoinStateQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', state: { __typename?: 'ContractStateOfVcoin', admin: string, router: string } } };
 
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables = Exact<{
+  vcoin_unified_user_balance_address: Scalars['String']['input'];
+  vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+  vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', unified_user_balance: Array<{ __typename?: 'VcoinBalanceResponse', balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> }> } };
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables = Exact<{
+  vcoin_unified_user_balance_address: Scalars['String']['input'];
+  vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+  vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', unified_user_balance: Array<{ __typename?: 'VcoinBalanceResponse', chain_uid: string, balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> }> } };
+
 export type ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables = Exact<{
   vcoin_user_balance_user?: InputMaybe<ICrossChainUserInput>;
 }>;
@@ -944,7 +964,7 @@ export type ICodegenGeneratedVcoinUserBalanceQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVcoinUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', user_balance: { __typename?: 'VcoinBalanceResponse', balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> } } };
+export type ICodegenGeneratedVcoinUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', user_balance: { __typename?: 'VcoinBalanceResponse', chain_uid: string, balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> } } };
 
 export type ICodegenGeneratedVcoinQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -3095,6 +3115,41 @@ export const CodegenGeneratedVcoinStateDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedVcoinUnifiedUserBalanceDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+      chain_uid
+    }
+  }
+}
+    `;
 export const CodegenGeneratedVcoinUserBalanceBalancesDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES($vcoin_user_balance_user: CrossChainUserInput) {
   vcoin {
@@ -3115,6 +3170,7 @@ export const CodegenGeneratedVcoinUserBalanceDocument = /*#__PURE__*/ gql`
         amount
         token_id
       }
+      chain_uid
     }
   }
 }
@@ -3843,6 +3899,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_VCOIN_STATE(variables?: ICodegenGeneratedVcoinStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinStateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinStateQuery>(CodegenGeneratedVcoinStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_STATE', 'query');
+    },
+    CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES(variables: ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery>(CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES', 'query');
+    },
+    CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE(variables: ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUnifiedUserBalanceQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUnifiedUserBalanceQuery>(CodegenGeneratedVcoinUnifiedUserBalanceDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE', 'query');
     },
     CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES(variables?: ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedVcoinUserBalanceBalancesQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedVcoinUserBalanceBalancesQuery>(CodegenGeneratedVcoinUserBalanceBalancesDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES', 'query');

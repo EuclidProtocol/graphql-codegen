@@ -932,6 +932,26 @@ export type ICodegenGeneratedVcoinStateQueryVariables = Exact<{ [key: string]: n
 
 export type ICodegenGeneratedVcoinStateQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', state: { __typename?: 'ContractStateOfVcoin', admin: string, router: string } } };
 
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables = Exact<{
+  vcoin_unified_user_balance_address: Scalars['String']['input'];
+  vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+  vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', unified_user_balance: Array<{ __typename?: 'VcoinBalanceResponse', balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> }> } };
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables = Exact<{
+  vcoin_unified_user_balance_address: Scalars['String']['input'];
+  vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+  vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+  vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', unified_user_balance: Array<{ __typename?: 'VcoinBalanceResponse', chain_uid: string, balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> }> } };
+
 export type ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables = Exact<{
   vcoin_user_balance_user?: InputMaybe<ICrossChainUserInput>;
 }>;
@@ -944,7 +964,7 @@ export type ICodegenGeneratedVcoinUserBalanceQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedVcoinUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', user_balance: { __typename?: 'VcoinBalanceResponse', balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> } } };
+export type ICodegenGeneratedVcoinUserBalanceQuery = { __typename?: 'Query', vcoin: { __typename?: 'Vcoin', user_balance: { __typename?: 'VcoinBalanceResponse', chain_uid: string, balances: Array<{ __typename?: 'VcoinBalanceUserResponse', amount: string, token_id: string }> } } };
 
 export type ICodegenGeneratedVcoinQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -6623,6 +6643,109 @@ export type CodegenGeneratedVcoinStateQueryResult = Apollo.QueryResult<ICodegenG
 export function refetchCodegenGeneratedVcoinStateQuery(variables?: ICodegenGeneratedVcoinStateQueryVariables) {
       return { query: CodegenGeneratedVcoinStateDocument, variables: variables }
     }
+export const CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>(CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, options);
+      }
+export function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>(CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, options);
+        }
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>;
+export function refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables) {
+      return { query: CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, variables: variables }
+    }
+export const CodegenGeneratedVcoinUnifiedUserBalanceDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+      chain_uid
+    }
+  }
+}
+    `;
+
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export function useCodegenGeneratedVcoinUnifiedUserBalanceQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>(CodegenGeneratedVcoinUnifiedUserBalanceDocument, options);
+      }
+export function useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>(CodegenGeneratedVcoinUnifiedUserBalanceDocument, options);
+        }
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>;
+export function refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables) {
+      return { query: CodegenGeneratedVcoinUnifiedUserBalanceDocument, variables: variables }
+    }
 export const CodegenGeneratedVcoinUserBalanceBalancesDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES($vcoin_user_balance_user: CrossChainUserInput) {
   vcoin {
@@ -6674,6 +6797,7 @@ export const CodegenGeneratedVcoinUserBalanceDocument = /*#__PURE__*/ gql`
         amount
         token_id
       }
+      chain_uid
     }
   }
 }

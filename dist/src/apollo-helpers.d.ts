@@ -579,19 +579,21 @@ export type TotalFeesPerDenomResponseFieldPolicy = {
     euclid_fees?: FieldPolicy<any> | FieldReadFunction<any>;
     lp_fees?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type VcoinKeySpecifier = ('balance' | 'state' | 'user_balance' | VcoinKeySpecifier)[];
+export type VcoinKeySpecifier = ('balance' | 'state' | 'unified_user_balance' | 'user_balance' | VcoinKeySpecifier)[];
 export type VcoinFieldPolicy = {
     balance?: FieldPolicy<any> | FieldReadFunction<any>;
     state?: FieldPolicy<any> | FieldReadFunction<any>;
+    unified_user_balance?: FieldPolicy<any> | FieldReadFunction<any>;
     user_balance?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type VcoinBalanceKeySpecifier = ('amount' | VcoinBalanceKeySpecifier)[];
 export type VcoinBalanceFieldPolicy = {
     amount?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type VcoinBalanceResponseKeySpecifier = ('balances' | VcoinBalanceResponseKeySpecifier)[];
+export type VcoinBalanceResponseKeySpecifier = ('balances' | 'chain_uid' | VcoinBalanceResponseKeySpecifier)[];
 export type VcoinBalanceResponseFieldPolicy = {
     balances?: FieldPolicy<any> | FieldReadFunction<any>;
+    chain_uid?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type VcoinBalanceUserResponseKeySpecifier = ('amount' | 'token_id' | VcoinBalanceUserResponseKeySpecifier)[];
 export type VcoinBalanceUserResponseFieldPolicy = {

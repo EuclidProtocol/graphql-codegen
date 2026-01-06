@@ -25,7 +25,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedClaimDocument = exports.CodegenGeneratedClaimUserClaimsDocument = exports.CodegenGeneratedClaimUserClaimsSenderDocument = exports.CodegenGeneratedClaimStateDocument = exports.CodegenGeneratedClaimSenderClaimsDocument = exports.CodegenGeneratedClaimSenderClaimsSenderDocument = exports.CodegenGeneratedClaimClaimsByEmailDocument = exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = exports.CodegenGeneratedClaimClaimDocument = exports.CodegenGeneratedClaimClaimSenderDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllEvmChainsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = exports.CodegenGeneratedChainsAllChainsDocument = exports.ITokenPairSortBy = exports.ISortOrder = void 0;
 exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = exports.CodegenGeneratedTokenAllDexesDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeClickhouseDocument = exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = void 0;
-exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = void 0;
+exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = void 0;
 exports.useCodegenGeneratedChainsAllChainsQuery = useCodegenGeneratedChainsAllChainsQuery;
 exports.useCodegenGeneratedChainsAllChainsLazyQuery = useCodegenGeneratedChainsAllChainsLazyQuery;
 exports.refetchCodegenGeneratedChainsAllChainsQuery = refetchCodegenGeneratedChainsAllChainsQuery;
@@ -356,6 +356,12 @@ exports.refetchCodegenGeneratedVcoinBalanceQuery = refetchCodegenGeneratedVcoinB
 exports.useCodegenGeneratedVcoinStateQuery = useCodegenGeneratedVcoinStateQuery;
 exports.useCodegenGeneratedVcoinStateLazyQuery = useCodegenGeneratedVcoinStateLazyQuery;
 exports.refetchCodegenGeneratedVcoinStateQuery = refetchCodegenGeneratedVcoinStateQuery;
+exports.useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery;
+exports.useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery;
+exports.refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery;
+exports.useCodegenGeneratedVcoinUnifiedUserBalanceQuery = useCodegenGeneratedVcoinUnifiedUserBalanceQuery;
+exports.useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery = useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery;
+exports.refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery = refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery;
 exports.useCodegenGeneratedVcoinUserBalanceBalancesQuery = useCodegenGeneratedVcoinUserBalanceBalancesQuery;
 exports.useCodegenGeneratedVcoinUserBalanceBalancesLazyQuery = useCodegenGeneratedVcoinUserBalanceBalancesLazyQuery;
 exports.refetchCodegenGeneratedVcoinUserBalanceBalancesQuery = refetchCodegenGeneratedVcoinUserBalanceBalancesQuery;
@@ -5489,6 +5495,101 @@ function useCodegenGeneratedVcoinStateLazyQuery(baseOptions) {
 function refetchCodegenGeneratedVcoinStateQuery(variables) {
     return { query: exports.CodegenGeneratedVcoinStateDocument, variables: variables };
 }
+exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, options);
+}
+function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, options);
+}
+function refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(variables) {
+    return { query: exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, variables: variables };
+}
+exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = (0, client_1.gql) `
+    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
+  vcoin {
+    unified_user_balance(
+      address: $vcoin_unified_user_balance_address
+      chain_uids: $vcoin_unified_user_balance_chain_uids
+      limit: $vcoin_unified_user_balance_limit
+      offset: $vcoin_unified_user_balance_offset
+    ) {
+      balances {
+        amount
+        token_id
+      }
+      chain_uid
+    }
+  }
+}
+    `;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+function useCodegenGeneratedVcoinUnifiedUserBalanceQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useQuery(exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument, options);
+}
+function useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery(baseOptions) {
+    const options = { ...defaultOptions, ...baseOptions };
+    return Apollo.useLazyQuery(exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument, options);
+}
+function refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery(variables) {
+    return { query: exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument, variables: variables };
+}
 exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = (0, client_1.gql) `
     query CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES($vcoin_user_balance_user: CrossChainUserInput) {
   vcoin {
@@ -5536,6 +5637,7 @@ exports.CodegenGeneratedVcoinUserBalanceDocument = (0, client_1.gql) `
         amount
         token_id
       }
+      chain_uid
     }
   }
 }

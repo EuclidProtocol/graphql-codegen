@@ -2544,6 +2544,47 @@ export type ICodegenGeneratedVcoinStateQuery = {
         };
     };
 };
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables = Exact<{
+    vcoin_unified_user_balance_address: Scalars['String']['input'];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = {
+    __typename?: 'Query';
+    vcoin: {
+        __typename?: 'Vcoin';
+        unified_user_balance: Array<{
+            __typename?: 'VcoinBalanceResponse';
+            balances: Array<{
+                __typename?: 'VcoinBalanceUserResponse';
+                amount: string;
+                token_id: string;
+            }>;
+        }>;
+    };
+};
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables = Exact<{
+    vcoin_unified_user_balance_address: Scalars['String']['input'];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQuery = {
+    __typename?: 'Query';
+    vcoin: {
+        __typename?: 'Vcoin';
+        unified_user_balance: Array<{
+            __typename?: 'VcoinBalanceResponse';
+            chain_uid: string;
+            balances: Array<{
+                __typename?: 'VcoinBalanceUserResponse';
+                amount: string;
+                token_id: string;
+            }>;
+        }>;
+    };
+};
 export type ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables = Exact<{
     vcoin_user_balance_user?: InputMaybe<ICrossChainUserInput>;
 }>;
@@ -2570,6 +2611,7 @@ export type ICodegenGeneratedVcoinUserBalanceQuery = {
         __typename?: 'Vcoin';
         user_balance: {
             __typename?: 'VcoinBalanceResponse';
+            chain_uid: string;
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
@@ -7198,6 +7240,94 @@ export declare function refetchCodegenGeneratedVcoinStateQuery(variables?: ICode
     variables: Exact<{
         [key: string]: never;
     }> | undefined;
+};
+export declare const CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>;
+export declare function refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        vcoin_unified_user_balance_address: Scalars["String"]["input"];
+        vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedVcoinUnifiedUserBalanceDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>;
+export declare function refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        vcoin_unified_user_balance_address: Scalars["String"]["input"];
+        vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
 };
 export declare const CodegenGeneratedVcoinUserBalanceBalancesDocument: Apollo.DocumentNode;
 /**

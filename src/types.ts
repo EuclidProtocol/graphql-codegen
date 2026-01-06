@@ -1019,12 +1019,21 @@ export type IVcoin = {
   __typename?: 'Vcoin';
   balance: Maybe<IVcoinBalance>;
   state: Maybe<IContractStateOfVcoin>;
+  unified_user_balance: Maybe<Array<IVcoinBalanceResponse>>;
   user_balance: Maybe<IVcoinBalanceResponse>;
 };
 
 
 export type IVcoinBalanceArgs = {
   balance_key?: InputMaybe<IBalanceKeyInput>;
+};
+
+
+export type IVcoinUnifiedUserBalanceArgs = {
+  address: Scalars['String']['input'];
+  chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -1040,6 +1049,7 @@ export type IVcoinBalance = {
 export type IVcoinBalanceResponse = {
   __typename?: 'VcoinBalanceResponse';
   balances: Array<Maybe<IVcoinBalanceUserResponse>>;
+  chain_uid: Scalars['String']['output'];
 };
 
 export type IVcoinBalanceUserResponse = {
