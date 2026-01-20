@@ -395,12 +395,11 @@ export type PoolConfigFieldPolicy = {
 	constant_product?: FieldPolicy<any> | FieldReadFunction<any>,
 	stable?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'token_pair_with_liquidity_clickhouse' | 'volume' | 'volume_clickhouse' | PoolQueriesKeySpecifier)[];
+export type PoolQueriesKeySpecifier = ('fees_collected' | 'my_pools' | 'token_pair_with_liquidity' | 'volume' | 'volume_clickhouse' | PoolQueriesKeySpecifier)[];
 export type PoolQueriesFieldPolicy = {
 	fees_collected?: FieldPolicy<any> | FieldReadFunction<any>,
 	my_pools?: FieldPolicy<any> | FieldReadFunction<any>,
 	token_pair_with_liquidity?: FieldPolicy<any> | FieldReadFunction<any>,
-	token_pair_with_liquidity_clickhouse?: FieldPolicy<any> | FieldReadFunction<any>,
 	volume?: FieldPolicy<any> | FieldReadFunction<any>,
 	volume_clickhouse?: FieldPolicy<any> | FieldReadFunction<any>
 };

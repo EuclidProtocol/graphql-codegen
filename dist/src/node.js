@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedClaimDocument = exports.CodegenGeneratedClaimUserClaimsDocument = exports.CodegenGeneratedClaimUserClaimsSenderDocument = exports.CodegenGeneratedClaimStateDocument = exports.CodegenGeneratedClaimSenderClaimsDocument = exports.CodegenGeneratedClaimSenderClaimsSenderDocument = exports.CodegenGeneratedClaimClaimsByEmailDocument = exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = exports.CodegenGeneratedClaimClaimDocument = exports.CodegenGeneratedClaimClaimSenderDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllEvmChainsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = exports.CodegenGeneratedChainsAllChainsDocument = exports.ITokenPairSortBy = exports.ISortOrder = void 0;
-exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = exports.CodegenGeneratedTokenAllDexesDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeClickhouseDocument = exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = void 0;
-exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = void 0;
+exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = exports.CodegenGeneratedTokenAllDexesDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeClickhouseDocument = exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = void 0;
+exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = void 0;
 exports.getSdk = getSdk;
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
 var ISortOrder;
@@ -1150,104 +1150,6 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, graphql_tag_1.d
   }
 }
     `;
-exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      pagination {
-        limit
-        offset
-        total_count
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      results {
-        pair {
-          token_1
-          token_2
-        }
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      results {
-        apr
-        created_at
-        pair {
-          token_1
-          token_2
-        }
-        tags
-        total_liquidity
-        vlp
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      pagination {
-        limit
-        offset
-        total_count
-      }
-      results {
-        apr
-        created_at
-        pair {
-          token_1
-          token_2
-        }
-        tags
-        total_liquidity
-        vlp
-      }
-    }
-  }
-}
-    `;
 exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS {
   pool {
@@ -1757,10 +1659,10 @@ exports.CodegenGeneratedTokenGetAllFaucetsDocument = (0, graphql_tag_1.default) 
 }
     `;
 exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
     token_denoms(
-      chain_uid: $token_token_denoms_chain_uid
+      chain_uids: $token_token_denoms_chain_uids
       denom: $token_token_denoms_denom
       token_id: $token_token_denoms_token_id
     ) {
@@ -1788,10 +1690,10 @@ exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = (0, graphql_tag_1.defau
 }
     `;
 exports.CodegenGeneratedTokenTokenDenomsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
     token_denoms(
-      chain_uid: $token_token_denoms_chain_uid
+      chain_uids: $token_token_denoms_chain_uids
       denom: $token_token_denoms_denom
       token_id: $token_token_denoms_token_id
     ) {
@@ -2622,18 +2524,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY', 'query');
-        },
-        CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION', 'query');
-        },
-        CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR', 'query');
-        },
-        CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS', 'query');
-        },
-        CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE', 'query');
         },
         CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS', 'query');

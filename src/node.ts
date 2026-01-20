@@ -19,7 +19,9 @@ export type Scalars = {
 };
 
 export type IBalanceKeyInput = {
+  /** Address and Chain UID of the user */
   cross_chain_user?: InputMaybe<ICrossChainUserInput>;
+  /** Token ID of the token */
   token_id?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -63,6 +65,7 @@ export enum ITokenPairSortBy {
 }
 
 export type IVlps = {
+  /** contract address of pool. */
   vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -586,54 +589,6 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
 
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity: { __typename?: 'TokenPairWithLiquidityPaginated', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number }, results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, created_at: string, tags: Array<string>, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
 
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables = Exact<{
-  pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
-  pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
-  pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity_clickhouse: { __typename?: 'TokenPairWithLiquidityPaginated', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number } } } };
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables = Exact<{
-  pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
-  pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
-  pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity_clickhouse: { __typename?: 'TokenPairWithLiquidityPaginated', results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables = Exact<{
-  pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
-  pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
-  pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity_clickhouse: { __typename?: 'TokenPairWithLiquidityPaginated', results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, created_at: string, tags: Array<string>, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables = Exact<{
-  pool_token_pair_with_liquidity_clickhouse_limit?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_offset?: InputMaybe<Scalars['Int']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
-  pool_token_pair_with_liquidity_clickhouse_sort_by?: InputMaybe<ITokenPairSortBy>;
-  pool_token_pair_with_liquidity_clickhouse_sort_order?: InputMaybe<ISortOrder>;
-  pool_token_pair_with_liquidity_clickhouse_token?: InputMaybe<Scalars['String']['input']>;
-}>;
-
-
-export type ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery = { __typename?: 'Query', pool: { __typename?: 'PoolQueries', token_pair_with_liquidity_clickhouse: { __typename?: 'TokenPairWithLiquidityPaginated', pagination: { __typename?: 'PaginationInfo', limit: number, offset: number, total_count: number }, results: Array<{ __typename?: 'TokenPairWithLiquidityResponse', apr: string, created_at: string, tags: Array<string>, total_liquidity: string, vlp: string, pair: { __typename?: 'Pair', token_1: string, token_2: string } }> } } };
-
 export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -854,7 +809,7 @@ export type ICodegenGeneratedTokenGetAllFaucetsQueryVariables = Exact<{ [key: st
 export type ICodegenGeneratedTokenGetAllFaucetsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', get_all_faucets: Array<{ __typename?: 'Faucet', faucet_link: string, token: string }> } };
 
 export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
-  token_token_denoms_chain_uid?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+  token_token_denoms_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
   token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
@@ -863,7 +818,7 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
 export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = { __typename?: 'Query', token: { __typename?: 'TokenQueries', token_denoms: Array<{ __typename?: 'TokenDenomWithTokenIdResponse', denoms: Array<{ __typename?: 'TokenDenomWithChainType', chain_type: string, chain_uid: string, token_type: { __typename?: 'NativeTokenType', native: { __typename?: 'NativeToken', denom: string } } | { __typename?: 'SmartTokenType', smart: { __typename?: 'SmartToken', contract_address: string } } | { __typename?: 'VoucherTokenType', voucher: any } }> }> } };
 
 export type ICodegenGeneratedTokenTokenDenomsQueryVariables = Exact<{
-  token_token_denoms_chain_uid?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+  token_token_denoms_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
   token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
   token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
 }>;
@@ -2290,104 +2245,6 @@ export const CodegenGeneratedPoolTokenPairWithLiquidityDocument = /*#__PURE__*/ 
   }
 }
     `;
-export const CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      pagination {
-        limit
-        offset
-        total_count
-      }
-    }
-  }
-}
-    `;
-export const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      results {
-        pair {
-          token_1
-          token_2
-        }
-      }
-    }
-  }
-}
-    `;
-export const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      results {
-        apr
-        created_at
-        pair {
-          token_1
-          token_2
-        }
-        tags
-        total_liquidity
-        vlp
-      }
-    }
-  }
-}
-    `;
-export const CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE($pool_token_pair_with_liquidity_clickhouse_limit: Int, $pool_token_pair_with_liquidity_clickhouse_offset: Int, $pool_token_pair_with_liquidity_clickhouse_only_show_verified: Boolean, $pool_token_pair_with_liquidity_clickhouse_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_clickhouse_sort_order: SortOrder, $pool_token_pair_with_liquidity_clickhouse_token: String) {
-  pool {
-    token_pair_with_liquidity_clickhouse(
-      limit: $pool_token_pair_with_liquidity_clickhouse_limit
-      offset: $pool_token_pair_with_liquidity_clickhouse_offset
-      only_show_verified: $pool_token_pair_with_liquidity_clickhouse_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_clickhouse_sort_by
-      sort_order: $pool_token_pair_with_liquidity_clickhouse_sort_order
-      token: $pool_token_pair_with_liquidity_clickhouse_token
-    ) {
-      pagination {
-        limit
-        offset
-        total_count
-      }
-      results {
-        apr
-        created_at
-        pair {
-          token_1
-          token_2
-        }
-        tags
-        total_liquidity
-        vlp
-      }
-    }
-  }
-}
-    `;
 export const CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS {
   pool {
@@ -2897,10 +2754,10 @@ export const CodegenGeneratedTokenGetAllFaucetsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
     token_denoms(
-      chain_uid: $token_token_denoms_chain_uid
+      chain_uids: $token_token_denoms_chain_uids
       denom: $token_token_denoms_denom
       token_id: $token_token_denoms_token_id
     ) {
@@ -2928,10 +2785,10 @@ export const CodegenGeneratedTokenTokenDenomsDenomsDocument = /*#__PURE__*/ gql`
 }
     `;
 export const CodegenGeneratedTokenTokenDenomsDocument = /*#__PURE__*/ gql`
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uid: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
   token {
     token_denoms(
-      chain_uid: $token_token_denoms_chain_uid
+      chain_uids: $token_token_denoms_chain_uids
       denom: $token_token_denoms_denom
       token_id: $token_token_denoms_token_id
     ) {
@@ -3767,18 +3624,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityQuery>(CodegenGeneratedPoolTokenPairWithLiquidityDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY', 'query');
-    },
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationQuery>(CodegenGeneratedPoolTokenPairWithLiquidityClickhousePaginationDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_PAGINATION', 'query');
-    },
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairQuery>(CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS_PAIR', 'query');
-    },
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsQuery>(CodegenGeneratedPoolTokenPairWithLiquidityClickhouseResultsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE_RESULTS', 'query');
-    },
-    CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE(variables?: ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolTokenPairWithLiquidityClickhouseQuery>(CodegenGeneratedPoolTokenPairWithLiquidityClickhouseDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_CLICKHOUSE', 'query');
     },
     CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS(variables?: ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery>(CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_POOL_VOLUME_VOLUME_BREAKDOWN_24HOURS', 'query');
