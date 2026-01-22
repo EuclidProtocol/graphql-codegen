@@ -1,103 +1,98 @@
 import { StrictTypedTypePolicies } from "./src/apollo-helpers";
-export * from './src/apollo-helpers'
-export * from "./src/types"
-
+export * from "./src/apollo-helpers";
+export * from "./src/types";
 
 /**
  * TypePolicies for Apollo Client.
  * This will help in managing cache properly.
  */
 const TypePolicy: StrictTypedTypePolicies = {
-    Query: {
-        fields: {
-            factory: {
-                keyArgs: ["chain_uid"],
-                merge: true
-            },
-            vlp: {
-                keyArgs: ["contract"],
-                merge: true,
-            },
-            cw: {
-                keyArgs: ['contract', 'chain_uid'],
-                merge: true
-            },
-            router: {
-                merge: true
-            },
-            cw_multicall: {
-                keyArgs: ['chain_uid'],
-                merge: true
-            }
-        },
+  Query: {
+    fields: {
+      factory: {
+        keyArgs: ["chain_uid"],
         merge: true,
-    },
-    Chains: {
-        fields: {
-            chain_config: {
-                keyArgs: ['chain_uid', 'chain_id']
-            },
-            keplr_config: {
-                keyArgs: ['chain_id', 'chain_uid']
-            }
-        },
+      },
+      vlp: {
+        keyArgs: ["contract"],
         merge: true,
-    },
-    Factory: {
-        fields: {
-            escrow: {
-                keyArgs: ["token_id"],
-            },
-        },
+      },
+      cw: {
+        keyArgs: ["contract", "chain_uid"],
         merge: true,
-    },
-    Vlp: {
+      },
+      router: {
         merge: true,
-        fields: {
-            'pool': {
-                keyArgs: ['chain_uid']
-            }
-        }
-    },
-    Cw: {
+      },
+      cw_multicall: {
+        keyArgs: ["chain_uid"],
         merge: true,
-        fields: {
-            balance: {
-                keyArgs: ['address']
-            }
-        }
+      },
     },
-    TokenQueries: {
-        fields: {
-            token_metadata_by_id: {
-                keyArgs: ["token_id"],
-            },
-        },
-        merge: true,
+    merge: true,
+  },
+  Chains: {
+    fields: {
+      chain_config: {
+        keyArgs: ["chain_uid", "chain_id"],
+      },
+      keplr_config: {
+        keyArgs: ["chain_id", "chain_uid"],
+      },
     },
-    Vcoin: {
-        fields: {
-            balance: {
-                keyArgs: ['balance_key', 'token_id']
-            }
-        },
-        merge: true,
+    merge: true,
+  },
+  Factory: {
+    fields: {
+      escrow: {
+        keyArgs: ["token_id"],
+      },
     },
-    ChainConfig: {
-        keyFields: ['chain_uid']
+    merge: true,
+  },
+  Vlp: {
+    merge: true,
+    fields: {
+      pool: {
+        keyArgs: ["chain_uid"],
+      },
     },
-    Keplr: {
-        keyFields: ['chainID']
+  },
+  Cw: {
+    merge: true,
+    fields: {
+      balance: {
+        keyArgs: ["address"],
+      },
     },
-    EscrowResponse: {
-        keyFields: ["escrow_address"],
+  },
+  TokenQueries: {
+    fields: {
+      token_metadata_by_id: {
+        keyArgs: ["token_id"],
+      },
     },
-    Metadata: {
-        keyFields: ["tokenId"],
+    merge: true,
+  },
+  Vcoin: {
+    fields: {
+      balance: {
+        keyArgs: ["balance_key", "token_id"],
+      },
     },
-    VlpWithTokenPair: {
-        keyFields: ['vlp']
-    }
-}
+    merge: true,
+  },
+
+  Keplr: {
+    keyFields: ["chainID"],
+  },
+  EscrowResponse: {
+    keyFields: ["escrow_address"],
+  },
+
+  VlpWithTokenPair: {
+    keyFields: ["vlp"],
+  },
+};
 
 export default TypePolicy;
