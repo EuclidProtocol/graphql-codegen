@@ -104,6 +104,7 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
             token_factory_address: string;
             type: string;
@@ -122,6 +123,7 @@ export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = {
             native_currency: {
                 __typename?: 'NativeCurrency';
                 decimals: number;
+                id: string;
                 name: string;
                 symbol: string;
             };
@@ -142,6 +144,7 @@ export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = {
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         }>;
@@ -158,9 +161,11 @@ export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = {
             __typename?: 'EVMChainConfig';
             rpc_urls: {
                 __typename?: 'RPCUrls';
+                id: string;
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         }>;
@@ -178,18 +183,22 @@ export type ICodegenGeneratedChainsAllEvmChainsQuery = {
             chain_id: string;
             chain_uid: string;
             explorer_url: string;
+            id: string;
             name: string;
             native_currency: {
                 __typename?: 'NativeCurrency';
                 decimals: number;
+                id: string;
                 name: string;
                 symbol: string;
             };
             rpc_urls: {
                 __typename?: 'RPCUrls';
+                id: string;
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         }>;
@@ -210,6 +219,7 @@ export type ICodegenGeneratedChainsChainConfigQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
             token_factory_address: string;
             type: string;
@@ -229,6 +239,7 @@ export type ICodegenGeneratedChainsContractsQuery = {
             ChainUID: string;
             ContractAddress: string;
             Type: string;
+            id: string;
         }>;
     };
 };
@@ -245,6 +256,7 @@ export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = {
             native_currency: {
                 __typename?: 'NativeCurrency';
                 decimals: number;
+                id: string;
                 name: string;
                 symbol: string;
             };
@@ -266,6 +278,7 @@ export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = {
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         };
@@ -283,9 +296,11 @@ export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = {
             __typename?: 'EVMChainConfig';
             rpc_urls: {
                 __typename?: 'RPCUrls';
+                id: string;
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         };
@@ -304,18 +319,22 @@ export type ICodegenGeneratedChainsEvmChainConfigQuery = {
             chain_id: string;
             chain_uid: string;
             explorer_url: string;
+            id: string;
             name: string;
             native_currency: {
                 __typename?: 'NativeCurrency';
                 decimals: number;
+                id: string;
                 name: string;
                 symbol: string;
             };
             rpc_urls: {
                 __typename?: 'RPCUrls';
+                id: string;
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         };
@@ -339,6 +358,7 @@ export type ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery = {
                 bech32PrefixConsPub: string;
                 bech32PrefixValAddr: string;
                 bech32PrefixValPub: string;
+                id: string;
             };
         };
     };
@@ -356,6 +376,7 @@ export type ICodegenGeneratedChainsKeplrConfigBip44Query = {
             bip44: {
                 __typename?: 'Bip44';
                 coinType: number;
+                id: string;
             };
         };
     };
@@ -376,6 +397,7 @@ export type ICodegenGeneratedChainsKeplrConfigCurrenciesQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             }>;
         };
     };
@@ -396,6 +418,7 @@ export type ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQuery = {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -418,10 +441,12 @@ export type ICodegenGeneratedChainsKeplrConfigFeecurrenciesQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
                 gasPriceStep: {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -442,6 +467,7 @@ export type ICodegenGeneratedChainsKeplrConfigGaspricestepQuery = {
                 __typename?: 'GasPriceStep';
                 average: number;
                 high: number;
+                id: string;
                 low: number;
             };
         };
@@ -463,6 +489,7 @@ export type ICodegenGeneratedChainsKeplrConfigStakecurrencyQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             };
         };
     };
@@ -482,6 +509,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
             coinType: number;
             explorer_url: string;
             features: Array<string>;
+            id: string;
             rest: string;
             rpc: string;
             bech32Config: {
@@ -492,10 +520,12 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 bech32PrefixConsPub: string;
                 bech32PrefixValAddr: string;
                 bech32PrefixValPub: string;
+                id: string;
             };
             bip44: {
                 __typename?: 'Bip44';
                 coinType: number;
+                id: string;
             };
             currencies: Array<{
                 __typename?: 'Currencies';
@@ -503,6 +533,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             }>;
             feeCurrencies: Array<{
                 __typename?: 'FeeCurrencies';
@@ -510,10 +541,12 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
                 gasPriceStep: {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -521,6 +554,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 __typename?: 'GasPriceStep';
                 average: number;
                 high: number;
+                id: string;
                 low: number;
             };
             stakeCurrency: {
@@ -529,6 +563,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             };
         };
     };
@@ -545,6 +580,7 @@ export type ICodegenGeneratedChainsRouterConfigQuery = {
             chain_uid: string;
             contract_address: string;
             explorer_url: string;
+            id: string;
             logo: string;
             type: string;
         };
@@ -562,18 +598,22 @@ export type ICodegenGeneratedChainsQuery = {
             chain_id: string;
             chain_uid: string;
             explorer_url: string;
+            id: string;
             name: string;
             native_currency: {
                 __typename?: 'NativeCurrency';
                 decimals: number;
+                id: string;
                 name: string;
                 symbol: string;
             };
             rpc_urls: {
                 __typename?: 'RPCUrls';
+                id: string;
                 default: {
                     __typename?: 'RPCConfig';
                     http: Array<string>;
+                    id: string;
                 };
             };
         }>;
@@ -582,6 +622,7 @@ export type ICodegenGeneratedChainsQuery = {
             chain_uid: string;
             contract_address: string;
             explorer_url: string;
+            id: string;
             logo: string;
             type: string;
         };
@@ -600,6 +641,7 @@ export type ICodegenGeneratedClaimClaimSenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -617,6 +659,7 @@ export type ICodegenGeneratedClaimClaimQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -624,6 +667,7 @@ export type ICodegenGeneratedClaimClaimQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -641,6 +685,7 @@ export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -658,6 +703,7 @@ export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -665,6 +711,7 @@ export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -684,6 +731,7 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -703,6 +751,7 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -710,6 +759,7 @@ export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -729,6 +779,7 @@ export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -748,6 +799,7 @@ export type ICodegenGeneratedClaimClaimsByEmailQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -755,6 +807,7 @@ export type ICodegenGeneratedClaimClaimsByEmailQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -774,6 +827,7 @@ export type ICodegenGeneratedClaimSenderClaimsSenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -793,6 +847,7 @@ export type ICodegenGeneratedClaimSenderClaimsQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -800,6 +855,7 @@ export type ICodegenGeneratedClaimSenderClaimsQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -816,6 +872,7 @@ export type ICodegenGeneratedClaimStateQuery = {
             admin: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
             vcoin_address: string;
         };
     };
@@ -835,6 +892,7 @@ export type ICodegenGeneratedClaimUserClaimsSenderQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -854,6 +912,7 @@ export type ICodegenGeneratedClaimUserClaimsQuery = {
             claim_group_id: string;
             claim_id: string;
             claimer: string;
+            id: string;
             pseudo_claim_id: string;
             status: string;
             token: string;
@@ -861,6 +920,7 @@ export type ICodegenGeneratedClaimUserClaimsQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -877,6 +937,7 @@ export type ICodegenGeneratedClaimQuery = {
             admin: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
             vcoin_address: string;
         };
     };
@@ -893,6 +954,7 @@ export type ICodegenGeneratedCwBalanceQuery = {
         balance: {
             __typename?: 'Balance';
             balance: string;
+            id: string;
         };
     };
 };
@@ -907,6 +969,7 @@ export type ICodegenGeneratedCwTokenInfoQuery = {
         token_info: {
             __typename?: 'TokenInfo';
             decimals: number;
+            id: string;
             name: string;
             symbol: string;
             total_supply: string;
@@ -924,6 +987,7 @@ export type ICodegenGeneratedCwQuery = {
         token_info: {
             __typename?: 'TokenInfo';
             decimals: number;
+            id: string;
             name: string;
             symbol: string;
             total_supply: string;
@@ -1015,6 +1079,7 @@ export type ICodegenGeneratedFactoryAllPoolsPaginationQuery = {
             __typename?: 'AllPoolsResponse';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1037,6 +1102,7 @@ export type ICodegenGeneratedFactoryAllPoolsPoolsPairQuery = {
                 __typename?: 'PairsInPool';
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1057,9 +1123,11 @@ export type ICodegenGeneratedFactoryAllPoolsPoolsQuery = {
             __typename?: 'AllPoolsResponse';
             pools: Array<{
                 __typename?: 'PairsInPool';
+                id: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1078,17 +1146,21 @@ export type ICodegenGeneratedFactoryAllPoolsQuery = {
         __typename?: 'Factory';
         all_pools: {
             __typename?: 'AllPoolsResponse';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
             };
             pools: Array<{
                 __typename?: 'PairsInPool';
+                id: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1109,6 +1181,7 @@ export type ICodegenGeneratedFactoryAllTokensPaginationQuery = {
             __typename?: 'AllTokens';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1127,9 +1200,11 @@ export type ICodegenGeneratedFactoryAllTokensQuery = {
         __typename?: 'Factory';
         all_tokens: {
             __typename?: 'AllTokens';
+            id: string;
             tokens: Array<string>;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1174,6 +1249,7 @@ export type ICodegenGeneratedFactoryEscrowQuery = {
         escrow: {
             __typename?: 'EscrowResponse';
             escrow_address: string;
+            id: string;
             denoms: Array<{
                 __typename?: 'NativeTokenType';
                 native: {
@@ -1203,6 +1279,7 @@ export type ICodegenGeneratedFactoryGetLptokenAddressQuery = {
         __typename?: 'Factory';
         get_LpToken_address: {
             __typename?: 'LpTokenAddr';
+            id: string;
             token_address: string;
         };
     };
@@ -1222,6 +1299,7 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -1238,10 +1316,12 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery = {
             __typename?: 'PartnerFeesCollected';
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -1256,12 +1336,15 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedQuery = {
         __typename?: 'Factory';
         partner_fees_collected: {
             __typename?: 'PartnerFeesCollected';
+            id: string;
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -1279,6 +1362,7 @@ export type ICodegenGeneratedFactoryStateQuery = {
             admin: string;
             chain_uid: string;
             hub_channel: string;
+            id: string;
             router_contract: string;
         };
     };
@@ -1303,12 +1387,15 @@ export type ICodegenGeneratedFactoryQuery = {
         __typename?: 'Factory';
         partner_fees_collected: {
             __typename?: 'PartnerFeesCollected';
+            id: string;
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -1317,6 +1404,7 @@ export type ICodegenGeneratedFactoryQuery = {
             admin: string;
             chain_uid: string;
             hub_channel: string;
+            id: string;
             router_contract: string;
         };
     };
@@ -1332,6 +1420,7 @@ export type ICodegenGeneratedPoolFeesCollectedBreakdownQuery = {
             __typename?: 'FeesResponse';
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -1348,9 +1437,11 @@ export type ICodegenGeneratedPoolFeesCollectedQuery = {
         __typename?: 'PoolQueries';
         fees_collected: {
             __typename?: 'FeesResponse';
+            id: string;
             total_overall: number;
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -1370,6 +1461,7 @@ export type ICodegenGeneratedPoolMyPoolsPairQuery = {
             __typename?: 'MyPools';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -1390,6 +1482,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -1405,9 +1498,11 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
         my_pools: Array<{
             __typename?: 'MyPools';
             height: string;
+            id: string;
             vlp: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -1415,6 +1510,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -1435,6 +1531,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
             __typename?: 'TokenPairWithLiquidityPaginated';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1460,6 +1557,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
                 __typename?: 'TokenPairWithLiquidityResponse';
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1485,11 +1583,13 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
                 created_at: string;
+                id: string;
                 tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1511,8 +1611,10 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
         __typename?: 'PoolQueries';
         token_pair_with_liquidity: {
             __typename?: 'TokenPairWithLiquidityPaginated';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1521,11 +1623,13 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
                 created_at: string;
+                id: string;
                 tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1544,6 +1648,7 @@ export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery = {
             __typename?: 'VolumeResponse';
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1559,11 +1664,13 @@ export type ICodegenGeneratedPoolVolumeQuery = {
         __typename?: 'PoolQueries';
         volume: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1581,6 +1688,7 @@ export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery = 
             __typename?: 'VolumeResponse';
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1596,11 +1704,13 @@ export type ICodegenGeneratedPoolVolumeClickhouseQuery = {
         __typename?: 'PoolQueries';
         volume_clickhouse: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1616,9 +1726,11 @@ export type ICodegenGeneratedPoolQuery = {
         __typename?: 'PoolQueries';
         fees_collected: {
             __typename?: 'FeesResponse';
+            id: string;
             total_overall: number;
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -1626,22 +1738,26 @@ export type ICodegenGeneratedPoolQuery = {
         };
         volume: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
         };
         volume_clickhouse: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1660,6 +1776,7 @@ export type ICodegenGeneratedRouterAllChainsQuery = {
             chain_id: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
         }>;
     };
 };
@@ -1677,6 +1794,7 @@ export type ICodegenGeneratedRouterAllEscrowsQuery = {
             __typename?: 'AllEscrowsResponse';
             balance: string;
             chain_uid: string;
+            id: string;
             token: string;
         }>;
     };
@@ -1693,6 +1811,7 @@ export type ICodegenGeneratedRouterAllTokensQuery = {
         __typename?: 'Router';
         all_tokens: {
             __typename?: 'TokenArray';
+            id: string;
             tokens: Array<string>;
         };
     };
@@ -1711,6 +1830,7 @@ export type ICodegenGeneratedRouterAllVlpsVlpsQuery = {
             __typename?: 'AllVlps';
             vlps: Array<{
                 __typename?: 'VlpWithTokenPair';
+                id: string;
                 token_1: string;
                 token_2: string;
                 vlp: string;
@@ -1730,8 +1850,10 @@ export type ICodegenGeneratedRouterAllVlpsQuery = {
         __typename?: 'Router';
         all_vlps: {
             __typename?: 'AllVlps';
+            id: string;
             vlps: Array<{
                 __typename?: 'VlpWithTokenPair';
+                id: string;
                 token_1: string;
                 token_2: string;
                 vlp: string;
@@ -1756,6 +1878,7 @@ export type ICodegenGeneratedRouterChainChainChainTypeIbcQuery = {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1775,10 +1898,12 @@ export type ICodegenGeneratedRouterChainChainChainTypeQuery = {
                 __typename?: 'ChainAndFactoryInfo';
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1798,12 +1923,15 @@ export type ICodegenGeneratedRouterChainChainQuery = {
                 __typename?: 'ChainAndFactoryInfo';
                 factory: string;
                 factory_chain_id: string;
+                id: string;
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1820,16 +1948,20 @@ export type ICodegenGeneratedRouterChainQuery = {
         chain: {
             __typename?: 'ChainResponse';
             chain_uid: string;
+            id: string;
             chain: {
                 __typename?: 'ChainAndFactoryInfo';
                 factory: string;
                 factory_chain_id: string;
+                id: string;
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1852,6 +1984,7 @@ export type ICodegenGeneratedRouterEscrowsQuery = {
             balance: string;
             chain_id: string;
             chain_uid: string;
+            id: string;
         }>;
     };
 };
@@ -1874,6 +2007,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1895,11 +2029,13 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                 __typename?: 'ReleaseAmounts';
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1920,13 +2056,16 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
             release_amounts: Array<{
                 __typename?: 'ReleaseAmounts';
                 amount: string;
+                id: string;
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1944,17 +2083,21 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
         __typename?: 'Router';
         simulate_release_escrow: {
             __typename?: 'SimulateReleaseEscrow';
+            id: string;
             remaining_amount: string;
             release_amounts: Array<{
                 __typename?: 'ReleaseAmounts';
                 amount: string;
+                id: string;
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1976,6 +2119,7 @@ export type ICodegenGeneratedRouterSimulateSwapQuery = {
             __typename?: 'TokenOut';
             amount_out: string;
             asset_out: string;
+            id: string;
         };
     };
 };
@@ -1989,8 +2133,11 @@ export type ICodegenGeneratedRouterStateQuery = {
         state: {
             __typename?: 'ContractStateOfRouter';
             admin: string;
+            constant_product_vlp_code_id: number;
+            id: string;
+            locked: boolean;
+            stable_vlp_code_id: number;
             virtual_balance_address: string;
-            vlp_code_id: number;
         };
     };
 };
@@ -2007,6 +2154,7 @@ export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = {
                 __typename?: 'TokenDenomWithChainType';
                 chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -2036,10 +2184,12 @@ export type ICodegenGeneratedRouterTokenDenomsQuery = {
         __typename?: 'Router';
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
+            id: string;
             denoms: Array<{
                 __typename?: 'TokenDenomWithChainType';
                 chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -2069,6 +2219,7 @@ export type ICodegenGeneratedRouterTokenPairsFromVlpQuery = {
         __typename?: 'Router';
         token_pairs_from_vlp: {
             __typename?: 'VlpWithTokenPair';
+            id: string;
             token_1: string;
             token_2: string;
             vlp: string;
@@ -2084,6 +2235,7 @@ export type ICodegenGeneratedRouterVlpQuery = {
         __typename?: 'Router';
         vlp: {
             __typename?: 'VlpWithTokenPair';
+            id: string;
             token_1: string;
             token_2: string;
             vlp: string;
@@ -2097,17 +2249,22 @@ export type ICodegenGeneratedRouterQuery = {
     __typename?: 'Query';
     router: {
         __typename?: 'Router';
+        id: string;
         all_chains: Array<{
             __typename?: 'Chain';
             chain_id: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
         }>;
         state: {
             __typename?: 'ContractStateOfRouter';
             admin: string;
+            constant_product_vlp_code_id: number;
+            id: string;
+            locked: boolean;
+            stable_vlp_code_id: number;
             virtual_balance_address: string;
-            vlp_code_id: number;
         };
     };
 };
@@ -2126,6 +2283,7 @@ export type ICodegenGeneratedTokenAllDexesQuery = {
             dex_name: string;
             display_name: string;
             fg_color: string;
+            id: string;
             logo: string;
         }>;
     };
@@ -2144,6 +2302,7 @@ export type ICodegenGeneratedTokenChainsForTokenLaunchQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
             token_factory_address: string;
             type: string;
@@ -2164,6 +2323,7 @@ export type ICodegenGeneratedTokenDexMetadataQuery = {
             dex_name: string;
             display_name: string;
             fg_color: string;
+            id: string;
             logo: string;
         };
     };
@@ -2178,6 +2338,7 @@ export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
+            id: string;
             token: string;
         }>;
     };
@@ -2197,6 +2358,7 @@ export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
                 __typename?: 'TokenDenomWithChainType';
                 chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -2228,11 +2390,13 @@ export type ICodegenGeneratedTokenTokenDenomsQuery = {
         __typename?: 'TokenQueries';
         token_denoms: Array<{
             __typename?: 'TokenDenomWithTokenIdResponse';
+            id: string;
             token_id: string;
             denoms: Array<{
                 __typename?: 'TokenDenomWithChainType';
                 chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -2263,6 +2427,7 @@ export type ICodegenGeneratedTokenTokenLiquiditiesQuery = {
         __typename?: 'TokenQueries';
         token_liquidities: Array<{
             __typename?: 'TokenLiquidity';
+            id: string;
             token: string;
             total_liquidity: string;
             total_volume: string;
@@ -2278,6 +2443,7 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
         __typename?: 'TokenQueries';
         token_liquidity: {
             __typename?: 'TokenLiquidity';
+            id: string;
             token: string;
             total_liquidity: string;
             total_volume: string;
@@ -2301,9 +2467,12 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
             description: string;
             dex: Array<string>;
             displayName: string;
+            id: string;
             image: string;
+            is_price_from_oracle: boolean;
             is_verified: boolean;
             min_swap_value: number;
+            oracle_price: string;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -2337,9 +2506,12 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
             description: string;
             dex: Array<string>;
             displayName: string;
+            id: string;
             image: string;
+            is_price_from_oracle: boolean;
             is_verified: boolean;
             min_swap_value: number;
+            oracle_price: string;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -2368,9 +2540,12 @@ export type ICodegenGeneratedTokenTokensMetadataQuery = {
             description: string;
             dex: Array<string>;
             displayName: string;
+            id: string;
             image: string;
+            is_price_from_oracle: boolean;
             is_verified: boolean;
             min_swap_value: number;
+            oracle_price: string;
             price: string;
             price_change_7d: number;
             price_change_24h: number;
@@ -2396,6 +2571,7 @@ export type ICodegenGeneratedTokenQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
             token_factory_address: string;
             type: string;
@@ -2403,6 +2579,7 @@ export type ICodegenGeneratedTokenQuery = {
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
+            id: string;
             token: string;
         }>;
     };
@@ -2417,6 +2594,7 @@ export type ICodegenGeneratedVcoinBalanceQuery = {
         balance: {
             __typename?: 'VcoinBalance';
             amount: string;
+            id: string;
         };
     };
 };
@@ -2430,6 +2608,7 @@ export type ICodegenGeneratedVcoinStateQuery = {
         state: {
             __typename?: 'ContractStateOfVcoin';
             admin: string;
+            id: string;
             router: string;
         };
     };
@@ -2449,6 +2628,7 @@ export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = {
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         }>;
@@ -2467,9 +2647,11 @@ export type ICodegenGeneratedVcoinUnifiedUserBalanceQuery = {
         unified_user_balance: Array<{
             __typename?: 'VcoinBalanceResponse';
             chain_uid: string;
+            id: string;
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         }>;
@@ -2487,6 +2669,7 @@ export type ICodegenGeneratedVcoinUserBalanceBalancesQuery = {
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         };
@@ -2502,9 +2685,11 @@ export type ICodegenGeneratedVcoinUserBalanceQuery = {
         user_balance: {
             __typename?: 'VcoinBalanceResponse';
             chain_uid: string;
+            id: string;
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         };
@@ -2520,6 +2705,7 @@ export type ICodegenGeneratedVcoinQuery = {
         state: {
             __typename?: 'ContractStateOfVcoin';
             admin: string;
+            id: string;
             router: string;
         };
     };
@@ -2538,6 +2724,7 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQuery = {
             __typename?: 'PoolsResponse';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -2561,6 +2748,7 @@ export type ICodegenGeneratedVlpAllPoolsPoolsPoolQuery = {
                 __typename?: 'Pools';
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
@@ -2584,8 +2772,10 @@ export type ICodegenGeneratedVlpAllPoolsPoolsQuery = {
             pools: Array<{
                 __typename?: 'Pools';
                 chain_uid: string;
+                id: string;
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
@@ -2606,8 +2796,10 @@ export type ICodegenGeneratedVlpAllPoolsQuery = {
         __typename?: 'Vlp';
         all_pools: {
             __typename?: 'PoolsResponse';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -2615,8 +2807,10 @@ export type ICodegenGeneratedVlpAllPoolsQuery = {
             pools: Array<{
                 __typename?: 'Pools';
                 chain_uid: string;
+                id: string;
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
@@ -2639,6 +2833,7 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -2654,11 +2849,13 @@ export type ICodegenGeneratedVlpFeeQuery = {
         fee: {
             __typename?: 'FeeInfo';
             euclid_fee_bps: number;
+            id: string;
             lp_fee_bps: number;
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
@@ -2675,6 +2872,7 @@ export type ICodegenGeneratedVlpLiquidityPairQuery = {
             __typename?: 'Liquidity';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -2691,11 +2889,13 @@ export type ICodegenGeneratedVlpLiquidityQuery = {
         __typename?: 'Vlp';
         liquidity: {
             __typename?: 'Liquidity';
+            id: string;
             token_1_reserve: string;
             token_2_reserve: string;
             total_lp_tokens: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -2713,6 +2913,7 @@ export type ICodegenGeneratedVlpPoolQuery = {
         __typename?: 'Vlp';
         pool: {
             __typename?: 'Pool';
+            id: string;
             lp_shares: string;
             reserve_1: string;
             reserve_2: string;
@@ -2735,6 +2936,7 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
         };
@@ -2753,11 +2955,13 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
         };
@@ -2775,6 +2979,7 @@ export type ICodegenGeneratedVlpStatePairQuery = {
             __typename?: 'ContractStateOfVlp';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -2796,6 +3001,7 @@ export type ICodegenGeneratedVlpStatePoolConfigStableQuery = {
                 stable: {
                     __typename?: 'StablePoolConfig';
                     amp_factor: string;
+                    id: string;
                 };
             };
         };
@@ -2814,9 +3020,11 @@ export type ICodegenGeneratedVlpStatePoolConfigQuery = {
             pool_config: {
                 __typename?: 'PoolConfig';
                 constant_product: any;
+                id: string;
                 stable: {
                     __typename?: 'StablePoolConfig';
                     amp_factor: string;
+                    id: string;
                 };
             };
         };
@@ -2833,6 +3041,7 @@ export type ICodegenGeneratedVlpStateQuery = {
         state: {
             __typename?: 'ContractStateOfVlp';
             admin: string;
+            id: string;
             last_updated: number;
             router: string;
             total_lp_tokens: string;
@@ -2840,24 +3049,29 @@ export type ICodegenGeneratedVlpStateQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
             pool_config: {
                 __typename?: 'PoolConfig';
                 constant_product: any;
+                id: string;
                 stable: {
                     __typename?: 'StablePoolConfig';
                     amp_factor: string;
+                    id: string;
                 };
             };
         };
@@ -2879,6 +3093,7 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2896,10 +3111,12 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = {
             __typename?: 'TotalFeesCollected';
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2921,6 +3138,7 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2938,10 +3156,12 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = {
             __typename?: 'TotalFeesCollected';
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2957,20 +3177,25 @@ export type ICodegenGeneratedVlpTotalFeesCollectedQuery = {
         __typename?: 'Vlp';
         total_fees_collected: {
             __typename?: 'TotalFeesCollected';
+            id: string;
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2988,6 +3213,7 @@ export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = {
         total_fees_collected_per_denom: {
             __typename?: 'TotalFeesPerDenomResponse';
             euclid_fees: string;
+            id: string;
             lp_fees: string;
         };
     };
@@ -3003,20 +3229,24 @@ export type ICodegenGeneratedVlpQuery = {
         fee: {
             __typename?: 'FeeInfo';
             euclid_fee_bps: number;
+            id: string;
             lp_fee_bps: number;
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
         liquidity: {
             __typename?: 'Liquidity';
+            id: string;
             token_1_reserve: string;
             token_2_reserve: string;
             total_lp_tokens: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -3024,6 +3254,7 @@ export type ICodegenGeneratedVlpQuery = {
         state: {
             __typename?: 'ContractStateOfVlp';
             admin: string;
+            id: string;
             last_updated: number;
             router: string;
             total_lp_tokens: string;
@@ -3031,43 +3262,53 @@ export type ICodegenGeneratedVlpQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
             pool_config: {
                 __typename?: 'PoolConfig';
                 constant_product: any;
+                id: string;
                 stable: {
                     __typename?: 'StablePoolConfig';
                     amp_factor: string;
+                    id: string;
                 };
             };
         };
         total_fees_collected: {
             __typename?: 'TotalFeesCollected';
+            id: string;
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };

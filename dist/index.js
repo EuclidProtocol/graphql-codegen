@@ -25,34 +25,34 @@ const TypePolicy = {
         fields: {
             factory: {
                 keyArgs: ["chain_uid"],
-                merge: true
+                merge: true,
             },
             vlp: {
                 keyArgs: ["contract"],
                 merge: true,
             },
             cw: {
-                keyArgs: ['contract', 'chain_uid'],
-                merge: true
+                keyArgs: ["contract", "chain_uid"],
+                merge: true,
             },
             router: {
-                merge: true
+                merge: true,
             },
             cw_multicall: {
-                keyArgs: ['chain_uid'],
-                merge: true
-            }
+                keyArgs: ["chain_uid"],
+                merge: true,
+            },
         },
         merge: true,
     },
     Chains: {
         fields: {
             chain_config: {
-                keyArgs: ['chain_uid', 'chain_id']
+                keyArgs: ["chain_uid", "chain_id"],
             },
             keplr_config: {
-                keyArgs: ['chain_id', 'chain_uid']
-            }
+                keyArgs: ["chain_id", "chain_uid"],
+            },
         },
         merge: true,
     },
@@ -67,18 +67,18 @@ const TypePolicy = {
     Vlp: {
         merge: true,
         fields: {
-            'pool': {
-                keyArgs: ['chain_uid']
-            }
-        }
+            pool: {
+                keyArgs: ["chain_uid"],
+            },
+        },
     },
     Cw: {
         merge: true,
         fields: {
             balance: {
-                keyArgs: ['address']
-            }
-        }
+                keyArgs: ["address"],
+            },
+        },
     },
     TokenQueries: {
         fields: {
@@ -91,25 +91,19 @@ const TypePolicy = {
     Vcoin: {
         fields: {
             balance: {
-                keyArgs: ['balance_key', 'token_id']
-            }
+                keyArgs: ["balance_key", "token_id"],
+            },
         },
         merge: true,
     },
-    ChainConfig: {
-        keyFields: ['chain_uid']
-    },
     Keplr: {
-        keyFields: ['chainID']
+        keyFields: ["chainID"],
     },
     EscrowResponse: {
         keyFields: ["escrow_address"],
     },
-    Metadata: {
-        keyFields: ["tokenId"],
-    },
     VlpWithTokenPair: {
-        keyFields: ['vlp']
-    }
+        keyFields: ["vlp"],
+    },
 };
 exports.default = TypePolicy;

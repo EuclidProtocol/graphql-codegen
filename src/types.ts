@@ -15,45 +15,56 @@ export type Scalars = {
   JSON: { input: any; output: any; }
 };
 
-export type IAllEscrowsResponse = {
+export type IAllEscrowsResponse = INode & {
   __typename?: 'AllEscrowsResponse';
   /** The current amount of tokens held in the escrow. */
   balance: Scalars['String']['output'];
   /** The UID of the chain that hosts the escrow. */
   chain_uid: Scalars['String']['output'];
+  /** Globally unique identifier: AllEscrowsResponse:{chain_uid}:{token} */
+  id: Scalars['ID']['output'];
   /** The token Id for the token stored in the escrow. */
   token: Scalars['String']['output'];
 };
 
-export type IAllPoolsResponse = {
+export type IAllPoolsResponse = INode & {
   __typename?: 'AllPoolsResponse';
+  /** Globally unique identifier: AllPoolsResponse:singleton */
+  id: Scalars['ID']['output'];
   pagination: Maybe<IPaginationInfo>;
   pools: Maybe<Array<Maybe<IPairsInPool>>>;
 };
 
-export type IAllTokens = {
+export type IAllTokens = INode & {
   __typename?: 'AllTokens';
+  /** Globally unique identifier: AllTokens:singleton */
+  id: Scalars['ID']['output'];
   pagination: Maybe<IPaginationInfo>;
   /** The list of tokens. */
   tokens: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
-export type IAllVlps = {
+export type IAllVlps = INode & {
   __typename?: 'AllVlps';
+  /** Globally unique identifier: AllVlps:singleton */
+  id: Scalars['ID']['output'];
   /** Array of VLPs */
   vlps: Array<Maybe<IVlpWithTokenPair>>;
 };
 
-export type IBalance = {
+export type IBalance = INode & {
   __typename?: 'Balance';
-  /** The number of LP tokens held by the user. */
   balance: Scalars['String']['output'];
+  /** Globally unique identifier: Balance:singleton */
+  id: Scalars['ID']['output'];
 };
 
-export type IBalanceKey = {
+export type IBalanceKey = INode & {
   __typename?: 'BalanceKey';
   address: Maybe<Scalars['String']['output']>;
   chain_id: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: BalanceKey:{chain_id}:{address}:{token_id} */
+  id: Scalars['ID']['output'];
   token_id: Maybe<Scalars['String']['output']>;
 };
 
@@ -64,7 +75,7 @@ export type IBalanceKeyInput = {
   token_id?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IBech32Config = {
+export type IBech32Config = INode & {
   __typename?: 'Bech32Config';
   bech32PrefixAccAddr: Maybe<Scalars['String']['output']>;
   bech32PrefixAccPub: Maybe<Scalars['String']['output']>;
@@ -72,14 +83,18 @@ export type IBech32Config = {
   bech32PrefixConsPub: Maybe<Scalars['String']['output']>;
   bech32PrefixValAddr: Maybe<Scalars['String']['output']>;
   bech32PrefixValPub: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Bech32Config:{bech32PrefixAccAddr} */
+  id: Scalars['ID']['output'];
 };
 
-export type IBip44 = {
+export type IBip44 = INode & {
   __typename?: 'Bip44';
   coinType: Maybe<Scalars['Int']['output']>;
+  /** Globally unique identifier: Bip44:{coinType} */
+  id: Scalars['ID']['output'];
 };
 
-export type IChain = {
+export type IChain = INode & {
   __typename?: 'Chain';
   /** The chain Id of the above chain UID. */
   chain_id: Scalars['String']['output'];
@@ -87,9 +102,11 @@ export type IChain = {
   chain_uid: Scalars['String']['output'];
   /** The contract address of factory. */
   factory_address: Scalars['String']['output'];
+  /** Globally unique identifier: Chain:{chain_uid} */
+  id: Scalars['ID']['output'];
 };
 
-export type IChainAndFactoryInfo = {
+export type IChainAndFactoryInfo = INode & {
   __typename?: 'ChainAndFactoryInfo';
   /** IBC information used by the chain (Cosmos Chains Only). */
   chain_type: Maybe<IChainType>;
@@ -97,9 +114,11 @@ export type IChainAndFactoryInfo = {
   factory: Maybe<Scalars['String']['output']>;
   /** The chain Id of the config used by the factory. */
   factory_chain_id: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: ChainAndFactoryInfo:{factory_chain_id} */
+  id: Scalars['ID']['output'];
 };
 
-export type IChainConfig = {
+export type IChainConfig = INode & {
   __typename?: 'ChainConfig';
   /** The chain ID used in the protocol. */
   chain_id: Scalars['String']['output'];
@@ -111,6 +130,8 @@ export type IChainConfig = {
   explorer_url: Scalars['String']['output'];
   /** The contract address of the main factory on that chain. */
   factory_address: Scalars['String']['output'];
+  /** Globally unique identifier: ChainConfig:{chain_uid} */
+  id: Scalars['ID']['output'];
   /** The logo URL or path used in the UI. */
   logo: Scalars['String']['output'];
   /** The contract address for the token factory on this chain. */
@@ -119,25 +140,31 @@ export type IChainConfig = {
   type: Scalars['String']['output'];
 };
 
-export type IChainDetail = {
+export type IChainDetail = INode & {
   __typename?: 'ChainDetail';
   factory: Maybe<Scalars['String']['output']>;
   factory_chain_id: Maybe<Scalars['String']['output']>;
   from_factory_channel: Maybe<Scalars['String']['output']>;
   from_hub_channel: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: ChainDetail:{factory_chain_id} */
+  id: Scalars['ID']['output'];
 };
 
-export type IChainResponse = {
+export type IChainResponse = INode & {
   __typename?: 'ChainResponse';
   /** Detailed information about the chain. */
   chain: Maybe<IChainAndFactoryInfo>;
   /** The unique identifier (UID) of the chain. */
   chain_uid: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: ChainResponse:{chain_uid} */
+  id: Scalars['ID']['output'];
 };
 
-export type IChainType = {
+export type IChainType = INode & {
   __typename?: 'ChainType';
   ibc: Maybe<IIbc>;
+  /** Globally unique identifier: ChainType:singleton */
+  id: Scalars['ID']['output'];
 };
 
 export type IChains = {
@@ -188,9 +215,11 @@ export type IChainsKeplrConfigArgs = {
   chain_uid?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IChainsResponse = {
+export type IChainsResponse = INode & {
   __typename?: 'ChainsResponse';
   chains: Array<Maybe<IChain>>;
+  /** Globally unique identifier: ChainsResponse:singleton */
+  id: Scalars['ID']['output'];
 };
 
 export type IClaimQueries = {
@@ -242,39 +271,45 @@ export type IClaimQueriesUserClaimsArgs = {
   public_secret: Scalars['String']['input'];
 };
 
-export type IClaimState = {
+export type IClaimState = INode & {
   __typename?: 'ClaimState';
   admin: Scalars['String']['output'];
   chain_uid: Scalars['String']['output'];
   factory_address: Scalars['String']['output'];
+  /** Globally unique identifier: ClaimState:{chain_uid} */
+  id: Scalars['ID']['output'];
   vcoin_address: Scalars['String']['output'];
 };
 
-export type IClaimerResponse = {
+export type IClaimerResponse = INode & {
   __typename?: 'ClaimerResponse';
   amount: Scalars['String']['output'];
   claim_group_id: Scalars['String']['output'];
   claim_id: Scalars['String']['output'];
   claimer: Scalars['String']['output'];
+  /** Globally unique identifier: ClaimerResponse:{claim_id} */
+  id: Scalars['ID']['output'];
   pseudo_claim_id: Scalars['String']['output'];
   sender: ICrossChainUser;
   status: Scalars['String']['output'];
   token: Scalars['String']['output'];
 };
 
-export type IClaimerResponseWithStatus = {
+export type IClaimerResponseWithStatus = INode & {
   __typename?: 'ClaimerResponseWithStatus';
   amount: Scalars['String']['output'];
   claim_group_id: Scalars['String']['output'];
   claim_id: Scalars['String']['output'];
   claimer: Scalars['String']['output'];
+  /** Globally unique identifier: ClaimerResponseWithStatus:{claim_id} */
+  id: Scalars['ID']['output'];
   pseudo_claim_id: Scalars['String']['output'];
   sender: ICrossChainUser;
   status: Scalars['String']['output'];
   token: Scalars['String']['output'];
 };
 
-export type IContract = {
+export type IContract = INode & {
   __typename?: 'Contract';
   /** The unique identifier of the chain where the contract is deployed. */
   ChainUID: Maybe<Scalars['String']['output']>;
@@ -282,9 +317,11 @@ export type IContract = {
   ContractAddress: Maybe<Scalars['String']['output']>;
   /** The type of the contract. */
   Type: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Contract:{ChainUID}:{ContractAddress} */
+  id: Scalars['ID']['output'];
 };
 
-export type IContractStateOfFactory = {
+export type IContractStateOfFactory = INode & {
   __typename?: 'ContractStateOfFactory';
   /** The admin address of the factory. */
   admin: Maybe<Scalars['String']['output']>;
@@ -292,37 +329,47 @@ export type IContractStateOfFactory = {
   chain_uid: Maybe<Scalars['String']['output']>;
   /** The hub channel used by the factory. */
   hub_channel: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: ContractStateOfFactory:{chain_uid} */
+  id: Scalars['ID']['output'];
   /** The address of the router contract. */
   router_contract: Maybe<Scalars['String']['output']>;
 };
 
-export type IContractStateOfRouter = {
+export type IContractStateOfRouter = INode & {
   __typename?: 'ContractStateOfRouter';
   /** The admin address of the router. */
   admin: Maybe<Scalars['String']['output']>;
+  /** Code ID for constant product VLP. */
+  constant_product_vlp_code_id: Maybe<Scalars['Int']['output']>;
+  /** Globally unique identifier: ContractStateOfRouter:singleton */
+  id: Scalars['ID']['output'];
+  /** Whether the router is locked. */
+  locked: Maybe<Scalars['Boolean']['output']>;
+  /** Code ID for stable VLP. */
+  stable_vlp_code_id: Maybe<Scalars['Int']['output']>;
   /** The address of the VBalance contract. */
   virtual_balance_address: Maybe<Scalars['String']['output']>;
-  /** The code ID of the VLP. */
-  vlp_code_id: Maybe<Scalars['Int']['output']>;
 };
 
-export type IContractStateOfVcoin = {
+export type IContractStateOfVcoin = INode & {
   __typename?: 'ContractStateOfVcoin';
   /** The address of the admin of virtual Balance contract. */
   admin: Maybe<Scalars['String']['output']>;
-  /** The contract address of the router. */
+  /** Globally unique identifier: ContractStateOfVcoin:singleton */
+  id: Scalars['ID']['output'];
   router: Maybe<Scalars['String']['output']>;
 };
 
-export type IContractStateOfVlp = {
+export type IContractStateOfVlp = INode & {
   __typename?: 'ContractStateOfVlp';
   /** The admin address of VLP */
   admin: Maybe<Scalars['String']['output']>;
   /** The fee structure of VLP */
   fee: Maybe<IFeeInfo>;
+  /** Globally unique identifier: ContractStateOfVlp:{vlp_address} */
+  id: Scalars['ID']['output'];
   /** Timestamp of last update */
   last_updated: Maybe<Scalars['Int']['output']>;
-  /** The token pair of VLP */
   pair: Maybe<IPair>;
   /** Pool Configuration(token denoms) */
   pool_config: Maybe<IPoolConfig>;
@@ -334,12 +381,12 @@ export type IContractStateOfVlp = {
   vcoin: Maybe<Scalars['String']['output']>;
 };
 
-export type ICrossChainUser = {
+export type ICrossChainUser = INode & {
   __typename?: 'CrossChainUser';
-  /** Address of the user on the specified chain. */
-  address: Scalars['String']['output'];
-  /** Unique identifier for the chain. */
-  chain_uid: Scalars['String']['output'];
+  address: Maybe<Scalars['String']['output']>;
+  chain_uid: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: CrossChainUser:{chain_uid}:{address} */
+  id: Scalars['ID']['output'];
 };
 
 export type ICrossChainUserInput = {
@@ -347,8 +394,10 @@ export type ICrossChainUserInput = {
   chain_uid?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ICrossChainUserWithLimit = {
+export type ICrossChainUserWithLimit = INode & {
   __typename?: 'CrossChainUserWithLimit';
+  /** Globally unique identifier: CrossChainUserWithLimit:{user.address} */
+  id: Scalars['ID']['output'];
   limit: Maybe<Scalars['String']['output']>;
   user: ICrossChainUser;
 };
@@ -358,12 +407,14 @@ export type ICrossChainUserWithLimitInput = {
   user: ICrossChainUserInput;
 };
 
-export type ICurrencies = {
+export type ICurrencies = INode & {
   __typename?: 'Currencies';
   coinDecimals: Maybe<Scalars['Int']['output']>;
   coinDenom: Maybe<Scalars['String']['output']>;
   coinGeckoID: Maybe<Scalars['String']['output']>;
   coinMinimalDenom: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Currencies:{coinMinimalDenom} */
+  id: Scalars['ID']['output'];
 };
 
 export type ICw = {
@@ -379,22 +430,25 @@ export type ICwBalanceArgs = {
   address: Scalars['String']['input'];
 };
 
-export type IDenomFees = {
+export type IDenomFees = INode & {
   __typename?: 'DenomFees';
+  /** Globally unique identifier: DenomFees:singleton */
+  id: Scalars['ID']['output'];
   totals: Array<IDenomination>;
 };
 
-export type IDenomination = {
+export type IDenomination = INode & {
   __typename?: 'Denomination';
   /** The total of fees collected for the above denomination. */
   amount: Scalars['String']['output'];
   /** The denomination of the token. */
   denom: Scalars['String']['output'];
+  /** Globally unique identifier: Denomination:{denom} */
+  id: Scalars['ID']['output'];
 };
 
-export type IDexMetadata = {
+export type IDexMetadata = INode & {
   __typename?: 'DexMetadata';
-  /** The background color used for the DEX. */
   bg_color: Scalars['String']['output'];
   /** The chain UID associated with the DEX */
   chain_uid: Scalars['String']['output'];
@@ -404,11 +458,13 @@ export type IDexMetadata = {
   display_name: Scalars['String']['output'];
   /** The forground color used for the DEX. */
   fg_color: Scalars['String']['output'];
+  /** Globally unique identifier: DexMetadata:{dex_name} */
+  id: Scalars['ID']['output'];
   /** The URL of DEX's logo image. */
   logo: Scalars['String']['output'];
 };
 
-export type IEvmChainConfig = {
+export type IEvmChainConfig = INode & {
   __typename?: 'EVMChainConfig';
   /** The identifier of the EVM chain. */
   chain_id: Maybe<Scalars['String']['output']>;
@@ -416,6 +472,8 @@ export type IEvmChainConfig = {
   chain_uid: Maybe<Scalars['String']['output']>;
   /** The URL for the blockchain explorer associated with this chain. */
   explorer_url: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: EVMChainConfig:{chain_uid} */
+  id: Scalars['ID']['output'];
   /** The common name of the chain. */
   name: Scalars['String']['output'];
   /** Details about the chain's native currency. */
@@ -424,7 +482,7 @@ export type IEvmChainConfig = {
   rpc_urls: IRpcUrls;
 };
 
-export type IEscrow = {
+export type IEscrow = INode & {
   __typename?: 'Escrow';
   /** The current amount of tokens held in the escrow. */
   balance: Scalars['String']['output'];
@@ -432,14 +490,18 @@ export type IEscrow = {
   chain_id: Scalars['String']['output'];
   /** The UID of the chain that has an escrow for the specified token. */
   chain_uid: Scalars['String']['output'];
+  /** Globally unique identifier: Escrow:{chain_uid}:{token} */
+  id: Scalars['ID']['output'];
 };
 
-export type IEscrowResponse = {
+export type IEscrowResponse = INode & {
   __typename?: 'EscrowResponse';
   /** The denominations associated with the escrow. */
   denoms: Array<Maybe<ITokenType>>;
   /** The contract address of the escrow contract. */
   escrow_address: Scalars['String']['output'];
+  /** Globally unique identifier: EscrowResponse:{escrow_address} */
+  id: Scalars['ID']['output'];
 };
 
 export type IFactory = {
@@ -494,17 +556,18 @@ export type IFactoryVlpArgs = {
   pair?: InputMaybe<IPairInput>;
 };
 
-export type IFaucet = {
+export type IFaucet = INode & {
   __typename?: 'Faucet';
-  /** The URL link to the faucet for obtaining testnet tokens. */
   faucet_link: Maybe<Scalars['String']['output']>;
-  /** The identifier of the token associated with the faucet. */
-  token: Scalars['String']['output'];
+  /** Globally unique identifier: Faucet:{token} */
+  id: Scalars['ID']['output'];
+  token: Maybe<Scalars['String']['output']>;
 };
 
-export type IFeeBreakdown = {
+export type IFeeBreakdown = INode & {
   __typename?: 'FeeBreakdown';
-  /** The first token in the pair. */
+  /** Globally unique identifier: FeeBreakdown:{token1}:{token2} */
+  id: Scalars['ID']['output'];
   token1: Scalars['String']['output'];
   /** The second token in the pair. */
   token2: Scalars['String']['output'];
@@ -512,49 +575,55 @@ export type IFeeBreakdown = {
   total_fee: Scalars['Float']['output'];
 };
 
-export type IFeeCurrencies = {
+export type IFeeCurrencies = INode & {
   __typename?: 'FeeCurrencies';
   coinDecimals: Maybe<Scalars['Int']['output']>;
   coinDenom: Maybe<Scalars['String']['output']>;
   coinGeckoID: Maybe<Scalars['String']['output']>;
   coinMinimalDenom: Maybe<Scalars['String']['output']>;
   gasPriceStep: IGasPriceStep;
+  /** Globally unique identifier: FeeCurrencies:{coinMinimalDenom} */
+  id: Scalars['ID']['output'];
 };
 
-export type IFeeInfo = {
+export type IFeeInfo = INode & {
   __typename?: 'FeeInfo';
-  /** The Euclid fee in basis points. */
-  euclid_fee_bps: Scalars['Int']['output'];
-  /** The liquidity provider fee in basis points. */
-  lp_fee_bps: Scalars['Int']['output'];
-  /** The recipient details of the fees. */
-  recipient: ICrossChainUser;
+  euclid_fee_bps: Maybe<Scalars['Int']['output']>;
+  /** Globally unique identifier: FeeInfo:{lp_fee_bps}:{euclid_fee_bps} */
+  id: Scalars['ID']['output'];
+  lp_fee_bps: Maybe<Scalars['Int']['output']>;
+  recipient: Maybe<ICrossChainUser>;
 };
 
-export type IFeesResponse = {
+export type IFeesResponse = INode & {
   __typename?: 'FeesResponse';
   /** A breakdown of the fees collected for each token pair. */
   breakdown: Array<IFeeBreakdown>;
-  /** The total fees collected overall in USD from all pools. */
+  /** Globally unique identifier: FeesResponse:singleton */
+  id: Scalars['ID']['output'];
   total_overall: Scalars['Float']['output'];
 };
 
-export type IGasPriceStep = {
+export type IGasPriceStep = INode & {
   __typename?: 'GasPriceStep';
   average: Maybe<Scalars['Float']['output']>;
   high: Maybe<Scalars['Float']['output']>;
+  /** Globally unique identifier: GasPriceStep:{low}:{average}:{high} */
+  id: Scalars['ID']['output'];
   low: Maybe<Scalars['Float']['output']>;
 };
 
-export type IIbc = {
+export type IIbc = INode & {
   __typename?: 'Ibc';
   /** The IBC channel from the factory to the router. */
   from_factory_channel: Maybe<Scalars['String']['output']>;
   /** The IBC channel from the router to the chain. */
   from_hub_channel: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Ibc:{from_hub_channel} */
+  id: Scalars['ID']['output'];
 };
 
-export type IKeplr = {
+export type IKeplr = INode & {
   __typename?: 'Keplr';
   /** The bech32 configuration for the chain. */
   bech32Config: Maybe<IBech32Config>;
@@ -576,6 +645,8 @@ export type IKeplr = {
   feeCurrencies: Array<Maybe<IFeeCurrencies>>;
   /** The gas price steps for the chain. */
   gasPriceStep: IGasPriceStep;
+  /** Globally unique identifier: Keplr:{chainID} */
+  id: Scalars['ID']['output'];
   /** The REST URL for the chain. */
   rest: Maybe<Scalars['String']['output']>;
   /** The RPC URL for the chain. */
@@ -584,37 +655,38 @@ export type IKeplr = {
   stakeCurrency: IStakeCurrency;
 };
 
-export type ILiquidity = {
+export type ILiquidity = INode & {
   __typename?: 'Liquidity';
-  /** The token pair information. */
-  pair: IPair;
-  /** The reserve amount of the first token */
-  token_1_reserve: Scalars['String']['output'];
-  /** The reserve amount of the second token */
-  token_2_reserve: Scalars['String']['output'];
-  /** The total amount of liquidity provider tokens */
-  total_lp_tokens: Scalars['String']['output'];
+  /** Globally unique identifier: Liquidity:{token_1}:{token_2} */
+  id: Scalars['ID']['output'];
+  pair: Maybe<IPair>;
+  token_1_reserve: Maybe<Scalars['String']['output']>;
+  token_2_reserve: Maybe<Scalars['String']['output']>;
+  total_lp_tokens: Maybe<Scalars['String']['output']>;
 };
 
-export type ILiquidityDb = {
+export type ILiquidityDb = INode & {
   __typename?: 'LiquidityDB';
+  /** Globally unique identifier: LiquidityDB:singleton */
+  id: Scalars['ID']['output'];
   token_1_liquidity: Maybe<Scalars['Int']['output']>;
   token_2_liquidity: Maybe<Scalars['Int']['output']>;
 };
 
-export type ILpTokenAddr = {
+export type ILpTokenAddr = INode & {
   __typename?: 'LpTokenAddr';
+  /** Globally unique identifier: LpTokenAddr:{token_address} */
+  id: Scalars['ID']['output'];
   /** The contract address of the LP token for the specified VLP. */
   token_address: Scalars['String']['output'];
 };
 
-export type IMetadata = {
+export type IMetadata = INode & {
   __typename?: 'Metadata';
   /** Types of chain the token is available on. */
   chain_type: Array<Scalars['String']['output']>;
   /** List of chain identifiers the token is available on. */
   chain_uids: Maybe<Array<Scalars['String']['output']>>;
-  /** Number of decimal places for the token. */
   coinDecimal: Scalars['Int']['output'];
   /** Date of creation of token. */
   created_at: Scalars['String']['output'];
@@ -624,12 +696,18 @@ export type IMetadata = {
   dex: Maybe<Array<Scalars['String']['output']>>;
   /** Human-readable token name. */
   displayName: Scalars['String']['output'];
+  /** Globally unique identifier: Metadata:{tokenId} */
+  id: Scalars['ID']['output'];
   /** Image URL for the token icon. */
   image: Scalars['String']['output'];
+  /** Indicates whether the price is from the oracle. */
+  is_price_from_oracle: Scalars['Boolean']['output'];
   /** Indicates whether the token is verified. */
   is_verified: Scalars['Boolean']['output'];
   /** Minimum value required for swapping the token. */
   min_swap_value: Scalars['Float']['output'];
+  /** The price from the oracle. */
+  oracle_price: Scalars['String']['output'];
   /** Current price of the token. */
   price: Scalars['String']['output'];
   /** Percentage change in price over the last 7 days. */
@@ -664,27 +742,31 @@ export type IMultiQuerySmartQueriesArgs = {
   queries: Array<ISmartQueryInput>;
 };
 
-export type IMyPools = {
+export type IMyPools = INode & {
   __typename?: 'MyPools';
-  /** The block height when the pool was created. */
-  height: Scalars['String']['output'];
+  height: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: MyPools:{vlp}:{user.address} */
+  id: Scalars['ID']['output'];
   /** The pair of tokens in the pool. */
   pair: Maybe<IPair>;
   /** The user details associated with the pool. */
   user: Maybe<ICrossChainUser>;
-  /** The contract address of the VLPD of the pool. */
   vlp: Maybe<Scalars['String']['output']>;
 };
 
-export type INative = {
+export type INative = INode & {
   __typename?: 'Native';
   denom: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Native:{denom} */
+  id: Scalars['ID']['output'];
 };
 
-export type INativeCurrency = {
+export type INativeCurrency = INode & {
   __typename?: 'NativeCurrency';
   /** The number of decimal places for the native currency. */
   decimals: Scalars['Int']['output'];
+  /** Globally unique identifier: NativeCurrency:{symbol} */
+  id: Scalars['ID']['output'];
   /** The name of the native currency. */
   name: Scalars['String']['output'];
   /** The symbol of the native currency. */
@@ -707,18 +789,33 @@ export type INextSwapPair = {
   token_out: Scalars['String']['input'];
 };
 
-export type IPaginationInfo = {
+/**
+ * Node interface for caching support.
+ * All cacheable types should implement this interface.
+ */
+export type INode = {
+  /**
+   * Globally unique identifier for this object.
+   * Format: {TypeName}:{unique_key}
+   */
+  id: Scalars['ID']['output'];
+};
+
+export type IPaginationInfo = INode & {
   __typename?: 'PaginationInfo';
+  /** Globally unique identifier: PaginationInfo:{offset}:{limit} */
+  id: Scalars['ID']['output'];
   /** The number of items returned in this page. */
   limit: Maybe<Scalars['Int']['output']>;
   /** The number of items skipped before the first item in this page. */
   offset: Maybe<Scalars['Int']['output']>;
-  /** Total number of items in the collection. */
   total_count: Maybe<Scalars['Int']['output']>;
 };
 
-export type IPair = {
+export type IPair = INode & {
   __typename?: 'Pair';
+  /** Globally unique identifier: Pair:{token_1}:{token_2} */
+  id: Scalars['ID']['output'];
   /** The first token in the pair. */
   token_1: Maybe<Scalars['String']['output']>;
   /** The second token in the pair. */
@@ -730,34 +827,39 @@ export type IPairInput = {
   token_2?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IPairsInPool = {
+export type IPairsInPool = INode & {
   __typename?: 'PairsInPool';
+  /** Globally unique identifier: PairsInPool:{vlp} */
+  id: Scalars['ID']['output'];
   pair: Maybe<IPair>;
   /** The contract address of the VLP for the pair. */
   vlp: Maybe<Scalars['String']['output']>;
 };
 
-export type IPartnerFeesCollected = {
+export type IPartnerFeesCollected = INode & {
   __typename?: 'PartnerFeesCollected';
+  /** Globally unique identifier: PartnerFeesCollected:singleton */
+  id: Scalars['ID']['output'];
   total: Maybe<IDenomFees>;
 };
 
-export type IPool = {
+export type IPool = INode & {
   __typename?: 'Pool';
+  /** Globally unique identifier: Pool:{chain_uid}:{vlp_address} */
+  id: Scalars['ID']['output'];
   /** The number of liquidity provider shares */
   lp_shares: Scalars['String']['output'];
-  /** The reserve amount of the first token */
   reserve_1: Maybe<Scalars['String']['output']>;
   /** The reserve amount of the second token */
   reserve_2: Scalars['String']['output'];
 };
 
-export type IPoolConfig = {
+export type IPoolConfig = INode & {
   __typename?: 'PoolConfig';
-  /** Constant Product Pool Configuration */
   constant_product: Maybe<Scalars['JSON']['output']>;
-  /** Stable Pool Configuration */
-  stable: IStablePoolConfig;
+  /** Globally unique identifier: PoolConfig:singleton */
+  id: Scalars['ID']['output'];
+  stable: Maybe<IStablePoolConfig>;
 };
 
 export type IPoolQueries = {
@@ -789,16 +891,18 @@ export type IPoolQueriesTokenPairWithLiquidityArgs = {
   token?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IPools = {
+export type IPools = INode & {
   __typename?: 'Pools';
-  /** The unique identifier of the chain. */
-  chain_uid: Scalars['String']['output'];
-  /** Detailed information about the pool. */
-  pool: IPool;
+  chain_uid: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: Pools:{chain_uid} */
+  id: Scalars['ID']['output'];
+  pool: Maybe<IPool>;
 };
 
-export type IPoolsResponse = {
+export type IPoolsResponse = INode & {
   __typename?: 'PoolsResponse';
+  /** Globally unique identifier: PoolsResponse:singleton */
+  id: Scalars['ID']['output'];
   /** Pagination information for the query. */
   pagination: Maybe<IPaginationInfo>;
   pools: Array<Maybe<IPools>>;
@@ -850,14 +954,18 @@ export type IQueryVlpArgs = {
   pair?: InputMaybe<IPairInput>;
 };
 
-export type IRpcConfig = {
+export type IRpcConfig = INode & {
   __typename?: 'RPCConfig';
   http: Array<Scalars['String']['output']>;
+  /** Globally unique identifier: RPCConfig:singleton */
+  id: Scalars['ID']['output'];
 };
 
-export type IRpcUrls = {
+export type IRpcUrls = INode & {
   __typename?: 'RPCUrls';
   default: IRpcConfig;
+  /** Globally unique identifier: RPCUrls:singleton */
+  id: Scalars['ID']['output'];
 };
 
 export type IRawQueryInput = {
@@ -869,12 +977,14 @@ export type IRawQueryResponse = {
   results: Array<Maybe<IResultAndError>>;
 };
 
-export type IReleaseAmounts = {
+export type IReleaseAmounts = INode & {
   __typename?: 'ReleaseAmounts';
   /** The amount of tokens to release. */
   amount: Maybe<Scalars['String']['output']>;
   /** The address and limit for the receiving address of the funds. */
   cross_chain_user: Maybe<ICrossChainUserWithLimit>;
+  /** Globally unique identifier: ReleaseAmounts:{amount} */
+  id: Scalars['ID']['output'];
 };
 
 export type IResultAndError = {
@@ -897,6 +1007,7 @@ export type IRouter = {
   chain: Maybe<IChainResponse>;
   /** Queries the chain UID that contain an escrow with the specified token. Returns information on the escrow if found. */
   escrows: Array<IEscrow>;
+  id: Scalars['ID']['output'];
   /** Simulates the release of funds from an escrow. */
   simulate_release_escrow: Maybe<ISimulateReleaseEscrow>;
   /** Simulates a swap operation and returns the amount to be received for the swap. */
@@ -980,7 +1091,7 @@ export type IRouterVlpArgs = {
   pair?: InputMaybe<IPairInput>;
 };
 
-export type IRouterConfig = {
+export type IRouterConfig = INode & {
   __typename?: 'RouterConfig';
   /** The unique identifier (UID) of the chain. */
   chain_uid: Scalars['String']['output'];
@@ -988,14 +1099,18 @@ export type IRouterConfig = {
   contract_address: Scalars['String']['output'];
   /** The URL of the blockchain explorer for the VSL. */
   explorer_url: Scalars['String']['output'];
+  /** Globally unique identifier: RouterConfig:{contract_address} */
+  id: Scalars['ID']['output'];
   /** The URL or reference to the logo of the VSL chain. */
   logo: Maybe<Scalars['String']['output']>;
   /** The type of smart contract which is always 'router' in this query. */
   type: Maybe<Scalars['String']['output']>;
 };
 
-export type ISimulateReleaseEscrow = {
+export type ISimulateReleaseEscrow = INode & {
   __typename?: 'SimulateReleaseEscrow';
+  /** Globally unique identifier: SimulateReleaseEscrow:singleton */
+  id: Scalars['ID']['output'];
   /** Array of release amounts. */
   release_amounts: Array<Maybe<IReleaseAmounts>>;
   /** Any remaining tokens after the escrow releases. */
@@ -1023,86 +1138,102 @@ export enum ISortOrder {
   DESC = 'DESC'
 }
 
-export type IStablePoolConfig = {
+export type IStablePoolConfig = INode & {
   __typename?: 'StablePoolConfig';
-  /** Amplication factor for stable pool */
-  amp_factor: Scalars['String']['output'];
+  amp_factor: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: StablePoolConfig:{amp_factor} */
+  id: Scalars['ID']['output'];
 };
 
-export type IStakeCurrency = {
+export type IStakeCurrency = INode & {
   __typename?: 'StakeCurrency';
   coinDecimals: Scalars['Int']['output'];
   coinDenom: Scalars['String']['output'];
   coinGeckoID: Scalars['String']['output'];
   coinMinimalDenom: Scalars['String']['output'];
+  /** Globally unique identifier: StakeCurrency:{coinMinimalDenom} */
+  id: Scalars['ID']['output'];
 };
 
-export type ITokenArray = {
+export type ITokenArray = INode & {
   __typename?: 'TokenArray';
+  /** Globally unique identifier: TokenArray:singleton */
+  id: Scalars['ID']['output'];
   tokens: Maybe<Array<Maybe<Scalars['String']['output']>>>;
 };
 
-export type ITokenDenom = {
+export type ITokenDenom = INode & {
   __typename?: 'TokenDenom';
   /** The UID of the chain. */
   chain_uid: Scalars['String']['output'];
+  /** Globally unique identifier: TokenDenom:{chain_uid} */
+  id: Scalars['ID']['output'];
   /** The type of token (Native, Smart, or Voucher). */
   token_type: ITokenType;
 };
 
-export type ITokenDenomWithChainType = {
+export type ITokenDenomWithChainType = INode & {
   __typename?: 'TokenDenomWithChainType';
   /** The type of chain. */
   chain_type: Scalars['String']['output'];
   /** The UID of the chain. */
   chain_uid: Scalars['String']['output'];
+  /** Globally unique identifier: TokenDenomWithChainType:{chain_uid} */
+  id: Scalars['ID']['output'];
   /** The type of token (Native, Smart, or Voucher). */
   token_type: ITokenType;
 };
 
-export type ITokenDenomWithTokenIdResponse = {
+export type ITokenDenomWithTokenIdResponse = INode & {
   __typename?: 'TokenDenomWithTokenIdResponse';
   denoms: Array<Maybe<ITokenDenomWithChainType>>;
+  /** Globally unique identifier: TokenDenomWithTokenIdResponse:{token_id} */
+  id: Scalars['ID']['output'];
   /** Optional filter to match a specific token identifier. */
   token_id: Scalars['String']['output'];
 };
 
-export type ITokenDenomsResponse = {
+export type ITokenDenomsResponse = INode & {
   __typename?: 'TokenDenomsResponse';
   /** The list of token representations across different chains. */
   denoms: Maybe<Array<Maybe<ITokenDenomWithChainType>>>;
+  /** Globally unique identifier: TokenDenomsResponse:singleton */
+  id: Scalars['ID']['output'];
 };
 
-export type ITokenId = {
+export type ITokenId = INode & {
   __typename?: 'TokenId';
-  id: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: TokenId:{id} */
+  id: Scalars['ID']['output'];
 };
 
-export type ITokenInfo = {
+export type ITokenInfo = INode & {
   __typename?: 'TokenInfo';
-  /** The numbe of decimal places of token */
   decimals: Scalars['Int']['output'];
-  /** The name of the token. */
+  /** Globally unique identifier: TokenInfo:{symbol} */
+  id: Scalars['ID']['output'];
   name: Scalars['String']['output'];
-  /** The symbol of the token. */
   symbol: Scalars['String']['output'];
-  /** The total supply of the token. */
   total_supply: Scalars['String']['output'];
 };
 
-export type ITokenLiquidity = {
+export type ITokenLiquidity = INode & {
   __typename?: 'TokenLiquidity';
+  /** Globally unique identifier: TokenLiquidity:{token} */
+  id: Scalars['ID']['output'];
   token: Scalars['String']['output'];
   total_liquidity: Scalars['String']['output'];
   total_volume: Scalars['String']['output'];
 };
 
-export type ITokenOut = {
+export type ITokenOut = INode & {
   __typename?: 'TokenOut';
   /** The amount of the output asset received from the swap. Returned in micro units. */
   amount_out: Maybe<Scalars['String']['output']>;
   /** The identifier of the output asset. */
   asset_out: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: TokenOut:{asset_out} */
+  id: Scalars['ID']['output'];
 };
 
 export enum ITokenPairSortBy {
@@ -1110,19 +1241,22 @@ export enum ITokenPairSortBy {
   TOTAL_LIQUIDITY = 'TOTAL_LIQUIDITY'
 }
 
-export type ITokenPairWithLiquidityPaginated = {
+export type ITokenPairWithLiquidityPaginated = INode & {
   __typename?: 'TokenPairWithLiquidityPaginated';
+  /** Globally unique identifier: TokenPairWithLiquidityPaginated:singleton */
+  id: Scalars['ID']['output'];
   pagination: Maybe<IPaginationInfo>;
   results: Maybe<Array<Maybe<ITokenPairWithLiquidityResponse>>>;
 };
 
-export type ITokenPairWithLiquidityResponse = {
+export type ITokenPairWithLiquidityResponse = INode & {
   __typename?: 'TokenPairWithLiquidityResponse';
   /** The APR (Annual Percentage Rate) for providing liquidity to the pool. */
   apr: Scalars['String']['output'];
   /** Timestamp of when the pool was created. */
   created_at: Scalars['String']['output'];
-  /** Token Pair */
+  /** Globally unique identifier: TokenPairWithLiquidity:{vlp} */
+  id: Scalars['ID']['output'];
   pair: IPair;
   /** Optional tags or labels associated with the pool. */
   tags: Array<Scalars['String']['output']>;
@@ -1209,19 +1343,21 @@ export type ITokenQueriesTokensMetadataArgs = {
 /** The type of token (Native, Smart, or Voucher). */
 export type ITokenType = INativeTokenType | ISmartTokenType | IVoucherTokenType;
 
-export type ITotalFeesCollected = {
+export type ITotalFeesCollected = INode & {
   __typename?: 'TotalFeesCollected';
   /** Total EUCLID fees collected */
   euclid_fees: IDenomFees;
-  /** Total LP fees collected */
+  /** Globally unique identifier: TotalFeesCollected:singleton */
+  id: Scalars['ID']['output'];
   lp_fees: IDenomFees;
 };
 
-export type ITotalFeesPerDenomResponse = {
+export type ITotalFeesPerDenomResponse = INode & {
   __typename?: 'TotalFeesPerDenomResponse';
   /** Total EUCLID fees collected */
   euclid_fees: Scalars['String']['output'];
-  /** Total LP fees collected */
+  /** Globally unique identifier: TotalFeesPerDenomResponse:singleton */
+  id: Scalars['ID']['output'];
   lp_fees: Scalars['String']['output'];
 };
 
@@ -1254,21 +1390,26 @@ export type IVcoinUserBalanceArgs = {
   user?: InputMaybe<ICrossChainUserInput>;
 };
 
-export type IVcoinBalance = {
+export type IVcoinBalance = INode & {
   __typename?: 'VcoinBalance';
-  /** The amount of virtual tokens in the balance for the specified user. */
   amount: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: VcoinBalance:{amount} */
+  id: Scalars['ID']['output'];
 };
 
-export type IVcoinBalanceResponse = {
+export type IVcoinBalanceResponse = INode & {
   __typename?: 'VcoinBalanceResponse';
   balances: Array<Maybe<IVcoinBalanceUserResponse>>;
   chain_uid: Scalars['String']['output'];
+  /** Globally unique identifier: VcoinBalanceResponse:{chain_uid} */
+  id: Scalars['ID']['output'];
 };
 
-export type IVcoinBalanceUserResponse = {
+export type IVcoinBalanceUserResponse = INode & {
   __typename?: 'VcoinBalanceUserResponse';
   amount: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: VcoinBalanceUserResponse:{token_id} */
+  id: Scalars['ID']['output'];
   token_id: Maybe<Scalars['String']['output']>;
 };
 
@@ -1306,8 +1447,10 @@ export type IVlpTotalFeesCollectedPerDenomArgs = {
   denom: Scalars['String']['input'];
 };
 
-export type IVlpWithTokenPair = {
+export type IVlpWithTokenPair = INode & {
   __typename?: 'VlpWithTokenPair';
+  /** Globally unique identifier: VlpWithTokenPair:{vlp} */
+  id: Scalars['ID']['output'];
   /** The token Id of the first token in the pool. */
   token_1: Maybe<Scalars['String']['output']>;
   /** The token Id of the second token in the pool. */
@@ -1321,19 +1464,22 @@ export type IVlps = {
   vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type IVolumeBreakdown = {
+export type IVolumeBreakdown = INode & {
   __typename?: 'VolumeBreakdown';
+  /** Globally unique identifier: VolumeBreakdown:{pair} */
+  id: Scalars['ID']['output'];
   pair: Scalars['String']['output'];
   volume: Scalars['String']['output'];
 };
 
-export type IVolumeResponse = {
+export type IVolumeResponse = INode & {
   __typename?: 'VolumeResponse';
+  /** Globally unique identifier: VolumeResponse:singleton */
+  id: Scalars['ID']['output'];
   /** The total liquidity in USD. */
   total_liquidity: Scalars['String']['output'];
   /** The total volume in USD. */
   total_volume: Scalars['String']['output'];
-  /** The total volume over the past 24 hours in USD. */
   volume_24hours: Scalars['String']['output'];
   /** A breakdown of the volume by token pairs over the past 24 hours. */
   volume_breakdown_24hours: Array<IVolumeBreakdown>;

@@ -1,5 +1,5 @@
 import { StrictTypedTypePolicies } from "./src/apollo-helpers";
-export * from './src/apollo-helpers';
+export * from "./src/apollo-helpers";
 export * from "./src/types";
 /**
  * TypePolicies for Apollo Client.

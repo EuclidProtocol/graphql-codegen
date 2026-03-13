@@ -30,6 +30,7 @@ exports.CodegenGeneratedChainsAllChainsDocument = (0, graphql_tag_1.default) `
       display_name
       explorer_url
       factory_address
+      id
       logo
       token_factory_address
       type
@@ -43,6 +44,7 @@ exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = (0, graphql_t
     all_evm_chains {
       native_currency {
         decimals
+        id
         name
         symbol
       }
@@ -57,6 +59,7 @@ exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = (0, graphql_t
       rpc_urls {
         default {
           http
+          id
         }
       }
     }
@@ -70,7 +73,9 @@ exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = (0, graphql_tag_1.de
       rpc_urls {
         default {
           http
+          id
         }
+        id
       }
     }
   }
@@ -83,16 +88,20 @@ exports.CodegenGeneratedChainsAllEvmChainsDocument = (0, graphql_tag_1.default) 
       chain_id
       chain_uid
       explorer_url
+      id
       name
       native_currency {
         decimals
+        id
         name
         symbol
       }
       rpc_urls {
         default {
           http
+          id
         }
+        id
       }
     }
   }
@@ -110,6 +119,7 @@ exports.CodegenGeneratedChainsChainConfigDocument = (0, graphql_tag_1.default) `
       display_name
       explorer_url
       factory_address
+      id
       logo
       token_factory_address
       type
@@ -124,6 +134,7 @@ exports.CodegenGeneratedChainsContractsDocument = (0, graphql_tag_1.default) `
       ChainUID
       ContractAddress
       Type
+      id
     }
   }
 }
@@ -137,6 +148,7 @@ exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = (0, graphql
     ) {
       native_currency {
         decimals
+        id
         name
         symbol
       }
@@ -154,6 +166,7 @@ exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = (0, graphql
       rpc_urls {
         default {
           http
+          id
         }
       }
     }
@@ -170,7 +183,9 @@ exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = (0, graphql_tag_1.
       rpc_urls {
         default {
           http
+          id
         }
+        id
       }
     }
   }
@@ -186,16 +201,20 @@ exports.CodegenGeneratedChainsEvmChainConfigDocument = (0, graphql_tag_1.default
       chain_id
       chain_uid
       explorer_url
+      id
       name
       native_currency {
         decimals
+        id
         name
         symbol
       }
       rpc_urls {
         default {
           http
+          id
         }
+        id
       }
     }
   }
@@ -215,6 +234,7 @@ exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = (0, graphql_tag_
         bech32PrefixConsPub
         bech32PrefixValAddr
         bech32PrefixValPub
+        id
       }
     }
   }
@@ -229,6 +249,7 @@ exports.CodegenGeneratedChainsKeplrConfigBip44Document = (0, graphql_tag_1.defau
     ) {
       bip44 {
         coinType
+        id
       }
     }
   }
@@ -246,6 +267,7 @@ exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = (0, graphql_tag_1.
         coinDenom
         coinGeckoID
         coinMinimalDenom
+        id
       }
     }
   }
@@ -262,6 +284,7 @@ exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = (0,
         gasPriceStep {
           average
           high
+          id
           low
         }
       }
@@ -284,8 +307,10 @@ exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = (0, graphql_tag
         gasPriceStep {
           average
           high
+          id
           low
         }
+        id
       }
     }
   }
@@ -301,6 +326,7 @@ exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = (0, graphql_tag_
       gasPriceStep {
         average
         high
+        id
         low
       }
     }
@@ -319,6 +345,7 @@ exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = (0, graphql_tag
         coinDenom
         coinGeckoID
         coinMinimalDenom
+        id
       }
     }
   }
@@ -338,9 +365,11 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         bech32PrefixConsPub
         bech32PrefixValAddr
         bech32PrefixValPub
+        id
       }
       bip44 {
         coinType
+        id
       }
       chainID
       chainName
@@ -350,6 +379,7 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         coinDenom
         coinGeckoID
         coinMinimalDenom
+        id
       }
       explorer_url
       features
@@ -361,14 +391,18 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         gasPriceStep {
           average
           high
+          id
           low
         }
+        id
       }
       gasPriceStep {
         average
         high
+        id
         low
       }
+      id
       rest
       rpc
       stakeCurrency {
@@ -376,6 +410,7 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         coinDenom
         coinGeckoID
         coinMinimalDenom
+        id
       }
     }
   }
@@ -388,6 +423,7 @@ exports.CodegenGeneratedChainsRouterConfigDocument = (0, graphql_tag_1.default) 
       chain_uid
       contract_address
       explorer_url
+      id
       logo
       type
     }
@@ -401,22 +437,27 @@ exports.CodegenGeneratedChainsDocument = (0, graphql_tag_1.default) `
       chain_id
       chain_uid
       explorer_url
+      id
       name
       native_currency {
         decimals
+        id
         name
         symbol
       }
       rpc_urls {
         default {
           http
+          id
         }
+        id
       }
     }
     router_config {
       chain_uid
       contract_address
       explorer_url
+      id
       logo
       type
     }
@@ -430,6 +471,7 @@ exports.CodegenGeneratedClaimClaimSenderDocument = (0, graphql_tag_1.default) `
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -443,10 +485,12 @@ exports.CodegenGeneratedClaimClaimDocument = (0, graphql_tag_1.default) `
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -463,6 +507,7 @@ exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = (0, graphql_ta
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -478,10 +523,12 @@ exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = (0, graphql_tag_1.de
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -500,6 +547,7 @@ exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = (0, graphql_t
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -517,10 +565,12 @@ exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, graphql_tag_1.d
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -539,6 +589,7 @@ exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = (0, graphql_tag_1.def
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -556,10 +607,12 @@ exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, graphql_tag_1.default) 
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -578,6 +631,7 @@ exports.CodegenGeneratedClaimSenderClaimsSenderDocument = (0, graphql_tag_1.defa
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -595,10 +649,12 @@ exports.CodegenGeneratedClaimSenderClaimsDocument = (0, graphql_tag_1.default) `
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -613,6 +669,7 @@ exports.CodegenGeneratedClaimStateDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       factory_address
+      id
       vcoin_address
     }
   }
@@ -629,6 +686,7 @@ exports.CodegenGeneratedClaimUserClaimsSenderDocument = (0, graphql_tag_1.defaul
       sender {
         address
         chain_uid
+        id
       }
     }
   }
@@ -646,10 +704,12 @@ exports.CodegenGeneratedClaimUserClaimsDocument = (0, graphql_tag_1.default) `
       claim_group_id
       claim_id
       claimer
+      id
       pseudo_claim_id
       sender {
         address
         chain_uid
+        id
       }
       status
       token
@@ -664,6 +724,7 @@ exports.CodegenGeneratedClaimDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       factory_address
+      id
       vcoin_address
     }
   }
@@ -674,6 +735,7 @@ exports.CodegenGeneratedCwBalanceDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     balance(address: $cw_balance_address) {
       balance
+      id
     }
   }
 }
@@ -683,6 +745,7 @@ exports.CodegenGeneratedCwTokenInfoDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     token_info {
       decimals
+      id
       name
       symbol
       total_supply
@@ -695,6 +758,7 @@ exports.CodegenGeneratedCwDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     token_info {
       decimals
+      id
       name
       symbol
       total_supply
@@ -755,6 +819,7 @@ exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = (0, graphql_tag_1.de
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pagination {
+        id
         limit
         offset
         total_count
@@ -769,6 +834,7 @@ exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = (0, graphql_tag_1.def
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pools {
         pair {
+          id
           token_1
           token_2
         }
@@ -782,7 +848,9 @@ exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = (0, graphql_tag_1.default
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pools {
+        id
         pair {
+          id
           token_1
           token_2
         }
@@ -796,13 +864,17 @@ exports.CodegenGeneratedFactoryAllPoolsDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY_ALL_POOLS($chain_uid: String!, $factory_all_pools_limit: Int, $factory_all_pools_offset: Int) {
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
+      id
       pagination {
+        id
         limit
         offset
         total_count
       }
       pools {
+        id
         pair {
+          id
           token_1
           token_2
         }
@@ -817,6 +889,7 @@ exports.CodegenGeneratedFactoryAllTokensPaginationDocument = (0, graphql_tag_1.d
   factory(chain_uid: $chain_uid) {
     all_tokens(limit: $factory_all_tokens_limit, offset: $factory_all_tokens_offset) {
       pagination {
+        id
         limit
         offset
         total_count
@@ -829,7 +902,9 @@ exports.CodegenGeneratedFactoryAllTokensDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY_ALL_TOKENS($chain_uid: String!, $factory_all_tokens_limit: Int, $factory_all_tokens_offset: Int) {
   factory(chain_uid: $chain_uid) {
     all_tokens(limit: $factory_all_tokens_limit, offset: $factory_all_tokens_offset) {
+      id
       pagination {
+        id
         limit
         offset
         total_count
@@ -880,6 +955,7 @@ exports.CodegenGeneratedFactoryEscrowDocument = (0, graphql_tag_1.default) `
         }
       }
       escrow_address
+      id
     }
   }
 }
@@ -888,6 +964,7 @@ exports.CodegenGeneratedFactoryGetLptokenAddressDocument = (0, graphql_tag_1.def
     query CODEGEN_GENERATED_FACTORY_GET_LPTOKEN_ADDRESS($chain_uid: String!, $factory_get_LpToken_address_vlp_address: String!) {
   factory(chain_uid: $chain_uid) {
     get_LpToken_address(vlp_address: $factory_get_LpToken_address_vlp_address) {
+      id
       token_address
     }
   }
@@ -901,6 +978,7 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = (0, gra
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -912,9 +990,11 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = (0, graphql_t
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
       total {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -925,10 +1005,13 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = (0, graphql_tag_1.
     query CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED($chain_uid: String!) {
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
+      id
       total {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -942,6 +1025,7 @@ exports.CodegenGeneratedFactoryStateDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       hub_channel
+      id
       router_contract
     }
   }
@@ -958,10 +1042,13 @@ exports.CodegenGeneratedFactoryDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY($chain_uid: String!) {
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
+      id
       total {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -969,6 +1056,7 @@ exports.CodegenGeneratedFactoryDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       hub_channel
+      id
       router_contract
     }
   }
@@ -979,6 +1067,7 @@ exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = (0, graphql_tag_1.d
   pool {
     fees_collected {
       breakdown {
+        id
         token1
         token2
         total_fee
@@ -992,10 +1081,12 @@ exports.CodegenGeneratedPoolFeesCollectedDocument = (0, graphql_tag_1.default) `
   pool {
     fees_collected {
       breakdown {
+        id
         token1
         token2
         total_fee
       }
+      id
       total_overall
     }
   }
@@ -1009,6 +1100,7 @@ exports.CodegenGeneratedPoolMyPoolsPairDocument = (0, graphql_tag_1.default) `
       user_address: $pool_my_pools_user_address
     ) {
       pair {
+        id
         token_1
         token_2
       }
@@ -1026,6 +1118,7 @@ exports.CodegenGeneratedPoolMyPoolsUserDocument = (0, graphql_tag_1.default) `
       user {
         address
         chain_uid
+        id
       }
     }
   }
@@ -1039,13 +1132,16 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, graphql_tag_1.default) `
       user_address: $pool_my_pools_user_address
     ) {
       height
+      id
       pair {
+        id
         token_1
         token_2
       }
       user {
         address
         chain_uid
+        id
       }
       vlp
     }
@@ -1064,6 +1160,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, graph
       token: $pool_token_pair_with_liquidity_token
     ) {
       pagination {
+        id
         limit
         offset
         total_count
@@ -1085,6 +1182,7 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, grap
     ) {
       results {
         pair {
+          id
           token_1
           token_2
         }
@@ -1107,7 +1205,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, graphql_
       results {
         apr
         created_at
+        id
         pair {
+          id
           token_1
           token_2
         }
@@ -1130,7 +1230,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, graphql_tag_1.d
       sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
+      id
       pagination {
+        id
         limit
         offset
         total_count
@@ -1138,7 +1240,9 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, graphql_tag_1.d
       results {
         apr
         created_at
+        id
         pair {
+          id
           token_1
           token_2
         }
@@ -1155,6 +1259,7 @@ exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = (0, graphql_
   pool {
     volume {
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
@@ -1166,10 +1271,12 @@ exports.CodegenGeneratedPoolVolumeDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_POOL_VOLUME {
   pool {
     volume {
+      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
@@ -1182,6 +1289,7 @@ exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = (0
   pool {
     volume_clickhouse {
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
@@ -1193,10 +1301,12 @@ exports.CodegenGeneratedPoolVolumeClickhouseDocument = (0, graphql_tag_1.default
     query CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE {
   pool {
     volume_clickhouse {
+      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
@@ -1209,26 +1319,32 @@ exports.CodegenGeneratedPoolDocument = (0, graphql_tag_1.default) `
   pool {
     fees_collected {
       breakdown {
+        id
         token1
         token2
         total_fee
       }
+      id
       total_overall
     }
     volume {
+      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
     }
     volume_clickhouse {
+      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
+        id
         pair
         volume
       }
@@ -1243,6 +1359,7 @@ exports.CodegenGeneratedRouterAllChainsDocument = (0, graphql_tag_1.default) `
       chain_id
       chain_uid
       factory_address
+      id
     }
   }
 }
@@ -1258,6 +1375,7 @@ exports.CodegenGeneratedRouterAllEscrowsDocument = (0, graphql_tag_1.default) `
     ) {
       balance
       chain_uid
+      id
       token
     }
   }
@@ -1272,6 +1390,7 @@ exports.CodegenGeneratedRouterAllTokensDocument = (0, graphql_tag_1.default) `
       min: $router_all_tokens_min
       skip: $router_all_tokens_skip
     ) {
+      id
       tokens
     }
   }
@@ -1287,6 +1406,7 @@ exports.CodegenGeneratedRouterAllVlpsVlpsDocument = (0, graphql_tag_1.default) `
       skip: $router_all_vlps_skip
     ) {
       vlps {
+        id
         token_1
         token_2
         vlp
@@ -1304,7 +1424,9 @@ exports.CodegenGeneratedRouterAllVlpsDocument = (0, graphql_tag_1.default) `
       min: $router_all_vlps_min
       skip: $router_all_vlps_skip
     ) {
+      id
       vlps {
+        id
         token_1
         token_2
         vlp
@@ -1322,6 +1444,7 @@ exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = (0, graphql_tag_1
           ibc {
             from_factory_channel
             from_hub_channel
+            id
           }
         }
       }
@@ -1338,7 +1461,9 @@ exports.CodegenGeneratedRouterChainChainChainTypeDocument = (0, graphql_tag_1.de
           ibc {
             from_factory_channel
             from_hub_channel
+            id
           }
+          id
         }
       }
     }
@@ -1354,10 +1479,13 @@ exports.CodegenGeneratedRouterChainChainDocument = (0, graphql_tag_1.default) `
           ibc {
             from_factory_channel
             from_hub_channel
+            id
           }
+          id
         }
         factory
         factory_chain_id
+        id
       }
     }
   }
@@ -1372,12 +1500,16 @@ exports.CodegenGeneratedRouterChainDocument = (0, graphql_tag_1.default) `
           ibc {
             from_factory_channel
             from_hub_channel
+            id
           }
+          id
         }
         factory
         factory_chain_id
+        id
       }
       chain_uid
+      id
     }
   }
 }
@@ -1395,6 +1527,7 @@ exports.CodegenGeneratedRouterEscrowsDocument = (0, graphql_tag_1.default) `
       balance
       chain_id
       chain_uid
+      id
     }
   }
 }
@@ -1412,6 +1545,7 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserU
           user {
             address
             chain_uid
+            id
           }
         }
       }
@@ -1429,10 +1563,12 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserD
     ) {
       release_amounts {
         cross_chain_user {
+          id
           limit
           user {
             address
             chain_uid
+            id
           }
         }
       }
@@ -1451,12 +1587,15 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = (0, 
       release_amounts {
         amount
         cross_chain_user {
+          id
           limit
           user {
             address
             chain_uid
+            id
           }
         }
+        id
       }
     }
   }
@@ -1470,15 +1609,19 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = (0, graphql_tag_1.
       cross_chain_addresses: $router_simulate_release_escrow_cross_chain_addresses
       token: $router_simulate_release_escrow_token
     ) {
+      id
       release_amounts {
         amount
         cross_chain_user {
+          id
           limit
           user {
             address
             chain_uid
+            id
           }
         }
+        id
       }
       remaining_amount
     }
@@ -1497,6 +1640,7 @@ exports.CodegenGeneratedRouterSimulateSwapDocument = (0, graphql_tag_1.default) 
     ) {
       amount_out
       asset_out
+      id
     }
   }
 }
@@ -1506,8 +1650,11 @@ exports.CodegenGeneratedRouterStateDocument = (0, graphql_tag_1.default) `
   router {
     state {
       admin
+      constant_product_vlp_code_id
+      id
+      locked
+      stable_vlp_code_id
       virtual_balance_address
-      vlp_code_id
     }
   }
 }
@@ -1519,6 +1666,7 @@ exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = (0, graphql_tag_1.defa
       denoms {
         chain_type
         chain_uid
+        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1546,6 +1694,7 @@ exports.CodegenGeneratedRouterTokenDenomsDocument = (0, graphql_tag_1.default) `
       denoms {
         chain_type
         chain_uid
+        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1562,6 +1711,7 @@ exports.CodegenGeneratedRouterTokenDenomsDocument = (0, graphql_tag_1.default) `
           }
         }
       }
+      id
     }
   }
 }
@@ -1570,6 +1720,7 @@ exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = (0, graphql_tag_1.defa
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
     token_pairs_from_vlp(vlp: $router_token_pairs_from_vlp_vlp) {
+      id
       token_1
       token_2
       vlp
@@ -1581,6 +1732,7 @@ exports.CodegenGeneratedRouterVlpDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_ROUTER_VLP($router_vlp_pair: PairInput) {
   router {
     vlp(pair: $router_vlp_pair) {
+      id
       token_1
       token_2
       vlp
@@ -1595,11 +1747,16 @@ exports.CodegenGeneratedRouterDocument = (0, graphql_tag_1.default) `
       chain_id
       chain_uid
       factory_address
+      id
     }
+    id
     state {
       admin
+      constant_product_vlp_code_id
+      id
+      locked
+      stable_vlp_code_id
       virtual_balance_address
-      vlp_code_id
     }
   }
 }
@@ -1613,6 +1770,7 @@ exports.CodegenGeneratedTokenAllDexesDocument = (0, graphql_tag_1.default) `
       dex_name
       display_name
       fg_color
+      id
       logo
     }
   }
@@ -1627,6 +1785,7 @@ exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = (0, graphql_tag_1.de
       display_name
       explorer_url
       factory_address
+      id
       logo
       token_factory_address
       type
@@ -1643,6 +1802,7 @@ exports.CodegenGeneratedTokenDexMetadataDocument = (0, graphql_tag_1.default) `
       dex_name
       display_name
       fg_color
+      id
       logo
     }
   }
@@ -1653,6 +1813,7 @@ exports.CodegenGeneratedTokenGetAllFaucetsDocument = (0, graphql_tag_1.default) 
   token {
     get_all_faucets {
       faucet_link
+      id
       token
     }
   }
@@ -1669,6 +1830,7 @@ exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = (0, graphql_tag_1.defau
       denoms {
         chain_type
         chain_uid
+        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1700,6 +1862,7 @@ exports.CodegenGeneratedTokenTokenDenomsDocument = (0, graphql_tag_1.default) `
       denoms {
         chain_type
         chain_uid
+        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1716,6 +1879,7 @@ exports.CodegenGeneratedTokenTokenDenomsDocument = (0, graphql_tag_1.default) `
           }
         }
       }
+      id
       token_id
     }
   }
@@ -1728,6 +1892,7 @@ exports.CodegenGeneratedTokenTokenLiquiditiesDocument = (0, graphql_tag_1.defaul
       limit: $token_token_liquidities_limit
       page: $token_token_liquidities_page
     ) {
+      id
       token
       total_liquidity
       total_volume
@@ -1739,6 +1904,7 @@ exports.CodegenGeneratedTokenTokenLiquidityDocument = (0, graphql_tag_1.default)
     query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY($token_token_liquidity_token: String!) {
   token {
     token_liquidity(token: $token_token_liquidity_token) {
+      id
       token
       total_liquidity
       total_volume
@@ -1760,9 +1926,12 @@ exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.defau
       description
       dex
       displayName
+      id
       image
+      is_price_from_oracle
       is_verified
       min_swap_value
+      oracle_price
       price
       price_change_7d
       price_change_24h
@@ -1794,9 +1963,12 @@ exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default)
       description
       dex
       displayName
+      id
       image
+      is_price_from_oracle
       is_verified
       min_swap_value
+      oracle_price
       price
       price_change_7d
       price_change_24h
@@ -1823,9 +1995,12 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, graphql_tag_1.default)
       description
       dex
       displayName
+      id
       image
+      is_price_from_oracle
       is_verified
       min_swap_value
+      oracle_price
       price
       price_change_7d
       price_change_24h
@@ -1847,12 +2022,14 @@ exports.CodegenGeneratedTokenDocument = (0, graphql_tag_1.default) `
       display_name
       explorer_url
       factory_address
+      id
       logo
       token_factory_address
       type
     }
     get_all_faucets {
       faucet_link
+      id
       token
     }
   }
@@ -1863,6 +2040,7 @@ exports.CodegenGeneratedVcoinBalanceDocument = (0, graphql_tag_1.default) `
   vcoin {
     balance(balance_key: $vcoin_balance_balance_key) {
       amount
+      id
     }
   }
 }
@@ -1872,6 +2050,7 @@ exports.CodegenGeneratedVcoinStateDocument = (0, graphql_tag_1.default) `
   vcoin {
     state {
       admin
+      id
       router
     }
   }
@@ -1888,6 +2067,7 @@ exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = (0, graphql_ta
     ) {
       balances {
         amount
+        id
         token_id
       }
     }
@@ -1905,9 +2085,11 @@ exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = (0, graphql_tag_1.defa
     ) {
       balances {
         amount
+        id
         token_id
       }
       chain_uid
+      id
     }
   }
 }
@@ -1918,6 +2100,7 @@ exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = (0, graphql_tag_1.def
     user_balance(user: $vcoin_user_balance_user) {
       balances {
         amount
+        id
         token_id
       }
     }
@@ -1930,9 +2113,11 @@ exports.CodegenGeneratedVcoinUserBalanceDocument = (0, graphql_tag_1.default) `
     user_balance(user: $vcoin_user_balance_user) {
       balances {
         amount
+        id
         token_id
       }
       chain_uid
+      id
     }
   }
 }
@@ -1942,6 +2127,7 @@ exports.CodegenGeneratedVcoinDocument = (0, graphql_tag_1.default) `
   vcoin {
     state {
       admin
+      id
       router
     }
   }
@@ -1952,6 +2138,7 @@ exports.CodegenGeneratedVlpAllPoolsPaginationDocument = (0, graphql_tag_1.defaul
   vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
+        id
         limit
         offset
         total_count
@@ -1966,6 +2153,7 @@ exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = (0, graphql_tag_1.default
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         pool {
+          id
           lp_shares
           reserve_1
           reserve_2
@@ -1981,7 +2169,9 @@ exports.CodegenGeneratedVlpAllPoolsPoolsDocument = (0, graphql_tag_1.default) `
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         chain_uid
+        id
         pool {
+          id
           lp_shares
           reserve_1
           reserve_2
@@ -1995,14 +2185,18 @@ exports.CodegenGeneratedVlpAllPoolsDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
   vlp(contract: $contract, pair: $pair) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
+      id
       pagination {
+        id
         limit
         offset
         total_count
       }
       pools {
         chain_uid
+        id
         pool {
+          id
           lp_shares
           reserve_1
           reserve_2
@@ -2019,6 +2213,7 @@ exports.CodegenGeneratedVlpFeeRecipientDocument = (0, graphql_tag_1.default) `
       recipient {
         address
         chain_uid
+        id
       }
     }
   }
@@ -2029,10 +2224,12 @@ exports.CodegenGeneratedVlpFeeDocument = (0, graphql_tag_1.default) `
   vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
+      id
       lp_fee_bps
       recipient {
         address
         chain_uid
+        id
       }
     }
   }
@@ -2043,6 +2240,7 @@ exports.CodegenGeneratedVlpLiquidityPairDocument = (0, graphql_tag_1.default) `
   vlp(contract: $contract, pair: $pair) {
     liquidity {
       pair {
+        id
         token_1
         token_2
       }
@@ -2054,7 +2252,9 @@ exports.CodegenGeneratedVlpLiquidityDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String, $pair: PairInput) {
   vlp(contract: $contract, pair: $pair) {
     liquidity {
+      id
       pair {
+        id
         token_1
         token_2
       }
@@ -2069,6 +2269,7 @@ exports.CodegenGeneratedVlpPoolDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_VLP_POOL($contract: String, $pair: PairInput, $vlp_pool_chain_uid: String!) {
   vlp(contract: $contract, pair: $pair) {
     pool(chain_uid: $vlp_pool_chain_uid) {
+      id
       lp_shares
       reserve_1
       reserve_2
@@ -2084,6 +2285,7 @@ exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, graphql_tag_1.default
         recipient {
           address
           chain_uid
+          id
         }
       }
     }
@@ -2096,10 +2298,12 @@ exports.CodegenGeneratedVlpStateFeeDocument = (0, graphql_tag_1.default) `
     state {
       fee {
         euclid_fee_bps
+        id
         lp_fee_bps
         recipient {
           address
           chain_uid
+          id
         }
       }
     }
@@ -2111,6 +2315,7 @@ exports.CodegenGeneratedVlpStatePairDocument = (0, graphql_tag_1.default) `
   vlp(contract: $contract, pair: $pair) {
     state {
       pair {
+        id
         token_1
         token_2
       }
@@ -2125,6 +2330,7 @@ exports.CodegenGeneratedVlpStatePoolConfigStableDocument = (0, graphql_tag_1.def
       pool_config {
         stable {
           amp_factor
+          id
         }
       }
     }
@@ -2137,8 +2343,10 @@ exports.CodegenGeneratedVlpStatePoolConfigDocument = (0, graphql_tag_1.default) 
     state {
       pool_config {
         constant_product
+        id
         stable {
           amp_factor
+          id
         }
       }
     }
@@ -2152,21 +2360,27 @@ exports.CodegenGeneratedVlpStateDocument = (0, graphql_tag_1.default) `
       admin
       fee {
         euclid_fee_bps
+        id
         lp_fee_bps
         recipient {
           address
           chain_uid
+          id
         }
       }
+      id
       last_updated
       pair {
+        id
         token_1
         token_2
       }
       pool_config {
         constant_product
+        id
         stable {
           amp_factor
+          id
         }
       }
       router
@@ -2184,6 +2398,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = (0, grap
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -2195,9 +2410,11 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = (0, graphql_ta
   vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -2212,6 +2429,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = (0, graphql_
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -2223,9 +2441,11 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = (0, graphql_tag_1.
   vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       lp_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -2237,15 +2457,20 @@ exports.CodegenGeneratedVlpTotalFeesCollectedDocument = (0, graphql_tag_1.defaul
   vlp(contract: $contract, pair: $pair) {
     total_fees_collected {
       euclid_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
+      id
       lp_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
@@ -2257,6 +2482,7 @@ exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = (0, graphql_tag_
   vlp(contract: $contract, pair: $pair) {
     total_fees_collected_per_denom(denom: $vlp_total_fees_collected_per_denom_denom) {
       euclid_fees
+      id
       lp_fees
     }
   }
@@ -2267,14 +2493,18 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
   vlp(contract: $contract, pair: $pair) {
     fee {
       euclid_fee_bps
+      id
       lp_fee_bps
       recipient {
         address
         chain_uid
+        id
       }
     }
     liquidity {
+      id
       pair {
+        id
         token_1
         token_2
       }
@@ -2286,21 +2516,27 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
       admin
       fee {
         euclid_fee_bps
+        id
         lp_fee_bps
         recipient {
           address
           chain_uid
+          id
         }
       }
+      id
       last_updated
       pair {
+        id
         token_1
         token_2
       }
       pool_config {
         constant_product
+        id
         stable {
           amp_factor
+          id
         }
       }
       router
@@ -2309,15 +2545,20 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
     }
     total_fees_collected {
       euclid_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
+      id
       lp_fees {
+        id
         totals {
           amount
           denom
+          id
         }
       }
     }
