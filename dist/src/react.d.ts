@@ -48,8 +48,16 @@ export type Scalars = {
     };
 };
 export type IBalanceKeyInput = {
+    /** Address and Chain UID of the user */
     cross_chain_user?: InputMaybe<ICrossChainUserInput>;
+    /** Token ID of the token */
     token_id?: InputMaybe<Scalars['String']['input']>;
+};
+export type IConcentratedPoolParamsInput = {
+    /** The fee tier in basis points. */
+    fee_tier_bps: Scalars['Int']['input'];
+    /** The tick spacing for the pool. */
+    tick_spacing: Scalars['Int']['input'];
 };
 export type ICrossChainUserInput = {
     address?: InputMaybe<Scalars['String']['input']>;
@@ -60,12 +68,30 @@ export type ICrossChainUserWithLimitInput = {
     user: ICrossChainUserInput;
 };
 export type INextSwapPair = {
+    /** Optional pool type to route through a specific pool. The pair is derived from token_in/token_out in alphabetical order. */
+    pool_type?: InputMaybe<IPoolTypeInput>;
     token_in: Scalars['String']['input'];
     token_out: Scalars['String']['input'];
 };
 export type IPairInput = {
     token_1?: InputMaybe<Scalars['String']['input']>;
     token_2?: InputMaybe<Scalars['String']['input']>;
+};
+/** Input for specifying a pool key (pair + pool type). */
+export type IPoolKeyInput = {
+    /** The token pair for the pool. */
+    pair: IPairInput;
+    /** The pool type. */
+    pool_type: IPoolTypeInput;
+};
+/** Input for specifying the pool type when querying. */
+export type IPoolTypeInput = {
+    /** Set for concentrated pool with fee_tier_bps and tick_spacing. */
+    concentrated?: InputMaybe<IConcentratedPoolParamsInput>;
+    /** Set to {} for constant product pool. */
+    constant_product?: InputMaybe<Scalars['JSON']['input']>;
+    /** Set to {} for stable pool. */
+    stable?: InputMaybe<Scalars['JSON']['input']>;
 };
 export type IRawQueryInput = {
     rawQuery: Scalars['JSON']['input'];
@@ -74,11 +100,21 @@ export type ISmartQueryInput = {
     contract_address: Scalars['String']['input'];
     msg: Scalars['JSON']['input'];
 };
+export declare enum ISortOrder {
+    ASC = "ASC",
+    DESC = "DESC"
+}
+export declare enum ITokenPairSortBy {
+    CREATED_AT = "CREATED_AT",
+    TOTAL_LIQUIDITY = "TOTAL_LIQUIDITY"
+}
 export type IVlps = {
+    /** contract address of pool. */
     vlp_address?: InputMaybe<Scalars['String']['input']>;
 };
 export type ICodegenGeneratedChainsAllChainsQueryVariables = Exact<{
     chains_all_chains_show_all_chains?: InputMaybe<Scalars['Boolean']['input']>;
+    chains_all_chains_type?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedChainsAllChainsQuery = {
     __typename?: 'Query';
@@ -91,7 +127,103 @@ export type ICodegenGeneratedChainsAllChainsQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                id: string;
+                name: string;
+                symbol: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                id: string;
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedChainsAllEvmChainsQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedChainsAllEvmChainsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            id: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                id: string;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                id: string;
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
         }>;
     };
 };
@@ -110,7 +242,10 @@ export type ICodegenGeneratedChainsChainConfigQuery = {
             display_name: string;
             explorer_url: string;
             factory_address: string;
+            id: string;
             logo: string;
+            token_factory_address: string;
+            type: string;
         };
     };
 };
@@ -127,7 +262,105 @@ export type ICodegenGeneratedChainsContractsQuery = {
             ChainUID: string;
             ContractAddress: string;
             Type: string;
+            id: string;
         }>;
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                id: string;
+                name: string;
+                symbol: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                id: string;
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedChainsEvmChainConfigQueryVariables = Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars['String']['input']>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedChainsEvmChainConfigQuery = {
+    __typename?: 'Query';
+    chains: {
+        __typename?: 'Chains';
+        evm_chain_config: {
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            id: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                id: string;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                id: string;
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        };
     };
 };
 export type ICodegenGeneratedChainsKeplrConfigBech32ConfigQueryVariables = Exact<{
@@ -148,6 +381,7 @@ export type ICodegenGeneratedChainsKeplrConfigBech32ConfigQuery = {
                 bech32PrefixConsPub: string;
                 bech32PrefixValAddr: string;
                 bech32PrefixValPub: string;
+                id: string;
             };
         };
     };
@@ -165,6 +399,7 @@ export type ICodegenGeneratedChainsKeplrConfigBip44Query = {
             bip44: {
                 __typename?: 'Bip44';
                 coinType: number;
+                id: string;
             };
         };
     };
@@ -185,6 +420,7 @@ export type ICodegenGeneratedChainsKeplrConfigCurrenciesQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             }>;
         };
     };
@@ -205,6 +441,7 @@ export type ICodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepQuery = {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -227,10 +464,12 @@ export type ICodegenGeneratedChainsKeplrConfigFeecurrenciesQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
                 gasPriceStep: {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -251,6 +490,7 @@ export type ICodegenGeneratedChainsKeplrConfigGaspricestepQuery = {
                 __typename?: 'GasPriceStep';
                 average: number;
                 high: number;
+                id: string;
                 low: number;
             };
         };
@@ -272,6 +512,7 @@ export type ICodegenGeneratedChainsKeplrConfigStakecurrencyQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             };
         };
     };
@@ -291,6 +532,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
             coinType: number;
             explorer_url: string;
             features: Array<string>;
+            id: string;
             rest: string;
             rpc: string;
             bech32Config: {
@@ -301,10 +543,12 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 bech32PrefixConsPub: string;
                 bech32PrefixValAddr: string;
                 bech32PrefixValPub: string;
+                id: string;
             };
             bip44: {
                 __typename?: 'Bip44';
                 coinType: number;
+                id: string;
             };
             currencies: Array<{
                 __typename?: 'Currencies';
@@ -312,6 +556,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             }>;
             feeCurrencies: Array<{
                 __typename?: 'FeeCurrencies';
@@ -319,10 +564,12 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
                 gasPriceStep: {
                     __typename?: 'GasPriceStep';
                     average: number;
                     high: number;
+                    id: string;
                     low: number;
                 };
             }>;
@@ -330,6 +577,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 __typename?: 'GasPriceStep';
                 average: number;
                 high: number;
+                id: string;
                 low: number;
             };
             stakeCurrency: {
@@ -338,6 +586,7 @@ export type ICodegenGeneratedChainsKeplrConfigQuery = {
                 coinDenom: string;
                 coinGeckoID: string;
                 coinMinimalDenom: string;
+                id: string;
             };
         };
     };
@@ -354,6 +603,7 @@ export type ICodegenGeneratedChainsRouterConfigQuery = {
             chain_uid: string;
             contract_address: string;
             explorer_url: string;
+            id: string;
             logo: string;
             type: string;
         };
@@ -366,13 +616,352 @@ export type ICodegenGeneratedChainsQuery = {
     __typename?: 'Query';
     chains: {
         __typename?: 'Chains';
+        all_evm_chains: Array<{
+            __typename?: 'EVMChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            explorer_url: string;
+            id: string;
+            name: string;
+            native_currency: {
+                __typename?: 'NativeCurrency';
+                decimals: number;
+                id: string;
+                name: string;
+                symbol: string;
+            };
+            rpc_urls: {
+                __typename?: 'RPCUrls';
+                id: string;
+                default: {
+                    __typename?: 'RPCConfig';
+                    http: Array<string>;
+                    id: string;
+                };
+            };
+        }>;
         router_config: {
             __typename?: 'RouterConfig';
             chain_uid: string;
             contract_address: string;
             explorer_url: string;
+            id: string;
             logo: string;
             type: string;
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimSenderQueryVariables = Exact<{
+    claim_claim_claim_id: Scalars['Int']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim: {
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimQueryVariables = Exact<{
+    claim_claim_claim_id: Scalars['Int']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim: {
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponseWithStatus';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables = Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claim_by_psuedo_claim_id: {
+            __typename?: 'ClaimerResponseWithStatus';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables = Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claims_by_claimer_pub_Key: Array<{
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables = Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars['String']['input'];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claims_by_claimer_pub_Key: Array<{
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables = Exact<{
+    claim_claims_by_email_email: Scalars['String']['input'];
+    claim_claims_by_email_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedClaimClaimsByEmailSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claims_by_email: Array<{
+            __typename?: 'ClaimerResponseWithStatus';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimClaimsByEmailQueryVariables = Exact<{
+    claim_claims_by_email_email: Scalars['String']['input'];
+    claim_claims_by_email_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedClaimClaimsByEmailQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        claims_by_email: Array<{
+            __typename?: 'ClaimerResponseWithStatus';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimSenderClaimsSenderQueryVariables = Exact<{
+    claim_sender_claims_limit: Scalars['Int']['input'];
+    claim_sender_claims_offset: Scalars['Int']['input'];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>;
+export type ICodegenGeneratedClaimSenderClaimsSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        sender_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimSenderClaimsQueryVariables = Exact<{
+    claim_sender_claims_limit: Scalars['Int']['input'];
+    claim_sender_claims_offset: Scalars['Int']['input'];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>;
+export type ICodegenGeneratedClaimSenderClaimsQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        sender_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimStateQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedClaimStateQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        state: {
+            __typename?: 'ClaimState';
+            admin: string;
+            chain_uid: string;
+            factory_address: string;
+            id: string;
+            vcoin_address: string;
+        };
+    };
+};
+export type ICodegenGeneratedClaimUserClaimsSenderQueryVariables = Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsSenderQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimUserClaimsQueryVariables = Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_offset?: InputMaybe<Scalars['Int']['input']>;
+    claim_user_claims_public_secret: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedClaimUserClaimsQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        user_claims: Array<{
+            __typename?: 'ClaimerResponse';
+            amount: string;
+            claim_group_id: string;
+            claim_id: string;
+            claimer: string;
+            id: string;
+            pseudo_claim_id: string;
+            status: string;
+            token: string;
+            sender: {
+                __typename?: 'CrossChainUser';
+                address: string;
+                chain_uid: string;
+                id: string;
+            };
+        }>;
+    };
+};
+export type ICodegenGeneratedClaimQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedClaimQuery = {
+    __typename?: 'Query';
+    claim: {
+        __typename?: 'ClaimQueries';
+        state: {
+            __typename?: 'ClaimState';
+            admin: string;
+            chain_uid: string;
+            factory_address: string;
+            id: string;
+            vcoin_address: string;
         };
     };
 };
@@ -388,6 +977,7 @@ export type ICodegenGeneratedCwBalanceQuery = {
         balance: {
             __typename?: 'Balance';
             balance: string;
+            id: string;
         };
     };
 };
@@ -402,6 +992,7 @@ export type ICodegenGeneratedCwTokenInfoQuery = {
         token_info: {
             __typename?: 'TokenInfo';
             decimals: number;
+            id: string;
             name: string;
             symbol: string;
             total_supply: string;
@@ -419,6 +1010,7 @@ export type ICodegenGeneratedCwQuery = {
         token_info: {
             __typename?: 'TokenInfo';
             decimals: number;
+            id: string;
             name: string;
             symbol: string;
             total_supply: string;
@@ -510,6 +1102,7 @@ export type ICodegenGeneratedFactoryAllPoolsPaginationQuery = {
             __typename?: 'AllPoolsResponse';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -532,6 +1125,7 @@ export type ICodegenGeneratedFactoryAllPoolsPoolsPairQuery = {
                 __typename?: 'PairsInPool';
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -552,9 +1146,11 @@ export type ICodegenGeneratedFactoryAllPoolsPoolsQuery = {
             __typename?: 'AllPoolsResponse';
             pools: Array<{
                 __typename?: 'PairsInPool';
+                id: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -573,17 +1169,21 @@ export type ICodegenGeneratedFactoryAllPoolsQuery = {
         __typename?: 'Factory';
         all_pools: {
             __typename?: 'AllPoolsResponse';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
             };
             pools: Array<{
                 __typename?: 'PairsInPool';
+                id: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -604,6 +1204,7 @@ export type ICodegenGeneratedFactoryAllTokensPaginationQuery = {
             __typename?: 'AllTokens';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -622,9 +1223,11 @@ export type ICodegenGeneratedFactoryAllTokensQuery = {
         __typename?: 'Factory';
         all_tokens: {
             __typename?: 'AllTokens';
+            id: string;
             tokens: Array<string>;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -669,6 +1272,7 @@ export type ICodegenGeneratedFactoryEscrowQuery = {
         escrow: {
             __typename?: 'EscrowResponse';
             escrow_address: string;
+            id: string;
             denoms: Array<{
                 __typename?: 'NativeTokenType';
                 native: {
@@ -698,6 +1302,7 @@ export type ICodegenGeneratedFactoryGetLptokenAddressQuery = {
         __typename?: 'Factory';
         get_LpToken_address: {
             __typename?: 'LpTokenAddr';
+            id: string;
             token_address: string;
         };
     };
@@ -717,6 +1322,7 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -733,10 +1339,12 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery = {
             __typename?: 'PartnerFeesCollected';
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -751,12 +1359,15 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedQuery = {
         __typename?: 'Factory';
         partner_fees_collected: {
             __typename?: 'PartnerFeesCollected';
+            id: string;
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -774,6 +1385,7 @@ export type ICodegenGeneratedFactoryStateQuery = {
             admin: string;
             chain_uid: string;
             hub_channel: string;
+            id: string;
             router_contract: string;
         };
     };
@@ -798,12 +1410,15 @@ export type ICodegenGeneratedFactoryQuery = {
         __typename?: 'Factory';
         partner_fees_collected: {
             __typename?: 'PartnerFeesCollected';
+            id: string;
             total: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -812,6 +1427,7 @@ export type ICodegenGeneratedFactoryQuery = {
             admin: string;
             chain_uid: string;
             hub_channel: string;
+            id: string;
             router_contract: string;
         };
     };
@@ -827,6 +1443,7 @@ export type ICodegenGeneratedPoolFeesCollectedBreakdownQuery = {
             __typename?: 'FeesResponse';
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -843,9 +1460,11 @@ export type ICodegenGeneratedPoolFeesCollectedQuery = {
         __typename?: 'PoolQueries';
         fees_collected: {
             __typename?: 'FeesResponse';
+            id: string;
             total_overall: number;
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -865,6 +1484,7 @@ export type ICodegenGeneratedPoolMyPoolsPairQuery = {
             __typename?: 'MyPools';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -885,6 +1505,7 @@ export type ICodegenGeneratedPoolMyPoolsUserQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -900,9 +1521,11 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
         my_pools: Array<{
             __typename?: 'MyPools';
             height: string;
+            id: string;
             vlp: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -910,6 +1533,7 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         }>;
     };
@@ -917,6 +1541,9 @@ export type ICodegenGeneratedPoolMyPoolsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
@@ -927,6 +1554,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
             __typename?: 'TokenPairWithLiquidityPaginated';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -937,6 +1565,9 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
@@ -949,6 +1580,7 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
                 __typename?: 'TokenPairWithLiquidityResponse';
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -959,6 +1591,9 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
@@ -970,10 +1605,14 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
             results: Array<{
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
+                created_at: string;
+                id: string;
+                tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -984,6 +1623,9 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery = {
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables = Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars['Int']['input']>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars['Int']['input']>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars['Boolean']['input']>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
@@ -992,8 +1634,10 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
         __typename?: 'PoolQueries';
         token_pair_with_liquidity: {
             __typename?: 'TokenPairWithLiquidityPaginated';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1001,10 +1645,14 @@ export type ICodegenGeneratedPoolTokenPairWithLiquidityQuery = {
             results: Array<{
                 __typename?: 'TokenPairWithLiquidityResponse';
                 apr: string;
+                created_at: string;
+                id: string;
+                tags: Array<string>;
                 total_liquidity: string;
                 vlp: string;
                 pair: {
                     __typename?: 'Pair';
+                    id: string;
                     token_1: string;
                     token_2: string;
                 };
@@ -1023,6 +1671,7 @@ export type ICodegenGeneratedPoolVolumeVolumeBreakdown_24HoursQuery = {
             __typename?: 'VolumeResponse';
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1038,11 +1687,53 @@ export type ICodegenGeneratedPoolVolumeQuery = {
         __typename?: 'PoolQueries';
         volume: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                id: string;
+                pair: string;
+                volume: string;
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedPoolVolumeClickhouseQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedPoolVolumeClickhouseQuery = {
+    __typename?: 'Query';
+    pool: {
+        __typename?: 'PoolQueries';
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            id: string;
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1058,9 +1749,11 @@ export type ICodegenGeneratedPoolQuery = {
         __typename?: 'PoolQueries';
         fees_collected: {
             __typename?: 'FeesResponse';
+            id: string;
             total_overall: number;
             breakdown: Array<{
                 __typename?: 'FeeBreakdown';
+                id: string;
                 token1: string;
                 token2: string;
                 total_fee: number;
@@ -1068,11 +1761,26 @@ export type ICodegenGeneratedPoolQuery = {
         };
         volume: {
             __typename?: 'VolumeResponse';
+            id: string;
             total_liquidity: string;
             total_volume: string;
             volume_24hours: string;
             volume_breakdown_24hours: Array<{
                 __typename?: 'VolumeBreakdown';
+                id: string;
+                pair: string;
+                volume: string;
+            }>;
+        };
+        volume_clickhouse: {
+            __typename?: 'VolumeResponse';
+            id: string;
+            total_liquidity: string;
+            total_volume: string;
+            volume_24hours: string;
+            volume_breakdown_24hours: Array<{
+                __typename?: 'VolumeBreakdown';
+                id: string;
                 pair: string;
                 volume: string;
             }>;
@@ -1091,6 +1799,7 @@ export type ICodegenGeneratedRouterAllChainsQuery = {
             chain_id: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
         }>;
     };
 };
@@ -1108,6 +1817,7 @@ export type ICodegenGeneratedRouterAllEscrowsQuery = {
             __typename?: 'AllEscrowsResponse';
             balance: string;
             chain_uid: string;
+            id: string;
             token: string;
         }>;
     };
@@ -1124,7 +1834,138 @@ export type ICodegenGeneratedRouterAllTokensQuery = {
         __typename?: 'Router';
         all_tokens: {
             __typename?: 'TokenArray';
+            id: string;
             tokens: Array<string>;
+        };
+    };
+};
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryVariables = Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars['Int']['input']>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        all_vlps: {
+            __typename?: 'AllVlps';
+            vlps: Array<{
+                __typename?: 'VlpWithTokenPair';
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    pair: {
+                        __typename?: 'Pair';
+                        id: string;
+                        token_1: string;
+                        token_2: string;
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars['Int']['input']>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        all_vlps: {
+            __typename?: 'AllVlps';
+            vlps: Array<{
+                __typename?: 'VlpWithTokenPair';
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    pool_type: {
+                        __typename?: 'PoolTypeOutput';
+                        concentrated: {
+                            __typename?: 'ConcentratedPoolParams';
+                            fee_tier_bps: number;
+                            id: string;
+                            tick_spacing: number;
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryVariables = Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars['Int']['input']>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        all_vlps: {
+            __typename?: 'AllVlps';
+            vlps: Array<{
+                __typename?: 'VlpWithTokenPair';
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    pool_type: {
+                        __typename?: 'PoolTypeOutput';
+                        constant_product: any;
+                        id: string;
+                        stable: any;
+                        concentrated: {
+                            __typename?: 'ConcentratedPoolParams';
+                            fee_tier_bps: number;
+                            id: string;
+                            tick_spacing: number;
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryVariables = Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars['Int']['input']>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    router_all_vlps_skip?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        all_vlps: {
+            __typename?: 'AllVlps';
+            vlps: Array<{
+                __typename?: 'VlpWithTokenPair';
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    id: string;
+                    pair: {
+                        __typename?: 'Pair';
+                        id: string;
+                        token_1: string;
+                        token_2: string;
+                    };
+                    pool_type: {
+                        __typename?: 'PoolTypeOutput';
+                        constant_product: any;
+                        id: string;
+                        stable: any;
+                        concentrated: {
+                            __typename?: 'ConcentratedPoolParams';
+                            fee_tier_bps: number;
+                            id: string;
+                            tick_spacing: number;
+                        };
+                    };
+                };
+            }>;
         };
     };
 };
@@ -1142,9 +1983,32 @@ export type ICodegenGeneratedRouterAllVlpsVlpsQuery = {
             __typename?: 'AllVlps';
             vlps: Array<{
                 __typename?: 'VlpWithTokenPair';
+                id: string;
                 token_1: string;
                 token_2: string;
                 vlp: string;
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    id: string;
+                    pair: {
+                        __typename?: 'Pair';
+                        id: string;
+                        token_1: string;
+                        token_2: string;
+                    };
+                    pool_type: {
+                        __typename?: 'PoolTypeOutput';
+                        constant_product: any;
+                        id: string;
+                        stable: any;
+                        concentrated: {
+                            __typename?: 'ConcentratedPoolParams';
+                            fee_tier_bps: number;
+                            id: string;
+                            tick_spacing: number;
+                        };
+                    };
+                };
             }>;
         };
     };
@@ -1161,11 +2025,35 @@ export type ICodegenGeneratedRouterAllVlpsQuery = {
         __typename?: 'Router';
         all_vlps: {
             __typename?: 'AllVlps';
+            id: string;
             vlps: Array<{
                 __typename?: 'VlpWithTokenPair';
+                id: string;
                 token_1: string;
                 token_2: string;
                 vlp: string;
+                pool_key: {
+                    __typename?: 'PoolKeyOutput';
+                    id: string;
+                    pair: {
+                        __typename?: 'Pair';
+                        id: string;
+                        token_1: string;
+                        token_2: string;
+                    };
+                    pool_type: {
+                        __typename?: 'PoolTypeOutput';
+                        constant_product: any;
+                        id: string;
+                        stable: any;
+                        concentrated: {
+                            __typename?: 'ConcentratedPoolParams';
+                            fee_tier_bps: number;
+                            id: string;
+                            tick_spacing: number;
+                        };
+                    };
+                };
             }>;
         };
     };
@@ -1187,6 +2075,7 @@ export type ICodegenGeneratedRouterChainChainChainTypeIbcQuery = {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1206,10 +2095,12 @@ export type ICodegenGeneratedRouterChainChainChainTypeQuery = {
                 __typename?: 'ChainAndFactoryInfo';
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1229,12 +2120,15 @@ export type ICodegenGeneratedRouterChainChainQuery = {
                 __typename?: 'ChainAndFactoryInfo';
                 factory: string;
                 factory_chain_id: string;
+                id: string;
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1251,16 +2145,20 @@ export type ICodegenGeneratedRouterChainQuery = {
         chain: {
             __typename?: 'ChainResponse';
             chain_uid: string;
+            id: string;
             chain: {
                 __typename?: 'ChainAndFactoryInfo';
                 factory: string;
                 factory_chain_id: string;
+                id: string;
                 chain_type: {
                     __typename?: 'ChainType';
+                    id: string;
                     ibc: {
                         __typename?: 'Ibc';
                         from_factory_channel: string;
                         from_hub_channel: string;
+                        id: string;
                     };
                 };
             };
@@ -1283,6 +2181,7 @@ export type ICodegenGeneratedRouterEscrowsQuery = {
             balance: string;
             chain_id: string;
             chain_uid: string;
+            id: string;
         }>;
     };
 };
@@ -1305,6 +2204,7 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1326,11 +2226,13 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChain
                 __typename?: 'ReleaseAmounts';
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1351,13 +2253,16 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsQuery = {
             release_amounts: Array<{
                 __typename?: 'ReleaseAmounts';
                 amount: string;
+                id: string;
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1375,17 +2280,21 @@ export type ICodegenGeneratedRouterSimulateReleaseEscrowQuery = {
         __typename?: 'Router';
         simulate_release_escrow: {
             __typename?: 'SimulateReleaseEscrow';
+            id: string;
             remaining_amount: string;
             release_amounts: Array<{
                 __typename?: 'ReleaseAmounts';
                 amount: string;
+                id: string;
                 cross_chain_user: {
                     __typename?: 'CrossChainUserWithLimit';
+                    id: string;
                     limit: string;
                     user: {
                         __typename?: 'CrossChainUser';
                         address: string;
                         chain_uid: string;
+                        id: string;
                     };
                 };
             }>;
@@ -1397,7 +2306,7 @@ export type ICodegenGeneratedRouterSimulateSwapQueryVariables = Exact<{
     router_simulate_swap_asset_in: Scalars['String']['input'];
     router_simulate_swap_asset_out: Scalars['String']['input'];
     router_simulate_swap_min_amount_out: Scalars['String']['input'];
-    router_simulate_swap_swaps?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    router_simulate_swap_swaps?: InputMaybe<Array<INextSwapPair> | INextSwapPair>;
 }>;
 export type ICodegenGeneratedRouterSimulateSwapQuery = {
     __typename?: 'Query';
@@ -1407,6 +2316,7 @@ export type ICodegenGeneratedRouterSimulateSwapQuery = {
             __typename?: 'TokenOut';
             amount_out: string;
             asset_out: string;
+            id: string;
         };
     };
 };
@@ -1420,8 +2330,12 @@ export type ICodegenGeneratedRouterStateQuery = {
         state: {
             __typename?: 'ContractStateOfRouter';
             admin: string;
+            concentrated_vlp_code_id: number;
+            constant_product_vlp_code_id: number;
+            id: string;
+            locked: boolean;
+            stable_vlp_code_id: number;
             virtual_balance_address: string;
-            vlp_code_id: number;
         };
     };
 };
@@ -1435,8 +2349,10 @@ export type ICodegenGeneratedRouterTokenDenomsDenomsQuery = {
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -1466,9 +2382,12 @@ export type ICodegenGeneratedRouterTokenDenomsQuery = {
         __typename?: 'Router';
         token_denoms: {
             __typename?: 'TokenDenomsResponse';
+            id: string;
             denoms: Array<{
-                __typename?: 'TokenDenom';
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
                 chain_uid: string;
+                id: string;
                 token_type: {
                     __typename?: 'NativeTokenType';
                     native: {
@@ -1489,6 +2408,112 @@ export type ICodegenGeneratedRouterTokenDenomsQuery = {
         };
     };
 };
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryVariables = Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        token_pairs_from_vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        token_pairs_from_vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryVariables = Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        token_pairs_from_vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryVariables = Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        token_pairs_from_vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
 export type ICodegenGeneratedRouterTokenPairsFromVlpQueryVariables = Exact<{
     router_token_pairs_from_vlp_vlp: Scalars['String']['input'];
 }>;
@@ -1498,9 +2523,138 @@ export type ICodegenGeneratedRouterTokenPairsFromVlpQuery = {
         __typename?: 'Router';
         token_pairs_from_vlp: {
             __typename?: 'VlpWithTokenPair';
+            id: string;
             token_1: string;
             token_2: string;
             vlp: string;
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpPoolKeyPairQueryVariables = Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedRouterVlpPoolKeyPairQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpPoolKeyPoolTypeQueryVariables = Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpPoolKeyQueryVariables = Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedRouterVlpPoolKeyQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp: {
+            __typename?: 'VlpWithTokenPair';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
         };
     };
 };
@@ -1513,9 +2667,105 @@ export type ICodegenGeneratedRouterVlpQuery = {
         __typename?: 'Router';
         vlp: {
             __typename?: 'VlpWithTokenPair';
+            id: string;
             token_1: string;
             token_2: string;
             vlp: string;
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>;
+export type ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp_by_pool_key: {
+            __typename?: 'PoolKeyVlpResponse';
+            pool_type: {
+                __typename?: 'PoolTypeOutput';
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryVariables = Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>;
+export type ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp_by_pool_key: {
+            __typename?: 'PoolKeyVlpResponse';
+            pool_type: {
+                __typename?: 'PoolTypeOutput';
+                constant_product: any;
+                id: string;
+                stable: any;
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterVlpByPoolKeyQueryVariables = Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>;
+export type ICodegenGeneratedRouterVlpByPoolKeyQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        vlp_by_pool_key: {
+            __typename?: 'PoolKeyVlpResponse';
+            id: string;
+            token_1: string;
+            token_2: string;
+            vlp: string;
+            pool_type: {
+                __typename?: 'PoolTypeOutput';
+                constant_product: any;
+                id: string;
+                stable: any;
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+            };
         };
     };
 };
@@ -1526,17 +2776,83 @@ export type ICodegenGeneratedRouterQuery = {
     __typename?: 'Query';
     router: {
         __typename?: 'Router';
+        id: string;
         all_chains: Array<{
             __typename?: 'Chain';
             chain_id: string;
             chain_uid: string;
             factory_address: string;
+            id: string;
         }>;
         state: {
             __typename?: 'ContractStateOfRouter';
             admin: string;
+            concentrated_vlp_code_id: number;
+            constant_product_vlp_code_id: number;
+            id: string;
+            locked: boolean;
+            stable_vlp_code_id: number;
             virtual_balance_address: string;
-            vlp_code_id: number;
+        };
+    };
+};
+export type ICodegenGeneratedTokenAllDexesQueryVariables = Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars['Int']['input']>;
+    token_all_dexes_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedTokenAllDexesQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        all_dexes: Array<{
+            __typename?: 'DexMetadata';
+            bg_color: string;
+            chain_uid: string;
+            dex_name: string;
+            display_name: string;
+            fg_color: string;
+            id: string;
+            logo: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables = Exact<{
+    [key: string]: never;
+}>;
+export type ICodegenGeneratedTokenChainsForTokenLaunchQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            id: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenDexMetadataQueryVariables = Exact<{
+    token_dex_metadata_dex: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedTokenDexMetadataQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        dex_metadata: {
+            __typename?: 'DexMetadata';
+            bg_color: string;
+            chain_uid: string;
+            dex_name: string;
+            display_name: string;
+            fg_color: string;
+            id: string;
+            logo: string;
         };
     };
 };
@@ -1550,7 +2866,82 @@ export type ICodegenGeneratedTokenGetAllFaucetsQuery = {
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
+            id: string;
             token: string;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables = Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
+    token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedTokenTokenDenomsDenomsQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        token_denoms: Array<{
+            __typename?: 'TokenDenomWithTokenIdResponse';
+            denoms: Array<{
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
+                chain_uid: string;
+                id: string;
+                token_type: {
+                    __typename?: 'NativeTokenType';
+                    native: {
+                        __typename?: 'NativeToken';
+                        denom: string;
+                    };
+                } | {
+                    __typename?: 'SmartTokenType';
+                    smart: {
+                        __typename?: 'SmartToken';
+                        contract_address: string;
+                    };
+                } | {
+                    __typename?: 'VoucherTokenType';
+                    voucher: any;
+                };
+            }>;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenTokenDenomsQueryVariables = Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    token_token_denoms_denom?: InputMaybe<Scalars['String']['input']>;
+    token_token_denoms_token_id?: InputMaybe<Scalars['String']['input']>;
+}>;
+export type ICodegenGeneratedTokenTokenDenomsQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        token_denoms: Array<{
+            __typename?: 'TokenDenomWithTokenIdResponse';
+            id: string;
+            token_id: string;
+            denoms: Array<{
+                __typename?: 'TokenDenomWithChainType';
+                chain_type: string;
+                chain_uid: string;
+                id: string;
+                token_type: {
+                    __typename?: 'NativeTokenType';
+                    native: {
+                        __typename?: 'NativeToken';
+                        denom: string;
+                    };
+                } | {
+                    __typename?: 'SmartTokenType';
+                    smart: {
+                        __typename?: 'SmartToken';
+                        contract_address: string;
+                    };
+                } | {
+                    __typename?: 'VoucherTokenType';
+                    voucher: any;
+                };
+            }>;
         }>;
     };
 };
@@ -1564,6 +2955,7 @@ export type ICodegenGeneratedTokenTokenLiquiditiesQuery = {
         __typename?: 'TokenQueries';
         token_liquidities: Array<{
             __typename?: 'TokenLiquidity';
+            id: string;
             token: string;
             total_liquidity: string;
             total_volume: string;
@@ -1579,6 +2971,7 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
         __typename?: 'TokenQueries';
         token_liquidity: {
             __typename?: 'TokenLiquidity';
+            id: string;
             token: string;
             total_liquidity: string;
             total_volume: string;
@@ -1587,6 +2980,7 @@ export type ICodegenGeneratedTokenTokenLiquidityQuery = {
 };
 export type ICodegenGeneratedTokenTokenMetadataByIdQueryVariables = Exact<{
     token_token_metadata_by_id_token_id: Scalars['String']['input'];
+    token_token_metadata_by_id_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
     __typename?: 'Query';
@@ -1594,18 +2988,38 @@ export type ICodegenGeneratedTokenTokenMetadataByIdQuery = {
         __typename?: 'TokenQueries';
         token_metadata_by_id: {
             __typename?: 'Metadata';
+            chain_type: Array<string>;
+            chain_uids: Array<string>;
             coinDecimal: number;
+            created_at: string;
             description: string;
+            dex: Array<string>;
             displayName: string;
+            id: string;
             image: string;
+            is_price_from_oracle: boolean;
+            is_verified: boolean;
+            min_swap_value: number;
+            oracle_price: string;
             price: string;
+            price_change_7d: number;
+            price_change_24h: number;
+            social: any;
+            tags: Array<string>;
             tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
         };
     };
 };
 export type ICodegenGeneratedTokenTokenMetadatasQueryVariables = Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
+    token_token_metadatas_dex?: InputMaybe<Array<Scalars['String']['input']> | Scalars['String']['input']>;
     token_token_metadatas_limit?: InputMaybe<Scalars['Int']['input']>;
     token_token_metadatas_offset?: InputMaybe<Scalars['Int']['input']>;
+    token_token_metadatas_search?: InputMaybe<Scalars['String']['input']>;
+    token_token_metadatas_show_volume?: InputMaybe<Scalars['Boolean']['input']>;
+    token_token_metadatas_verified?: InputMaybe<Scalars['Boolean']['input']>;
 }>;
 export type ICodegenGeneratedTokenTokenMetadatasQuery = {
     __typename?: 'Query';
@@ -1613,12 +3027,61 @@ export type ICodegenGeneratedTokenTokenMetadatasQuery = {
         __typename?: 'TokenQueries';
         token_metadatas: Array<{
             __typename?: 'Metadata';
+            chain_type: Array<string>;
+            chain_uids: Array<string>;
             coinDecimal: number;
+            created_at: string;
             description: string;
+            dex: Array<string>;
             displayName: string;
+            id: string;
             image: string;
+            is_price_from_oracle: boolean;
+            is_verified: boolean;
+            min_swap_value: number;
+            oracle_price: string;
             price: string;
+            price_change_7d: number;
+            price_change_24h: number;
+            social: any;
+            tags: Array<string>;
             tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
+        }>;
+    };
+};
+export type ICodegenGeneratedTokenTokensMetadataQueryVariables = Exact<{
+    token_tokens_metadata_token_ids: Array<Scalars['String']['input']> | Scalars['String']['input'];
+    token_tokens_metadata_verified?: InputMaybe<Scalars['Boolean']['input']>;
+}>;
+export type ICodegenGeneratedTokenTokensMetadataQuery = {
+    __typename?: 'Query';
+    token: {
+        __typename?: 'TokenQueries';
+        tokens_metadata: Array<{
+            __typename?: 'Metadata';
+            chain_type: Array<string>;
+            chain_uids: Array<string>;
+            coinDecimal: number;
+            created_at: string;
+            description: string;
+            dex: Array<string>;
+            displayName: string;
+            id: string;
+            image: string;
+            is_price_from_oracle: boolean;
+            is_verified: boolean;
+            min_swap_value: number;
+            oracle_price: string;
+            price: string;
+            price_change_7d: number;
+            price_change_24h: number;
+            social: any;
+            tags: Array<string>;
+            tokenId: string;
+            total_volume: number;
+            total_volume_24h: number;
         }>;
     };
 };
@@ -1629,9 +3092,22 @@ export type ICodegenGeneratedTokenQuery = {
     __typename?: 'Query';
     token: {
         __typename?: 'TokenQueries';
+        chains_for_token_launch: Array<{
+            __typename?: 'ChainConfig';
+            chain_id: string;
+            chain_uid: string;
+            display_name: string;
+            explorer_url: string;
+            factory_address: string;
+            id: string;
+            logo: string;
+            token_factory_address: string;
+            type: string;
+        }>;
         get_all_faucets: Array<{
             __typename?: 'Faucet';
             faucet_link: string;
+            id: string;
             token: string;
         }>;
     };
@@ -1646,6 +3122,7 @@ export type ICodegenGeneratedVcoinBalanceQuery = {
         balance: {
             __typename?: 'VcoinBalance';
             amount: string;
+            id: string;
         };
     };
 };
@@ -1659,8 +3136,53 @@ export type ICodegenGeneratedVcoinStateQuery = {
         state: {
             __typename?: 'ContractStateOfVcoin';
             admin: string;
+            id: string;
             router: string;
         };
+    };
+};
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables = Exact<{
+    vcoin_unified_user_balance_address: Scalars['String']['input'];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery = {
+    __typename?: 'Query';
+    vcoin: {
+        __typename?: 'Vcoin';
+        unified_user_balance: Array<{
+            __typename?: 'VcoinBalanceResponse';
+            balances: Array<{
+                __typename?: 'VcoinBalanceUserResponse';
+                amount: string;
+                id: string;
+                token_id: string;
+            }>;
+        }>;
+    };
+};
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables = Exact<{
+    vcoin_unified_user_balance_address: Scalars['String']['input'];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars['Int']['input']>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVcoinUnifiedUserBalanceQuery = {
+    __typename?: 'Query';
+    vcoin: {
+        __typename?: 'Vcoin';
+        unified_user_balance: Array<{
+            __typename?: 'VcoinBalanceResponse';
+            chain_uid: string;
+            id: string;
+            balances: Array<{
+                __typename?: 'VcoinBalanceUserResponse';
+                amount: string;
+                id: string;
+                token_id: string;
+            }>;
+        }>;
     };
 };
 export type ICodegenGeneratedVcoinUserBalanceBalancesQueryVariables = Exact<{
@@ -1675,6 +3197,7 @@ export type ICodegenGeneratedVcoinUserBalanceBalancesQuery = {
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         };
@@ -1689,9 +3212,12 @@ export type ICodegenGeneratedVcoinUserBalanceQuery = {
         __typename?: 'Vcoin';
         user_balance: {
             __typename?: 'VcoinBalanceResponse';
+            chain_uid: string;
+            id: string;
             balances: Array<{
                 __typename?: 'VcoinBalanceUserResponse';
                 amount: string;
+                id: string;
                 token_id: string;
             }>;
         };
@@ -1707,12 +3233,14 @@ export type ICodegenGeneratedVcoinQuery = {
         state: {
             __typename?: 'ContractStateOfVcoin';
             admin: string;
+            id: string;
             router: string;
         };
     };
 };
 export type ICodegenGeneratedVlpAllPoolsPaginationQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1724,6 +3252,7 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQuery = {
             __typename?: 'PoolsResponse';
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1731,8 +3260,151 @@ export type ICodegenGeneratedVlpAllPoolsPaginationQuery = {
         };
     };
 };
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        all_pools: {
+            __typename?: 'PoolsResponse';
+            pools: Array<{
+                __typename?: 'Pools';
+                pool: {
+                    __typename?: 'Pool';
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        pair: {
+                            __typename?: 'Pair';
+                            id: string;
+                            token_1: string;
+                            token_2: string;
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        all_pools: {
+            __typename?: 'PoolsResponse';
+            pools: Array<{
+                __typename?: 'Pools';
+                pool: {
+                    __typename?: 'Pool';
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        all_pools: {
+            __typename?: 'PoolsResponse';
+            pools: Array<{
+                __typename?: 'Pools';
+                pool: {
+                    __typename?: 'Pool';
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            constant_product: any;
+                            id: string;
+                            stable: any;
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        all_pools: {
+            __typename?: 'PoolsResponse';
+            pools: Array<{
+                __typename?: 'Pools';
+                pool: {
+                    __typename?: 'Pool';
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        id: string;
+                        pair: {
+                            __typename?: 'Pair';
+                            id: string;
+                            token_1: string;
+                            token_2: string;
+                        };
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            constant_product: any;
+                            id: string;
+                            stable: any;
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
+                };
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1746,16 +3418,40 @@ export type ICodegenGeneratedVlpAllPoolsPoolsPoolQuery = {
                 __typename?: 'Pools';
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        id: string;
+                        pair: {
+                            __typename?: 'Pair';
+                            id: string;
+                            token_1: string;
+                            token_2: string;
+                        };
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            constant_product: any;
+                            id: string;
+                            stable: any;
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
                 };
             }>;
         };
     };
 };
 export type ICodegenGeneratedVlpAllPoolsPoolsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1768,18 +3464,43 @@ export type ICodegenGeneratedVlpAllPoolsPoolsQuery = {
             pools: Array<{
                 __typename?: 'Pools';
                 chain_uid: string;
+                id: string;
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        id: string;
+                        pair: {
+                            __typename?: 'Pair';
+                            id: string;
+                            token_1: string;
+                            token_2: string;
+                        };
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            constant_product: any;
+                            id: string;
+                            stable: any;
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
                 };
             }>;
         };
     };
 };
 export type ICodegenGeneratedVlpAllPoolsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars['Int']['input']>;
     vlp_all_pools_offset?: InputMaybe<Scalars['Int']['input']>;
 }>;
@@ -1789,8 +3510,10 @@ export type ICodegenGeneratedVlpAllPoolsQuery = {
         __typename?: 'Vlp';
         all_pools: {
             __typename?: 'PoolsResponse';
+            id: string;
             pagination: {
                 __typename?: 'PaginationInfo';
+                id: string;
                 limit: number;
                 offset: number;
                 total_count: number;
@@ -1798,18 +3521,43 @@ export type ICodegenGeneratedVlpAllPoolsQuery = {
             pools: Array<{
                 __typename?: 'Pools';
                 chain_uid: string;
+                id: string;
                 pool: {
                     __typename?: 'Pool';
+                    id: string;
                     lp_shares: string;
                     reserve_1: string;
                     reserve_2: string;
+                    pool_key: {
+                        __typename?: 'PoolKeyOutput';
+                        id: string;
+                        pair: {
+                            __typename?: 'Pair';
+                            id: string;
+                            token_1: string;
+                            token_2: string;
+                        };
+                        pool_type: {
+                            __typename?: 'PoolTypeOutput';
+                            constant_product: any;
+                            id: string;
+                            stable: any;
+                            concentrated: {
+                                __typename?: 'ConcentratedPoolParams';
+                                fee_tier_bps: number;
+                                id: string;
+                                tick_spacing: number;
+                            };
+                        };
+                    };
                 };
             }>;
         };
     };
 };
 export type ICodegenGeneratedVlpFeeRecipientQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpFeeRecipientQuery = {
     __typename?: 'Query';
@@ -1821,12 +3569,14 @@ export type ICodegenGeneratedVlpFeeRecipientQuery = {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpFeeQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpFeeQuery = {
     __typename?: 'Query';
@@ -1835,17 +3585,20 @@ export type ICodegenGeneratedVlpFeeQuery = {
         fee: {
             __typename?: 'FeeInfo';
             euclid_fee_bps: number;
+            id: string;
             lp_fee_bps: number;
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpLiquidityPairQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpLiquidityPairQuery = {
     __typename?: 'Query';
@@ -1855,6 +3608,7 @@ export type ICodegenGeneratedVlpLiquidityPairQuery = {
             __typename?: 'Liquidity';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
@@ -1862,7 +3616,8 @@ export type ICodegenGeneratedVlpLiquidityPairQuery = {
     };
 };
 export type ICodegenGeneratedVlpLiquidityQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpLiquidityQuery = {
     __typename?: 'Query';
@@ -1870,19 +3625,174 @@ export type ICodegenGeneratedVlpLiquidityQuery = {
         __typename?: 'Vlp';
         liquidity: {
             __typename?: 'Liquidity';
+            id: string;
             token_1_reserve: string;
             token_2_reserve: string;
             total_lp_tokens: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
         };
     };
 };
+export type ICodegenGeneratedVlpMigrationStatusQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpMigrationStatusQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        migration_status: {
+            __typename?: 'MigrationStatusResponse';
+            active_liquidity: string;
+            id: string;
+            migrated_at: number;
+            mode: string;
+            positions_migrated: number;
+            revision: number;
+            source_version: string;
+            total_liquidity: string;
+        };
+    };
+};
+export type ICodegenGeneratedVlpObserveQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_observe_seconds_agos: Array<Scalars['Int']['input']> | Scalars['Int']['input'];
+}>;
+export type ICodegenGeneratedVlpObserveQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        observe: {
+            __typename?: 'ObserveResponse';
+            id: string;
+            seconds_per_liquidity_cumulative_x128s: Array<string>;
+            tick_cumulatives: Array<string>;
+        };
+    };
+};
+export type ICodegenGeneratedVlpPoolPoolKeyPairQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedVlpPoolPoolKeyPairQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        pool: {
+            __typename?: 'Pool';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        pool: {
+            __typename?: 'Pool';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpPoolPoolKeyPoolTypeQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        pool: {
+            __typename?: 'Pool';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpPoolPoolKeyQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedVlpPoolPoolKeyQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        pool: {
+            __typename?: 'Pool';
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
 export type ICodegenGeneratedVlpPoolQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_pool_chain_uid: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedVlpPoolQuery = {
@@ -1891,14 +3801,100 @@ export type ICodegenGeneratedVlpPoolQuery = {
         __typename?: 'Vlp';
         pool: {
             __typename?: 'Pool';
+            id: string;
             lp_shares: string;
             reserve_1: string;
             reserve_2: string;
+            pool_key: {
+                __typename?: 'PoolKeyOutput';
+                id: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                pool_type: {
+                    __typename?: 'PoolTypeOutput';
+                    constant_product: any;
+                    id: string;
+                    stable: any;
+                    concentrated: {
+                        __typename?: 'ConcentratedPoolParams';
+                        fee_tier_bps: number;
+                        id: string;
+                        tick_spacing: number;
+                    };
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpPositionQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_position_position_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedVlpPositionQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        position: {
+            __typename?: 'PositionResponse';
+            chain_uid: string;
+            fee_growth_inside_0_last_x128: string;
+            fee_growth_inside_1_last_x128: string;
+            id: string;
+            liquidity: string;
+            lower_tick_index: number;
+            position_id: string;
+            tokens_owed_0: string;
+            tokens_owed_1: string;
+            upper_tick_index: number;
+        };
+    };
+};
+export type ICodegenGeneratedVlpProtocolFeesQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpProtocolFeesQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        protocol_fees: {
+            __typename?: 'ProtocolFeesResponse';
+            amount_0: string;
+            amount_1: string;
+            id: string;
+        };
+    };
+};
+export type ICodegenGeneratedVlpSlot0QueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpSlot0Query = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        slot0: {
+            __typename?: 'Slot0Response';
+            fee_growth_global_0_x128: string;
+            fee_growth_global_1_x128: string;
+            id: string;
+            liquidity: string;
+            observation_cardinality: number;
+            observation_cardinality_next: number;
+            observation_index: number;
+            sqrt_price_x96: string;
+            tick: number;
         };
     };
 };
 export type ICodegenGeneratedVlpStateFeeRecipientQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
     __typename?: 'Query';
@@ -1912,13 +3908,15 @@ export type ICodegenGeneratedVlpStateFeeRecipientQuery = {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
         };
     };
 };
 export type ICodegenGeneratedVlpStateFeeQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateFeeQuery = {
     __typename?: 'Query';
@@ -1929,18 +3927,21 @@ export type ICodegenGeneratedVlpStateFeeQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
         };
     };
 };
 export type ICodegenGeneratedVlpStatePairQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStatePairQuery = {
     __typename?: 'Query';
@@ -1950,14 +3951,88 @@ export type ICodegenGeneratedVlpStatePairQuery = {
             __typename?: 'ContractStateOfVlp';
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
         };
     };
 };
+export type ICodegenGeneratedVlpStatePoolConfigConcentratedQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpStatePoolConfigConcentratedQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        state: {
+            __typename?: 'ContractStateOfVlp';
+            pool_config: {
+                __typename?: 'PoolConfig';
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpStatePoolConfigStableQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpStatePoolConfigStableQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        state: {
+            __typename?: 'ContractStateOfVlp';
+            pool_config: {
+                __typename?: 'PoolConfig';
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                    id: string;
+                };
+            };
+        };
+    };
+};
+export type ICodegenGeneratedVlpStatePoolConfigQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+}>;
+export type ICodegenGeneratedVlpStatePoolConfigQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        state: {
+            __typename?: 'ContractStateOfVlp';
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                id: string;
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                    id: string;
+                };
+            };
+        };
+    };
+};
 export type ICodegenGeneratedVlpStateQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpStateQuery = {
     __typename?: 'Query';
@@ -1966,6 +4041,7 @@ export type ICodegenGeneratedVlpStateQuery = {
         state: {
             __typename?: 'ContractStateOfVlp';
             admin: string;
+            id: string;
             last_updated: number;
             router: string;
             total_lp_tokens: string;
@@ -1973,23 +4049,115 @@ export type ICodegenGeneratedVlpStateQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
+            };
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                id: string;
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                    id: string;
+                };
             };
         };
     };
 };
+export type ICodegenGeneratedVlpTickQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_tick_index: Scalars['Int']['input'];
+}>;
+export type ICodegenGeneratedVlpTickQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        tick: {
+            __typename?: 'TickResponse';
+            fee_growth_outside_0_x128: string;
+            fee_growth_outside_1_x128: string;
+            id: string;
+            index: number;
+            initialized: boolean;
+            liquidity_gross: string;
+            liquidity_net: string;
+        };
+    };
+};
+export type ICodegenGeneratedVlpTicksTicksQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_ticks_start_after?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpTicksTicksQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        ticks: {
+            __typename?: 'TicksResponse';
+            ticks: Array<{
+                __typename?: 'TickResponse';
+                fee_growth_outside_0_x128: string;
+                fee_growth_outside_1_x128: string;
+                id: string;
+                index: number;
+                initialized: boolean;
+                liquidity_gross: string;
+                liquidity_net: string;
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedVlpTicksQueryVariables = Exact<{
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars['Int']['input']>;
+    vlp_ticks_start_after?: InputMaybe<Scalars['Int']['input']>;
+}>;
+export type ICodegenGeneratedVlpTicksQuery = {
+    __typename?: 'Query';
+    vlp: {
+        __typename?: 'Vlp';
+        ticks: {
+            __typename?: 'TicksResponse';
+            id: string;
+            ticks: Array<{
+                __typename?: 'TickResponse';
+                fee_growth_outside_0_x128: string;
+                fee_growth_outside_1_x128: string;
+                id: string;
+                index: number;
+                initialized: boolean;
+                liquidity_gross: string;
+                liquidity_net: string;
+            }>;
+        };
+    };
+};
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = {
     __typename?: 'Query';
@@ -2003,13 +4171,15 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = {
     __typename?: 'Query';
@@ -2019,17 +4189,20 @@ export type ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery = {
             __typename?: 'TotalFeesCollected';
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = {
     __typename?: 'Query';
@@ -2043,13 +4216,15 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery = {
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = {
     __typename?: 'Query';
@@ -2059,17 +4234,20 @@ export type ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery = {
             __typename?: 'TotalFeesCollected';
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedQuery = {
     __typename?: 'Query';
@@ -2077,27 +4255,33 @@ export type ICodegenGeneratedVlpTotalFeesCollectedQuery = {
         __typename?: 'Vlp';
         total_fees_collected: {
             __typename?: 'TotalFeesCollected';
+            id: string;
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
     };
 };
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
     vlp_total_fees_collected_per_denom_denom: Scalars['String']['input'];
 }>;
 export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = {
@@ -2107,12 +4291,14 @@ export type ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery = {
         total_fees_collected_per_denom: {
             __typename?: 'TotalFeesPerDenomResponse';
             euclid_fees: string;
+            id: string;
             lp_fees: string;
         };
     };
 };
 export type ICodegenGeneratedVlpQueryVariables = Exact<{
-    contract: Scalars['String']['input'];
+    contract?: InputMaybe<Scalars['String']['input']>;
+    pair?: InputMaybe<IPairInput>;
 }>;
 export type ICodegenGeneratedVlpQuery = {
     __typename?: 'Query';
@@ -2121,27 +4307,61 @@ export type ICodegenGeneratedVlpQuery = {
         fee: {
             __typename?: 'FeeInfo';
             euclid_fee_bps: number;
+            id: string;
             lp_fee_bps: number;
             recipient: {
                 __typename?: 'CrossChainUser';
                 address: string;
                 chain_uid: string;
+                id: string;
             };
         };
         liquidity: {
             __typename?: 'Liquidity';
+            id: string;
             token_1_reserve: string;
             token_2_reserve: string;
             total_lp_tokens: string;
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
             };
         };
+        migration_status: {
+            __typename?: 'MigrationStatusResponse';
+            active_liquidity: string;
+            id: string;
+            migrated_at: number;
+            mode: string;
+            positions_migrated: number;
+            revision: number;
+            source_version: string;
+            total_liquidity: string;
+        };
+        protocol_fees: {
+            __typename?: 'ProtocolFeesResponse';
+            amount_0: string;
+            amount_1: string;
+            id: string;
+        };
+        slot0: {
+            __typename?: 'Slot0Response';
+            fee_growth_global_0_x128: string;
+            fee_growth_global_1_x128: string;
+            id: string;
+            liquidity: string;
+            observation_cardinality: number;
+            observation_cardinality_next: number;
+            observation_index: number;
+            sqrt_price_x96: string;
+            tick: number;
+        };
         state: {
             __typename?: 'ContractStateOfVlp';
             admin: string;
+            id: string;
             last_updated: number;
             router: string;
             total_lp_tokens: string;
@@ -2149,35 +4369,59 @@ export type ICodegenGeneratedVlpQuery = {
             fee: {
                 __typename?: 'FeeInfo';
                 euclid_fee_bps: number;
+                id: string;
                 lp_fee_bps: number;
                 recipient: {
                     __typename?: 'CrossChainUser';
                     address: string;
                     chain_uid: string;
+                    id: string;
                 };
             };
             pair: {
                 __typename?: 'Pair';
+                id: string;
                 token_1: string;
                 token_2: string;
+            };
+            pool_config: {
+                __typename?: 'PoolConfig';
+                constant_product: any;
+                id: string;
+                concentrated: {
+                    __typename?: 'ConcentratedPoolParams';
+                    fee_tier_bps: number;
+                    id: string;
+                    tick_spacing: number;
+                };
+                stable: {
+                    __typename?: 'StablePoolConfig';
+                    amp_factor: string;
+                    id: string;
+                };
             };
         };
         total_fees_collected: {
             __typename?: 'TotalFeesCollected';
+            id: string;
             euclid_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
             lp_fees: {
                 __typename?: 'DenomFees';
+                id: string;
                 totals: Array<{
                     __typename?: 'Denomination';
                     amount: string;
                     denom: string;
+                    id: string;
                 }>;
             };
         };
@@ -2197,14 +4441,17 @@ export declare const CodegenGeneratedChainsAllChainsDocument: Apollo.DocumentNod
  * const { data, loading, error } = useCodegenGeneratedChainsAllChainsQuery({
  *   variables: {
  *      chains_all_chains_show_all_chains: // value for 'chains_all_chains_show_all_chains'
+ *      chains_all_chains_type: // value for 'chains_all_chains_type'
  *   },
  * });
  */
 export declare function useCodegenGeneratedChainsAllChainsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllChainsQuery, ICodegenGeneratedChainsAllChainsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllChainsQuery, Exact<{
     chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
+    chains_all_chains_type?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedChainsAllChainsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllChainsQuery, ICodegenGeneratedChainsAllChainsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllChainsQuery, Exact<{
     chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
+    chains_all_chains_type?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export type CodegenGeneratedChainsAllChainsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllChainsQuery>;
 export type CodegenGeneratedChainsAllChainsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllChainsLazyQuery>;
@@ -2213,6 +4460,131 @@ export declare function refetchCodegenGeneratedChainsAllChainsQuery(variables?: 
     query: Apollo.DocumentNode;
     variables: Exact<{
         chains_all_chains_show_all_chains?: InputMaybe<Scalars["Boolean"]["input"]>;
+        chains_all_chains_type?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery, ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery, ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery>;
+export type CodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsNativeCurrencyLazyQuery>;
+export type CodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery, ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables>;
+export declare function refetchCodegenGeneratedChainsAllEvmChainsNativeCurrencyQuery(variables?: ICodegenGeneratedChainsAllEvmChainsNativeCurrencyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultLazyQuery>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables>;
+export declare function refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQuery(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsRpcUrlsLazyQuery>;
+export type CodegenGeneratedChainsAllEvmChainsRpcUrlsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsRpcUrlsQuery, ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables>;
+export declare function refetchCodegenGeneratedChainsAllEvmChainsRpcUrlsQuery(variables?: ICodegenGeneratedChainsAllEvmChainsRpcUrlsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsAllEvmChainsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsAllEvmChainsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsAllEvmChainsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsAllEvmChainsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsAllEvmChainsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsAllEvmChainsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsAllEvmChainsQuery, ICodegenGeneratedChainsAllEvmChainsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedChainsAllEvmChainsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsAllEvmChainsQuery, ICodegenGeneratedChainsAllEvmChainsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsAllEvmChainsQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedChainsAllEvmChainsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsQuery>;
+export type CodegenGeneratedChainsAllEvmChainsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsAllEvmChainsLazyQuery>;
+export type CodegenGeneratedChainsAllEvmChainsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsAllEvmChainsQuery, ICodegenGeneratedChainsAllEvmChainsQueryVariables>;
+export declare function refetchCodegenGeneratedChainsAllEvmChainsQuery(variables?: ICodegenGeneratedChainsAllEvmChainsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
     }> | undefined;
 };
 export declare const CodegenGeneratedChainsChainConfigDocument: Apollo.DocumentNode;
@@ -2285,6 +4657,150 @@ export declare function refetchCodegenGeneratedChainsContractsQuery(variables?: 
     variables: Exact<{
         chains_contracts_chainUId?: InputMaybe<Scalars["String"]["input"]>;
         chains_contracts_type?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigNativeCurrencyLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery, ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigNativeCurrencyQuery(variables?: ICodegenGeneratedChainsEvmChainConfigNativeCurrencyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQuery(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigRpcUrlsLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigRpcUrlsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigRpcUrlsQuery, ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigRpcUrlsQuery(variables?: ICodegenGeneratedChainsEvmChainConfigRpcUrlsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedChainsEvmChainConfigDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedChainsEvmChainConfigQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedChainsEvmChainConfigQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedChainsEvmChainConfigQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedChainsEvmChainConfigQuery({
+ *   variables: {
+ *      chains_evm_chain_config_chain_id: // value for 'chains_evm_chain_config_chain_id'
+ *      chains_evm_chain_config_chain_uid: // value for 'chains_evm_chain_config_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedChainsEvmChainConfigQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>): Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedChainsEvmChainConfigLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedChainsEvmChainConfigQuery, Exact<{
+    chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+    chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedChainsEvmChainConfigQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigQuery>;
+export type CodegenGeneratedChainsEvmChainConfigLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsEvmChainConfigLazyQuery>;
+export type CodegenGeneratedChainsEvmChainConfigQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsEvmChainConfigQuery, ICodegenGeneratedChainsEvmChainConfigQueryVariables>;
+export declare function refetchCodegenGeneratedChainsEvmChainConfigQuery(variables?: ICodegenGeneratedChainsEvmChainConfigQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chains_evm_chain_config_chain_id?: InputMaybe<Scalars["String"]["input"]>;
+        chains_evm_chain_config_chain_uid?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedChainsKeplrConfigBech32ConfigDocument: Apollo.DocumentNode;
@@ -2632,6 +5148,516 @@ export type CodegenGeneratedChainsQueryHookResult = ReturnType<typeof useCodegen
 export type CodegenGeneratedChainsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedChainsLazyQuery>;
 export type CodegenGeneratedChainsQueryResult = Apollo.QueryResult<ICodegenGeneratedChainsQuery, ICodegenGeneratedChainsQueryVariables>;
 export declare function refetchCodegenGeneratedChainsQuery(variables?: ICodegenGeneratedChainsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedClaimClaimSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimSenderQuery({
+ *   variables: {
+ *      claim_claim_claim_id: // value for 'claim_claim_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimSenderQuery, ICodegenGeneratedClaimClaimSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimSenderQuery, Exact<{
+    claim_claim_claim_id: Scalars["Int"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimSenderQuery, ICodegenGeneratedClaimClaimSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimSenderQuery, Exact<{
+    claim_claim_claim_id: Scalars["Int"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimSenderQuery>;
+export type CodegenGeneratedClaimClaimSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimSenderLazyQuery>;
+export type CodegenGeneratedClaimClaimSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimSenderQuery, ICodegenGeneratedClaimClaimSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimSenderQuery(variables: ICodegenGeneratedClaimClaimSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_claim_id: Scalars["Int"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimQuery({
+ *   variables: {
+ *      claim_claim_claim_id: // value for 'claim_claim_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimQuery, ICodegenGeneratedClaimClaimQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimQuery, Exact<{
+    claim_claim_claim_id: Scalars["Int"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimQuery, ICodegenGeneratedClaimClaimQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimQuery, Exact<{
+    claim_claim_claim_id: Scalars["Int"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimQuery>;
+export type CodegenGeneratedClaimClaimLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimLazyQuery>;
+export type CodegenGeneratedClaimClaimQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimQuery, ICodegenGeneratedClaimClaimQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimQuery(variables: ICodegenGeneratedClaimClaimQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_claim_id: Scalars["Int"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdSenderLazyQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdSenderQuery(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimByPsuedoClaimIdDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery({
+ *   variables: {
+ *      claim_claim_by_psuedo_claim_id_psuedo_claim_id: // value for 'claim_claim_by_psuedo_claim_id_psuedo_claim_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, Exact<{
+    claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimByPsuedoClaimIdLazyQuery>;
+export type CodegenGeneratedClaimClaimByPsuedoClaimIdQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimByPsuedoClaimIdQuery, ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimByPsuedoClaimIdQuery(variables: ICodegenGeneratedClaimClaimByPsuedoClaimIdQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claim_by_psuedo_claim_id_psuedo_claim_id: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery({
+ *   variables: {
+ *      claim_claims_by_claimer_pub_Key_claimer_pub_key: // value for 'claim_claims_by_claimer_pub_Key_claimer_pub_key'
+ *      claim_claims_by_claimer_pub_Key_limit: // value for 'claim_claims_by_claimer_pub_Key_limit'
+ *      claim_claims_by_claimer_pub_Key_offset: // value for 'claim_claims_by_claimer_pub_Key_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery, Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery, Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByClaimerPubKeySenderLazyQuery>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimsByClaimerPubKeySenderQuery(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeySenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+        claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimsByClaimerPubKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery({
+ *   variables: {
+ *      claim_claims_by_claimer_pub_Key_claimer_pub_key: // value for 'claim_claims_by_claimer_pub_Key_claimer_pub_key'
+ *      claim_claims_by_claimer_pub_Key_limit: // value for 'claim_claims_by_claimer_pub_Key_limit'
+ *      claim_claims_by_claimer_pub_Key_offset: // value for 'claim_claims_by_claimer_pub_Key_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery, Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedClaimClaimsByClaimerPubKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery, Exact<{
+    claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+    claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByClaimerPubKeyQuery>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByClaimerPubKeyLazyQuery>;
+export type CodegenGeneratedClaimClaimsByClaimerPubKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimsByClaimerPubKeyQuery, ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimsByClaimerPubKeyQuery(variables: ICodegenGeneratedClaimClaimsByClaimerPubKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claims_by_claimer_pub_Key_claimer_pub_key: Scalars["String"]["input"];
+        claim_claims_by_claimer_pub_Key_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_claims_by_claimer_pub_Key_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimsByEmailSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimsByEmailSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByEmailSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByEmailSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByEmailSenderQuery({
+ *   variables: {
+ *      claim_claims_by_email_email: // value for 'claim_claims_by_email_email'
+ *      claim_claims_by_email_limit: // value for 'claim_claims_by_email_limit'
+ *      claim_claims_by_email_offset: // value for 'claim_claims_by_email_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimsByEmailSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimsByEmailSenderQuery, ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimsByEmailSenderQuery, Exact<{
+    claim_claims_by_email_email: Scalars["String"]["input"];
+    claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedClaimClaimsByEmailSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimsByEmailSenderQuery, ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimsByEmailSenderQuery, Exact<{
+    claim_claims_by_email_email: Scalars["String"]["input"];
+    claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedClaimClaimsByEmailSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByEmailSenderQuery>;
+export type CodegenGeneratedClaimClaimsByEmailSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByEmailSenderLazyQuery>;
+export type CodegenGeneratedClaimClaimsByEmailSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimsByEmailSenderQuery, ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimsByEmailSenderQuery(variables: ICodegenGeneratedClaimClaimsByEmailSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claims_by_email_email: Scalars["String"]["input"];
+        claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedClaimClaimsByEmailDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimClaimsByEmailQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimClaimsByEmailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimClaimsByEmailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimClaimsByEmailQuery({
+ *   variables: {
+ *      claim_claims_by_email_email: // value for 'claim_claims_by_email_email'
+ *      claim_claims_by_email_limit: // value for 'claim_claims_by_email_limit'
+ *      claim_claims_by_email_offset: // value for 'claim_claims_by_email_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimClaimsByEmailQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimClaimsByEmailQuery, ICodegenGeneratedClaimClaimsByEmailQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimClaimsByEmailQuery, Exact<{
+    claim_claims_by_email_email: Scalars["String"]["input"];
+    claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedClaimClaimsByEmailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimClaimsByEmailQuery, ICodegenGeneratedClaimClaimsByEmailQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimClaimsByEmailQuery, Exact<{
+    claim_claims_by_email_email: Scalars["String"]["input"];
+    claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedClaimClaimsByEmailQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByEmailQuery>;
+export type CodegenGeneratedClaimClaimsByEmailLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimClaimsByEmailLazyQuery>;
+export type CodegenGeneratedClaimClaimsByEmailQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimClaimsByEmailQuery, ICodegenGeneratedClaimClaimsByEmailQueryVariables>;
+export declare function refetchCodegenGeneratedClaimClaimsByEmailQuery(variables: ICodegenGeneratedClaimClaimsByEmailQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_claims_by_email_email: Scalars["String"]["input"];
+        claim_claims_by_email_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_claims_by_email_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedClaimSenderClaimsSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimSenderClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimSenderClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimSenderClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimSenderClaimsSenderQuery({
+ *   variables: {
+ *      claim_sender_claims_limit: // value for 'claim_sender_claims_limit'
+ *      claim_sender_claims_offset: // value for 'claim_sender_claims_offset'
+ *      claim_sender_claims_sender: // value for 'claim_sender_claims_sender'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimSenderClaimsSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimSenderClaimsSenderQuery, ICodegenGeneratedClaimSenderClaimsSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimSenderClaimsSenderQuery, Exact<{
+    claim_sender_claims_limit: Scalars["Int"]["input"];
+    claim_sender_claims_offset: Scalars["Int"]["input"];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>>;
+export declare function useCodegenGeneratedClaimSenderClaimsSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimSenderClaimsSenderQuery, ICodegenGeneratedClaimSenderClaimsSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimSenderClaimsSenderQuery, Exact<{
+    claim_sender_claims_limit: Scalars["Int"]["input"];
+    claim_sender_claims_offset: Scalars["Int"]["input"];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>>;
+export type CodegenGeneratedClaimSenderClaimsSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimSenderClaimsSenderQuery>;
+export type CodegenGeneratedClaimSenderClaimsSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimSenderClaimsSenderLazyQuery>;
+export type CodegenGeneratedClaimSenderClaimsSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimSenderClaimsSenderQuery, ICodegenGeneratedClaimSenderClaimsSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimSenderClaimsSenderQuery(variables: ICodegenGeneratedClaimSenderClaimsSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_sender_claims_limit: Scalars["Int"]["input"];
+        claim_sender_claims_offset: Scalars["Int"]["input"];
+        claim_sender_claims_sender: ICrossChainUserInput;
+    }>;
+};
+export declare const CodegenGeneratedClaimSenderClaimsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimSenderClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimSenderClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimSenderClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimSenderClaimsQuery({
+ *   variables: {
+ *      claim_sender_claims_limit: // value for 'claim_sender_claims_limit'
+ *      claim_sender_claims_offset: // value for 'claim_sender_claims_offset'
+ *      claim_sender_claims_sender: // value for 'claim_sender_claims_sender'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimSenderClaimsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimSenderClaimsQuery, ICodegenGeneratedClaimSenderClaimsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimSenderClaimsQuery, Exact<{
+    claim_sender_claims_limit: Scalars["Int"]["input"];
+    claim_sender_claims_offset: Scalars["Int"]["input"];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>>;
+export declare function useCodegenGeneratedClaimSenderClaimsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimSenderClaimsQuery, ICodegenGeneratedClaimSenderClaimsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimSenderClaimsQuery, Exact<{
+    claim_sender_claims_limit: Scalars["Int"]["input"];
+    claim_sender_claims_offset: Scalars["Int"]["input"];
+    claim_sender_claims_sender: ICrossChainUserInput;
+}>>;
+export type CodegenGeneratedClaimSenderClaimsQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimSenderClaimsQuery>;
+export type CodegenGeneratedClaimSenderClaimsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimSenderClaimsLazyQuery>;
+export type CodegenGeneratedClaimSenderClaimsQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimSenderClaimsQuery, ICodegenGeneratedClaimSenderClaimsQueryVariables>;
+export declare function refetchCodegenGeneratedClaimSenderClaimsQuery(variables: ICodegenGeneratedClaimSenderClaimsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_sender_claims_limit: Scalars["Int"]["input"];
+        claim_sender_claims_offset: Scalars["Int"]["input"];
+        claim_sender_claims_sender: ICrossChainUserInput;
+    }>;
+};
+export declare const CodegenGeneratedClaimStateDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimStateQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimStateQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimStateQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimStateQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimStateQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedClaimStateQuery, ICodegenGeneratedClaimStateQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimStateQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedClaimStateLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimStateQuery, ICodegenGeneratedClaimStateQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimStateQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedClaimStateQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimStateQuery>;
+export type CodegenGeneratedClaimStateLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimStateLazyQuery>;
+export type CodegenGeneratedClaimStateQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimStateQuery, ICodegenGeneratedClaimStateQueryVariables>;
+export declare function refetchCodegenGeneratedClaimStateQuery(variables?: ICodegenGeneratedClaimStateQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedClaimUserClaimsSenderDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimUserClaimsSenderQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsSenderQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsSenderQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsSenderQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimUserClaimsSenderQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsSenderQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimUserClaimsSenderLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimUserClaimsSenderQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimUserClaimsSenderQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsSenderLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsSenderQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsSenderQuery, ICodegenGeneratedClaimUserClaimsSenderQueryVariables>;
+export declare function refetchCodegenGeneratedClaimUserClaimsSenderQuery(variables: ICodegenGeneratedClaimUserClaimsSenderQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_public_secret: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimUserClaimsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimUserClaimsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimUserClaimsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimUserClaimsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimUserClaimsQuery({
+ *   variables: {
+ *      claim_user_claims_limit: // value for 'claim_user_claims_limit'
+ *      claim_user_claims_offset: // value for 'claim_user_claims_offset'
+ *      claim_user_claims_public_secret: // value for 'claim_user_claims_public_secret'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimUserClaimsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedClaimUserClaimsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimUserClaimsQuery, Exact<{
+    claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    claim_user_claims_public_secret: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedClaimUserClaimsQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsQuery>;
+export type CodegenGeneratedClaimUserClaimsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimUserClaimsLazyQuery>;
+export type CodegenGeneratedClaimUserClaimsQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimUserClaimsQuery, ICodegenGeneratedClaimUserClaimsQueryVariables>;
+export declare function refetchCodegenGeneratedClaimUserClaimsQuery(variables: ICodegenGeneratedClaimUserClaimsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        claim_user_claims_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        claim_user_claims_public_secret: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedClaimDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedClaimQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedClaimQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedClaimQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedClaimQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedClaimQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedClaimQuery, ICodegenGeneratedClaimQueryVariables>): Apollo.QueryResult<ICodegenGeneratedClaimQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedClaimLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedClaimQuery, ICodegenGeneratedClaimQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedClaimQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedClaimQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimQuery>;
+export type CodegenGeneratedClaimLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedClaimLazyQuery>;
+export type CodegenGeneratedClaimQueryResult = Apollo.QueryResult<ICodegenGeneratedClaimQuery, ICodegenGeneratedClaimQueryVariables>;
+export declare function refetchCodegenGeneratedClaimQuery(variables?: ICodegenGeneratedClaimQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
         [key: string]: never;
@@ -3622,6 +6648,9 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocumen
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -3629,11 +6658,17 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocumen
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export type CodegenGeneratedPoolTokenPairWithLiquidityPaginationQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityPaginationQuery>;
@@ -3644,6 +6679,9 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityPaginat
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
@@ -3662,6 +6700,9 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocume
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -3669,11 +6710,17 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocume
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export type CodegenGeneratedPoolTokenPairWithLiquidityResultsPairQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityResultsPairQuery>;
@@ -3684,6 +6731,9 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityResults
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
@@ -3702,6 +6752,9 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: 
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -3709,11 +6762,17 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument: 
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityResultsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, ICodegenGeneratedPoolTokenPairWithLiquidityResultsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityResultsQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export type CodegenGeneratedPoolTokenPairWithLiquidityResultsQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityResultsQuery>;
@@ -3724,6 +6783,9 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityResults
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
@@ -3742,6 +6804,9 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: Apollo.
  *   variables: {
  *      pool_token_pair_with_liquidity_limit: // value for 'pool_token_pair_with_liquidity_limit'
  *      pool_token_pair_with_liquidity_offset: // value for 'pool_token_pair_with_liquidity_offset'
+ *      pool_token_pair_with_liquidity_only_show_verified: // value for 'pool_token_pair_with_liquidity_only_show_verified'
+ *      pool_token_pair_with_liquidity_sort_by: // value for 'pool_token_pair_with_liquidity_sort_by'
+ *      pool_token_pair_with_liquidity_sort_order: // value for 'pool_token_pair_with_liquidity_sort_order'
  *      pool_token_pair_with_liquidity_token: // value for 'pool_token_pair_with_liquidity_token'
  *   },
  * });
@@ -3749,11 +6814,17 @@ export declare const CodegenGeneratedPoolTokenPairWithLiquidityDocument: Apollo.
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedPoolTokenPairWithLiquidityLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, ICodegenGeneratedPoolTokenPairWithLiquidityQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolTokenPairWithLiquidityQuery, Exact<{
     pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
     pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+    pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
     pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
 }>>;
 export type CodegenGeneratedPoolTokenPairWithLiquidityQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolTokenPairWithLiquidityQuery>;
@@ -3764,6 +6835,9 @@ export declare function refetchCodegenGeneratedPoolTokenPairWithLiquidityQuery(v
     variables: Exact<{
         pool_token_pair_with_liquidity_limit?: InputMaybe<Scalars["Int"]["input"]>;
         pool_token_pair_with_liquidity_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        pool_token_pair_with_liquidity_only_show_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+        pool_token_pair_with_liquidity_sort_by?: InputMaybe<ITokenPairSortBy>;
+        pool_token_pair_with_liquidity_sort_order?: InputMaybe<ISortOrder>;
         pool_token_pair_with_liquidity_token?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
@@ -3824,6 +6898,68 @@ export type CodegenGeneratedPoolVolumeQueryHookResult = ReturnType<typeof useCod
 export type CodegenGeneratedPoolVolumeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeLazyQuery>;
 export type CodegenGeneratedPoolVolumeQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeQuery, ICodegenGeneratedPoolVolumeQueryVariables>;
 export declare function refetchCodegenGeneratedPoolVolumeQuery(variables?: ICodegenGeneratedPoolVolumeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursLazyQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery, ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables>;
+export declare function refetchCodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQuery(variables?: ICodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedPoolVolumeClickhouseDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedPoolVolumeClickhouseQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedPoolVolumeClickhouseQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedPoolVolumeClickhouseQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedPoolVolumeClickhouseQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedPoolVolumeClickhouseQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>): Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedPoolVolumeClickhouseLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedPoolVolumeClickhouseQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedPoolVolumeClickhouseQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedPoolVolumeClickhouseLazyQuery>;
+export type CodegenGeneratedPoolVolumeClickhouseQueryResult = Apollo.QueryResult<ICodegenGeneratedPoolVolumeClickhouseQuery, ICodegenGeneratedPoolVolumeClickhouseQueryVariables>;
+export declare function refetchCodegenGeneratedPoolVolumeClickhouseQuery(variables?: ICodegenGeneratedPoolVolumeClickhouseQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
         [key: string]: never;
@@ -3977,6 +7113,182 @@ export declare function refetchCodegenGeneratedRouterAllTokensQuery(variables?: 
         router_all_tokens_max?: InputMaybe<Scalars["String"]["input"]>;
         router_all_tokens_min?: InputMaybe<Scalars["String"]["input"]>;
         router_all_tokens_skip?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterAllVlpsVlpsPoolKeyPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery({
+ *   variables: {
+ *      router_all_vlps_limit: // value for 'router_all_vlps_limit'
+ *      router_all_vlps_max: // value for 'router_all_vlps_max'
+ *      router_all_vlps_min: // value for 'router_all_vlps_min'
+ *      router_all_vlps_skip: // value for 'router_all_vlps_skip'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairLazyQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryVariables>;
+export declare function refetchCodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQuery(variables?: ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      router_all_vlps_limit: // value for 'router_all_vlps_limit'
+ *      router_all_vlps_max: // value for 'router_all_vlps_max'
+ *      router_all_vlps_min: // value for 'router_all_vlps_min'
+ *      router_all_vlps_skip: // value for 'router_all_vlps_skip'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQuery(variables?: ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      router_all_vlps_limit: // value for 'router_all_vlps_limit'
+ *      router_all_vlps_max: // value for 'router_all_vlps_max'
+ *      router_all_vlps_min: // value for 'router_all_vlps_min'
+ *      router_all_vlps_skip: // value for 'router_all_vlps_skip'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQuery(variables?: ICodegenGeneratedRouterAllVlpsVlpsPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterAllVlpsVlpsPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery({
+ *   variables: {
+ *      router_all_vlps_limit: // value for 'router_all_vlps_limit'
+ *      router_all_vlps_max: // value for 'router_all_vlps_max'
+ *      router_all_vlps_min: // value for 'router_all_vlps_min'
+ *      router_all_vlps_skip: // value for 'router_all_vlps_skip'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedRouterAllVlpsVlpsPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery, Exact<{
+    router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterAllVlpsVlpsPoolKeyLazyQuery>;
+export type CodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery, ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedRouterAllVlpsVlpsPoolKeyQuery(variables?: ICodegenGeneratedRouterAllVlpsVlpsPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_all_vlps_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        router_all_vlps_max?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_min?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        router_all_vlps_skip?: InputMaybe<Scalars["Int"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedRouterAllVlpsVlpsDocument: Apollo.DocumentNode;
@@ -4429,14 +7741,14 @@ export declare function useCodegenGeneratedRouterSimulateSwapQuery(baseOptions: 
     router_simulate_swap_asset_in: Scalars["String"]["input"];
     router_simulate_swap_asset_out: Scalars["String"]["input"];
     router_simulate_swap_min_amount_out: Scalars["String"]["input"];
-    router_simulate_swap_swaps?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    router_simulate_swap_swaps?: InputMaybe<Array<INextSwapPair> | INextSwapPair>;
 }>>;
 export declare function useCodegenGeneratedRouterSimulateSwapLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterSimulateSwapQuery, ICodegenGeneratedRouterSimulateSwapQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterSimulateSwapQuery, Exact<{
     router_simulate_swap_amount_in: Scalars["String"]["input"];
     router_simulate_swap_asset_in: Scalars["String"]["input"];
     router_simulate_swap_asset_out: Scalars["String"]["input"];
     router_simulate_swap_min_amount_out: Scalars["String"]["input"];
-    router_simulate_swap_swaps?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    router_simulate_swap_swaps?: InputMaybe<Array<INextSwapPair> | INextSwapPair>;
 }>>;
 export type CodegenGeneratedRouterSimulateSwapQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterSimulateSwapQuery>;
 export type CodegenGeneratedRouterSimulateSwapLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterSimulateSwapLazyQuery>;
@@ -4448,7 +7760,7 @@ export declare function refetchCodegenGeneratedRouterSimulateSwapQuery(variables
         router_simulate_swap_asset_in: Scalars["String"]["input"];
         router_simulate_swap_asset_out: Scalars["String"]["input"];
         router_simulate_swap_min_amount_out: Scalars["String"]["input"];
-        router_simulate_swap_swaps?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+        router_simulate_swap_swaps?: InputMaybe<Array<INextSwapPair> | INextSwapPair>;
     }>;
 };
 export declare const CodegenGeneratedRouterStateDocument: Apollo.DocumentNode;
@@ -4546,6 +7858,134 @@ export declare function refetchCodegenGeneratedRouterTokenDenomsQuery(variables:
         router_token_denoms_token: Scalars["String"]["input"];
     }>;
 };
+export declare const CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery({
+ *   variables: {
+ *      router_token_pairs_from_vlp_vlp: // value for 'router_token_pairs_from_vlp_vlp'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairLazyQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryVariables>;
+export declare function refetchCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQuery(variables: ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      router_token_pairs_from_vlp_vlp: // value for 'router_token_pairs_from_vlp_vlp'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQuery(variables: ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      router_token_pairs_from_vlp_vlp: // value for 'router_token_pairs_from_vlp_vlp'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQuery(variables: ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedRouterTokenPairsFromVlpPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery({
+ *   variables: {
+ *      router_token_pairs_from_vlp_vlp: // value for 'router_token_pairs_from_vlp_vlp'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery, Exact<{
+    router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterTokenPairsFromVlpPoolKeyLazyQuery>;
+export type CodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery, ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedRouterTokenPairsFromVlpPoolKeyQuery(variables: ICodegenGeneratedRouterTokenPairsFromVlpPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
+    }>;
+};
 export declare const CodegenGeneratedRouterTokenPairsFromVlpDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedRouterTokenPairsFromVlpQuery__
@@ -4577,6 +8017,134 @@ export declare function refetchCodegenGeneratedRouterTokenPairsFromVlpQuery(vari
     variables: Exact<{
         router_token_pairs_from_vlp_vlp: Scalars["String"]["input"];
     }>;
+};
+export declare const CodegenGeneratedRouterVlpPoolKeyPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpPoolKeyPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpPoolKeyPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpPoolKeyPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpPoolKeyPairQuery({
+ *   variables: {
+ *      router_vlp_pair: // value for 'router_vlp_pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpPoolKeyPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPairQuery, ICodegenGeneratedRouterVlpPoolKeyPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPairQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedRouterVlpPoolKeyPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPairQuery, ICodegenGeneratedRouterVlpPoolKeyPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpPoolKeyPairQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedRouterVlpPoolKeyPairQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPairQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPairLazyQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPairQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPairQuery, ICodegenGeneratedRouterVlpPoolKeyPairQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpPoolKeyPairQuery(variables?: ICodegenGeneratedRouterVlpPoolKeyPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      router_vlp_pair: // value for 'router_vlp_pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQuery(variables?: ICodegenGeneratedRouterVlpPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterVlpPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      router_vlp_pair: // value for 'router_vlp_pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedRouterVlpPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpPoolKeyPoolTypeQuery(variables?: ICodegenGeneratedRouterVlpPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedRouterVlpPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpPoolKeyQuery({
+ *   variables: {
+ *      router_vlp_pair: // value for 'router_vlp_pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpPoolKeyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyQuery, ICodegenGeneratedRouterVlpPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedRouterVlpPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpPoolKeyQuery, ICodegenGeneratedRouterVlpPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpPoolKeyQuery, Exact<{
+    router_vlp_pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedRouterVlpPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpPoolKeyLazyQuery>;
+export type CodegenGeneratedRouterVlpPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpPoolKeyQuery, ICodegenGeneratedRouterVlpPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpPoolKeyQuery(variables?: ICodegenGeneratedRouterVlpPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedRouterVlpDocument: Apollo.DocumentNode;
 /**
@@ -4610,6 +8178,102 @@ export declare function refetchCodegenGeneratedRouterVlpQuery(variables?: ICodeg
         router_vlp_pair?: InputMaybe<IPairInput>;
     }> | undefined;
 };
+export declare const CodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      router_vlp_by_pool_key_pool_key: // value for 'router_vlp_by_pool_key_pool_key'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export declare function useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQuery(variables: ICodegenGeneratedRouterVlpByPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+    }>;
+};
+export declare const CodegenGeneratedRouterVlpByPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      router_vlp_by_pool_key_pool_key: // value for 'router_vlp_by_pool_key_pool_key'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export declare function useCodegenGeneratedRouterVlpByPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery, ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpByPoolKeyPoolTypeQuery(variables: ICodegenGeneratedRouterVlpByPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+    }>;
+};
+export declare const CodegenGeneratedRouterVlpByPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterVlpByPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterVlpByPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterVlpByPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterVlpByPoolKeyQuery({
+ *   variables: {
+ *      router_vlp_by_pool_key_pool_key: // value for 'router_vlp_by_pool_key_pool_key'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterVlpByPoolKeyQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyQuery, ICodegenGeneratedRouterVlpByPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export declare function useCodegenGeneratedRouterVlpByPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterVlpByPoolKeyQuery, ICodegenGeneratedRouterVlpByPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterVlpByPoolKeyQuery, Exact<{
+    router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+}>>;
+export type CodegenGeneratedRouterVlpByPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterVlpByPoolKeyLazyQuery>;
+export type CodegenGeneratedRouterVlpByPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterVlpByPoolKeyQuery, ICodegenGeneratedRouterVlpByPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedRouterVlpByPoolKeyQuery(variables: ICodegenGeneratedRouterVlpByPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_vlp_by_pool_key_pool_key: IPoolKeyInput;
+    }>;
+};
 export declare const CodegenGeneratedRouterDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedRouterQuery__
@@ -4641,6 +8305,105 @@ export declare function refetchCodegenGeneratedRouterQuery(variables?: ICodegenG
         [key: string]: never;
     }> | undefined;
 };
+export declare const CodegenGeneratedTokenAllDexesDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenAllDexesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenAllDexesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenAllDexesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenAllDexesQuery({
+ *   variables: {
+ *      token_all_dexes_limit: // value for 'token_all_dexes_limit'
+ *      token_all_dexes_offset: // value for 'token_all_dexes_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenAllDexesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenAllDexesQuery, Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedTokenAllDexesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenAllDexesQuery, Exact<{
+    token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedTokenAllDexesQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenAllDexesQuery>;
+export type CodegenGeneratedTokenAllDexesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenAllDexesLazyQuery>;
+export type CodegenGeneratedTokenAllDexesQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenAllDexesQuery, ICodegenGeneratedTokenAllDexesQueryVariables>;
+export declare function refetchCodegenGeneratedTokenAllDexesQuery(variables?: ICodegenGeneratedTokenAllDexesQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_all_dexes_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        token_all_dexes_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenChainsForTokenLaunchDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenChainsForTokenLaunchQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenChainsForTokenLaunchQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenChainsForTokenLaunchQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenChainsForTokenLaunchQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenChainsForTokenLaunchQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenChainsForTokenLaunchQuery, Exact<{
+    [key: string]: never;
+}>>;
+export declare function useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenChainsForTokenLaunchQuery, Exact<{
+    [key: string]: never;
+}>>;
+export type CodegenGeneratedTokenChainsForTokenLaunchQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenChainsForTokenLaunchQuery>;
+export type CodegenGeneratedTokenChainsForTokenLaunchLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenChainsForTokenLaunchLazyQuery>;
+export type CodegenGeneratedTokenChainsForTokenLaunchQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenChainsForTokenLaunchQuery, ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables>;
+export declare function refetchCodegenGeneratedTokenChainsForTokenLaunchQuery(variables?: ICodegenGeneratedTokenChainsForTokenLaunchQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenDexMetadataDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenDexMetadataQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenDexMetadataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenDexMetadataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenDexMetadataQuery({
+ *   variables: {
+ *      token_dex_metadata_dex: // value for 'token_dex_metadata_dex'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenDexMetadataQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenDexMetadataQuery, Exact<{
+    token_dex_metadata_dex: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedTokenDexMetadataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenDexMetadataQuery, Exact<{
+    token_dex_metadata_dex: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedTokenDexMetadataQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenDexMetadataQuery>;
+export type CodegenGeneratedTokenDexMetadataLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenDexMetadataLazyQuery>;
+export type CodegenGeneratedTokenDexMetadataQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenDexMetadataQuery, ICodegenGeneratedTokenDexMetadataQueryVariables>;
+export declare function refetchCodegenGeneratedTokenDexMetadataQuery(variables: ICodegenGeneratedTokenDexMetadataQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_dex_metadata_dex: Scalars["String"]["input"];
+    }>;
+};
 export declare const CodegenGeneratedTokenGetAllFaucetsDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedTokenGetAllFaucetsQuery__
@@ -4670,6 +8433,86 @@ export declare function refetchCodegenGeneratedTokenGetAllFaucetsQuery(variables
     query: Apollo.DocumentNode;
     variables: Exact<{
         [key: string]: never;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenTokenDenomsDenomsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenTokenDenomsDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_chain_uids: // value for 'token_token_denoms_chain_uids'
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *      token_token_denoms_token_id: // value for 'token_token_denoms_token_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenTokenDenomsDenomsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsDenomsQuery, Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenDenomsDenomsQuery, Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedTokenTokenDenomsDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsDenomsQuery>;
+export type CodegenGeneratedTokenTokenDenomsDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsDenomsLazyQuery>;
+export type CodegenGeneratedTokenTokenDenomsDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsDenomsQuery, ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables>;
+export declare function refetchCodegenGeneratedTokenTokenDenomsDenomsQuery(variables?: ICodegenGeneratedTokenTokenDenomsDenomsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+        token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+        token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedTokenTokenDenomsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenTokenDenomsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokenDenomsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokenDenomsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokenDenomsQuery({
+ *   variables: {
+ *      token_token_denoms_chain_uids: // value for 'token_token_denoms_chain_uids'
+ *      token_token_denoms_denom: // value for 'token_token_denoms_denom'
+ *      token_token_denoms_token_id: // value for 'token_token_denoms_token_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenTokenDenomsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsQuery, Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedTokenTokenDenomsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenDenomsQuery, Exact<{
+    token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
+}>>;
+export type CodegenGeneratedTokenTokenDenomsQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsQuery>;
+export type CodegenGeneratedTokenTokenDenomsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenDenomsLazyQuery>;
+export type CodegenGeneratedTokenTokenDenomsQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokenDenomsQuery, ICodegenGeneratedTokenTokenDenomsQueryVariables>;
+export declare function refetchCodegenGeneratedTokenTokenDenomsQuery(variables?: ICodegenGeneratedTokenTokenDenomsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_token_denoms_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+        token_token_denoms_denom?: InputMaybe<Scalars["String"]["input"]>;
+        token_token_denoms_token_id?: InputMaybe<Scalars["String"]["input"]>;
     }> | undefined;
 };
 export declare const CodegenGeneratedTokenTokenLiquiditiesDocument: Apollo.DocumentNode;
@@ -4754,14 +8597,17 @@ export declare const CodegenGeneratedTokenTokenMetadataByIdDocument: Apollo.Docu
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadataByIdQuery({
  *   variables: {
  *      token_token_metadata_by_id_token_id: // value for 'token_token_metadata_by_id_token_id'
+ *      token_token_metadata_by_id_verified: // value for 'token_token_metadata_by_id_verified'
  *   },
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadataByIdQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
     token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+    token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadataByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadataByIdQuery, ICodegenGeneratedTokenTokenMetadataByIdQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadataByIdQuery, Exact<{
     token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+    token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export type CodegenGeneratedTokenTokenMetadataByIdQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadataByIdQuery>;
 export type CodegenGeneratedTokenTokenMetadataByIdLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadataByIdLazyQuery>;
@@ -4770,6 +8616,7 @@ export declare function refetchCodegenGeneratedTokenTokenMetadataByIdQuery(varia
     query: Apollo.DocumentNode;
     variables: Exact<{
         token_token_metadata_by_id_token_id: Scalars["String"]["input"];
+        token_token_metadata_by_id_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     }>;
 };
 export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.DocumentNode;
@@ -4785,18 +8632,33 @@ export declare const CodegenGeneratedTokenTokenMetadatasDocument: Apollo.Documen
  * @example
  * const { data, loading, error } = useCodegenGeneratedTokenTokenMetadatasQuery({
  *   variables: {
+ *      token_token_metadatas_chain_uids: // value for 'token_token_metadatas_chain_uids'
+ *      token_token_metadatas_dex: // value for 'token_token_metadatas_dex'
  *      token_token_metadatas_limit: // value for 'token_token_metadatas_limit'
  *      token_token_metadatas_offset: // value for 'token_token_metadatas_offset'
+ *      token_token_metadatas_search: // value for 'token_token_metadatas_search'
+ *      token_token_metadatas_show_volume: // value for 'token_token_metadatas_show_volume'
+ *      token_token_metadatas_verified: // value for 'token_token_metadatas_verified'
  *   },
  * });
  */
 export declare function useCodegenGeneratedTokenTokenMetadatasQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
+    token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedTokenTokenMetadatasLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokenMetadatasQuery, ICodegenGeneratedTokenTokenMetadatasQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokenMetadatasQuery, Exact<{
+    token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+    token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
     token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
     token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
+    token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
+    token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
 }>>;
 export type CodegenGeneratedTokenTokenMetadatasQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadatasQuery>;
 export type CodegenGeneratedTokenTokenMetadatasLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokenMetadatasLazyQuery>;
@@ -4804,9 +8666,50 @@ export type CodegenGeneratedTokenTokenMetadatasQueryResult = Apollo.QueryResult<
 export declare function refetchCodegenGeneratedTokenTokenMetadatasQuery(variables?: ICodegenGeneratedTokenTokenMetadatasQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
+        token_token_metadatas_chain_uids?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
+        token_token_metadatas_dex?: InputMaybe<Array<Scalars["String"]["input"]> | Scalars["String"]["input"]>;
         token_token_metadatas_limit?: InputMaybe<Scalars["Int"]["input"]>;
         token_token_metadatas_offset?: InputMaybe<Scalars["Int"]["input"]>;
+        token_token_metadatas_search?: InputMaybe<Scalars["String"]["input"]>;
+        token_token_metadatas_show_volume?: InputMaybe<Scalars["Boolean"]["input"]>;
+        token_token_metadatas_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
     }> | undefined;
+};
+export declare const CodegenGeneratedTokenTokensMetadataDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedTokenTokensMetadataQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedTokenTokensMetadataQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedTokenTokensMetadataQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedTokenTokensMetadataQuery({
+ *   variables: {
+ *      token_tokens_metadata_token_ids: // value for 'token_tokens_metadata_token_ids'
+ *      token_tokens_metadata_verified: // value for 'token_tokens_metadata_verified'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedTokenTokensMetadataQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedTokenTokensMetadataQuery, ICodegenGeneratedTokenTokensMetadataQueryVariables>): Apollo.QueryResult<ICodegenGeneratedTokenTokensMetadataQuery, Exact<{
+    token_tokens_metadata_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
+    token_tokens_metadata_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedTokenTokensMetadataLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedTokenTokensMetadataQuery, ICodegenGeneratedTokenTokensMetadataQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedTokenTokensMetadataQuery, Exact<{
+    token_tokens_metadata_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
+    token_tokens_metadata_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+}>>;
+export type CodegenGeneratedTokenTokensMetadataQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokensMetadataQuery>;
+export type CodegenGeneratedTokenTokensMetadataLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedTokenTokensMetadataLazyQuery>;
+export type CodegenGeneratedTokenTokensMetadataQueryResult = Apollo.QueryResult<ICodegenGeneratedTokenTokensMetadataQuery, ICodegenGeneratedTokenTokensMetadataQueryVariables>;
+export declare function refetchCodegenGeneratedTokenTokensMetadataQuery(variables: ICodegenGeneratedTokenTokensMetadataQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        token_tokens_metadata_token_ids: Array<Scalars["String"]["input"]> | Scalars["String"]["input"];
+        token_tokens_metadata_verified?: InputMaybe<Scalars["Boolean"]["input"]>;
+    }>;
 };
 export declare const CodegenGeneratedTokenDocument: Apollo.DocumentNode;
 /**
@@ -4901,6 +8804,94 @@ export declare function refetchCodegenGeneratedVcoinStateQuery(variables?: ICode
     variables: Exact<{
         [key: string]: never;
     }> | undefined;
+};
+export declare const CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceBalancesLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery, ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables>;
+export declare function refetchCodegenGeneratedVcoinUnifiedUserBalanceBalancesQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceBalancesQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        vcoin_unified_user_balance_address: Scalars["String"]["input"];
+        vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
+};
+export declare const CodegenGeneratedVcoinUnifiedUserBalanceDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVcoinUnifiedUserBalanceQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVcoinUnifiedUserBalanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVcoinUnifiedUserBalanceQuery({
+ *   variables: {
+ *      vcoin_unified_user_balance_address: // value for 'vcoin_unified_user_balance_address'
+ *      vcoin_unified_user_balance_chain_uids: // value for 'vcoin_unified_user_balance_chain_uids'
+ *      vcoin_unified_user_balance_limit: // value for 'vcoin_unified_user_balance_limit'
+ *      vcoin_unified_user_balance_offset: // value for 'vcoin_unified_user_balance_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, Exact<{
+    vcoin_unified_user_balance_address: Scalars["String"]["input"];
+    vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+    vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVcoinUnifiedUserBalanceLazyQuery>;
+export type CodegenGeneratedVcoinUnifiedUserBalanceQueryResult = Apollo.QueryResult<ICodegenGeneratedVcoinUnifiedUserBalanceQuery, ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables>;
+export declare function refetchCodegenGeneratedVcoinUnifiedUserBalanceQuery(variables: ICodegenGeneratedVcoinUnifiedUserBalanceQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        vcoin_unified_user_balance_address: Scalars["String"]["input"];
+        vcoin_unified_user_balance_chain_uids?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>> | InputMaybe<Scalars["String"]["input"]>>;
+        vcoin_unified_user_balance_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vcoin_unified_user_balance_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }>;
 };
 export declare const CodegenGeneratedVcoinUserBalanceBalancesDocument: Apollo.DocumentNode;
 /**
@@ -5011,31 +9002,211 @@ export declare const CodegenGeneratedVlpAllPoolsPaginationDocument: Apollo.Docum
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPaginationQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpAllPoolsPaginationQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPaginationQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpAllPoolsPaginationQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPaginationQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedVlpAllPoolsPaginationLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPaginationQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export type CodegenGeneratedVlpAllPoolsPaginationQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPaginationQuery>;
 export type CodegenGeneratedVlpAllPoolsPaginationLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPaginationLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPaginationQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPaginationQuery, ICodegenGeneratedVlpAllPoolsPaginationQueryVariables>;
-export declare function refetchCodegenGeneratedVlpAllPoolsPaginationQuery(variables: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables): {
+export declare function refetchCodegenGeneratedVlpAllPoolsPaginationQuery(variables?: ICodegenGeneratedVlpAllPoolsPaginationQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
         vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
-    }>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
+ *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairLazyQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryVariables>;
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
+ *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
+ *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
+ *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyLazyQuery>;
+export type CodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpAllPoolsPoolsPoolDocument: Apollo.DocumentNode;
 /**
@@ -5051,31 +9222,35 @@ export declare const CodegenGeneratedVlpAllPoolsPoolsPoolDocument: Apollo.Docume
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedVlpAllPoolsPoolsPoolLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export type CodegenGeneratedVlpAllPoolsPoolsPoolQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsPoolLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsPoolLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsPoolQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsPoolQuery, ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables>;
-export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolQuery(variables: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables): {
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsPoolQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsPoolQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
         vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
-    }>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpAllPoolsPoolsDocument: Apollo.DocumentNode;
 /**
@@ -5091,31 +9266,35 @@ export declare const CodegenGeneratedVlpAllPoolsPoolsDocument: Apollo.DocumentNo
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpAllPoolsPoolsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpAllPoolsPoolsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedVlpAllPoolsPoolsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsPoolsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export type CodegenGeneratedVlpAllPoolsPoolsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsPoolsLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsPoolsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsPoolsQuery, ICodegenGeneratedVlpAllPoolsPoolsQueryVariables>;
-export declare function refetchCodegenGeneratedVlpAllPoolsPoolsQuery(variables: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables): {
+export declare function refetchCodegenGeneratedVlpAllPoolsPoolsQuery(variables?: ICodegenGeneratedVlpAllPoolsPoolsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
         vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
-    }>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpAllPoolsDocument: Apollo.DocumentNode;
 /**
@@ -5131,31 +9310,35 @@ export declare const CodegenGeneratedVlpAllPoolsDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpAllPoolsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_all_pools_limit: // value for 'vlp_all_pools_limit'
  *      vlp_all_pools_offset: // value for 'vlp_all_pools_offset'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpAllPoolsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpAllPoolsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export declare function useCodegenGeneratedVlpAllPoolsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpAllPoolsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
     vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
 }>>;
 export type CodegenGeneratedVlpAllPoolsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsQuery>;
 export type CodegenGeneratedVlpAllPoolsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpAllPoolsLazyQuery>;
 export type CodegenGeneratedVlpAllPoolsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpAllPoolsQuery, ICodegenGeneratedVlpAllPoolsQueryVariables>;
-export declare function refetchCodegenGeneratedVlpAllPoolsQuery(variables: ICodegenGeneratedVlpAllPoolsQueryVariables): {
+export declare function refetchCodegenGeneratedVlpAllPoolsQuery(variables?: ICodegenGeneratedVlpAllPoolsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_all_pools_limit?: InputMaybe<Scalars["Int"]["input"]>;
         vlp_all_pools_offset?: InputMaybe<Scalars["Int"]["input"]>;
-    }>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpFeeRecipientDocument: Apollo.DocumentNode;
 /**
@@ -5171,23 +9354,27 @@ export declare const CodegenGeneratedVlpFeeRecipientDocument: Apollo.DocumentNod
  * const { data, loading, error } = useCodegenGeneratedVlpFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpFeeRecipientQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpFeeRecipientQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpFeeRecipientQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpFeeRecipientQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpFeeRecipientLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpFeeRecipientQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpFeeRecipientQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeRecipientQuery>;
 export type CodegenGeneratedVlpFeeRecipientLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeRecipientLazyQuery>;
 export type CodegenGeneratedVlpFeeRecipientQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpFeeRecipientQuery, ICodegenGeneratedVlpFeeRecipientQueryVariables>;
-export declare function refetchCodegenGeneratedVlpFeeRecipientQuery(variables: ICodegenGeneratedVlpFeeRecipientQueryVariables): {
+export declare function refetchCodegenGeneratedVlpFeeRecipientQuery(variables?: ICodegenGeneratedVlpFeeRecipientQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpFeeDocument: Apollo.DocumentNode;
 /**
@@ -5203,23 +9390,27 @@ export declare const CodegenGeneratedVlpFeeDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpFeeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpFeeQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpFeeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpFeeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpFeeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpFeeQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpFeeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeQuery>;
 export type CodegenGeneratedVlpFeeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpFeeLazyQuery>;
 export type CodegenGeneratedVlpFeeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpFeeQuery, ICodegenGeneratedVlpFeeQueryVariables>;
-export declare function refetchCodegenGeneratedVlpFeeQuery(variables: ICodegenGeneratedVlpFeeQueryVariables): {
+export declare function refetchCodegenGeneratedVlpFeeQuery(variables?: ICodegenGeneratedVlpFeeQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpLiquidityPairDocument: Apollo.DocumentNode;
 /**
@@ -5235,23 +9426,27 @@ export declare const CodegenGeneratedVlpLiquidityPairDocument: Apollo.DocumentNo
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityPairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpLiquidityPairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpLiquidityPairQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpLiquidityPairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpLiquidityPairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpLiquidityPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpLiquidityPairQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpLiquidityPairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityPairQuery>;
 export type CodegenGeneratedVlpLiquidityPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityPairLazyQuery>;
 export type CodegenGeneratedVlpLiquidityPairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpLiquidityPairQuery, ICodegenGeneratedVlpLiquidityPairQueryVariables>;
-export declare function refetchCodegenGeneratedVlpLiquidityPairQuery(variables: ICodegenGeneratedVlpLiquidityPairQueryVariables): {
+export declare function refetchCodegenGeneratedVlpLiquidityPairQuery(variables?: ICodegenGeneratedVlpLiquidityPairQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpLiquidityDocument: Apollo.DocumentNode;
 /**
@@ -5267,22 +9462,262 @@ export declare const CodegenGeneratedVlpLiquidityDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpLiquidityQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpLiquidityQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpLiquidityQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpLiquidityQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpLiquidityQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpLiquidityLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpLiquidityQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpLiquidityQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityQuery>;
 export type CodegenGeneratedVlpLiquidityLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLiquidityLazyQuery>;
 export type CodegenGeneratedVlpLiquidityQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpLiquidityQuery, ICodegenGeneratedVlpLiquidityQueryVariables>;
-export declare function refetchCodegenGeneratedVlpLiquidityQuery(variables: ICodegenGeneratedVlpLiquidityQueryVariables): {
+export declare function refetchCodegenGeneratedVlpLiquidityQuery(variables?: ICodegenGeneratedVlpLiquidityQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpMigrationStatusDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpMigrationStatusQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpMigrationStatusQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpMigrationStatusQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpMigrationStatusQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpMigrationStatusQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpMigrationStatusQuery, ICodegenGeneratedVlpMigrationStatusQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpMigrationStatusQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpMigrationStatusLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpMigrationStatusQuery, ICodegenGeneratedVlpMigrationStatusQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpMigrationStatusQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpMigrationStatusQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpMigrationStatusQuery>;
+export type CodegenGeneratedVlpMigrationStatusLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpMigrationStatusLazyQuery>;
+export type CodegenGeneratedVlpMigrationStatusQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpMigrationStatusQuery, ICodegenGeneratedVlpMigrationStatusQueryVariables>;
+export declare function refetchCodegenGeneratedVlpMigrationStatusQuery(variables?: ICodegenGeneratedVlpMigrationStatusQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpObserveDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpObserveQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpObserveQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpObserveQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpObserveQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_observe_seconds_agos: // value for 'vlp_observe_seconds_agos'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpObserveQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpObserveQuery, ICodegenGeneratedVlpObserveQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpObserveQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_observe_seconds_agos: Array<Scalars["Int"]["input"]> | Scalars["Int"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpObserveLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpObserveQuery, ICodegenGeneratedVlpObserveQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpObserveQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_observe_seconds_agos: Array<Scalars["Int"]["input"]> | Scalars["Int"]["input"];
+}>>;
+export type CodegenGeneratedVlpObserveQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpObserveQuery>;
+export type CodegenGeneratedVlpObserveLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpObserveLazyQuery>;
+export type CodegenGeneratedVlpObserveQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpObserveQuery, ICodegenGeneratedVlpObserveQueryVariables>;
+export declare function refetchCodegenGeneratedVlpObserveQuery(variables: ICodegenGeneratedVlpObserveQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_observe_seconds_agos: Array<Scalars["Int"]["input"]> | Scalars["Int"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedVlpPoolPoolKeyPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpPoolPoolKeyPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpPoolPoolKeyPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpPoolPoolKeyPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpPoolPoolKeyPairQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpPoolPoolKeyPairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPairQuery, ICodegenGeneratedVlpPoolPoolKeyPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpPoolPoolKeyPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPairQuery, ICodegenGeneratedVlpPoolPoolKeyPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPoolPoolKeyPairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedVlpPoolPoolKeyPairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPairQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPairLazyQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPairQuery, ICodegenGeneratedVlpPoolPoolKeyPairQueryVariables>;
+export declare function refetchCodegenGeneratedVlpPoolPoolKeyPairQuery(variables: ICodegenGeneratedVlpPoolPoolKeyPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_pool_chain_uid: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedLazyQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQuery(variables: ICodegenGeneratedVlpPoolPoolKeyPoolTypeConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_pool_chain_uid: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedVlpPoolPoolKeyPoolTypeDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpPoolPoolKeyPoolTypeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyPoolTypeLazyQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyPoolTypeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyPoolTypeQuery, ICodegenGeneratedVlpPoolPoolKeyPoolTypeQueryVariables>;
+export declare function refetchCodegenGeneratedVlpPoolPoolKeyPoolTypeQuery(variables: ICodegenGeneratedVlpPoolPoolKeyPoolTypeQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_pool_chain_uid: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedVlpPoolPoolKeyDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpPoolPoolKeyQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpPoolPoolKeyQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpPoolPoolKeyQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpPoolPoolKeyQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpPoolPoolKeyQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyQuery, ICodegenGeneratedVlpPoolPoolKeyQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpPoolPoolKeyLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPoolPoolKeyQuery, ICodegenGeneratedVlpPoolPoolKeyQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPoolPoolKeyQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_pool_chain_uid: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedVlpPoolPoolKeyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolPoolKeyLazyQuery>;
+export type CodegenGeneratedVlpPoolPoolKeyQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpPoolPoolKeyQuery, ICodegenGeneratedVlpPoolPoolKeyQueryVariables>;
+export declare function refetchCodegenGeneratedVlpPoolPoolKeyQuery(variables: ICodegenGeneratedVlpPoolPoolKeyQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_pool_chain_uid: Scalars["String"]["input"];
     }>;
 };
 export declare const CodegenGeneratedVlpPoolDocument: Apollo.DocumentNode;
@@ -5299,16 +9734,19 @@ export declare const CodegenGeneratedVlpPoolDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpPoolQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_pool_chain_uid: // value for 'vlp_pool_chain_uid'
  *   },
  * });
  */
 export declare function useCodegenGeneratedVlpPoolQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPoolQuery, ICodegenGeneratedVlpPoolQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPoolQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_pool_chain_uid: Scalars["String"]["input"];
 }>>;
 export declare function useCodegenGeneratedVlpPoolLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPoolQuery, ICodegenGeneratedVlpPoolQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPoolQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_pool_chain_uid: Scalars["String"]["input"];
 }>>;
 export type CodegenGeneratedVlpPoolQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPoolQuery>;
@@ -5317,9 +9755,122 @@ export type CodegenGeneratedVlpPoolQueryResult = Apollo.QueryResult<ICodegenGene
 export declare function refetchCodegenGeneratedVlpPoolQuery(variables: ICodegenGeneratedVlpPoolQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_pool_chain_uid: Scalars["String"]["input"];
     }>;
+};
+export declare const CodegenGeneratedVlpPositionDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpPositionQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpPositionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpPositionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpPositionQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_position_position_id: // value for 'vlp_position_position_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpPositionQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpPositionQuery, ICodegenGeneratedVlpPositionQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpPositionQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_position_position_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpPositionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpPositionQuery, ICodegenGeneratedVlpPositionQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpPositionQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_position_position_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedVlpPositionQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPositionQuery>;
+export type CodegenGeneratedVlpPositionLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpPositionLazyQuery>;
+export type CodegenGeneratedVlpPositionQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpPositionQuery, ICodegenGeneratedVlpPositionQueryVariables>;
+export declare function refetchCodegenGeneratedVlpPositionQuery(variables: ICodegenGeneratedVlpPositionQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_position_position_id: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedVlpProtocolFeesDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpProtocolFeesQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpProtocolFeesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpProtocolFeesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpProtocolFeesQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpProtocolFeesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpProtocolFeesQuery, ICodegenGeneratedVlpProtocolFeesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpProtocolFeesQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpProtocolFeesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpProtocolFeesQuery, ICodegenGeneratedVlpProtocolFeesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpProtocolFeesQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpProtocolFeesQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpProtocolFeesQuery>;
+export type CodegenGeneratedVlpProtocolFeesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpProtocolFeesLazyQuery>;
+export type CodegenGeneratedVlpProtocolFeesQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpProtocolFeesQuery, ICodegenGeneratedVlpProtocolFeesQueryVariables>;
+export declare function refetchCodegenGeneratedVlpProtocolFeesQuery(variables?: ICodegenGeneratedVlpProtocolFeesQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpSlot0Document: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpSlot0Query__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpSlot0Query` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpSlot0Query` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpSlot0Query({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpSlot0Query(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpSlot0Query, ICodegenGeneratedVlpSlot0QueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpSlot0Query, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpSlot0LazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpSlot0Query, ICodegenGeneratedVlpSlot0QueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpSlot0Query, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpSlot0QueryHookResult = ReturnType<typeof useCodegenGeneratedVlpSlot0Query>;
+export type CodegenGeneratedVlpSlot0LazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpSlot0LazyQuery>;
+export type CodegenGeneratedVlpSlot0QueryResult = Apollo.QueryResult<ICodegenGeneratedVlpSlot0Query, ICodegenGeneratedVlpSlot0QueryVariables>;
+export declare function refetchCodegenGeneratedVlpSlot0Query(variables?: ICodegenGeneratedVlpSlot0QueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpStateFeeRecipientDocument: Apollo.DocumentNode;
 /**
@@ -5335,23 +9886,27 @@ export declare const CodegenGeneratedVlpStateFeeRecipientDocument: Apollo.Docume
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeRecipientQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpStateFeeRecipientQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateFeeRecipientQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpStateFeeRecipientQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateFeeRecipientQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpStateFeeRecipientLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStateFeeRecipientQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpStateFeeRecipientQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeRecipientQuery>;
 export type CodegenGeneratedVlpStateFeeRecipientLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeRecipientLazyQuery>;
 export type CodegenGeneratedVlpStateFeeRecipientQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateFeeRecipientQuery, ICodegenGeneratedVlpStateFeeRecipientQueryVariables>;
-export declare function refetchCodegenGeneratedVlpStateFeeRecipientQuery(variables: ICodegenGeneratedVlpStateFeeRecipientQueryVariables): {
+export declare function refetchCodegenGeneratedVlpStateFeeRecipientQuery(variables?: ICodegenGeneratedVlpStateFeeRecipientQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpStateFeeDocument: Apollo.DocumentNode;
 /**
@@ -5367,23 +9922,27 @@ export declare const CodegenGeneratedVlpStateFeeDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpStateFeeQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpStateFeeQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateFeeQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpStateFeeQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateFeeQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpStateFeeLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStateFeeQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpStateFeeQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeQuery>;
 export type CodegenGeneratedVlpStateFeeLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateFeeLazyQuery>;
 export type CodegenGeneratedVlpStateFeeQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateFeeQuery, ICodegenGeneratedVlpStateFeeQueryVariables>;
-export declare function refetchCodegenGeneratedVlpStateFeeQuery(variables: ICodegenGeneratedVlpStateFeeQueryVariables): {
+export declare function refetchCodegenGeneratedVlpStateFeeQuery(variables?: ICodegenGeneratedVlpStateFeeQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpStatePairDocument: Apollo.DocumentNode;
 /**
@@ -5399,23 +9958,135 @@ export declare const CodegenGeneratedVlpStatePairDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpStatePairQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpStatePairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStatePairQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpStatePairQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStatePairQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpStatePairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStatePairQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpStatePairQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePairQuery>;
 export type CodegenGeneratedVlpStatePairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePairLazyQuery>;
 export type CodegenGeneratedVlpStatePairQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStatePairQuery, ICodegenGeneratedVlpStatePairQueryVariables>;
-export declare function refetchCodegenGeneratedVlpStatePairQuery(variables: ICodegenGeneratedVlpStatePairQueryVariables): {
+export declare function refetchCodegenGeneratedVlpStatePairQuery(variables?: ICodegenGeneratedVlpStatePairQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpStatePoolConfigConcentratedDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpStatePoolConfigConcentratedQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpStatePoolConfigConcentratedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpStatePoolConfigConcentratedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpStatePoolConfigConcentratedQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpStatePoolConfigConcentratedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePoolConfigConcentratedQuery, ICodegenGeneratedVlpStatePoolConfigConcentratedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpStatePoolConfigConcentratedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStatePoolConfigConcentratedQuery, ICodegenGeneratedVlpStatePoolConfigConcentratedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStatePoolConfigConcentratedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpStatePoolConfigConcentratedQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigConcentratedQuery>;
+export type CodegenGeneratedVlpStatePoolConfigConcentratedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigConcentratedLazyQuery>;
+export type CodegenGeneratedVlpStatePoolConfigConcentratedQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigConcentratedQuery, ICodegenGeneratedVlpStatePoolConfigConcentratedQueryVariables>;
+export declare function refetchCodegenGeneratedVlpStatePoolConfigConcentratedQuery(variables?: ICodegenGeneratedVlpStatePoolConfigConcentratedQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpStatePoolConfigStableDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpStatePoolConfigStableQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpStatePoolConfigStableQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpStatePoolConfigStableQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpStatePoolConfigStableQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpStatePoolConfigStableQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePoolConfigStableQuery, ICodegenGeneratedVlpStatePoolConfigStableQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigStableQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpStatePoolConfigStableLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStatePoolConfigStableQuery, ICodegenGeneratedVlpStatePoolConfigStableQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStatePoolConfigStableQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpStatePoolConfigStableQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigStableQuery>;
+export type CodegenGeneratedVlpStatePoolConfigStableLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigStableLazyQuery>;
+export type CodegenGeneratedVlpStatePoolConfigStableQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigStableQuery, ICodegenGeneratedVlpStatePoolConfigStableQueryVariables>;
+export declare function refetchCodegenGeneratedVlpStatePoolConfigStableQuery(variables?: ICodegenGeneratedVlpStatePoolConfigStableQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpStatePoolConfigDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpStatePoolConfigQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpStatePoolConfigQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpStatePoolConfigQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpStatePoolConfigQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpStatePoolConfigQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStatePoolConfigQuery, ICodegenGeneratedVlpStatePoolConfigQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export declare function useCodegenGeneratedVlpStatePoolConfigLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStatePoolConfigQuery, ICodegenGeneratedVlpStatePoolConfigQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStatePoolConfigQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+}>>;
+export type CodegenGeneratedVlpStatePoolConfigQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigQuery>;
+export type CodegenGeneratedVlpStatePoolConfigLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStatePoolConfigLazyQuery>;
+export type CodegenGeneratedVlpStatePoolConfigQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStatePoolConfigQuery, ICodegenGeneratedVlpStatePoolConfigQueryVariables>;
+export declare function refetchCodegenGeneratedVlpStatePoolConfigQuery(variables?: ICodegenGeneratedVlpStatePoolConfigQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpStateDocument: Apollo.DocumentNode;
 /**
@@ -5431,23 +10102,155 @@ export declare const CodegenGeneratedVlpStateDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpStateQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpStateQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpStateQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpStateQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpStateLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpStateQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpStateQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateQuery>;
 export type CodegenGeneratedVlpStateLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpStateLazyQuery>;
 export type CodegenGeneratedVlpStateQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpStateQuery, ICodegenGeneratedVlpStateQueryVariables>;
-export declare function refetchCodegenGeneratedVlpStateQuery(variables: ICodegenGeneratedVlpStateQueryVariables): {
+export declare function refetchCodegenGeneratedVlpStateQuery(variables?: ICodegenGeneratedVlpStateQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpTickDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpTickQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpTickQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpTickQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpTickQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_tick_index: // value for 'vlp_tick_index'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpTickQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTickQuery, ICodegenGeneratedVlpTickQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTickQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_tick_index: Scalars["Int"]["input"];
+}>>;
+export declare function useCodegenGeneratedVlpTickLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTickQuery, ICodegenGeneratedVlpTickQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTickQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_tick_index: Scalars["Int"]["input"];
+}>>;
+export type CodegenGeneratedVlpTickQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTickQuery>;
+export type CodegenGeneratedVlpTickLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTickLazyQuery>;
+export type CodegenGeneratedVlpTickQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTickQuery, ICodegenGeneratedVlpTickQueryVariables>;
+export declare function refetchCodegenGeneratedVlpTickQuery(variables: ICodegenGeneratedVlpTickQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_tick_index: Scalars["Int"]["input"];
     }>;
+};
+export declare const CodegenGeneratedVlpTicksTicksDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpTicksTicksQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpTicksTicksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpTicksTicksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpTicksTicksQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_ticks_limit: // value for 'vlp_ticks_limit'
+ *      vlp_ticks_start_after: // value for 'vlp_ticks_start_after'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpTicksTicksQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTicksTicksQuery, ICodegenGeneratedVlpTicksTicksQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTicksTicksQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpTicksTicksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTicksTicksQuery, ICodegenGeneratedVlpTicksTicksQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTicksTicksQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpTicksTicksQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTicksTicksQuery>;
+export type CodegenGeneratedVlpTicksTicksLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTicksTicksLazyQuery>;
+export type CodegenGeneratedVlpTicksTicksQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTicksTicksQuery, ICodegenGeneratedVlpTicksTicksQueryVariables>;
+export declare function refetchCodegenGeneratedVlpTicksTicksQuery(variables?: ICodegenGeneratedVlpTicksTicksQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
+};
+export declare const CodegenGeneratedVlpTicksDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedVlpTicksQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedVlpTicksQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedVlpTicksQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedVlpTicksQuery({
+ *   variables: {
+ *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
+ *      vlp_ticks_limit: // value for 'vlp_ticks_limit'
+ *      vlp_ticks_start_after: // value for 'vlp_ticks_start_after'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedVlpTicksQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTicksQuery, ICodegenGeneratedVlpTicksQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTicksQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export declare function useCodegenGeneratedVlpTicksLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTicksQuery, ICodegenGeneratedVlpTicksQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTicksQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
+    vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+    vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+}>>;
+export type CodegenGeneratedVlpTicksQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTicksQuery>;
+export type CodegenGeneratedVlpTicksLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTicksLazyQuery>;
+export type CodegenGeneratedVlpTicksQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTicksQuery, ICodegenGeneratedVlpTicksQueryVariables>;
+export declare function refetchCodegenGeneratedVlpTicksQuery(variables?: ICodegenGeneratedVlpTicksQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+        vlp_ticks_limit?: InputMaybe<Scalars["Int"]["input"]>;
+        vlp_ticks_start_after?: InputMaybe<Scalars["Int"]["input"]>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument: Apollo.DocumentNode;
 /**
@@ -5463,23 +10266,27 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocume
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables>;
-export declare function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables): {
+export declare function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument: Apollo.DocumentNode;
 /**
@@ -5495,23 +10302,27 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument: Ap
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedEuclidFeesLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables>;
-export declare function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables): {
+export declare function refetchCodegenGeneratedVlpTotalFeesCollectedEuclidFeesQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedEuclidFeesQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument: Apollo.DocumentNode;
 /**
@@ -5527,23 +10338,27 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument: 
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables>;
-export declare function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables): {
+export declare function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument: Apollo.DocumentNode;
 /**
@@ -5559,23 +10374,27 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument: Apollo
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLpFeesLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLpFeesQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedLpFeesQuery, ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables>;
-export declare function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables): {
+export declare function refetchCodegenGeneratedVlpTotalFeesCollectedLpFeesQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedLpFeesQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedDocument: Apollo.DocumentNode;
 /**
@@ -5591,23 +10410,27 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedDocument: Apollo.Docum
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpTotalFeesCollectedQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpTotalFeesCollectedQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedLazyQuery>;
 export type CodegenGeneratedVlpTotalFeesCollectedQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedQuery, ICodegenGeneratedVlpTotalFeesCollectedQueryVariables>;
-export declare function refetchCodegenGeneratedVlpTotalFeesCollectedQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables): {
+export declare function refetchCodegenGeneratedVlpTotalFeesCollectedQuery(variables?: ICodegenGeneratedVlpTotalFeesCollectedQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
 export declare const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument: Apollo.DocumentNode;
 /**
@@ -5623,16 +10446,19 @@ export declare const CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument: Apol
  * const { data, loading, error } = useCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *      vlp_total_fees_collected_per_denom_denom: // value for 'vlp_total_fees_collected_per_denom_denom'
  *   },
  * });
  */
 export declare function useCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery, ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_total_fees_collected_per_denom_denom: Scalars["String"]["input"];
 }>>;
 export declare function useCodegenGeneratedVlpTotalFeesCollectedPerDenomLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery, ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpTotalFeesCollectedPerDenomQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
     vlp_total_fees_collected_per_denom_denom: Scalars["String"]["input"];
 }>>;
 export type CodegenGeneratedVlpTotalFeesCollectedPerDenomQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery>;
@@ -5641,7 +10467,8 @@ export type CodegenGeneratedVlpTotalFeesCollectedPerDenomQueryResult = Apollo.Qu
 export declare function refetchCodegenGeneratedVlpTotalFeesCollectedPerDenomQuery(variables: ICodegenGeneratedVlpTotalFeesCollectedPerDenomQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
         vlp_total_fees_collected_per_denom_denom: Scalars["String"]["input"];
     }>;
 };
@@ -5659,21 +10486,25 @@ export declare const CodegenGeneratedVlpDocument: Apollo.DocumentNode;
  * const { data, loading, error } = useCodegenGeneratedVlpQuery({
  *   variables: {
  *      contract: // value for 'contract'
+ *      pair: // value for 'pair'
  *   },
  * });
  */
-export declare function useCodegenGeneratedVlpQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpQuery, Exact<{
-    contract: Scalars["String"]["input"];
+export declare function useCodegenGeneratedVlpQuery(baseOptions?: Apollo.QueryHookOptions<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>): Apollo.QueryResult<ICodegenGeneratedVlpQuery, Exact<{
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export declare function useCodegenGeneratedVlpLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedVlpQuery, Exact<{
-    contract: Scalars["String"]["input"];
+    contract?: InputMaybe<Scalars["String"]["input"]>;
+    pair?: InputMaybe<IPairInput>;
 }>>;
 export type CodegenGeneratedVlpQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpQuery>;
 export type CodegenGeneratedVlpLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedVlpLazyQuery>;
 export type CodegenGeneratedVlpQueryResult = Apollo.QueryResult<ICodegenGeneratedVlpQuery, ICodegenGeneratedVlpQueryVariables>;
-export declare function refetchCodegenGeneratedVlpQuery(variables: ICodegenGeneratedVlpQueryVariables): {
+export declare function refetchCodegenGeneratedVlpQuery(variables?: ICodegenGeneratedVlpQueryVariables): {
     query: Apollo.DocumentNode;
     variables: Exact<{
-        contract: Scalars["String"]["input"];
-    }>;
+        contract?: InputMaybe<Scalars["String"]["input"]>;
+        pair?: InputMaybe<IPairInput>;
+    }> | undefined;
 };
