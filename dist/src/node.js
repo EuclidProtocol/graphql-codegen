@@ -3,106 +3,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedClaimDocument = exports.CodegenGeneratedClaimUserClaimsDocument = exports.CodegenGeneratedClaimUserClaimsSenderDocument = exports.CodegenGeneratedClaimStateDocument = exports.CodegenGeneratedClaimSenderClaimsDocument = exports.CodegenGeneratedClaimSenderClaimsSenderDocument = exports.CodegenGeneratedClaimClaimsByEmailDocument = exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = exports.CodegenGeneratedClaimClaimDocument = exports.CodegenGeneratedClaimClaimSenderDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllEvmChainsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = exports.CodegenGeneratedChainsAllChainsDocument = exports.ITokenPairSortBy = exports.ISortOrder = void 0;
-exports.CodegenGeneratedTokenTokenDenomsDocument = exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedTokenDexMetadataDocument = exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = exports.CodegenGeneratedTokenAllDexesDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeClickhouseDocument = exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = void 0;
-exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePoolConfigDocument = exports.CodegenGeneratedVlpStatePoolConfigStableDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokensMetadataDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = void 0;
+exports.CodegenGeneratedRouterAllTokensDocument = exports.CodegenGeneratedRouterAllEscrowsDocument = exports.CodegenGeneratedRouterAllChainsDocument = exports.CodegenGeneratedPoolDocument = exports.CodegenGeneratedPoolVolumeDocument = exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = exports.CodegenGeneratedPoolMyPoolsDocument = exports.CodegenGeneratedPoolMyPoolsUserDocument = exports.CodegenGeneratedPoolMyPoolsPairDocument = exports.CodegenGeneratedPoolFeesCollectedDocument = exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = exports.CodegenGeneratedFactoryDocument = exports.CodegenGeneratedFactoryVlpDocument = exports.CodegenGeneratedFactoryStateDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = exports.CodegenGeneratedFactoryGetLptokenAddressDocument = exports.CodegenGeneratedFactoryEscrowDocument = exports.CodegenGeneratedFactoryAllowedDenomsDocument = exports.CodegenGeneratedFactoryAllTokensDocument = exports.CodegenGeneratedFactoryAllTokensPaginationDocument = exports.CodegenGeneratedFactoryAllPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = exports.CodegenGeneratedCwMulticallSmartQueriesDocument = exports.CodegenGeneratedCwMulticallSmartQueriesResultsDocument = exports.CodegenGeneratedCwMulticallRawQueriesDocument = exports.CodegenGeneratedCwMulticallRawQueriesResultsDocument = exports.CodegenGeneratedCwDocument = exports.CodegenGeneratedCwTokenInfoDocument = exports.CodegenGeneratedCwBalanceDocument = exports.CodegenGeneratedChainsDocument = exports.CodegenGeneratedChainsRouterConfigDocument = exports.CodegenGeneratedChainsKeplrConfigDocument = exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = exports.CodegenGeneratedChainsKeplrConfigBip44Document = exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = exports.CodegenGeneratedChainsContractsDocument = exports.CodegenGeneratedChainsChainConfigDocument = exports.CodegenGeneratedChainsAllChainsDocument = void 0;
+exports.CodegenGeneratedVlpDocument = exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = exports.CodegenGeneratedVlpTotalFeesCollectedDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = exports.CodegenGeneratedVlpStateDocument = exports.CodegenGeneratedVlpStatePairDocument = exports.CodegenGeneratedVlpStateFeeDocument = exports.CodegenGeneratedVlpStateFeeRecipientDocument = exports.CodegenGeneratedVlpPoolDocument = exports.CodegenGeneratedVlpLiquidityDocument = exports.CodegenGeneratedVlpLiquidityPairDocument = exports.CodegenGeneratedVlpFeeDocument = exports.CodegenGeneratedVlpFeeRecipientDocument = exports.CodegenGeneratedVlpAllPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsDocument = exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = exports.CodegenGeneratedVlpAllPoolsPaginationDocument = exports.CodegenGeneratedVcoinDocument = exports.CodegenGeneratedVcoinUserBalanceDocument = exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = exports.CodegenGeneratedVcoinStateDocument = exports.CodegenGeneratedVcoinBalanceDocument = exports.CodegenGeneratedTokenDocument = exports.CodegenGeneratedTokenTokenMetadatasDocument = exports.CodegenGeneratedTokenTokenMetadataByIdDocument = exports.CodegenGeneratedTokenTokenLiquidityDocument = exports.CodegenGeneratedTokenTokenLiquiditiesDocument = exports.CodegenGeneratedTokenGetAllFaucetsDocument = exports.CodegenGeneratedRouterDocument = exports.CodegenGeneratedRouterVlpDocument = exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = exports.CodegenGeneratedRouterTokenDenomsDocument = exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = exports.CodegenGeneratedRouterStateDocument = exports.CodegenGeneratedRouterSimulateSwapDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument = exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument = exports.CodegenGeneratedRouterEscrowsDocument = exports.CodegenGeneratedRouterChainDocument = exports.CodegenGeneratedRouterChainChainDocument = exports.CodegenGeneratedRouterChainChainChainTypeDocument = exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = exports.CodegenGeneratedRouterAllVlpsDocument = exports.CodegenGeneratedRouterAllVlpsVlpsDocument = void 0;
 exports.getSdk = getSdk;
 const graphql_tag_1 = __importDefault(require("graphql-tag"));
-var ISortOrder;
-(function (ISortOrder) {
-    ISortOrder["ASC"] = "ASC";
-    ISortOrder["DESC"] = "DESC";
-})(ISortOrder || (exports.ISortOrder = ISortOrder = {}));
-var ITokenPairSortBy;
-(function (ITokenPairSortBy) {
-    ITokenPairSortBy["CREATED_AT"] = "CREATED_AT";
-    ITokenPairSortBy["TOTAL_LIQUIDITY"] = "TOTAL_LIQUIDITY";
-})(ITokenPairSortBy || (exports.ITokenPairSortBy = ITokenPairSortBy = {}));
 exports.CodegenGeneratedChainsAllChainsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean, $chains_all_chains_type: String) {
+    query CODEGEN_GENERATED_CHAINS_ALL_CHAINS($chains_all_chains_show_all_chains: Boolean) {
   chains {
-    all_chains(
-      show_all_chains: $chains_all_chains_show_all_chains
-      type: $chains_all_chains_type
-    ) {
+    all_chains(show_all_chains: $chains_all_chains_show_all_chains) {
       chain_id
       chain_uid
       display_name
       explorer_url
       factory_address
-      id
       logo
-      token_factory_address
-      type
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY {
-  chains {
-    all_evm_chains {
-      native_currency {
-        decimals
-        id
-        name
-        symbol
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT {
-  chains {
-    all_evm_chains {
-      rpc_urls {
-        default {
-          http
-          id
-        }
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS {
-  chains {
-    all_evm_chains {
-      rpc_urls {
-        default {
-          http
-          id
-        }
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsAllEvmChainsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS {
-  chains {
-    all_evm_chains {
-      chain_id
-      chain_uid
-      explorer_url
-      id
-      name
-      native_currency {
-        decimals
-        id
-        name
-        symbol
-      }
-      rpc_urls {
-        default {
-          http
-          id
-        }
-        id
-      }
     }
   }
 }
@@ -119,10 +33,7 @@ exports.CodegenGeneratedChainsChainConfigDocument = (0, graphql_tag_1.default) `
       display_name
       explorer_url
       factory_address
-      id
       logo
-      token_factory_address
-      type
     }
   }
 }
@@ -134,88 +45,6 @@ exports.CodegenGeneratedChainsContractsDocument = (0, graphql_tag_1.default) `
       ChainUID
       ContractAddress
       Type
-      id
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
-  chains {
-    evm_chain_config(
-      chain_id: $chains_evm_chain_config_chain_id
-      chain_uid: $chains_evm_chain_config_chain_uid
-    ) {
-      native_currency {
-        decimals
-        id
-        name
-        symbol
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
-  chains {
-    evm_chain_config(
-      chain_id: $chains_evm_chain_config_chain_id
-      chain_uid: $chains_evm_chain_config_chain_uid
-    ) {
-      rpc_urls {
-        default {
-          http
-          id
-        }
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
-  chains {
-    evm_chain_config(
-      chain_id: $chains_evm_chain_config_chain_id
-      chain_uid: $chains_evm_chain_config_chain_uid
-    ) {
-      rpc_urls {
-        default {
-          http
-          id
-        }
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedChainsEvmChainConfigDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG($chains_evm_chain_config_chain_id: String, $chains_evm_chain_config_chain_uid: String) {
-  chains {
-    evm_chain_config(
-      chain_id: $chains_evm_chain_config_chain_id
-      chain_uid: $chains_evm_chain_config_chain_uid
-    ) {
-      chain_id
-      chain_uid
-      explorer_url
-      id
-      name
-      native_currency {
-        decimals
-        id
-        name
-        symbol
-      }
-      rpc_urls {
-        default {
-          http
-          id
-        }
-        id
-      }
     }
   }
 }
@@ -234,7 +63,6 @@ exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument = (0, graphql_tag_
         bech32PrefixConsPub
         bech32PrefixValAddr
         bech32PrefixValPub
-        id
       }
     }
   }
@@ -249,7 +77,6 @@ exports.CodegenGeneratedChainsKeplrConfigBip44Document = (0, graphql_tag_1.defau
     ) {
       bip44 {
         coinType
-        id
       }
     }
   }
@@ -267,7 +94,6 @@ exports.CodegenGeneratedChainsKeplrConfigCurrenciesDocument = (0, graphql_tag_1.
         coinDenom
         coinGeckoID
         coinMinimalDenom
-        id
       }
     }
   }
@@ -284,7 +110,6 @@ exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesGaspricestepDocument = (0,
         gasPriceStep {
           average
           high
-          id
           low
         }
       }
@@ -307,10 +132,8 @@ exports.CodegenGeneratedChainsKeplrConfigFeecurrenciesDocument = (0, graphql_tag
         gasPriceStep {
           average
           high
-          id
           low
         }
-        id
       }
     }
   }
@@ -326,7 +149,6 @@ exports.CodegenGeneratedChainsKeplrConfigGaspricestepDocument = (0, graphql_tag_
       gasPriceStep {
         average
         high
-        id
         low
       }
     }
@@ -345,7 +167,6 @@ exports.CodegenGeneratedChainsKeplrConfigStakecurrencyDocument = (0, graphql_tag
         coinDenom
         coinGeckoID
         coinMinimalDenom
-        id
       }
     }
   }
@@ -365,11 +186,9 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         bech32PrefixConsPub
         bech32PrefixValAddr
         bech32PrefixValPub
-        id
       }
       bip44 {
         coinType
-        id
       }
       chainID
       chainName
@@ -379,7 +198,6 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         coinDenom
         coinGeckoID
         coinMinimalDenom
-        id
       }
       explorer_url
       features
@@ -391,18 +209,14 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         gasPriceStep {
           average
           high
-          id
           low
         }
-        id
       }
       gasPriceStep {
         average
         high
-        id
         low
       }
-      id
       rest
       rpc
       stakeCurrency {
@@ -410,7 +224,6 @@ exports.CodegenGeneratedChainsKeplrConfigDocument = (0, graphql_tag_1.default) `
         coinDenom
         coinGeckoID
         coinMinimalDenom
-        id
       }
     }
   }
@@ -423,7 +236,6 @@ exports.CodegenGeneratedChainsRouterConfigDocument = (0, graphql_tag_1.default) 
       chain_uid
       contract_address
       explorer_url
-      id
       logo
       type
     }
@@ -433,299 +245,12 @@ exports.CodegenGeneratedChainsRouterConfigDocument = (0, graphql_tag_1.default) 
 exports.CodegenGeneratedChainsDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_CHAINS {
   chains {
-    all_evm_chains {
-      chain_id
-      chain_uid
-      explorer_url
-      id
-      name
-      native_currency {
-        decimals
-        id
-        name
-        symbol
-      }
-      rpc_urls {
-        default {
-          http
-          id
-        }
-        id
-      }
-    }
     router_config {
       chain_uid
       contract_address
       explorer_url
-      id
       logo
       type
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimSenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIM_SENDER($claim_claim_claim_id: Int!) {
-  claim {
-    claim(claim_id: $claim_claim_claim_id) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIM($claim_claim_claim_id: Int!) {
-  claim {
-    claim(claim_id: $claim_claim_claim_id) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
-  claim {
-    claim_by_psuedo_claim_id(
-      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
-    ) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID($claim_claim_by_psuedo_claim_id_psuedo_claim_id: String!) {
-  claim {
-    claim_by_psuedo_claim_id(
-      psuedo_claim_id: $claim_claim_by_psuedo_claim_id_psuedo_claim_id
-    ) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
-  claim {
-    claims_by_claimer_pub_Key(
-      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
-      limit: $claim_claims_by_claimer_pub_Key_limit
-      offset: $claim_claims_by_claimer_pub_Key_offset
-    ) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY($claim_claims_by_claimer_pub_Key_claimer_pub_key: String!, $claim_claims_by_claimer_pub_Key_limit: Int, $claim_claims_by_claimer_pub_Key_offset: Int) {
-  claim {
-    claims_by_claimer_pub_Key(
-      claimer_pub_key: $claim_claims_by_claimer_pub_Key_claimer_pub_key
-      limit: $claim_claims_by_claimer_pub_Key_limit
-      offset: $claim_claims_by_claimer_pub_Key_offset
-    ) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimsByEmailSenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
-  claim {
-    claims_by_email(
-      email: $claim_claims_by_email_email
-      limit: $claim_claims_by_email_limit
-      offset: $claim_claims_by_email_offset
-    ) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimClaimsByEmailDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL($claim_claims_by_email_email: String!, $claim_claims_by_email_limit: Int, $claim_claims_by_email_offset: Int) {
-  claim {
-    claims_by_email(
-      email: $claim_claims_by_email_email
-      limit: $claim_claims_by_email_limit
-      offset: $claim_claims_by_email_offset
-    ) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimSenderClaimsSenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
-  claim {
-    sender_claims(
-      limit: $claim_sender_claims_limit
-      offset: $claim_sender_claims_offset
-      sender: $claim_sender_claims_sender
-    ) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimSenderClaimsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS($claim_sender_claims_limit: Int!, $claim_sender_claims_offset: Int!, $claim_sender_claims_sender: CrossChainUserInput!) {
-  claim {
-    sender_claims(
-      limit: $claim_sender_claims_limit
-      offset: $claim_sender_claims_offset
-      sender: $claim_sender_claims_sender
-    ) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimStateDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_STATE {
-  claim {
-    state {
-      admin
-      chain_uid
-      factory_address
-      id
-      vcoin_address
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimUserClaimsSenderDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
-  claim {
-    user_claims(
-      limit: $claim_user_claims_limit
-      offset: $claim_user_claims_offset
-      public_secret: $claim_user_claims_public_secret
-    ) {
-      sender {
-        address
-        chain_uid
-        id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimUserClaimsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM_USER_CLAIMS($claim_user_claims_limit: Int, $claim_user_claims_offset: Int, $claim_user_claims_public_secret: String!) {
-  claim {
-    user_claims(
-      limit: $claim_user_claims_limit
-      offset: $claim_user_claims_offset
-      public_secret: $claim_user_claims_public_secret
-    ) {
-      amount
-      claim_group_id
-      claim_id
-      claimer
-      id
-      pseudo_claim_id
-      sender {
-        address
-        chain_uid
-        id
-      }
-      status
-      token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedClaimDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_CLAIM {
-  claim {
-    state {
-      admin
-      chain_uid
-      factory_address
-      id
-      vcoin_address
     }
   }
 }
@@ -735,7 +260,6 @@ exports.CodegenGeneratedCwBalanceDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     balance(address: $cw_balance_address) {
       balance
-      id
     }
   }
 }
@@ -745,7 +269,6 @@ exports.CodegenGeneratedCwTokenInfoDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     token_info {
       decimals
-      id
       name
       symbol
       total_supply
@@ -758,7 +281,6 @@ exports.CodegenGeneratedCwDocument = (0, graphql_tag_1.default) `
   cw(chain_uid: $chain_uid, contract: $contract) {
     token_info {
       decimals
-      id
       name
       symbol
       total_supply
@@ -819,7 +341,6 @@ exports.CodegenGeneratedFactoryAllPoolsPaginationDocument = (0, graphql_tag_1.de
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pagination {
-        id
         limit
         offset
         total_count
@@ -834,7 +355,6 @@ exports.CodegenGeneratedFactoryAllPoolsPoolsPairDocument = (0, graphql_tag_1.def
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pools {
         pair {
-          id
           token_1
           token_2
         }
@@ -848,9 +368,7 @@ exports.CodegenGeneratedFactoryAllPoolsPoolsDocument = (0, graphql_tag_1.default
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
       pools {
-        id
         pair {
-          id
           token_1
           token_2
         }
@@ -864,17 +382,13 @@ exports.CodegenGeneratedFactoryAllPoolsDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY_ALL_POOLS($chain_uid: String!, $factory_all_pools_limit: Int, $factory_all_pools_offset: Int) {
   factory(chain_uid: $chain_uid) {
     all_pools(limit: $factory_all_pools_limit, offset: $factory_all_pools_offset) {
-      id
       pagination {
-        id
         limit
         offset
         total_count
       }
       pools {
-        id
         pair {
-          id
           token_1
           token_2
         }
@@ -889,7 +403,6 @@ exports.CodegenGeneratedFactoryAllTokensPaginationDocument = (0, graphql_tag_1.d
   factory(chain_uid: $chain_uid) {
     all_tokens(limit: $factory_all_tokens_limit, offset: $factory_all_tokens_offset) {
       pagination {
-        id
         limit
         offset
         total_count
@@ -902,9 +415,7 @@ exports.CodegenGeneratedFactoryAllTokensDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY_ALL_TOKENS($chain_uid: String!, $factory_all_tokens_limit: Int, $factory_all_tokens_offset: Int) {
   factory(chain_uid: $chain_uid) {
     all_tokens(limit: $factory_all_tokens_limit, offset: $factory_all_tokens_offset) {
-      id
       pagination {
-        id
         limit
         offset
         total_count
@@ -955,7 +466,6 @@ exports.CodegenGeneratedFactoryEscrowDocument = (0, graphql_tag_1.default) `
         }
       }
       escrow_address
-      id
     }
   }
 }
@@ -964,7 +474,6 @@ exports.CodegenGeneratedFactoryGetLptokenAddressDocument = (0, graphql_tag_1.def
     query CODEGEN_GENERATED_FACTORY_GET_LPTOKEN_ADDRESS($chain_uid: String!, $factory_get_LpToken_address_vlp_address: String!) {
   factory(chain_uid: $chain_uid) {
     get_LpToken_address(vlp_address: $factory_get_LpToken_address_vlp_address) {
-      id
       token_address
     }
   }
@@ -978,7 +487,6 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument = (0, gra
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -990,11 +498,9 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument = (0, graphql_t
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
       total {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -1005,13 +511,10 @@ exports.CodegenGeneratedFactoryPartnerFeesCollectedDocument = (0, graphql_tag_1.
     query CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED($chain_uid: String!) {
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
-      id
       total {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -1025,7 +528,6 @@ exports.CodegenGeneratedFactoryStateDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       hub_channel
-      id
       router_contract
     }
   }
@@ -1042,13 +544,10 @@ exports.CodegenGeneratedFactoryDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_FACTORY($chain_uid: String!) {
   factory(chain_uid: $chain_uid) {
     partner_fees_collected {
-      id
       total {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -1056,7 +555,6 @@ exports.CodegenGeneratedFactoryDocument = (0, graphql_tag_1.default) `
       admin
       chain_uid
       hub_channel
-      id
       router_contract
     }
   }
@@ -1067,7 +565,6 @@ exports.CodegenGeneratedPoolFeesCollectedBreakdownDocument = (0, graphql_tag_1.d
   pool {
     fees_collected {
       breakdown {
-        id
         token1
         token2
         total_fee
@@ -1081,12 +578,10 @@ exports.CodegenGeneratedPoolFeesCollectedDocument = (0, graphql_tag_1.default) `
   pool {
     fees_collected {
       breakdown {
-        id
         token1
         token2
         total_fee
       }
-      id
       total_overall
     }
   }
@@ -1100,7 +595,6 @@ exports.CodegenGeneratedPoolMyPoolsPairDocument = (0, graphql_tag_1.default) `
       user_address: $pool_my_pools_user_address
     ) {
       pair {
-        id
         token_1
         token_2
       }
@@ -1118,7 +612,6 @@ exports.CodegenGeneratedPoolMyPoolsUserDocument = (0, graphql_tag_1.default) `
       user {
         address
         chain_uid
-        id
       }
     }
   }
@@ -1132,16 +625,13 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, graphql_tag_1.default) `
       user_address: $pool_my_pools_user_address
     ) {
       height
-      id
       pair {
-        id
         token_1
         token_2
       }
       user {
         address
         chain_uid
-        id
       }
       vlp
     }
@@ -1149,18 +639,14 @@ exports.CodegenGeneratedPoolMyPoolsDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_PAGINATION($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
-      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_sort_by
-      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       pagination {
-        id
         limit
         offset
         total_count
@@ -1170,19 +656,15 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityPaginationDocument = (0, graph
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS_PAIR($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
-      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_sort_by
-      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       results {
         pair {
-          id
           token_1
           token_2
         }
@@ -1192,26 +674,19 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsPairDocument = (0, grap
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY_RESULTS($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
-      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_sort_by
-      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
       results {
         apr
-        created_at
-        id
         pair {
-          id
           token_1
           token_2
         }
-        tags
         total_liquidity
         vlp
       }
@@ -1220,33 +695,24 @@ exports.CodegenGeneratedPoolTokenPairWithLiquidityResultsDocument = (0, graphql_
 }
     `;
 exports.CodegenGeneratedPoolTokenPairWithLiquidityDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_only_show_verified: Boolean, $pool_token_pair_with_liquidity_sort_by: TokenPairSortBy, $pool_token_pair_with_liquidity_sort_order: SortOrder, $pool_token_pair_with_liquidity_token: String) {
+    query CODEGEN_GENERATED_POOL_TOKEN_PAIR_WITH_LIQUIDITY($pool_token_pair_with_liquidity_limit: Int, $pool_token_pair_with_liquidity_offset: Int, $pool_token_pair_with_liquidity_token: String) {
   pool {
     token_pair_with_liquidity(
       limit: $pool_token_pair_with_liquidity_limit
       offset: $pool_token_pair_with_liquidity_offset
-      only_show_verified: $pool_token_pair_with_liquidity_only_show_verified
-      sort_by: $pool_token_pair_with_liquidity_sort_by
-      sort_order: $pool_token_pair_with_liquidity_sort_order
       token: $pool_token_pair_with_liquidity_token
     ) {
-      id
       pagination {
-        id
         limit
         offset
         total_count
       }
       results {
         apr
-        created_at
-        id
         pair {
-          id
           token_1
           token_2
         }
-        tags
         total_liquidity
         vlp
       }
@@ -1259,7 +725,6 @@ exports.CodegenGeneratedPoolVolumeVolumeBreakdown_24HoursDocument = (0, graphql_
   pool {
     volume {
       volume_breakdown_24hours {
-        id
         pair
         volume
       }
@@ -1271,42 +736,10 @@ exports.CodegenGeneratedPoolVolumeDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_POOL_VOLUME {
   pool {
     volume {
-      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
-        id
-        pair
-        volume
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE_VOLUME_BREAKDOWN_24HOURS {
-  pool {
-    volume_clickhouse {
-      volume_breakdown_24hours {
-        id
-        pair
-        volume
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedPoolVolumeClickhouseDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE {
-  pool {
-    volume_clickhouse {
-      id
-      total_liquidity
-      total_volume
-      volume_24hours
-      volume_breakdown_24hours {
-        id
         pair
         volume
       }
@@ -1319,32 +752,17 @@ exports.CodegenGeneratedPoolDocument = (0, graphql_tag_1.default) `
   pool {
     fees_collected {
       breakdown {
-        id
         token1
         token2
         total_fee
       }
-      id
       total_overall
     }
     volume {
-      id
       total_liquidity
       total_volume
       volume_24hours
       volume_breakdown_24hours {
-        id
-        pair
-        volume
-      }
-    }
-    volume_clickhouse {
-      id
-      total_liquidity
-      total_volume
-      volume_24hours
-      volume_breakdown_24hours {
-        id
         pair
         volume
       }
@@ -1359,7 +777,6 @@ exports.CodegenGeneratedRouterAllChainsDocument = (0, graphql_tag_1.default) `
       chain_id
       chain_uid
       factory_address
-      id
     }
   }
 }
@@ -1375,7 +792,6 @@ exports.CodegenGeneratedRouterAllEscrowsDocument = (0, graphql_tag_1.default) `
     ) {
       balance
       chain_uid
-      id
       token
     }
   }
@@ -1390,7 +806,6 @@ exports.CodegenGeneratedRouterAllTokensDocument = (0, graphql_tag_1.default) `
       min: $router_all_tokens_min
       skip: $router_all_tokens_skip
     ) {
-      id
       tokens
     }
   }
@@ -1406,7 +821,6 @@ exports.CodegenGeneratedRouterAllVlpsVlpsDocument = (0, graphql_tag_1.default) `
       skip: $router_all_vlps_skip
     ) {
       vlps {
-        id
         token_1
         token_2
         vlp
@@ -1424,9 +838,7 @@ exports.CodegenGeneratedRouterAllVlpsDocument = (0, graphql_tag_1.default) `
       min: $router_all_vlps_min
       skip: $router_all_vlps_skip
     ) {
-      id
       vlps {
-        id
         token_1
         token_2
         vlp
@@ -1444,7 +856,6 @@ exports.CodegenGeneratedRouterChainChainChainTypeIbcDocument = (0, graphql_tag_1
           ibc {
             from_factory_channel
             from_hub_channel
-            id
           }
         }
       }
@@ -1461,9 +872,7 @@ exports.CodegenGeneratedRouterChainChainChainTypeDocument = (0, graphql_tag_1.de
           ibc {
             from_factory_channel
             from_hub_channel
-            id
           }
-          id
         }
       }
     }
@@ -1479,13 +888,10 @@ exports.CodegenGeneratedRouterChainChainDocument = (0, graphql_tag_1.default) `
           ibc {
             from_factory_channel
             from_hub_channel
-            id
           }
-          id
         }
         factory
         factory_chain_id
-        id
       }
     }
   }
@@ -1500,16 +906,12 @@ exports.CodegenGeneratedRouterChainDocument = (0, graphql_tag_1.default) `
           ibc {
             from_factory_channel
             from_hub_channel
-            id
           }
-          id
         }
         factory
         factory_chain_id
-        id
       }
       chain_uid
-      id
     }
   }
 }
@@ -1527,7 +929,6 @@ exports.CodegenGeneratedRouterEscrowsDocument = (0, graphql_tag_1.default) `
       balance
       chain_id
       chain_uid
-      id
     }
   }
 }
@@ -1545,7 +946,6 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserU
           user {
             address
             chain_uid
-            id
           }
         }
       }
@@ -1563,12 +963,10 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserD
     ) {
       release_amounts {
         cross_chain_user {
-          id
           limit
           user {
             address
             chain_uid
-            id
           }
         }
       }
@@ -1587,15 +985,12 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsDocument = (0, 
       release_amounts {
         amount
         cross_chain_user {
-          id
           limit
           user {
             address
             chain_uid
-            id
           }
         }
-        id
       }
     }
   }
@@ -1609,19 +1004,15 @@ exports.CodegenGeneratedRouterSimulateReleaseEscrowDocument = (0, graphql_tag_1.
       cross_chain_addresses: $router_simulate_release_escrow_cross_chain_addresses
       token: $router_simulate_release_escrow_token
     ) {
-      id
       release_amounts {
         amount
         cross_chain_user {
-          id
           limit
           user {
             address
             chain_uid
-            id
           }
         }
-        id
       }
       remaining_amount
     }
@@ -1640,7 +1031,6 @@ exports.CodegenGeneratedRouterSimulateSwapDocument = (0, graphql_tag_1.default) 
     ) {
       amount_out
       asset_out
-      id
     }
   }
 }
@@ -1650,11 +1040,8 @@ exports.CodegenGeneratedRouterStateDocument = (0, graphql_tag_1.default) `
   router {
     state {
       admin
-      constant_product_vlp_code_id
-      id
-      locked
-      stable_vlp_code_id
       virtual_balance_address
+      vlp_code_id
     }
   }
 }
@@ -1664,9 +1051,7 @@ exports.CodegenGeneratedRouterTokenDenomsDenomsDocument = (0, graphql_tag_1.defa
   router {
     token_denoms(token: $router_token_denoms_token) {
       denoms {
-        chain_type
         chain_uid
-        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1692,9 +1077,7 @@ exports.CodegenGeneratedRouterTokenDenomsDocument = (0, graphql_tag_1.default) `
   router {
     token_denoms(token: $router_token_denoms_token) {
       denoms {
-        chain_type
         chain_uid
-        id
         token_type {
           ... on NativeTokenType {
             native {
@@ -1711,7 +1094,6 @@ exports.CodegenGeneratedRouterTokenDenomsDocument = (0, graphql_tag_1.default) `
           }
         }
       }
-      id
     }
   }
 }
@@ -1720,7 +1102,6 @@ exports.CodegenGeneratedRouterTokenPairsFromVlpDocument = (0, graphql_tag_1.defa
     query CODEGEN_GENERATED_ROUTER_TOKEN_PAIRS_FROM_VLP($router_token_pairs_from_vlp_vlp: String!) {
   router {
     token_pairs_from_vlp(vlp: $router_token_pairs_from_vlp_vlp) {
-      id
       token_1
       token_2
       vlp
@@ -1732,7 +1113,6 @@ exports.CodegenGeneratedRouterVlpDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_ROUTER_VLP($router_vlp_pair: PairInput) {
   router {
     vlp(pair: $router_vlp_pair) {
-      id
       token_1
       token_2
       vlp
@@ -1747,63 +1127,11 @@ exports.CodegenGeneratedRouterDocument = (0, graphql_tag_1.default) `
       chain_id
       chain_uid
       factory_address
-      id
     }
-    id
     state {
       admin
-      constant_product_vlp_code_id
-      id
-      locked
-      stable_vlp_code_id
       virtual_balance_address
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenAllDexesDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_ALL_DEXES($token_all_dexes_limit: Int, $token_all_dexes_offset: Int) {
-  token {
-    all_dexes(limit: $token_all_dexes_limit, offset: $token_all_dexes_offset) {
-      bg_color
-      chain_uid
-      dex_name
-      display_name
-      fg_color
-      id
-      logo
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenChainsForTokenLaunchDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_CHAINS_FOR_TOKEN_LAUNCH {
-  token {
-    chains_for_token_launch {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      id
-      logo
-      token_factory_address
-      type
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenDexMetadataDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_DEX_METADATA($token_dex_metadata_dex: String!) {
-  token {
-    dex_metadata(dex: $token_dex_metadata_dex) {
-      bg_color
-      chain_uid
-      dex_name
-      display_name
-      fg_color
-      id
-      logo
+      vlp_code_id
     }
   }
 }
@@ -1813,74 +1141,7 @@ exports.CodegenGeneratedTokenGetAllFaucetsDocument = (0, graphql_tag_1.default) 
   token {
     get_all_faucets {
       faucet_link
-      id
       token
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenTokenDenomsDenomsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
-  token {
-    token_denoms(
-      chain_uids: $token_token_denoms_chain_uids
-      denom: $token_token_denoms_denom
-      token_id: $token_token_denoms_token_id
-    ) {
-      denoms {
-        chain_type
-        chain_uid
-        id
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenTokenDenomsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS($token_token_denoms_chain_uids: [String!], $token_token_denoms_denom: String, $token_token_denoms_token_id: String) {
-  token {
-    token_denoms(
-      chain_uids: $token_token_denoms_chain_uids
-      denom: $token_token_denoms_denom
-      token_id: $token_token_denoms_token_id
-    ) {
-      denoms {
-        chain_type
-        chain_uid
-        id
-        token_type {
-          ... on NativeTokenType {
-            native {
-              denom
-            }
-          }
-          ... on SmartTokenType {
-            smart {
-              contract_address
-            }
-          }
-          ... on VoucherTokenType {
-            voucher
-          }
-        }
-      }
-      id
-      token_id
     }
   }
 }
@@ -1892,7 +1153,6 @@ exports.CodegenGeneratedTokenTokenLiquiditiesDocument = (0, graphql_tag_1.defaul
       limit: $token_token_liquidities_limit
       page: $token_token_liquidities_page
     ) {
-      id
       token
       total_liquidity
       total_volume
@@ -1904,7 +1164,6 @@ exports.CodegenGeneratedTokenTokenLiquidityDocument = (0, graphql_tag_1.default)
     query CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITY($token_token_liquidity_token: String!) {
   token {
     token_liquidity(token: $token_token_liquidity_token) {
-      id
       token
       total_liquidity
       total_volume
@@ -1913,102 +1172,32 @@ exports.CodegenGeneratedTokenTokenLiquidityDocument = (0, graphql_tag_1.default)
 }
     `;
 exports.CodegenGeneratedTokenTokenMetadataByIdDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!, $token_token_metadata_by_id_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATA_BY_ID($token_token_metadata_by_id_token_id: String!) {
   token {
-    token_metadata_by_id(
-      token_id: $token_token_metadata_by_id_token_id
-      verified: $token_token_metadata_by_id_verified
-    ) {
-      chain_type
-      chain_uids
+    token_metadata_by_id(token_id: $token_token_metadata_by_id_token_id) {
       coinDecimal
-      created_at
       description
-      dex
       displayName
-      id
       image
-      is_price_from_oracle
-      is_verified
-      min_swap_value
-      oracle_price
       price
-      price_change_7d
-      price_change_24h
-      social
-      tags
       tokenId
-      total_volume
-      total_volume_24h
     }
   }
 }
     `;
 exports.CodegenGeneratedTokenTokenMetadatasDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_chain_uids: [String!], $token_token_metadatas_dex: [String!], $token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int, $token_token_metadatas_search: String, $token_token_metadatas_show_volume: Boolean, $token_token_metadatas_verified: Boolean) {
+    query CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS($token_token_metadatas_limit: Int, $token_token_metadatas_offset: Int) {
   token {
     token_metadatas(
-      chain_uids: $token_token_metadatas_chain_uids
-      dex: $token_token_metadatas_dex
       limit: $token_token_metadatas_limit
       offset: $token_token_metadatas_offset
-      search: $token_token_metadatas_search
-      show_volume: $token_token_metadatas_show_volume
-      verified: $token_token_metadatas_verified
     ) {
-      chain_type
-      chain_uids
       coinDecimal
-      created_at
       description
-      dex
       displayName
-      id
       image
-      is_price_from_oracle
-      is_verified
-      min_swap_value
-      oracle_price
       price
-      price_change_7d
-      price_change_24h
-      social
-      tags
       tokenId
-      total_volume
-      total_volume_24h
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedTokenTokensMetadataDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_TOKEN_TOKENS_METADATA($token_tokens_metadata_token_ids: [String!]!, $token_tokens_metadata_verified: Boolean) {
-  token {
-    tokens_metadata(
-      token_ids: $token_tokens_metadata_token_ids
-      verified: $token_tokens_metadata_verified
-    ) {
-      chain_type
-      chain_uids
-      coinDecimal
-      created_at
-      description
-      dex
-      displayName
-      id
-      image
-      is_price_from_oracle
-      is_verified
-      min_swap_value
-      oracle_price
-      price
-      price_change_7d
-      price_change_24h
-      social
-      tags
-      tokenId
-      total_volume
-      total_volume_24h
     }
   }
 }
@@ -2016,20 +1205,8 @@ exports.CodegenGeneratedTokenTokensMetadataDocument = (0, graphql_tag_1.default)
 exports.CodegenGeneratedTokenDocument = (0, graphql_tag_1.default) `
     query CODEGEN_GENERATED_TOKEN {
   token {
-    chains_for_token_launch {
-      chain_id
-      chain_uid
-      display_name
-      explorer_url
-      factory_address
-      id
-      logo
-      token_factory_address
-      type
-    }
     get_all_faucets {
       faucet_link
-      id
       token
     }
   }
@@ -2040,7 +1217,6 @@ exports.CodegenGeneratedVcoinBalanceDocument = (0, graphql_tag_1.default) `
   vcoin {
     balance(balance_key: $vcoin_balance_balance_key) {
       amount
-      id
     }
   }
 }
@@ -2050,46 +1226,7 @@ exports.CodegenGeneratedVcoinStateDocument = (0, graphql_tag_1.default) `
   vcoin {
     state {
       admin
-      id
       router
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
-  vcoin {
-    unified_user_balance(
-      address: $vcoin_unified_user_balance_address
-      chain_uids: $vcoin_unified_user_balance_chain_uids
-      limit: $vcoin_unified_user_balance_limit
-      offset: $vcoin_unified_user_balance_offset
-    ) {
-      balances {
-        amount
-        id
-        token_id
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE($vcoin_unified_user_balance_address: String!, $vcoin_unified_user_balance_chain_uids: [String], $vcoin_unified_user_balance_limit: Int, $vcoin_unified_user_balance_offset: Int) {
-  vcoin {
-    unified_user_balance(
-      address: $vcoin_unified_user_balance_address
-      chain_uids: $vcoin_unified_user_balance_chain_uids
-      limit: $vcoin_unified_user_balance_limit
-      offset: $vcoin_unified_user_balance_offset
-    ) {
-      balances {
-        amount
-        id
-        token_id
-      }
-      chain_uid
-      id
     }
   }
 }
@@ -2100,7 +1237,6 @@ exports.CodegenGeneratedVcoinUserBalanceBalancesDocument = (0, graphql_tag_1.def
     user_balance(user: $vcoin_user_balance_user) {
       balances {
         amount
-        id
         token_id
       }
     }
@@ -2113,11 +1249,8 @@ exports.CodegenGeneratedVcoinUserBalanceDocument = (0, graphql_tag_1.default) `
     user_balance(user: $vcoin_user_balance_user) {
       balances {
         amount
-        id
         token_id
       }
-      chain_uid
-      id
     }
   }
 }
@@ -2127,18 +1260,16 @@ exports.CodegenGeneratedVcoinDocument = (0, graphql_tag_1.default) `
   vcoin {
     state {
       admin
-      id
       router
     }
   }
 }
     `;
 exports.CodegenGeneratedVlpAllPoolsPaginationDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_PAGINATION($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pagination {
-        id
         limit
         offset
         total_count
@@ -2148,12 +1279,11 @@ exports.CodegenGeneratedVlpAllPoolsPaginationDocument = (0, graphql_tag_1.defaul
 }
     `;
 exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS_POOL($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         pool {
-          id
           lp_shares
           reserve_1
           reserve_2
@@ -2164,14 +1294,12 @@ exports.CodegenGeneratedVlpAllPoolsPoolsPoolDocument = (0, graphql_tag_1.default
 }
     `;
 exports.CodegenGeneratedVlpAllPoolsPoolsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
       pools {
         chain_uid
-        id
         pool {
-          id
           lp_shares
           reserve_1
           reserve_2
@@ -2182,21 +1310,17 @@ exports.CodegenGeneratedVlpAllPoolsPoolsDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpAllPoolsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String, $pair: PairInput, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_ALL_POOLS($contract: String!, $vlp_all_pools_limit: Int, $vlp_all_pools_offset: Int) {
+  vlp(contract: $contract) {
     all_pools(limit: $vlp_all_pools_limit, offset: $vlp_all_pools_offset) {
-      id
       pagination {
-        id
         limit
         offset
         total_count
       }
       pools {
         chain_uid
-        id
         pool {
-          id
           lp_shares
           reserve_1
           reserve_2
@@ -2207,40 +1331,36 @@ exports.CodegenGeneratedVlpAllPoolsDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpFeeRecipientDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_FEE_RECIPIENT($contract: String!) {
+  vlp(contract: $contract) {
     fee {
       recipient {
         address
         chain_uid
-        id
       }
     }
   }
 }
     `;
 exports.CodegenGeneratedVlpFeeDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_FEE($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_FEE($contract: String!) {
+  vlp(contract: $contract) {
     fee {
       euclid_fee_bps
-      id
       lp_fee_bps
       recipient {
         address
         chain_uid
-        id
       }
     }
   }
 }
     `;
 exports.CodegenGeneratedVlpLiquidityPairDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY_PAIR($contract: String!) {
+  vlp(contract: $contract) {
     liquidity {
       pair {
-        id
         token_1
         token_2
       }
@@ -2249,12 +1369,10 @@ exports.CodegenGeneratedVlpLiquidityPairDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpLiquidityDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_LIQUIDITY($contract: String!) {
+  vlp(contract: $contract) {
     liquidity {
-      id
       pair {
-        id
         token_1
         token_2
       }
@@ -2266,10 +1384,9 @@ exports.CodegenGeneratedVlpLiquidityDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpPoolDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_POOL($contract: String, $pair: PairInput, $vlp_pool_chain_uid: String!) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_POOL($contract: String!, $vlp_pool_chain_uid: String!) {
+  vlp(contract: $contract) {
     pool(chain_uid: $vlp_pool_chain_uid) {
-      id
       lp_shares
       reserve_1
       reserve_2
@@ -2278,14 +1395,13 @@ exports.CodegenGeneratedVlpPoolDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE_RECIPIENT($contract: String!) {
+  vlp(contract: $contract) {
     state {
       fee {
         recipient {
           address
           chain_uid
-          id
         }
       }
     }
@@ -2293,17 +1409,15 @@ exports.CodegenGeneratedVlpStateFeeRecipientDocument = (0, graphql_tag_1.default
 }
     `;
 exports.CodegenGeneratedVlpStateFeeDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_STATE_FEE($contract: String!) {
+  vlp(contract: $contract) {
     state {
       fee {
         euclid_fee_bps
-        id
         lp_fee_bps
         recipient {
           address
           chain_uid
-          id
         }
       }
     }
@@ -2311,77 +1425,34 @@ exports.CodegenGeneratedVlpStateFeeDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpStatePairDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_STATE_PAIR($contract: String!) {
+  vlp(contract: $contract) {
     state {
       pair {
-        id
         token_1
         token_2
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedVlpStatePoolConfigStableDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG_STABLE($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
-    state {
-      pool_config {
-        stable {
-          amp_factor
-          id
-        }
-      }
-    }
-  }
-}
-    `;
-exports.CodegenGeneratedVlpStatePoolConfigDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
-    state {
-      pool_config {
-        constant_product
-        id
-        stable {
-          amp_factor
-          id
-        }
       }
     }
   }
 }
     `;
 exports.CodegenGeneratedVlpStateDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_STATE($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_STATE($contract: String!) {
+  vlp(contract: $contract) {
     state {
       admin
       fee {
         euclid_fee_bps
-        id
         lp_fee_bps
         recipient {
           address
           chain_uid
-          id
         }
       }
-      id
       last_updated
       pair {
-        id
         token_1
         token_2
-      }
-      pool_config {
-        constant_product
-        id
-        stable {
-          amp_factor
-          id
-        }
       }
       router
       total_lp_tokens
@@ -2391,14 +1462,13 @@ exports.CodegenGeneratedVlpStateDocument = (0, graphql_tag_1.default) `
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES_TOTALS($contract: String!) {
+  vlp(contract: $contract) {
     total_fees_collected {
       euclid_fees {
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2406,15 +1476,13 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesTotalsDocument = (0, grap
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_EUCLID_FEES($contract: String!) {
+  vlp(contract: $contract) {
     total_fees_collected {
       euclid_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2422,14 +1490,13 @@ exports.CodegenGeneratedVlpTotalFeesCollectedEuclidFeesDocument = (0, graphql_ta
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES_TOTALS($contract: String!) {
+  vlp(contract: $contract) {
     total_fees_collected {
       lp_fees {
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2437,15 +1504,13 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesTotalsDocument = (0, graphql_
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_LP_FEES($contract: String!) {
+  vlp(contract: $contract) {
     total_fees_collected {
       lp_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2453,24 +1518,19 @@ exports.CodegenGeneratedVlpTotalFeesCollectedLpFeesDocument = (0, graphql_tag_1.
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED($contract: String!) {
+  vlp(contract: $contract) {
     total_fees_collected {
       euclid_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
-      id
       lp_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2478,33 +1538,28 @@ exports.CodegenGeneratedVlpTotalFeesCollectedDocument = (0, graphql_tag_1.defaul
 }
     `;
 exports.CodegenGeneratedVlpTotalFeesCollectedPerDenomDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String, $pair: PairInput, $vlp_total_fees_collected_per_denom_denom: String!) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP_TOTAL_FEES_COLLECTED_PER_DENOM($contract: String!, $vlp_total_fees_collected_per_denom_denom: String!) {
+  vlp(contract: $contract) {
     total_fees_collected_per_denom(denom: $vlp_total_fees_collected_per_denom_denom) {
       euclid_fees
-      id
       lp_fees
     }
   }
 }
     `;
 exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
-    query CODEGEN_GENERATED_VLP($contract: String, $pair: PairInput) {
-  vlp(contract: $contract, pair: $pair) {
+    query CODEGEN_GENERATED_VLP($contract: String!) {
+  vlp(contract: $contract) {
     fee {
       euclid_fee_bps
-      id
       lp_fee_bps
       recipient {
         address
         chain_uid
-        id
       }
     }
     liquidity {
-      id
       pair {
-        id
         token_1
         token_2
       }
@@ -2516,28 +1571,16 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
       admin
       fee {
         euclid_fee_bps
-        id
         lp_fee_bps
         recipient {
           address
           chain_uid
-          id
         }
       }
-      id
       last_updated
       pair {
-        id
         token_1
         token_2
-      }
-      pool_config {
-        constant_product
-        id
-        stable {
-          amp_factor
-          id
-        }
       }
       router
       total_lp_tokens
@@ -2545,20 +1588,15 @@ exports.CodegenGeneratedVlpDocument = (0, graphql_tag_1.default) `
     }
     total_fees_collected {
       euclid_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
-      id
       lp_fees {
-        id
         totals {
           amount
           denom
-          id
         }
       }
     }
@@ -2571,35 +1609,11 @@ function getSdk(client, withWrapper = defaultWrapper) {
         CODEGEN_GENERATED_CHAINS_ALL_CHAINS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsAllChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_CHAINS', 'query');
         },
-        CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsAllEvmChainsNativeCurrencyDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_NATIVE_CURRENCY', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDefaultDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS_DEFAULT', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsAllEvmChainsRpcUrlsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS_RPC_URLS', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsAllEvmChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_ALL_EVM_CHAINS', 'query');
-        },
         CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsChainConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_CHAIN_CONFIG', 'query');
         },
         CODEGEN_GENERATED_CHAINS_CONTRACTS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsContractsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_CONTRACTS', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsEvmChainConfigNativeCurrencyDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_NATIVE_CURRENCY', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDefaultDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS_DEFAULT', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsEvmChainConfigRpcUrlsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG_RPC_URLS', 'query');
-        },
-        CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsEvmChainConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_EVM_CHAIN_CONFIG', 'query');
         },
         CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsKeplrConfigBech32ConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS_KEPLR_CONFIG_BECH32CONFIG', 'query');
@@ -2630,48 +1644,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         CODEGEN_GENERATED_CHAINS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedChainsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CHAINS', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIM_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimSenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIM_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIM(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIM', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdSenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimByPsuedoClaimIdDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIM_BY_PSUEDO_CLAIM_ID', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimsByClaimerPubKeySenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimsByClaimerPubKeyDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_CLAIMER_PUB_KEY', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimsByEmailSenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimClaimsByEmailDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_CLAIMS_BY_EMAIL', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimSenderClaimsSenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimSenderClaimsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_SENDER_CLAIMS', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_STATE(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_STATE', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimUserClaimsSenderDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_USER_CLAIMS_SENDER', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM_USER_CLAIMS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimUserClaimsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM_USER_CLAIMS', 'query');
-        },
-        CODEGEN_GENERATED_CLAIM(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedClaimDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CLAIM', 'query');
         },
         CODEGEN_GENERATED_CW_BALANCE(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedCwBalanceDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_CW_BALANCE', 'query');
@@ -2772,12 +1744,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         CODEGEN_GENERATED_POOL_VOLUME(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolVolumeDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME', 'query');
         },
-        CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE_VOLUME_BREAKDOWN_24HOURS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolVolumeClickhouseVolumeBreakdown_24HoursDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE_VOLUME_BREAKDOWN_24HOURS', 'query');
-        },
-        CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolVolumeClickhouseDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL_VOLUME_CLICKHOUSE', 'query');
-        },
         CODEGEN_GENERATED_POOL(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedPoolDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_POOL', 'query');
         },
@@ -2844,23 +1810,8 @@ function getSdk(client, withWrapper = defaultWrapper) {
         CODEGEN_GENERATED_ROUTER(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedRouterDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_ROUTER', 'query');
         },
-        CODEGEN_GENERATED_TOKEN_ALL_DEXES(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenAllDexesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_ALL_DEXES', 'query');
-        },
-        CODEGEN_GENERATED_TOKEN_CHAINS_FOR_TOKEN_LAUNCH(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenChainsForTokenLaunchDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_CHAINS_FOR_TOKEN_LAUNCH', 'query');
-        },
-        CODEGEN_GENERATED_TOKEN_DEX_METADATA(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenDexMetadataDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_DEX_METADATA', 'query');
-        },
         CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenGetAllFaucetsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_GET_ALL_FAUCETS', 'query');
-        },
-        CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenTokenDenomsDenomsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS_DENOMS', 'query');
-        },
-        CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenTokenDenomsDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_DENOMS', 'query');
         },
         CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenTokenLiquiditiesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_LIQUIDITIES', 'query');
@@ -2874,9 +1825,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenTokenMetadatasDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKEN_METADATAS', 'query');
         },
-        CODEGEN_GENERATED_TOKEN_TOKENS_METADATA(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenTokensMetadataDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN_TOKENS_METADATA', 'query');
-        },
         CODEGEN_GENERATED_TOKEN(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedTokenDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_TOKEN', 'query');
         },
@@ -2885,12 +1833,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         CODEGEN_GENERATED_VCOIN_STATE(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVcoinStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_STATE', 'query');
-        },
-        CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVcoinUnifiedUserBalanceBalancesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE_BALANCES', 'query');
-        },
-        CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVcoinUnifiedUserBalanceDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_UNIFIED_USER_BALANCE', 'query');
         },
         CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVcoinUserBalanceBalancesDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VCOIN_USER_BALANCE_BALANCES', 'query');
@@ -2936,12 +1878,6 @@ function getSdk(client, withWrapper = defaultWrapper) {
         },
         CODEGEN_GENERATED_VLP_STATE_PAIR(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVlpStatePairDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_PAIR', 'query');
-        },
-        CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG_STABLE(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVlpStatePoolConfigStableDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG_STABLE', 'query');
-        },
-        CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG(variables, requestHeaders) {
-            return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVlpStatePoolConfigDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE_POOL_CONFIG', 'query');
         },
         CODEGEN_GENERATED_VLP_STATE(variables, requestHeaders) {
             return withWrapper((wrappedRequestHeaders) => client.request(exports.CodegenGeneratedVlpStateDocument, variables, { ...requestHeaders, ...wrappedRequestHeaders }), 'CODEGEN_GENERATED_VLP_STATE', 'query');
