@@ -1374,6 +1374,20 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedQuery = {
         };
     };
 };
+export type ICodegenGeneratedFactoryPositionTokenContractQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryPositionTokenContractQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        position_token_contract: {
+            __typename?: 'PositionTokenContractResponse';
+            contract_address: string;
+            id: string;
+        };
+    };
+};
 export type ICodegenGeneratedFactoryStateQueryVariables = Exact<{
     chain_uid: Scalars['String']['input'];
 }>;
@@ -1388,6 +1402,136 @@ export type ICodegenGeneratedFactoryStateQuery = {
             hub_channel: string;
             id: string;
             router_contract: string;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                id: string;
+                liquidity: string;
+                token_id: string;
+                vlp_address: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            id: string;
+            positions: Array<{
+                __typename?: 'UserPosition';
+                id: string;
+                liquidity: string;
+                token_id: string;
+                vlp_address: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
         };
     };
 };
@@ -1422,6 +1566,11 @@ export type ICodegenGeneratedFactoryQuery = {
                     id: string;
                 }>;
             };
+        };
+        position_token_contract: {
+            __typename?: 'PositionTokenContractResponse';
+            contract_address: string;
+            id: string;
         };
         state: {
             __typename?: 'ContractStateOfFactory';
@@ -4482,7 +4631,12 @@ export declare const CodegenGeneratedFactoryGetLptokenAddressDocument: import("g
 export declare const CodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedFactoryPartnerFeesCollectedTotalDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedFactoryPartnerFeesCollectedDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedFactoryPositionTokenContractDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedFactoryStateDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedFactoryUserPositionsPositionsPairDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedFactoryUserPositionsPositionsPositionDetailDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedFactoryUserPositionsPositionsDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedFactoryUserPositionsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedFactoryVlpDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedFactoryDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedPoolFeesCollectedBreakdownDocument: import("graphql").DocumentNode;
@@ -4649,7 +4803,12 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL_TOTALS(variables: ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedTotalTotalsQuery>;
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED_TOTAL(variables: ICodegenGeneratedFactoryPartnerFeesCollectedTotalQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedTotalQuery>;
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED(variables: ICodegenGeneratedFactoryPartnerFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedQuery>;
+    CODEGEN_GENERATED_FACTORY_POSITION_TOKEN_CONTRACT(variables: ICodegenGeneratedFactoryPositionTokenContractQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPositionTokenContractQuery>;
     CODEGEN_GENERATED_FACTORY_STATE(variables: ICodegenGeneratedFactoryStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryStateQuery>;
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_PAIR(variables: ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery>;
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_POSITION_DETAIL(variables: ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery>;
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS(variables: ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsQuery>;
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS(variables: ICodegenGeneratedFactoryUserPositionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsQuery>;
     CODEGEN_GENERATED_FACTORY_VLP(variables: ICodegenGeneratedFactoryVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryVlpQuery>;
     CODEGEN_GENERATED_FACTORY(variables: ICodegenGeneratedFactoryQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryQuery>;
     CODEGEN_GENERATED_POOL_FEES_COLLECTED_BREAKDOWN(variables?: ICodegenGeneratedPoolFeesCollectedBreakdownQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedPoolFeesCollectedBreakdownQuery>;

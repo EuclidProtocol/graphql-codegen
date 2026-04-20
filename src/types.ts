@@ -538,8 +538,15 @@ export type IFactory = {
   get_LpToken_address: Maybe<ILpTokenAddr>;
   /** Queries the total amount of fees collected from swaps on the specified chain. Returns fees for all denoms. */
   partner_fees_collected: Maybe<IPartnerFeesCollected>;
+  /** Returns the position token NFT contract address used for concentrated liquidity positions on this chain. */
+  position_token_contract: Maybe<IPositionTokenContractResponse>;
   /** Queries the state information of a factory contract on a specified blockchain. It includes details about the factory's ID, chain ID, router contract, hub channel, and admin. */
   state: Maybe<IContractStateOfFactory>;
+  /**
+   * Returns all concentrated liquidity positions owned by the specified address on this chain.
+   * Queries the factory for position token IDs, then enriches each with VLP position details.
+   */
+  user_positions: Maybe<IUserPositionsResponse>;
   /** Queries the VLP address for a specified token pair on the specified chain. */
   vlp: Maybe<Scalars['String']['output']>;
 };
@@ -569,6 +576,11 @@ export type IFactoryEscrowArgs = {
 
 export type IFactoryGetLpTokenAddressArgs = {
   vlp_address: Scalars['String']['input'];
+};
+
+
+export type IFactoryUserPositionsArgs = {
+  owner: Scalars['String']['input'];
 };
 
 
@@ -1044,6 +1056,14 @@ export type IPositionResponse = INode & {
   tokens_owed_1: Scalars['String']['output'];
   /** The upper tick boundary of the position. */
   upper_tick_index: Scalars['Int']['output'];
+};
+
+export type IPositionTokenContractResponse = INode & {
+  __typename?: 'PositionTokenContractResponse';
+  /** The contract address of the position token NFT contract for concentrated liquidity. */
+  contract_address: Maybe<Scalars['String']['output']>;
+  /** Globally unique identifier: PositionTokenContractResponse:{chain_uid} */
+  id: Scalars['ID']['output'];
 };
 
 /** Protocol fees accumulated for a concentrated liquidity pool. */
@@ -1569,6 +1589,32 @@ export type ITotalFeesPerDenomResponse = INode & {
   /** Globally unique identifier: TotalFeesPerDenomResponse:singleton */
   id: Scalars['ID']['output'];
   lp_fees: Scalars['String']['output'];
+};
+
+/** A user's concentrated liquidity position with token info and VLP details. */
+export type IUserPosition = INode & {
+  __typename?: 'UserPosition';
+  /** Globally unique identifier: UserPosition:{chain_uid}:{token_id} */
+  id: Scalars['ID']['output'];
+  /** The liquidity amount from the position token. */
+  liquidity: Scalars['String']['output'];
+  /** The token pair for this position's pool. */
+  pair: Maybe<IPair>;
+  /** Detailed position data from the VLP contract (ticks, fee growth, tokens owed). */
+  position_detail: Maybe<IPositionResponse>;
+  /** The position NFT token ID. */
+  token_id: Scalars['String']['output'];
+  /** The VLP contract address this position belongs to. */
+  vlp_address: Scalars['String']['output'];
+};
+
+/** Response containing all concentrated liquidity positions for an owner. */
+export type IUserPositionsResponse = INode & {
+  __typename?: 'UserPositionsResponse';
+  /** Globally unique identifier: UserPositionsResponse:{chain_uid}:{owner} */
+  id: Scalars['ID']['output'];
+  /** The list of positions owned by the queried address. */
+  positions: Array<IUserPosition>;
 };
 
 export type IVcoin = {

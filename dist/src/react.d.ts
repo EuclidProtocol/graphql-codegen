@@ -1373,6 +1373,20 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedQuery = {
         };
     };
 };
+export type ICodegenGeneratedFactoryPositionTokenContractQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryPositionTokenContractQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        position_token_contract: {
+            __typename?: 'PositionTokenContractResponse';
+            contract_address: string;
+            id: string;
+        };
+    };
+};
 export type ICodegenGeneratedFactoryStateQueryVariables = Exact<{
     chain_uid: Scalars['String']['input'];
 }>;
@@ -1387,6 +1401,136 @@ export type ICodegenGeneratedFactoryStateQuery = {
             hub_channel: string;
             id: string;
             router_contract: string;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsPositionsQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            positions: Array<{
+                __typename?: 'UserPosition';
+                id: string;
+                liquidity: string;
+                token_id: string;
+                vlp_address: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
+        };
+    };
+};
+export type ICodegenGeneratedFactoryUserPositionsQueryVariables = Exact<{
+    chain_uid: Scalars['String']['input'];
+    factory_user_positions_owner: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedFactoryUserPositionsQuery = {
+    __typename?: 'Query';
+    factory: {
+        __typename?: 'Factory';
+        user_positions: {
+            __typename?: 'UserPositionsResponse';
+            id: string;
+            positions: Array<{
+                __typename?: 'UserPosition';
+                id: string;
+                liquidity: string;
+                token_id: string;
+                vlp_address: string;
+                pair: {
+                    __typename?: 'Pair';
+                    id: string;
+                    token_1: string;
+                    token_2: string;
+                };
+                position_detail: {
+                    __typename?: 'PositionResponse';
+                    chain_uid: string;
+                    fee_growth_inside_0_last_x128: string;
+                    fee_growth_inside_1_last_x128: string;
+                    id: string;
+                    liquidity: string;
+                    lower_tick_index: number;
+                    position_id: string;
+                    tokens_owed_0: string;
+                    tokens_owed_1: string;
+                    upper_tick_index: number;
+                };
+            }>;
         };
     };
 };
@@ -1421,6 +1565,11 @@ export type ICodegenGeneratedFactoryQuery = {
                     id: string;
                 }>;
             };
+        };
+        position_token_contract: {
+            __typename?: 'PositionTokenContractResponse';
+            contract_address: string;
+            id: string;
         };
         state: {
             __typename?: 'ContractStateOfFactory';
@@ -6363,6 +6512,38 @@ export declare function refetchCodegenGeneratedFactoryPartnerFeesCollectedQuery(
         chain_uid: Scalars["String"]["input"];
     }>;
 };
+export declare const CodegenGeneratedFactoryPositionTokenContractDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedFactoryPositionTokenContractQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedFactoryPositionTokenContractQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedFactoryPositionTokenContractQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedFactoryPositionTokenContractQuery({
+ *   variables: {
+ *      chain_uid: // value for 'chain_uid'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedFactoryPositionTokenContractQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedFactoryPositionTokenContractQuery, ICodegenGeneratedFactoryPositionTokenContractQueryVariables>): Apollo.QueryResult<ICodegenGeneratedFactoryPositionTokenContractQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedFactoryPositionTokenContractLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedFactoryPositionTokenContractQuery, ICodegenGeneratedFactoryPositionTokenContractQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedFactoryPositionTokenContractQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedFactoryPositionTokenContractQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryPositionTokenContractQuery>;
+export type CodegenGeneratedFactoryPositionTokenContractLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryPositionTokenContractLazyQuery>;
+export type CodegenGeneratedFactoryPositionTokenContractQueryResult = Apollo.QueryResult<ICodegenGeneratedFactoryPositionTokenContractQuery, ICodegenGeneratedFactoryPositionTokenContractQueryVariables>;
+export declare function refetchCodegenGeneratedFactoryPositionTokenContractQuery(variables: ICodegenGeneratedFactoryPositionTokenContractQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chain_uid: Scalars["String"]["input"];
+    }>;
+};
 export declare const CodegenGeneratedFactoryStateDocument: Apollo.DocumentNode;
 /**
  * __useCodegenGeneratedFactoryStateQuery__
@@ -6393,6 +6574,150 @@ export declare function refetchCodegenGeneratedFactoryStateQuery(variables: ICod
     query: Apollo.DocumentNode;
     variables: Exact<{
         chain_uid: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedFactoryUserPositionsPositionsPairDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedFactoryUserPositionsPositionsPairQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedFactoryUserPositionsPositionsPairQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedFactoryUserPositionsPositionsPairQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedFactoryUserPositionsPositionsPairQuery({
+ *   variables: {
+ *      chain_uid: // value for 'chain_uid'
+ *      factory_user_positions_owner: // value for 'factory_user_positions_owner'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsPairQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery, ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables>): Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsPairLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery, ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPairQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsPairQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPairLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsPairLazyQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPairQueryResult = Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery, ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables>;
+export declare function refetchCodegenGeneratedFactoryUserPositionsPositionsPairQuery(variables: ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chain_uid: Scalars["String"]["input"];
+        factory_user_positions_owner: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedFactoryUserPositionsPositionsPositionDetailDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery({
+ *   variables: {
+ *      chain_uid: // value for 'chain_uid'
+ *      factory_user_positions_owner: // value for 'factory_user_positions_owner'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery, ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables>): Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery, ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPositionDetailLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsPositionDetailLazyQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryResult = Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery, ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables>;
+export declare function refetchCodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery(variables: ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chain_uid: Scalars["String"]["input"];
+        factory_user_positions_owner: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedFactoryUserPositionsPositionsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedFactoryUserPositionsPositionsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedFactoryUserPositionsPositionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedFactoryUserPositionsPositionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedFactoryUserPositionsPositionsQuery({
+ *   variables: {
+ *      chain_uid: // value for 'chain_uid'
+ *      factory_user_positions_owner: // value for 'factory_user_positions_owner'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsQuery, ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedFactoryUserPositionsPositionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedFactoryUserPositionsPositionsQuery, ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedFactoryUserPositionsPositionsQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedFactoryUserPositionsPositionsQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsPositionsLazyQuery>;
+export type CodegenGeneratedFactoryUserPositionsPositionsQueryResult = Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsPositionsQuery, ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables>;
+export declare function refetchCodegenGeneratedFactoryUserPositionsPositionsQuery(variables: ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chain_uid: Scalars["String"]["input"];
+        factory_user_positions_owner: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedFactoryUserPositionsDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedFactoryUserPositionsQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedFactoryUserPositionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedFactoryUserPositionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedFactoryUserPositionsQuery({
+ *   variables: {
+ *      chain_uid: // value for 'chain_uid'
+ *      factory_user_positions_owner: // value for 'factory_user_positions_owner'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedFactoryUserPositionsQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedFactoryUserPositionsQuery, ICodegenGeneratedFactoryUserPositionsQueryVariables>): Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedFactoryUserPositionsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedFactoryUserPositionsQuery, ICodegenGeneratedFactoryUserPositionsQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedFactoryUserPositionsQuery, Exact<{
+    chain_uid: Scalars["String"]["input"];
+    factory_user_positions_owner: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedFactoryUserPositionsQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsQuery>;
+export type CodegenGeneratedFactoryUserPositionsLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedFactoryUserPositionsLazyQuery>;
+export type CodegenGeneratedFactoryUserPositionsQueryResult = Apollo.QueryResult<ICodegenGeneratedFactoryUserPositionsQuery, ICodegenGeneratedFactoryUserPositionsQueryVariables>;
+export declare function refetchCodegenGeneratedFactoryUserPositionsQuery(variables: ICodegenGeneratedFactoryUserPositionsQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        chain_uid: Scalars["String"]["input"];
+        factory_user_positions_owner: Scalars["String"]["input"];
     }>;
 };
 export declare const CodegenGeneratedFactoryVlpDocument: Apollo.DocumentNode;

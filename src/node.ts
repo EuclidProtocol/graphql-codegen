@@ -512,12 +512,51 @@ export type ICodegenGeneratedFactoryPartnerFeesCollectedQueryVariables = Exact<{
 
 export type ICodegenGeneratedFactoryPartnerFeesCollectedQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', partner_fees_collected: { __typename?: 'PartnerFeesCollected', id: string, total: { __typename?: 'DenomFees', id: string, totals: Array<{ __typename?: 'Denomination', amount: string, denom: string, id: string }> } } } };
 
+export type ICodegenGeneratedFactoryPositionTokenContractQueryVariables = Exact<{
+  chain_uid: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedFactoryPositionTokenContractQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', position_token_contract: { __typename?: 'PositionTokenContractResponse', contract_address: string, id: string } } };
+
 export type ICodegenGeneratedFactoryStateQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
 }>;
 
 
 export type ICodegenGeneratedFactoryStateQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', state: { __typename?: 'ContractStateOfFactory', admin: string, chain_uid: string, hub_channel: string, id: string, router_contract: string } } };
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables = Exact<{
+  chain_uid: Scalars['String']['input'];
+  factory_user_positions_owner: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsPairQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', user_positions: { __typename?: 'UserPositionsResponse', positions: Array<{ __typename?: 'UserPosition', pair: { __typename?: 'Pair', id: string, token_1: string, token_2: string } }> } } };
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables = Exact<{
+  chain_uid: Scalars['String']['input'];
+  factory_user_positions_owner: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', user_positions: { __typename?: 'UserPositionsResponse', positions: Array<{ __typename?: 'UserPosition', position_detail: { __typename?: 'PositionResponse', chain_uid: string, fee_growth_inside_0_last_x128: string, fee_growth_inside_1_last_x128: string, id: string, liquidity: string, lower_tick_index: number, position_id: string, tokens_owed_0: string, tokens_owed_1: string, upper_tick_index: number } }> } } };
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables = Exact<{
+  chain_uid: Scalars['String']['input'];
+  factory_user_positions_owner: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedFactoryUserPositionsPositionsQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', user_positions: { __typename?: 'UserPositionsResponse', positions: Array<{ __typename?: 'UserPosition', id: string, liquidity: string, token_id: string, vlp_address: string, pair: { __typename?: 'Pair', id: string, token_1: string, token_2: string }, position_detail: { __typename?: 'PositionResponse', chain_uid: string, fee_growth_inside_0_last_x128: string, fee_growth_inside_1_last_x128: string, id: string, liquidity: string, lower_tick_index: number, position_id: string, tokens_owed_0: string, tokens_owed_1: string, upper_tick_index: number } }> } } };
+
+export type ICodegenGeneratedFactoryUserPositionsQueryVariables = Exact<{
+  chain_uid: Scalars['String']['input'];
+  factory_user_positions_owner: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedFactoryUserPositionsQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', user_positions: { __typename?: 'UserPositionsResponse', id: string, positions: Array<{ __typename?: 'UserPosition', id: string, liquidity: string, token_id: string, vlp_address: string, pair: { __typename?: 'Pair', id: string, token_1: string, token_2: string }, position_detail: { __typename?: 'PositionResponse', chain_uid: string, fee_growth_inside_0_last_x128: string, fee_growth_inside_1_last_x128: string, id: string, liquidity: string, lower_tick_index: number, position_id: string, tokens_owed_0: string, tokens_owed_1: string, upper_tick_index: number } }> } } };
 
 export type ICodegenGeneratedFactoryVlpQueryVariables = Exact<{
   chain_uid: Scalars['String']['input'];
@@ -532,7 +571,7 @@ export type ICodegenGeneratedFactoryQueryVariables = Exact<{
 }>;
 
 
-export type ICodegenGeneratedFactoryQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', partner_fees_collected: { __typename?: 'PartnerFeesCollected', id: string, total: { __typename?: 'DenomFees', id: string, totals: Array<{ __typename?: 'Denomination', amount: string, denom: string, id: string }> } }, state: { __typename?: 'ContractStateOfFactory', admin: string, chain_uid: string, hub_channel: string, id: string, router_contract: string } } };
+export type ICodegenGeneratedFactoryQuery = { __typename?: 'Query', factory: { __typename?: 'Factory', partner_fees_collected: { __typename?: 'PartnerFeesCollected', id: string, total: { __typename?: 'DenomFees', id: string, totals: Array<{ __typename?: 'Denomination', amount: string, denom: string, id: string }> } }, position_token_contract: { __typename?: 'PositionTokenContractResponse', contract_address: string, id: string }, state: { __typename?: 'ContractStateOfFactory', admin: string, chain_uid: string, hub_channel: string, id: string, router_contract: string } } };
 
 export type ICodegenGeneratedPoolFeesCollectedBreakdownQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2412,6 +2451,16 @@ export const CodegenGeneratedFactoryPartnerFeesCollectedDocument = /*#__PURE__*/
   }
 }
     `;
+export const CodegenGeneratedFactoryPositionTokenContractDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_FACTORY_POSITION_TOKEN_CONTRACT($chain_uid: String!) {
+  factory(chain_uid: $chain_uid) {
+    position_token_contract {
+      contract_address
+      id
+    }
+  }
+}
+    `;
 export const CodegenGeneratedFactoryStateDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_FACTORY_STATE($chain_uid: String!) {
   factory(chain_uid: $chain_uid) {
@@ -2421,6 +2470,106 @@ export const CodegenGeneratedFactoryStateDocument = /*#__PURE__*/ gql`
       hub_channel
       id
       router_contract
+    }
+  }
+}
+    `;
+export const CodegenGeneratedFactoryUserPositionsPositionsPairDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_PAIR($chain_uid: String!, $factory_user_positions_owner: String!) {
+  factory(chain_uid: $chain_uid) {
+    user_positions(owner: $factory_user_positions_owner) {
+      positions {
+        pair {
+          id
+          token_1
+          token_2
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedFactoryUserPositionsPositionsPositionDetailDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_POSITION_DETAIL($chain_uid: String!, $factory_user_positions_owner: String!) {
+  factory(chain_uid: $chain_uid) {
+    user_positions(owner: $factory_user_positions_owner) {
+      positions {
+        position_detail {
+          chain_uid
+          fee_growth_inside_0_last_x128
+          fee_growth_inside_1_last_x128
+          id
+          liquidity
+          lower_tick_index
+          position_id
+          tokens_owed_0
+          tokens_owed_1
+          upper_tick_index
+        }
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedFactoryUserPositionsPositionsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS($chain_uid: String!, $factory_user_positions_owner: String!) {
+  factory(chain_uid: $chain_uid) {
+    user_positions(owner: $factory_user_positions_owner) {
+      positions {
+        id
+        liquidity
+        pair {
+          id
+          token_1
+          token_2
+        }
+        position_detail {
+          chain_uid
+          fee_growth_inside_0_last_x128
+          fee_growth_inside_1_last_x128
+          id
+          liquidity
+          lower_tick_index
+          position_id
+          tokens_owed_0
+          tokens_owed_1
+          upper_tick_index
+        }
+        token_id
+        vlp_address
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedFactoryUserPositionsDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_FACTORY_USER_POSITIONS($chain_uid: String!, $factory_user_positions_owner: String!) {
+  factory(chain_uid: $chain_uid) {
+    user_positions(owner: $factory_user_positions_owner) {
+      id
+      positions {
+        id
+        liquidity
+        pair {
+          id
+          token_1
+          token_2
+        }
+        position_detail {
+          chain_uid
+          fee_growth_inside_0_last_x128
+          fee_growth_inside_1_last_x128
+          id
+          liquidity
+          lower_tick_index
+          position_id
+          tokens_owed_0
+          tokens_owed_1
+          upper_tick_index
+        }
+        token_id
+        vlp_address
+      }
     }
   }
 }
@@ -2445,6 +2594,10 @@ export const CodegenGeneratedFactoryDocument = /*#__PURE__*/ gql`
           id
         }
       }
+    }
+    position_token_contract {
+      contract_address
+      id
     }
     state {
       admin
@@ -4943,8 +5096,23 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED(variables: ICodegenGeneratedFactoryPartnerFeesCollectedQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPartnerFeesCollectedQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPartnerFeesCollectedQuery>(CodegenGeneratedFactoryPartnerFeesCollectedDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_PARTNER_FEES_COLLECTED', 'query');
     },
+    CODEGEN_GENERATED_FACTORY_POSITION_TOKEN_CONTRACT(variables: ICodegenGeneratedFactoryPositionTokenContractQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryPositionTokenContractQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryPositionTokenContractQuery>(CodegenGeneratedFactoryPositionTokenContractDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_POSITION_TOKEN_CONTRACT', 'query');
+    },
     CODEGEN_GENERATED_FACTORY_STATE(variables: ICodegenGeneratedFactoryStateQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryStateQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryStateQuery>(CodegenGeneratedFactoryStateDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_STATE', 'query');
+    },
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_PAIR(variables: ICodegenGeneratedFactoryUserPositionsPositionsPairQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryUserPositionsPositionsPairQuery>(CodegenGeneratedFactoryUserPositionsPositionsPairDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_PAIR', 'query');
+    },
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_POSITION_DETAIL(variables: ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryUserPositionsPositionsPositionDetailQuery>(CodegenGeneratedFactoryUserPositionsPositionsPositionDetailDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS_POSITION_DETAIL', 'query');
+    },
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS(variables: ICodegenGeneratedFactoryUserPositionsPositionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsPositionsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryUserPositionsPositionsQuery>(CodegenGeneratedFactoryUserPositionsPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_USER_POSITIONS_POSITIONS', 'query');
+    },
+    CODEGEN_GENERATED_FACTORY_USER_POSITIONS(variables: ICodegenGeneratedFactoryUserPositionsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryUserPositionsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryUserPositionsQuery>(CodegenGeneratedFactoryUserPositionsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_USER_POSITIONS', 'query');
     },
     CODEGEN_GENERATED_FACTORY_VLP(variables: ICodegenGeneratedFactoryVlpQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedFactoryVlpQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedFactoryVlpQuery>(CodegenGeneratedFactoryVlpDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_FACTORY_VLP', 'query');

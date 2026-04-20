@@ -270,7 +270,7 @@ export type EscrowResponseFieldPolicy = {
 	escrow_address?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type FactoryKeySpecifier = ('all_pools' | 'all_tokens' | 'allowed_denoms' | 'escrow' | 'get_LpToken_address' | 'partner_fees_collected' | 'state' | 'vlp' | FactoryKeySpecifier)[];
+export type FactoryKeySpecifier = ('all_pools' | 'all_tokens' | 'allowed_denoms' | 'escrow' | 'get_LpToken_address' | 'partner_fees_collected' | 'position_token_contract' | 'state' | 'user_positions' | 'vlp' | FactoryKeySpecifier)[];
 export type FactoryFieldPolicy = {
 	all_pools?: FieldPolicy<any> | FieldReadFunction<any>,
 	all_tokens?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -278,7 +278,9 @@ export type FactoryFieldPolicy = {
 	escrow?: FieldPolicy<any> | FieldReadFunction<any>,
 	get_LpToken_address?: FieldPolicy<any> | FieldReadFunction<any>,
 	partner_fees_collected?: FieldPolicy<any> | FieldReadFunction<any>,
+	position_token_contract?: FieldPolicy<any> | FieldReadFunction<any>,
 	state?: FieldPolicy<any> | FieldReadFunction<any>,
+	user_positions?: FieldPolicy<any> | FieldReadFunction<any>,
 	vlp?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type FaucetKeySpecifier = ('faucet_link' | 'id' | 'token' | FaucetKeySpecifier)[];
@@ -536,6 +538,11 @@ export type PositionResponseFieldPolicy = {
 	tokens_owed_1?: FieldPolicy<any> | FieldReadFunction<any>,
 	upper_tick_index?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type PositionTokenContractResponseKeySpecifier = ('contract_address' | 'id' | PositionTokenContractResponseKeySpecifier)[];
+export type PositionTokenContractResponseFieldPolicy = {
+	contract_address?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type ProtocolFeesResponseKeySpecifier = ('amount_0' | 'amount_1' | 'id' | ProtocolFeesResponseKeySpecifier)[];
 export type ProtocolFeesResponseFieldPolicy = {
 	amount_0?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -754,6 +761,20 @@ export type TotalFeesPerDenomResponseFieldPolicy = {
 	euclid_fees?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	lp_fees?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UserPositionKeySpecifier = ('id' | 'liquidity' | 'pair' | 'position_detail' | 'token_id' | 'vlp_address' | UserPositionKeySpecifier)[];
+export type UserPositionFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	liquidity?: FieldPolicy<any> | FieldReadFunction<any>,
+	pair?: FieldPolicy<any> | FieldReadFunction<any>,
+	position_detail?: FieldPolicy<any> | FieldReadFunction<any>,
+	token_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	vlp_address?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type UserPositionsResponseKeySpecifier = ('id' | 'positions' | UserPositionsResponseKeySpecifier)[];
+export type UserPositionsResponseFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	positions?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type VcoinKeySpecifier = ('balance' | 'state' | 'unified_user_balance' | 'user_balance' | VcoinKeySpecifier)[];
 export type VcoinFieldPolicy = {
@@ -1107,6 +1128,10 @@ export type StrictTypedTypePolicies = {
 		keyFields?: false | PositionResponseKeySpecifier | (() => undefined | PositionResponseKeySpecifier),
 		fields?: PositionResponseFieldPolicy,
 	},
+	PositionTokenContractResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | PositionTokenContractResponseKeySpecifier | (() => undefined | PositionTokenContractResponseKeySpecifier),
+		fields?: PositionTokenContractResponseFieldPolicy,
+	},
 	ProtocolFeesResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ProtocolFeesResponseKeySpecifier | (() => undefined | ProtocolFeesResponseKeySpecifier),
 		fields?: ProtocolFeesResponseFieldPolicy,
@@ -1230,6 +1255,14 @@ export type StrictTypedTypePolicies = {
 	TotalFeesPerDenomResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | TotalFeesPerDenomResponseKeySpecifier | (() => undefined | TotalFeesPerDenomResponseKeySpecifier),
 		fields?: TotalFeesPerDenomResponseFieldPolicy,
+	},
+	UserPosition?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UserPositionKeySpecifier | (() => undefined | UserPositionKeySpecifier),
+		fields?: UserPositionFieldPolicy,
+	},
+	UserPositionsResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | UserPositionsResponseKeySpecifier | (() => undefined | UserPositionsResponseKeySpecifier),
+		fields?: UserPositionsResponseFieldPolicy,
 	},
 	Vcoin?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | VcoinKeySpecifier | (() => undefined | VcoinKeySpecifier),
