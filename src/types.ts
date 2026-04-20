@@ -309,6 +309,16 @@ export type IClaimerResponseWithStatus = INode & {
   token: Scalars['String']['output'];
 };
 
+export type IClpPositionInfoResponse = INode & {
+  __typename?: 'ClpPositionInfoResponse';
+  /** Globally unique identifier: ClpPositionInfoResponse:{position_id} */
+  id: Scalars['ID']['output'];
+  /** The position details. */
+  position: Maybe<IPositionResponse>;
+  /** The VLP contract address where this position lives. */
+  vlp_address: Scalars['String']['output'];
+};
+
 /** Parameters specific to concentrated liquidity pools. */
 export type IConcentratedPoolParams = INode & {
   __typename?: 'ConcentratedPoolParams';
@@ -452,7 +462,7 @@ export type ICwBalanceArgs = {
 
 export type IDenomFees = INode & {
   __typename?: 'DenomFees';
-  /** Globally unique identifier: DenomFees:singleton */
+  /** Globally unique identifier: DenomFees:{vlp_address}:{fee_type} */
   id: Scalars['ID']['output'];
   totals: Array<IDenomination>;
 };
@@ -927,7 +937,7 @@ export type IPoolConfig = INode & {
   /** Concentrated pool configuration. Set if this is a concentrated liquidity pool. */
   concentrated: Maybe<IConcentratedPoolParams>;
   constant_product: Maybe<Scalars['JSON']['output']>;
-  /** Globally unique identifier: PoolConfig:singleton */
+  /** Globally unique identifier: PoolConfig:{vlp_address} */
   id: Scalars['ID']['output'];
   stable: Maybe<IStablePoolConfig>;
 };
@@ -1026,7 +1036,7 @@ export type IPools = INode & {
 
 export type IPoolsResponse = INode & {
   __typename?: 'PoolsResponse';
-  /** Globally unique identifier: PoolsResponse:singleton */
+  /** Globally unique identifier: PoolsResponse:{vlp_address} */
   id: Scalars['ID']['output'];
   /** Pagination information for the query. */
   pagination: Maybe<IPaginationInfo>;
@@ -1073,7 +1083,7 @@ export type IProtocolFeesResponse = INode & {
   amount_0: Scalars['String']['output'];
   /** Protocol fees accumulated for token1. */
   amount_1: Scalars['String']['output'];
-  /** Globally unique identifier: ProtocolFeesResponse:singleton */
+  /** Globally unique identifier: ProtocolFeesResponse:{vlp_address} */
   id: Scalars['ID']['output'];
 };
 
@@ -1174,6 +1184,8 @@ export type IRouter = {
   all_vlps: Maybe<IAllVlps>;
   /** Queries information about a specific chain within the router contract, including details about the factory chain ID, factory address, and channels. */
   chain: Maybe<IChainResponse>;
+  /** Queries position info from the router by position ID. Returns the VLP address and position details. */
+  clp_position_info: Maybe<IClpPositionInfoResponse>;
   /** Queries the chain UID that contain an escrow with the specified token. Returns information on the escrow if found. */
   escrows: Array<IEscrow>;
   id: Scalars['ID']['output'];
@@ -1223,6 +1235,11 @@ export type IRouterAllVlpsArgs = {
 
 export type IRouterChainArgs = {
   chain_uid: Scalars['String']['input'];
+};
+
+
+export type IRouterClpPositionInfoArgs = {
+  position_id: Scalars['String']['input'];
 };
 
 
@@ -1303,7 +1320,7 @@ export type ISlot0Response = INode & {
   fee_growth_global_0_x128: Scalars['String']['output'];
   /** The global fee growth of token1 as a Q128.128 fixed-point number. */
   fee_growth_global_1_x128: Scalars['String']['output'];
-  /** Globally unique identifier: Slot0Response:singleton */
+  /** Globally unique identifier: Slot0Response:{vlp_address} */
   id: Scalars['ID']['output'];
   /** The current in-range liquidity. */
   liquidity: Scalars['String']['output'];
@@ -1577,7 +1594,7 @@ export type ITotalFeesCollected = INode & {
   __typename?: 'TotalFeesCollected';
   /** Total EUCLID fees collected */
   euclid_fees: IDenomFees;
-  /** Globally unique identifier: TotalFeesCollected:singleton */
+  /** Globally unique identifier: TotalFeesCollected:{vlp_address} */
   id: Scalars['ID']['output'];
   lp_fees: IDenomFees;
 };
@@ -1586,7 +1603,7 @@ export type ITotalFeesPerDenomResponse = INode & {
   __typename?: 'TotalFeesPerDenomResponse';
   /** Total EUCLID fees collected */
   euclid_fees: Scalars['String']['output'];
-  /** Globally unique identifier: TotalFeesPerDenomResponse:singleton */
+  /** Globally unique identifier: TotalFeesPerDenomResponse:{vlp_address}:{denom} */
   id: Scalars['ID']['output'];
   lp_fees: Scalars['String']['output'];
 };

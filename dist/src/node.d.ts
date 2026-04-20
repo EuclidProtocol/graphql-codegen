@@ -2315,6 +2315,58 @@ export type ICodegenGeneratedRouterChainQuery = {
         };
     };
 };
+export type ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables = Exact<{
+    router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterClpPositionInfoPositionQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        clp_position_info: {
+            __typename?: 'ClpPositionInfoResponse';
+            position: {
+                __typename?: 'PositionResponse';
+                chain_uid: string;
+                fee_growth_inside_0_last_x128: string;
+                fee_growth_inside_1_last_x128: string;
+                id: string;
+                liquidity: string;
+                lower_tick_index: number;
+                position_id: string;
+                tokens_owed_0: string;
+                tokens_owed_1: string;
+                upper_tick_index: number;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterClpPositionInfoQueryVariables = Exact<{
+    router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterClpPositionInfoQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        clp_position_info: {
+            __typename?: 'ClpPositionInfoResponse';
+            id: string;
+            vlp_address: string;
+            position: {
+                __typename?: 'PositionResponse';
+                chain_uid: string;
+                fee_growth_inside_0_last_x128: string;
+                fee_growth_inside_1_last_x128: string;
+                id: string;
+                liquidity: string;
+                lower_tick_index: number;
+                position_id: string;
+                tokens_owed_0: string;
+                tokens_owed_1: string;
+                upper_tick_index: number;
+            };
+        };
+    };
+};
 export type ICodegenGeneratedRouterEscrowsQueryVariables = Exact<{
     router_escrows_limit?: InputMaybe<Scalars['Int']['input']>;
     router_escrows_max?: InputMaybe<Scalars['String']['input']>;
@@ -4666,6 +4718,8 @@ export declare const CodegenGeneratedRouterChainChainChainTypeIbcDocument: impor
 export declare const CodegenGeneratedRouterChainChainChainTypeDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterChainChainDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterChainDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedRouterClpPositionInfoPositionDocument: import("graphql").DocumentNode;
+export declare const CodegenGeneratedRouterClpPositionInfoDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterEscrowsDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserDocument: import("graphql").DocumentNode;
 export declare const CodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserDocument: import("graphql").DocumentNode;
@@ -4838,6 +4892,8 @@ export declare function getSdk(client: GraphQLClient, withWrapper?: SdkFunctionW
     CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN_CHAIN_TYPE(variables: ICodegenGeneratedRouterChainChainChainTypeQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainChainChainTypeQuery>;
     CODEGEN_GENERATED_ROUTER_CHAIN_CHAIN(variables: ICodegenGeneratedRouterChainChainQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainChainQuery>;
     CODEGEN_GENERATED_ROUTER_CHAIN(variables: ICodegenGeneratedRouterChainQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainQuery>;
+    CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO_POSITION(variables: ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterClpPositionInfoPositionQuery>;
+    CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO(variables: ICodegenGeneratedRouterClpPositionInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterClpPositionInfoQuery>;
     CODEGEN_GENERATED_ROUTER_ESCROWS(variables: ICodegenGeneratedRouterEscrowsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterEscrowsQuery>;
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER_USER(variables: ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserUserQuery>;
     CODEGEN_GENERATED_ROUTER_SIMULATE_RELEASE_ESCROW_RELEASE_AMOUNTS_CROSS_CHAIN_USER(variables: ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterSimulateReleaseEscrowReleaseAmountsCrossChainUserQuery>;

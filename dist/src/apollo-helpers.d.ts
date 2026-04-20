@@ -152,6 +152,12 @@ export type ClaimerResponseWithStatusFieldPolicy = {
     status?: FieldPolicy<any> | FieldReadFunction<any>;
     token?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type ClpPositionInfoResponseKeySpecifier = ('id' | 'position' | 'vlp_address' | ClpPositionInfoResponseKeySpecifier)[];
+export type ClpPositionInfoResponseFieldPolicy = {
+    id?: FieldPolicy<any> | FieldReadFunction<any>;
+    position?: FieldPolicy<any> | FieldReadFunction<any>;
+    vlp_address?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type ConcentratedPoolParamsKeySpecifier = ('fee_tier_bps' | 'id' | 'tick_spacing' | ConcentratedPoolParamsKeySpecifier)[];
 export type ConcentratedPoolParamsFieldPolicy = {
     fee_tier_bps?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -587,13 +593,14 @@ export type ResultAndErrorFieldPolicy = {
     error?: FieldPolicy<any> | FieldReadFunction<any>;
     success?: FieldPolicy<any> | FieldReadFunction<any>;
 };
-export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'escrows' | 'id' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_denoms' | 'token_pairs_from_vlp' | 'vlp' | 'vlp_by_pool_key' | RouterKeySpecifier)[];
+export type RouterKeySpecifier = ('all_chains' | 'all_escrows' | 'all_tokens' | 'all_vlps' | 'chain' | 'clp_position_info' | 'escrows' | 'id' | 'simulate_release_escrow' | 'simulate_swap' | 'state' | 'token_denoms' | 'token_pairs_from_vlp' | 'vlp' | 'vlp_by_pool_key' | RouterKeySpecifier)[];
 export type RouterFieldPolicy = {
     all_chains?: FieldPolicy<any> | FieldReadFunction<any>;
     all_escrows?: FieldPolicy<any> | FieldReadFunction<any>;
     all_tokens?: FieldPolicy<any> | FieldReadFunction<any>;
     all_vlps?: FieldPolicy<any> | FieldReadFunction<any>;
     chain?: FieldPolicy<any> | FieldReadFunction<any>;
+    clp_position_info?: FieldPolicy<any> | FieldReadFunction<any>;
     escrows?: FieldPolicy<any> | FieldReadFunction<any>;
     id?: FieldPolicy<any> | FieldReadFunction<any>;
     simulate_release_escrow?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -923,6 +930,10 @@ export type StrictTypedTypePolicies = {
     ClaimerResponseWithStatus?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | ClaimerResponseWithStatusKeySpecifier | (() => undefined | ClaimerResponseWithStatusKeySpecifier);
         fields?: ClaimerResponseWithStatusFieldPolicy;
+    };
+    ClpPositionInfoResponse?: Omit<TypePolicy, "fields" | "keyFields"> & {
+        keyFields?: false | ClpPositionInfoResponseKeySpecifier | (() => undefined | ClpPositionInfoResponseKeySpecifier);
+        fields?: ClpPositionInfoResponseFieldPolicy;
     };
     ConcentratedPoolParams?: Omit<TypePolicy, "fields" | "keyFields"> & {
         keyFields?: false | ConcentratedPoolParamsKeySpecifier | (() => undefined | ConcentratedPoolParamsKeySpecifier);

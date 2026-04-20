@@ -2314,6 +2314,58 @@ export type ICodegenGeneratedRouterChainQuery = {
         };
     };
 };
+export type ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables = Exact<{
+    router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterClpPositionInfoPositionQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        clp_position_info: {
+            __typename?: 'ClpPositionInfoResponse';
+            position: {
+                __typename?: 'PositionResponse';
+                chain_uid: string;
+                fee_growth_inside_0_last_x128: string;
+                fee_growth_inside_1_last_x128: string;
+                id: string;
+                liquidity: string;
+                lower_tick_index: number;
+                position_id: string;
+                tokens_owed_0: string;
+                tokens_owed_1: string;
+                upper_tick_index: number;
+            };
+        };
+    };
+};
+export type ICodegenGeneratedRouterClpPositionInfoQueryVariables = Exact<{
+    router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+export type ICodegenGeneratedRouterClpPositionInfoQuery = {
+    __typename?: 'Query';
+    router: {
+        __typename?: 'Router';
+        clp_position_info: {
+            __typename?: 'ClpPositionInfoResponse';
+            id: string;
+            vlp_address: string;
+            position: {
+                __typename?: 'PositionResponse';
+                chain_uid: string;
+                fee_growth_inside_0_last_x128: string;
+                fee_growth_inside_1_last_x128: string;
+                id: string;
+                liquidity: string;
+                lower_tick_index: number;
+                position_id: string;
+                tokens_owed_0: string;
+                tokens_owed_1: string;
+                upper_tick_index: number;
+            };
+        };
+    };
+};
 export type ICodegenGeneratedRouterEscrowsQueryVariables = Exact<{
     router_escrows_limit?: InputMaybe<Scalars['Int']['input']>;
     router_escrows_max?: InputMaybe<Scalars['String']['input']>;
@@ -7830,6 +7882,70 @@ export declare function refetchCodegenGeneratedRouterChainQuery(variables: ICode
     query: Apollo.DocumentNode;
     variables: Exact<{
         router_chain_chain_uid: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedRouterClpPositionInfoPositionDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterClpPositionInfoPositionQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterClpPositionInfoPositionQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterClpPositionInfoPositionQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterClpPositionInfoPositionQuery({
+ *   variables: {
+ *      router_clp_position_info_position_id: // value for 'router_clp_position_info_position_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterClpPositionInfoPositionQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterClpPositionInfoPositionQuery, ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterClpPositionInfoPositionQuery, Exact<{
+    router_clp_position_info_position_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterClpPositionInfoPositionLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterClpPositionInfoPositionQuery, ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterClpPositionInfoPositionQuery, Exact<{
+    router_clp_position_info_position_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterClpPositionInfoPositionQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterClpPositionInfoPositionQuery>;
+export type CodegenGeneratedRouterClpPositionInfoPositionLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterClpPositionInfoPositionLazyQuery>;
+export type CodegenGeneratedRouterClpPositionInfoPositionQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterClpPositionInfoPositionQuery, ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables>;
+export declare function refetchCodegenGeneratedRouterClpPositionInfoPositionQuery(variables: ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_clp_position_info_position_id: Scalars["String"]["input"];
+    }>;
+};
+export declare const CodegenGeneratedRouterClpPositionInfoDocument: Apollo.DocumentNode;
+/**
+ * __useCodegenGeneratedRouterClpPositionInfoQuery__
+ *
+ * To run a query within a React component, call `useCodegenGeneratedRouterClpPositionInfoQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCodegenGeneratedRouterClpPositionInfoQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCodegenGeneratedRouterClpPositionInfoQuery({
+ *   variables: {
+ *      router_clp_position_info_position_id: // value for 'router_clp_position_info_position_id'
+ *   },
+ * });
+ */
+export declare function useCodegenGeneratedRouterClpPositionInfoQuery(baseOptions: Apollo.QueryHookOptions<ICodegenGeneratedRouterClpPositionInfoQuery, ICodegenGeneratedRouterClpPositionInfoQueryVariables>): Apollo.QueryResult<ICodegenGeneratedRouterClpPositionInfoQuery, Exact<{
+    router_clp_position_info_position_id: Scalars["String"]["input"];
+}>>;
+export declare function useCodegenGeneratedRouterClpPositionInfoLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ICodegenGeneratedRouterClpPositionInfoQuery, ICodegenGeneratedRouterClpPositionInfoQueryVariables>): Apollo.LazyQueryResultTuple<ICodegenGeneratedRouterClpPositionInfoQuery, Exact<{
+    router_clp_position_info_position_id: Scalars["String"]["input"];
+}>>;
+export type CodegenGeneratedRouterClpPositionInfoQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterClpPositionInfoQuery>;
+export type CodegenGeneratedRouterClpPositionInfoLazyQueryHookResult = ReturnType<typeof useCodegenGeneratedRouterClpPositionInfoLazyQuery>;
+export type CodegenGeneratedRouterClpPositionInfoQueryResult = Apollo.QueryResult<ICodegenGeneratedRouterClpPositionInfoQuery, ICodegenGeneratedRouterClpPositionInfoQueryVariables>;
+export declare function refetchCodegenGeneratedRouterClpPositionInfoQuery(variables: ICodegenGeneratedRouterClpPositionInfoQueryVariables): {
+    query: Apollo.DocumentNode;
+    variables: Exact<{
+        router_clp_position_info_position_id: Scalars["String"]["input"];
     }>;
 };
 export declare const CodegenGeneratedRouterEscrowsDocument: Apollo.DocumentNode;

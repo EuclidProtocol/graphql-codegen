@@ -793,6 +793,20 @@ export type ICodegenGeneratedRouterChainQueryVariables = Exact<{
 
 export type ICodegenGeneratedRouterChainQuery = { __typename?: 'Query', router: { __typename?: 'Router', chain: { __typename?: 'ChainResponse', chain_uid: string, id: string, chain: { __typename?: 'ChainAndFactoryInfo', factory: string, factory_chain_id: string, id: string, chain_type: { __typename?: 'ChainType', id: string, ibc: { __typename?: 'Ibc', from_factory_channel: string, from_hub_channel: string, id: string } } } } } };
 
+export type ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables = Exact<{
+  router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedRouterClpPositionInfoPositionQuery = { __typename?: 'Query', router: { __typename?: 'Router', clp_position_info: { __typename?: 'ClpPositionInfoResponse', position: { __typename?: 'PositionResponse', chain_uid: string, fee_growth_inside_0_last_x128: string, fee_growth_inside_1_last_x128: string, id: string, liquidity: string, lower_tick_index: number, position_id: string, tokens_owed_0: string, tokens_owed_1: string, upper_tick_index: number } } } };
+
+export type ICodegenGeneratedRouterClpPositionInfoQueryVariables = Exact<{
+  router_clp_position_info_position_id: Scalars['String']['input'];
+}>;
+
+
+export type ICodegenGeneratedRouterClpPositionInfoQuery = { __typename?: 'Query', router: { __typename?: 'Router', clp_position_info: { __typename?: 'ClpPositionInfoResponse', id: string, vlp_address: string, position: { __typename?: 'PositionResponse', chain_uid: string, fee_growth_inside_0_last_x128: string, fee_growth_inside_1_last_x128: string, id: string, liquidity: string, lower_tick_index: number, position_id: string, tokens_owed_0: string, tokens_owed_1: string, upper_tick_index: number } } } };
+
 export type ICodegenGeneratedRouterEscrowsQueryVariables = Exact<{
   router_escrows_limit?: InputMaybe<Scalars['Int']['input']>;
   router_escrows_max?: InputMaybe<Scalars['String']['input']>;
@@ -3203,6 +3217,48 @@ export const CodegenGeneratedRouterChainDocument = /*#__PURE__*/ gql`
   }
 }
     `;
+export const CodegenGeneratedRouterClpPositionInfoPositionDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO_POSITION($router_clp_position_info_position_id: String!) {
+  router {
+    clp_position_info(position_id: $router_clp_position_info_position_id) {
+      position {
+        chain_uid
+        fee_growth_inside_0_last_x128
+        fee_growth_inside_1_last_x128
+        id
+        liquidity
+        lower_tick_index
+        position_id
+        tokens_owed_0
+        tokens_owed_1
+        upper_tick_index
+      }
+    }
+  }
+}
+    `;
+export const CodegenGeneratedRouterClpPositionInfoDocument = /*#__PURE__*/ gql`
+    query CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO($router_clp_position_info_position_id: String!) {
+  router {
+    clp_position_info(position_id: $router_clp_position_info_position_id) {
+      id
+      position {
+        chain_uid
+        fee_growth_inside_0_last_x128
+        fee_growth_inside_1_last_x128
+        id
+        liquidity
+        lower_tick_index
+        position_id
+        tokens_owed_0
+        tokens_owed_1
+        upper_tick_index
+      }
+      vlp_address
+    }
+  }
+}
+    `;
 export const CodegenGeneratedRouterEscrowsDocument = /*#__PURE__*/ gql`
     query CODEGEN_GENERATED_ROUTER_ESCROWS($router_escrows_limit: Int, $router_escrows_max: String, $router_escrows_min: String, $router_escrows_skip: Int, $router_escrows_token: String!) {
   router {
@@ -5200,6 +5256,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     CODEGEN_GENERATED_ROUTER_CHAIN(variables: ICodegenGeneratedRouterChainQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterChainQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterChainQuery>(CodegenGeneratedRouterChainDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CHAIN', 'query');
+    },
+    CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO_POSITION(variables: ICodegenGeneratedRouterClpPositionInfoPositionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterClpPositionInfoPositionQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterClpPositionInfoPositionQuery>(CodegenGeneratedRouterClpPositionInfoPositionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO_POSITION', 'query');
+    },
+    CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO(variables: ICodegenGeneratedRouterClpPositionInfoQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterClpPositionInfoQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterClpPositionInfoQuery>(CodegenGeneratedRouterClpPositionInfoDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_CLP_POSITION_INFO', 'query');
     },
     CODEGEN_GENERATED_ROUTER_ESCROWS(variables: ICodegenGeneratedRouterEscrowsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<ICodegenGeneratedRouterEscrowsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<ICodegenGeneratedRouterEscrowsQuery>(CodegenGeneratedRouterEscrowsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'CODEGEN_GENERATED_ROUTER_ESCROWS', 'query');
