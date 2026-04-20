@@ -58,6 +58,10 @@ const TypePolicy: StrictTypedTypePolicies = {
       },
     },
   },
+  ConcentratedPoolParams: {
+    keyFields: ["fee_tier_bps"],
+    merge: true,
+  },
   Cw: {
     merge: true,
     fields: {
